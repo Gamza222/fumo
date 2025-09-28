@@ -1,0 +1,452 @@
+// ===== ANIMATION MIXINS =====
+// Reusable animation utilities and effects
+
+// ===== TIMING FUNCTIONS =====
+$easings: (
+  'linear': linear,
+  'ease': ease,
+  'ease-in': ease-in,
+  'ease-out': ease-out,
+  'ease-in-out': ease-in-out,
+  'bounce': cubic-bezier(0.68, -0.55, 0.265, 1.55),
+  'smooth': cubic-bezier(0.4, 0, 0.2, 1),
+  'sharp': cubic-bezier(0.4, 0, 0.6, 1),
+  'spring': cubic-bezier(0.175, 0.885, 0.32, 1.275),
+);
+
+@function easing($name) {
+  $timing: map-get($easings, $name);
+
+  @if not $timing {
+    @error "Easing '#{$name}' not found in $easings map.";
+  }
+
+  @return $timing;
+}
+
+// ===== ENTRANCE ANIMATIONS =====
+@mixin animate-fade-in($duration: 300ms, $easing: 'smooth', $delay: 0ms) {
+  animation: fade-in $duration easing($easing) $delay both;
+}
+
+@mixin animate-slide-in-up($duration: 400ms, $easing: 'smooth', $delay: 0ms, $distance: 30px) {
+  animation: slide-in-up-#{$distance} $duration easing($easing) $delay both;
+
+  @keyframes slide-in-up-#{$distance} {
+    from {
+      opacity: 0;
+      transform: translateY($distance);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@mixin animate-slide-in-down($duration: 400ms, $easing: 'smooth', $delay: 0ms, $distance: 30px) {
+  animation: slide-in-down-#{$distance} $duration easing($easing) $delay both;
+
+  @keyframes slide-in-down-#{$distance} {
+    from {
+      opacity: 0;
+      transform: translateY(-$distance);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@mixin animate-slide-in-left($duration: 400ms, $easing: 'smooth', $delay: 0ms, $distance: 30px) {
+  animation: slide-in-left-#{$distance} $duration easing($easing) $delay both;
+
+  @keyframes slide-in-left-#{$distance} {
+    from {
+      opacity: 0;
+      transform: translateX(-$distance);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+@mixin animate-slide-in-right($duration: 400ms, $easing: 'smooth', $delay: 0ms, $distance: 30px) {
+  animation: slide-in-right-#{$distance} $duration easing($easing) $delay both;
+
+  @keyframes slide-in-right-#{$distance} {
+    from {
+      opacity: 0;
+      transform: translateX($distance);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+@mixin animate-scale-in($duration: 300ms, $easing: 'bounce', $delay: 0ms, $scale: 0.8) {
+  animation: scale-in-#{$scale} $duration easing($easing) $delay both;
+
+  @keyframes scale-in-#{$scale} {
+    from {
+      opacity: 0;
+      transform: scale($scale);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+@mixin animate-rotate-in($duration: 500ms, $easing: 'smooth', $delay: 0ms, $degrees: 180deg) {
+  animation: rotate-in-#{$degrees} $duration easing($easing) $delay both;
+
+  @keyframes rotate-in-#{$degrees} {
+    from {
+      opacity: 0;
+      transform: rotate(-$degrees);
+    }
+    to {
+      opacity: 1;
+      transform: rotate(0);
+    }
+  }
+}
+
+// ===== EXIT ANIMATIONS =====
+@mixin animate-fade-out($duration: 200ms, $easing: 'smooth', $delay: 0ms) {
+  animation: fade-out $duration easing($easing) $delay both;
+}
+
+@mixin animate-slide-out-up($duration: 300ms, $easing: 'smooth', $delay: 0ms, $distance: 30px) {
+  animation: slide-out-up-#{$distance} $duration easing($easing) $delay both;
+
+  @keyframes slide-out-up-#{$distance} {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-$distance);
+    }
+  }
+}
+
+@mixin animate-slide-out-down($duration: 300ms, $easing: 'smooth', $delay: 0ms, $distance: 30px) {
+  animation: slide-out-down-#{$distance} $duration easing($easing) $delay both;
+
+  @keyframes slide-out-down-#{$distance} {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY($distance);
+    }
+  }
+}
+
+@mixin animate-scale-out($duration: 200ms, $easing: 'smooth', $delay: 0ms, $scale: 0.8) {
+  animation: scale-out-#{$scale} $duration easing($easing) $delay both;
+
+  @keyframes scale-out-#{$scale} {
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: scale($scale);
+    }
+  }
+}
+
+// ===== CONTINUOUS ANIMATIONS =====
+@mixin animate-spin($duration: 1s, $direction: normal) {
+  animation: spin $duration linear infinite $direction;
+}
+
+@mixin animate-pulse($duration: 2s) {
+  animation: pulse $duration easing('smooth') infinite;
+}
+
+@mixin animate-bounce($duration: 1s) {
+  animation: bounce $duration easing('bounce') infinite;
+}
+
+@mixin animate-float($duration: 3s, $distance: 10px) {
+  animation: float-#{$distance} $duration easing('smooth') infinite alternate;
+
+  @keyframes float-#{$distance} {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-$distance);
+    }
+  }
+}
+
+@mixin animate-wobble($duration: 1s) {
+  animation: wobble $duration easing('bounce');
+
+  @keyframes wobble {
+    0% {
+      transform: translateX(0%);
+    }
+    15% {
+      transform: translateX(-25%) rotate(-5deg);
+    }
+    30% {
+      transform: translateX(20%) rotate(3deg);
+    }
+    45% {
+      transform: translateX(-15%) rotate(-3deg);
+    }
+    60% {
+      transform: translateX(10%) rotate(2deg);
+    }
+    75% {
+      transform: translateX(-5%) rotate(-1deg);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+}
+
+// ===== ATTENTION SEEKERS =====
+@mixin animate-shake($duration: 600ms) {
+  animation: shake $duration easing('smooth');
+
+  @keyframes shake {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+      transform: translateX(-10px);
+    }
+    20%,
+    40%,
+    60%,
+    80% {
+      transform: translateX(10px);
+    }
+  }
+}
+
+@mixin animate-tada($duration: 1s) {
+  animation: tada $duration easing('bounce');
+
+  @keyframes tada {
+    0% {
+      transform: scale3d(1, 1, 1);
+    }
+    10%,
+    20% {
+      transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+    }
+    30%,
+    50%,
+    70%,
+    90% {
+      transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    }
+    40%,
+    60%,
+    80% {
+      transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    }
+    100% {
+      transform: scale3d(1, 1, 1);
+    }
+  }
+}
+
+@mixin animate-heartbeat($duration: 1.5s) {
+  animation: heartbeat $duration easing('ease-in-out') infinite;
+
+  @keyframes heartbeat {
+    0% {
+      transform: scale(1);
+    }
+    14% {
+      transform: scale(1.3);
+    }
+    28% {
+      transform: scale(1);
+    }
+    42% {
+      transform: scale(1.3);
+    }
+    70% {
+      transform: scale(1);
+    }
+  }
+}
+
+// ===== PAGE TRANSITIONS =====
+@mixin page-transition-fade($duration: 300ms) {
+  &.page-enter {
+    opacity: 0;
+  }
+
+  &.page-enter-active {
+    opacity: 1;
+    transition: opacity $duration easing('smooth');
+  }
+
+  &.page-exit {
+    opacity: 1;
+  }
+
+  &.page-exit-active {
+    opacity: 0;
+    transition: opacity $duration easing('smooth');
+  }
+}
+
+@mixin page-transition-slide($duration: 400ms, $direction: 'right') {
+  @if $direction == 'right' {
+    &.page-enter {
+      transform: translateX(100%);
+    }
+
+    &.page-exit-active {
+      transform: translateX(-100%);
+    }
+  } @else if $direction == 'left' {
+    &.page-enter {
+      transform: translateX(-100%);
+    }
+
+    &.page-exit-active {
+      transform: translateX(100%);
+    }
+  } @else if $direction == 'up' {
+    &.page-enter {
+      transform: translateY(100%);
+    }
+
+    &.page-exit-active {
+      transform: translateY(-100%);
+    }
+  } @else if $direction == 'down' {
+    &.page-enter {
+      transform: translateY(-100%);
+    }
+
+    &.page-exit-active {
+      transform: translateY(100%);
+    }
+  }
+
+  &.page-enter-active {
+    transform: translateX(0) translateY(0);
+    transition: transform $duration easing('smooth');
+  }
+
+  &.page-exit {
+    transform: translateX(0) translateY(0);
+  }
+
+  &.page-exit-active {
+    transition: transform $duration easing('smooth');
+  }
+}
+
+// ===== STAGGER ANIMATIONS =====
+@mixin stagger-animation($base-delay: 50ms, $max-items: 10) {
+  @for $i from 1 through $max-items {
+    &:nth-child(#{$i}) {
+      animation-delay: $base-delay * ($i - 1);
+    }
+  }
+}
+
+// ===== ANIMATION UTILITIES =====
+@mixin animation-play-state($state: running) {
+  animation-play-state: $state;
+}
+
+@mixin animation-pause {
+  @include animation-play-state(paused);
+}
+
+@mixin animation-resume {
+  @include animation-play-state(running);
+}
+
+@mixin animation-fill-mode($mode: both) {
+  animation-fill-mode: $mode;
+}
+
+// ===== PERFORMANCE OPTIMIZED ANIMATIONS =====
+@mixin gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+@mixin optimize-for-animation {
+  @include gpu-accelerated;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+// ===== CORE KEYFRAMES =====
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-25%);
+  }
+}

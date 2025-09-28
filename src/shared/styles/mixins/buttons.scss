@@ -1,0 +1,359 @@
+@use '../design-tokens/colors' as colors;
+@use '../design-tokens/spacing' as spacing;
+@use '../design-tokens/typography' as typography;
+@use '../design-tokens/borders' as borders;
+@use '../design-tokens/shadows' as shadows;
+
+// ===== BUTTON MIXINS =====
+// Comprehensive button styling system
+
+// ===== BASE BUTTON MIXIN =====
+@mixin button-base {
+  // Layout & positioning
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  // Typography
+  font-family: typography.font-family('primary');
+  font-weight: typography.font-weight('medium');
+  text-decoration: none;
+  white-space: nowrap;
+
+  // Borders & styling
+  border: borders.border-width('base') solid transparent;
+  border-radius: borders.border-radius('md');
+
+  // Interactions
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+
+  // Transitions
+  transition: all 150ms ease-in-out;
+
+  // Focus state
+  &:focus-visible {
+    @include shadows.focus-ring('default');
+  }
+
+  // Disabled state
+  &:disabled,
+  &[aria-disabled='true'] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  // Loading state
+  &[data-loading='true'] {
+    cursor: wait;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: spacing.spacing('4');
+      transform: translateY(-50%);
+      @include loading-spinner('sm');
+    }
+  }
+}
+
+// ===== BUTTON SIZES =====
+@mixin button-size($size: 'md') {
+  @if $size == 'xs' {
+    padding: spacing.spacing('1') spacing.spacing('2');
+    font-size: typography.font-size('xs');
+    line-height: typography.line-height('4');
+    min-height: spacing.spacing('6');
+  } @else if $size == 'sm' {
+    padding: spacing.spacing('1.5') spacing.spacing('3');
+    font-size: typography.font-size('sm');
+    line-height: typography.line-height('5');
+    min-height: spacing.spacing('8');
+  } @else if $size == 'md' {
+    padding: spacing.spacing('2') spacing.spacing('4');
+    font-size: typography.font-size('base');
+    line-height: typography.line-height('6');
+    min-height: spacing.spacing('10');
+  } @else if $size == 'lg' {
+    padding: spacing.spacing('2.5') spacing.spacing('5');
+    font-size: typography.font-size('lg');
+    line-height: typography.line-height('7');
+    min-height: spacing.spacing('12');
+  } @else if $size == 'xl' {
+    padding: spacing.spacing('3') spacing.spacing('6');
+    font-size: typography.font-size('xl');
+    line-height: typography.line-height('8');
+    min-height: spacing.spacing('14');
+  }
+}
+
+// ===== BUTTON VARIANTS =====
+@mixin button-primary {
+  background-color: var(--color-button-primary-bg);
+  color: var(--color-button-primary-text);
+  border-color: transparent;
+  @include shadows.elevation('sm');
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-button-primary-bg-hover);
+    @include shadows.elevation('md');
+  }
+
+  &:active:not(:disabled) {
+    background-color: var(--color-button-primary-bg-active);
+    @include shadows.elevation('sm');
+    transform: translateY(1px);
+  }
+}
+
+@mixin button-secondary {
+  background-color: var(--color-button-secondary-bg);
+  color: var(--color-button-secondary-text);
+  border-color: var(--color-button-secondary-border);
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-button-secondary-bg-hover);
+    border-color: var(--color-border-medium);
+  }
+
+  &:active:not(:disabled) {
+    background-color: var(--color-button-secondary-bg-active);
+    transform: translateY(1px);
+  }
+}
+
+@mixin button-ghost {
+  background-color: var(--color-button-ghost-bg);
+  color: var(--color-button-ghost-text);
+  border-color: transparent;
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-button-ghost-bg-hover);
+  }
+
+  &:active:not(:disabled) {
+    background-color: var(--color-button-ghost-bg-active);
+  }
+}
+
+@mixin button-destructive {
+  background-color: var(--color-error-500);
+  color: var(--color-text-inverse);
+  border-color: transparent;
+  @include shadows.elevation('sm');
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-error-600);
+    @include shadows.elevation('md');
+  }
+
+  &:active:not(:disabled) {
+    background-color: var(--color-error-700);
+    @include shadows.elevation('sm');
+    transform: translateY(1px);
+  }
+}
+
+@mixin button-success {
+  background-color: var(--color-success-500);
+  color: var(--color-text-inverse);
+  border-color: transparent;
+  @include shadows.elevation('sm');
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-success-600);
+    @include shadows.elevation('md');
+  }
+
+  &:active:not(:disabled) {
+    background-color: var(--color-success-700);
+    @include shadows.elevation('sm');
+    transform: translateY(1px);
+  }
+}
+
+// ===== BUTTON STATES =====
+@mixin button-loading($size: 'md') {
+  position: relative;
+
+  &[data-loading='true'] {
+    color: transparent;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      @include loading-spinner($size);
+    }
+  }
+}
+
+@mixin button-with-icon($position: 'left', $gap: '2') {
+  gap: spacing.spacing($gap);
+
+  @if $position == 'right' {
+    flex-direction: row-reverse;
+  }
+
+  .icon {
+    flex-shrink: 0;
+
+    @if $position == 'only' {
+      margin: 0;
+    }
+  }
+}
+
+// ===== BUTTON GROUPS =====
+@mixin button-group {
+  display: inline-flex;
+  border-radius: borders.border-radius('md');
+  @include shadows.elevation('sm');
+
+  .button {
+    border-radius: 0;
+    border-right-width: 0;
+
+    &:first-child {
+      border-top-left-radius: borders.border-radius('md');
+      border-bottom-left-radius: borders.border-radius('md');
+    }
+
+    &:last-child {
+      border-top-right-radius: borders.border-radius('md');
+      border-bottom-right-radius: borders.border-radius('md');
+      border-right-width: borders.border-width('base');
+    }
+
+    &:only-child {
+      border-radius: borders.border-radius('md');
+      border-right-width: borders.border-width('base');
+    }
+  }
+}
+
+// ===== FLOATING ACTION BUTTON =====
+@mixin button-fab($size: 'md') {
+  border-radius: borders.border-radius('full');
+  @include shadows.elevation('lg');
+
+  @if $size == 'sm' {
+    width: spacing.spacing('10');
+    height: spacing.spacing('10');
+    padding: 0;
+  } @else if $size == 'md' {
+    width: spacing.spacing('12');
+    height: spacing.spacing('12');
+    padding: 0;
+  } @else if $size == 'lg' {
+    width: spacing.spacing('16');
+    height: spacing.spacing('16');
+    padding: 0;
+  }
+
+  &:hover:not(:disabled) {
+    @include shadows.elevation('xl');
+    transform: translateY(-2px);
+  }
+
+  &:active:not(:disabled) {
+    @include shadows.elevation('md');
+    transform: translateY(0);
+  }
+}
+
+// ===== TOGGLE BUTTON =====
+@mixin button-toggle {
+  &[aria-pressed='true'],
+  &[data-state='on'] {
+    background-color: var(--color-primary-100);
+    color: var(--color-primary-700);
+    border-color: var(--color-primary-300);
+  }
+}
+
+// ===== LOADING SPINNER =====
+@mixin loading-spinner($size: 'md') {
+  @if $size == 'xs' {
+    width: spacing.spacing('3');
+    height: spacing.spacing('3');
+    border-width: 1px;
+  } @else if $size == 'sm' {
+    width: spacing.spacing('4');
+    height: spacing.spacing('4');
+    border-width: 2px;
+  } @else if $size == 'md' {
+    width: spacing.spacing('5');
+    height: spacing.spacing('5');
+    border-width: 2px;
+  } @else if $size == 'lg' {
+    width: spacing.spacing('6');
+    height: spacing.spacing('6');
+    border-width: 3px;
+  }
+
+  border-style: solid;
+  border-color: transparent;
+  border-top-color: currentColor;
+  border-radius: borders.border-radius('full');
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// ===== UTILITY MIXINS =====
+@mixin button-full-width {
+  width: 100%;
+  justify-content: center;
+}
+
+@mixin button-icon-only($size: 'md') {
+  aspect-ratio: 1;
+  padding: 0;
+
+  @if $size == 'xs' {
+    width: spacing.spacing('6');
+    height: spacing.spacing('6');
+  } @else if $size == 'sm' {
+    width: spacing.spacing('8');
+    height: spacing.spacing('8');
+  } @else if $size == 'md' {
+    width: spacing.spacing('10');
+    height: spacing.spacing('10');
+  } @else if $size == 'lg' {
+    width: spacing.spacing('12');
+    height: spacing.spacing('12');
+  }
+}
+
+// ===== COMPLETE BUTTON MIXIN =====
+@mixin button($variant: 'primary', $size: 'md', $full-width: false) {
+  @include button-base;
+  @include button-size($size);
+
+  @if $variant == 'primary' {
+    @include button-primary;
+  } @else if $variant == 'secondary' {
+    @include button-secondary;
+  } @else if $variant == 'ghost' {
+    @include button-ghost;
+  } @else if $variant == 'destructive' {
+    @include button-destructive;
+  } @else if $variant == 'success' {
+    @include button-success;
+  }
+
+  @if $full-width {
+    @include button-full-width;
+  }
+}

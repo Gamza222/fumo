@@ -1,0 +1,75 @@
+060bcd0ccd661e3bc1037a023c716503
+"use strict";
+
+/**
+ * External Library Mock Types
+ *
+ * Types for external library mocks used in testing.
+ * These types ensure consistency across external mock implementations.
+ */
+/* istanbul ignore next */
+function cov_2frrhbj5pu() {
+  var path = "/Users/gamzaramazanov/Desktop/fumo/src/shared/testing/mocks/external/types/types.ts";
+  var hash = "34cf86ee2a7a8e84116f689079b2f6f36ca62665";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/gamzaramazanov/Desktop/fumo/src/shared/testing/mocks/external/types/types.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 8,
+          column: 0
+        },
+        end: {
+          line: 8,
+          column: 62
+        }
+      }
+    },
+    fnMap: {},
+    branchMap: {},
+    s: {
+      "0": 0
+    },
+    f: {},
+    b: {},
+    inputSourceMap: {
+      file: "/Users/gamzaramazanov/Desktop/fumo/src/shared/testing/mocks/external/types/types.ts",
+      mappings: ";AAAA;;;;;GAKG;;AAwDH,+EAA+E;AAC/E,6BAA6B;AAC7B,+EAA+E;AAE/E,8DAA8D;AAC9D,2BAA2B;AAC3B,qBAAqB;AACrB,gBAAgB;AAChB,kBAAkB;AAClB,OAAO",
+      names: [],
+      sources: ["/Users/gamzaramazanov/Desktop/fumo/src/shared/testing/mocks/external/types/types.ts"],
+      sourcesContent: ["/**\n * External Library Mock Types\n *\n * Types for external library mocks used in testing.\n * These types ensure consistency across external mock implementations.\n */\n\n// ============================================================================\n// SENTRY MOCK TYPES\n// ============================================================================\n\n/**\n * Mock transaction object returned by Sentry.startTransaction\n */\nexport interface MockSentryTransaction {\n  setTag: jest.Mock;\n  setData: jest.Mock;\n  finish: jest.Mock;\n}\n\n/**\n * Sentry mock interface matching the actual Sentry API\n */\nexport interface MockSentryInterface {\n  // Error capturing\n  captureException: jest.Mock;\n  captureMessage: jest.Mock;\n\n  // Context management\n  setUser: jest.Mock;\n  setTag: jest.Mock;\n  setExtra: jest.Mock;\n  addBreadcrumb: jest.Mock;\n  configureScope: jest.Mock;\n\n  // Scope management\n  withScope: jest.Mock;\n  getCurrentHub: jest.Mock;\n\n  // Transaction/performance monitoring\n  startTransaction: jest.Mock;\n\n  // Integration helpers\n  flush: jest.Mock;\n  close: jest.Mock;\n}\n\n/**\n * Sentry test utilities interface\n */\nexport interface SentryTestUtilsInterface {\n  clearMocks: () => void;\n  resetMocks: () => void;\n  expectExceptionCaptured: (error?: Error | string) => void;\n  expectMessageCaptured: (message: string) => void;\n  expectUserSet: (userId?: string) => void;\n  expectTagSet: (key: string, value?: string) => void;\n  getCapturedExceptions: () => jest.Mock['mock']['calls'];\n  getCapturedMessages: () => jest.Mock['mock']['calls'];\n}\n\n// ============================================================================\n// FUTURE EXTERNAL MOCK TYPES\n// ============================================================================\n\n// NOTE: Add other external library mock types here as needed:\n// - Google Analytics types\n// - Stripe SDK types\n// - Auth0 types\n// - AWS SDK types\n// etc.\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "34cf86ee2a7a8e84116f689079b2f6f36ca62665"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_2frrhbj5pu = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_2frrhbj5pu();
+cov_2frrhbj5pu().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+// ============================================================================
+// FUTURE EXTERNAL MOCK TYPES
+// ============================================================================
+// NOTE: Add other external library mock types here as needed:
+// - Google Analytics types
+// - Stripe SDK types
+// - Auth0 types
+// - AWS SDK types
+// etc.
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMmZycmhiajVwdSIsInBhdGgiLCJoYXNoIiwiZ2xvYmFsIiwiRnVuY3Rpb24iLCJnY3YiLCJjb3ZlcmFnZURhdGEiLCJzdGF0ZW1lbnRNYXAiLCJzdGFydCIsImxpbmUiLCJjb2x1bW4iLCJlbmQiLCJmbk1hcCIsImJyYW5jaE1hcCIsInMiLCJmIiwiYiIsImlucHV0U291cmNlTWFwIiwiZmlsZSIsIm1hcHBpbmdzIiwibmFtZXMiLCJzb3VyY2VzIiwic291cmNlc0NvbnRlbnQiLCJ2ZXJzaW9uIiwiX2NvdmVyYWdlU2NoZW1hIiwiY292ZXJhZ2UiLCJhY3R1YWxDb3ZlcmFnZSJdLCJzb3VyY2VzIjpbIi9Vc2Vycy9nYW16YXJhbWF6YW5vdi9EZXNrdG9wL2Z1bW8vc3JjL3NoYXJlZC90ZXN0aW5nL21vY2tzL2V4dGVybmFsL3R5cGVzL3R5cGVzLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogRXh0ZXJuYWwgTGlicmFyeSBNb2NrIFR5cGVzXG4gKlxuICogVHlwZXMgZm9yIGV4dGVybmFsIGxpYnJhcnkgbW9ja3MgdXNlZCBpbiB0ZXN0aW5nLlxuICogVGhlc2UgdHlwZXMgZW5zdXJlIGNvbnNpc3RlbmN5IGFjcm9zcyBleHRlcm5hbCBtb2NrIGltcGxlbWVudGF0aW9ucy5cbiAqL1xuXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4vLyBTRU5UUlkgTU9DSyBUWVBFU1xuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuXG4vKipcbiAqIE1vY2sgdHJhbnNhY3Rpb24gb2JqZWN0IHJldHVybmVkIGJ5IFNlbnRyeS5zdGFydFRyYW5zYWN0aW9uXG4gKi9cbmV4cG9ydCBpbnRlcmZhY2UgTW9ja1NlbnRyeVRyYW5zYWN0aW9uIHtcbiAgc2V0VGFnOiBqZXN0Lk1vY2s7XG4gIHNldERhdGE6IGplc3QuTW9jaztcbiAgZmluaXNoOiBqZXN0Lk1vY2s7XG59XG5cbi8qKlxuICogU2VudHJ5IG1vY2sgaW50ZXJmYWNlIG1hdGNoaW5nIHRoZSBhY3R1YWwgU2VudHJ5IEFQSVxuICovXG5leHBvcnQgaW50ZXJmYWNlIE1vY2tTZW50cnlJbnRlcmZhY2Uge1xuICAvLyBFcnJvciBjYXB0dXJpbmdcbiAgY2FwdHVyZUV4Y2VwdGlvbjogamVzdC5Nb2NrO1xuICBjYXB0dXJlTWVzc2FnZTogamVzdC5Nb2NrO1xuXG4gIC8vIENvbnRleHQgbWFuYWdlbWVudFxuICBzZXRVc2VyOiBqZXN0Lk1vY2s7XG4gIHNldFRhZzogamVzdC5Nb2NrO1xuICBzZXRFeHRyYTogamVzdC5Nb2NrO1xuICBhZGRCcmVhZGNydW1iOiBqZXN0Lk1vY2s7XG4gIGNvbmZpZ3VyZVNjb3BlOiBqZXN0Lk1vY2s7XG5cbiAgLy8gU2NvcGUgbWFuYWdlbWVudFxuICB3aXRoU2NvcGU6IGplc3QuTW9jaztcbiAgZ2V0Q3VycmVudEh1YjogamVzdC5Nb2NrO1xuXG4gIC8vIFRyYW5zYWN0aW9uL3BlcmZvcm1hbmNlIG1vbml0b3JpbmdcbiAgc3RhcnRUcmFuc2FjdGlvbjogamVzdC5Nb2NrO1xuXG4gIC8vIEludGVncmF0aW9uIGhlbHBlcnNcbiAgZmx1c2g6IGplc3QuTW9jaztcbiAgY2xvc2U6IGplc3QuTW9jaztcbn1cblxuLyoqXG4gKiBTZW50cnkgdGVzdCB1dGlsaXRpZXMgaW50ZXJmYWNlXG4gKi9cbmV4cG9ydCBpbnRlcmZhY2UgU2VudHJ5VGVzdFV0aWxzSW50ZXJmYWNlIHtcbiAgY2xlYXJNb2NrczogKCkgPT4gdm9pZDtcbiAgcmVzZXRNb2NrczogKCkgPT4gdm9pZDtcbiAgZXhwZWN0RXhjZXB0aW9uQ2FwdHVyZWQ6IChlcnJvcj86IEVycm9yIHwgc3RyaW5nKSA9PiB2b2lkO1xuICBleHBlY3RNZXNzYWdlQ2FwdHVyZWQ6IChtZXNzYWdlOiBzdHJpbmcpID0+IHZvaWQ7XG4gIGV4cGVjdFVzZXJTZXQ6ICh1c2VySWQ/OiBzdHJpbmcpID0+IHZvaWQ7XG4gIGV4cGVjdFRhZ1NldDogKGtleTogc3RyaW5nLCB2YWx1ZT86IHN0cmluZykgPT4gdm9pZDtcbiAgZ2V0Q2FwdHVyZWRFeGNlcHRpb25zOiAoKSA9PiBqZXN0Lk1vY2tbJ21vY2snXVsnY2FsbHMnXTtcbiAgZ2V0Q2FwdHVyZWRNZXNzYWdlczogKCkgPT4gamVzdC5Nb2NrWydtb2NrJ11bJ2NhbGxzJ107XG59XG5cbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbi8vIEZVVFVSRSBFWFRFUk5BTCBNT0NLIFRZUEVTXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG5cbi8vIE5PVEU6IEFkZCBvdGhlciBleHRlcm5hbCBsaWJyYXJ5IG1vY2sgdHlwZXMgaGVyZSBhcyBuZWVkZWQ6XG4vLyAtIEdvb2dsZSBBbmFseXRpY3MgdHlwZXNcbi8vIC0gU3RyaXBlIFNESyB0eXBlc1xuLy8gLSBBdXRoMCB0eXBlc1xuLy8gLSBBV1MgU0RLIHR5cGVzXG4vLyBldGMuXG4iXSwibWFwcGluZ3MiOiI7O0FBQUE7Ozs7OztBQUFBO0FBQUEsU0FBQUEsZUFBQTtFQUFBLElBQUFDLElBQUE7RUFBQSxJQUFBQyxJQUFBO0VBQUEsSUFBQUMsTUFBQSxPQUFBQyxRQUFBO0VBQUEsSUFBQUMsR0FBQTtFQUFBLElBQUFDLFlBQUE7SUFBQUwsSUFBQTtJQUFBTSxZQUFBO01BQUE7UUFBQUMsS0FBQTtVQUFBQyxJQUFBO1VBQUFDLE1BQUE7UUFBQTtRQUFBQyxHQUFBO1VBQUFGLElBQUE7VUFBQUMsTUFBQTtRQUFBO01BQUE7SUFBQTtJQUFBRSxLQUFBO0lBQUFDLFNBQUE7SUFBQUMsQ0FBQTtNQUFBO0lBQUE7SUFBQUMsQ0FBQTtJQUFBQyxDQUFBO0lBQUFDLGNBQUE7TUFBQUMsSUFBQTtNQUFBQyxRQUFBO01BQUFDLEtBQUE7TUFBQUMsT0FBQTtNQUFBQyxjQUFBO01BQUFDLE9BQUE7SUFBQTtJQUFBQyxlQUFBO0lBQUF0QixJQUFBO0VBQUE7RUFBQSxJQUFBdUIsUUFBQSxHQUFBdEIsTUFBQSxDQUFBRSxHQUFBLE1BQUFGLE1BQUEsQ0FBQUUsR0FBQTtFQUFBLEtBQUFvQixRQUFBLENBQUF4QixJQUFBLEtBQUF3QixRQUFBLENBQUF4QixJQUFBLEVBQUFDLElBQUEsS0FBQUEsSUFBQTtJQUFBdUIsUUFBQSxDQUFBeEIsSUFBQSxJQUFBSyxZQUFBO0VBQUE7RUFBQSxJQUFBb0IsY0FBQSxHQUFBRCxRQUFBLENBQUF4QixJQUFBO0VBQUE7SUFxRUE7SUFBQUQsY0FBQSxZQUFBQSxDQUFBO01BQUEsT0FBQTBCLGNBQUE7SUFBQTtFQUFBO0VBQUEsT0FBQUEsY0FBQTtBQUFBO0FBQUExQixjQUFBO0FBQUFBLGNBQUEsR0FBQWMsQ0FBQTs7OztBQVJBO0FBQ0E7QUFDQTtBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQSIsImlnbm9yZUxpc3QiOltdfQ==

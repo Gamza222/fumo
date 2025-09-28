@@ -1,0 +1,183 @@
+.performance-dashboard {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 400px;
+  max-height: 600px;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+.performance-dashboard__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.performance-dashboard__header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.performance-dashboard__close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #666;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.performance-dashboard__close:hover {
+  background-color: #e0e0e0;
+}
+
+.performance-dashboard__summary {
+  padding: 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.performance-dashboard__metric {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.performance-dashboard__metric:last-child {
+  margin-bottom: 0;
+}
+
+.performance-dashboard__label {
+  font-weight: 500;
+  color: #666;
+}
+
+.performance-dashboard__value {
+  font-weight: 600;
+  color: #333;
+}
+
+.performance-dashboard__value--good {
+  color: #22c55e;
+}
+
+.performance-dashboard__value--warning {
+  color: #f59e0b;
+}
+
+.performance-dashboard__value--error {
+  color: #ef4444;
+}
+
+.performance-dashboard__metrics {
+  padding: 16px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.performance-dashboard__metrics h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.performance-dashboard__metric-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.performance-dashboard__metric-item:last-child {
+  border-bottom: none;
+}
+
+.performance-dashboard__metric-name {
+  font-weight: 500;
+  color: #333;
+  flex: 1;
+}
+
+.performance-dashboard__metric-value {
+  font-weight: 600;
+  color: #666;
+  margin-right: 8px;
+}
+
+.performance-dashboard__metric-rating {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.performance-dashboard__metric-rating--good {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.performance-dashboard__metric-rating--needs-improvement {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.performance-dashboard__metric-rating--poor {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.performance-dashboard__actions {
+  padding: 16px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.performance-dashboard__button {
+  width: 100%;
+  padding: 8px 16px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.performance-dashboard__button:hover {
+  background: #2563eb;
+}
+
+.performance-dashboard__button:active {
+  background: #1d4ed8;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .performance-dashboard {
+    width: calc(100vw - 40px);
+    max-width: 400px;
+  }
+}

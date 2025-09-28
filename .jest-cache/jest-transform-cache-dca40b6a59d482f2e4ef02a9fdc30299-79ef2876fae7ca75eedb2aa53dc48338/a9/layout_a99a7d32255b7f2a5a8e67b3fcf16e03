@@ -1,0 +1,246 @@
+944dd30e503c650cebc042944f276d5b
+"use strict";
+
+/* istanbul ignore next */
+function cov_s4uijthhj() {
+  var path = "/Users/gamzaramazanov/Desktop/fumo/src/app/layout.tsx";
+  var hash = "a3b3b26e389edb40abc62cf7d3a81d9402df840e";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/gamzaramazanov/Desktop/fumo/src/app/layout.tsx",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 26
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 0
+        },
+        end: {
+          line: 4,
+          column: 29
+        }
+      },
+      "3": {
+        start: {
+          line: 5,
+          column: 20
+        },
+        end: {
+          line: 5,
+          column: 48
+        }
+      },
+      "4": {
+        start: {
+          line: 7,
+          column: 15
+        },
+        end: {
+          line: 7,
+          column: 59
+        }
+      },
+      "5": {
+        start: {
+          line: 8,
+          column: 14
+        },
+        end: {
+          line: 8,
+          column: 57
+        }
+      },
+      "6": {
+        start: {
+          line: 9,
+          column: 23
+        },
+        end: {
+          line: 9,
+          column: 65
+        }
+      },
+      "7": {
+        start: {
+          line: 10,
+          column: 0
+        },
+        end: {
+          line: 10,
+          column: 25
+        }
+      },
+      "8": {
+        start: {
+          line: 11,
+          column: 0
+        },
+        end: {
+          line: 14,
+          column: 2
+        }
+      },
+      "9": {
+        start: {
+          line: 16,
+          column: 19
+        },
+        end: {
+          line: 16,
+          column: 30
+        }
+      },
+      "10": {
+        start: {
+          line: 17,
+          column: 4
+        },
+        end: {
+          line: 17,
+          column: 320
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "RootLayout",
+        decl: {
+          start: {
+            line: 15,
+            column: 9
+          },
+          end: {
+            line: 15,
+            column: 19
+          }
+        },
+        loc: {
+          start: {
+            line: 15,
+            column: 24
+          },
+          end: {
+            line: 18,
+            column: 1
+          }
+        },
+        line: 15
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0
+    },
+    f: {
+      "0": 0
+    },
+    b: {},
+    inputSourceMap: {
+      file: "/Users/gamzaramazanov/Desktop/fumo/src/app/layout.tsx",
+      mappings: ";;;AAYA,6BAYC;;AAvBD,oEAAoE;AACpE,4DAAmE;AACnE,0DAAiE;AACjE,kEAAgE;AAChE,yBAAuB;AAEV,QAAA,QAAQ,GAAa;IAChC,KAAK,EAAE,MAAM;IACb,WAAW,EAAE,+BAA+B;CAC7C,CAAC;AAEF,SAAwB,UAAU,CAAC,EAA2C;QAAzC,QAAQ,cAAA;IAC3C,OAAO,CACL,iCAAM,IAAI,EAAC,IAAI,YACb,2CACE,uBAAC,uBAAc,cACb,uBAAC,qBAAa,cACZ,uBAAC,8BAAa,cAAE,QAAQ,GAAiB,GAC3B,GACD,GACZ,GACF,CACR,CAAC;AACJ,CAAC",
+      names: [],
+      sources: ["/Users/gamzaramazanov/Desktop/fumo/src/app/layout.tsx"],
+      sourcesContent: ["import type { Metadata } from 'next';\n// import { QueryProvider } from \"@/infrastructure/providers/query\";\nimport { SentryProvider } from '@/infrastructure/providers/sentry';\nimport { ThemeProvider } from '@/infrastructure/providers/theme';\nimport { ErrorBoundary } from '@/infrastructure/error-handling';\nimport './globals.css';\n\nexport const metadata: Metadata = {\n  title: 'Fumo',\n  description: 'Fumo - Modern web application',\n};\n\nexport default function RootLayout({ children }: { children: React.ReactNode }) {\n  return (\n    <html lang=\"en\">\n      <body>\n        <SentryProvider>\n          <ThemeProvider>\n            <ErrorBoundary>{children}</ErrorBoundary>\n          </ThemeProvider>\n        </SentryProvider>\n      </body>\n    </html>\n  );\n}\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "a3b3b26e389edb40abc62cf7d3a81d9402df840e"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_s4uijthhj = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_s4uijthhj();
+cov_s4uijthhj().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_s4uijthhj().s[1]++;
+exports.metadata = void 0;
+/* istanbul ignore next */
+cov_s4uijthhj().s[2]++;
+exports.default = RootLayout;
+var jsx_runtime_1 =
+/* istanbul ignore next */
+(cov_s4uijthhj().s[3]++, require("react/jsx-runtime"));
+// import { QueryProvider } from "@/infrastructure/providers/query";
+var sentry_1 =
+/* istanbul ignore next */
+(cov_s4uijthhj().s[4]++, require("@/infrastructure/providers/sentry"));
+var theme_1 =
+/* istanbul ignore next */
+(cov_s4uijthhj().s[5]++, require("@/infrastructure/providers/theme"));
+var error_handling_1 =
+/* istanbul ignore next */
+(cov_s4uijthhj().s[6]++, require("@/infrastructure/error-handling"));
+/* istanbul ignore next */
+cov_s4uijthhj().s[7]++;
+require("./globals.css");
+/* istanbul ignore next */
+cov_s4uijthhj().s[8]++;
+exports.metadata = {
+  title: 'Fumo',
+  description: 'Fumo - Modern web application'
+};
+function RootLayout(_a) {
+  /* istanbul ignore next */
+  cov_s4uijthhj().f[0]++;
+  var children =
+  /* istanbul ignore next */
+  (cov_s4uijthhj().s[9]++, _a.children);
+  /* istanbul ignore next */
+  cov_s4uijthhj().s[10]++;
+  return (0, jsx_runtime_1.jsx)("html", {
+    lang: "en",
+    children: (0, jsx_runtime_1.jsx)("body", {
+      children: (0, jsx_runtime_1.jsx)(sentry_1.SentryProvider, {
+        children: (0, jsx_runtime_1.jsx)(theme_1.ThemeProvider, {
+          children: (0, jsx_runtime_1.jsx)(error_handling_1.ErrorBoundary, {
+            children: children
+          })
+        })
+      })
+    })
+  });
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfczR1aWp0aGhqIiwiYWN0dWFsQ292ZXJhZ2UiLCJzIiwiZXhwb3J0cyIsImRlZmF1bHQiLCJSb290TGF5b3V0Iiwic2VudHJ5XzEiLCJyZXF1aXJlIiwidGhlbWVfMSIsImVycm9yX2hhbmRsaW5nXzEiLCJtZXRhZGF0YSIsInRpdGxlIiwiZGVzY3JpcHRpb24iLCJfYSIsImYiLCJjaGlsZHJlbiIsImpzeF9ydW50aW1lXzEiLCJqc3giLCJsYW5nIiwiU2VudHJ5UHJvdmlkZXIiLCJUaGVtZVByb3ZpZGVyIiwiRXJyb3JCb3VuZGFyeSJdLCJzb3VyY2VzIjpbIi9Vc2Vycy9nYW16YXJhbWF6YW5vdi9EZXNrdG9wL2Z1bW8vc3JjL2FwcC9sYXlvdXQudHN4Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB0eXBlIHsgTWV0YWRhdGEgfSBmcm9tICduZXh0Jztcbi8vIGltcG9ydCB7IFF1ZXJ5UHJvdmlkZXIgfSBmcm9tIFwiQC9pbmZyYXN0cnVjdHVyZS9wcm92aWRlcnMvcXVlcnlcIjtcbmltcG9ydCB7IFNlbnRyeVByb3ZpZGVyIH0gZnJvbSAnQC9pbmZyYXN0cnVjdHVyZS9wcm92aWRlcnMvc2VudHJ5JztcbmltcG9ydCB7IFRoZW1lUHJvdmlkZXIgfSBmcm9tICdAL2luZnJhc3RydWN0dXJlL3Byb3ZpZGVycy90aGVtZSc7XG5pbXBvcnQgeyBFcnJvckJvdW5kYXJ5IH0gZnJvbSAnQC9pbmZyYXN0cnVjdHVyZS9lcnJvci1oYW5kbGluZyc7XG5pbXBvcnQgJy4vZ2xvYmFscy5jc3MnO1xuXG5leHBvcnQgY29uc3QgbWV0YWRhdGE6IE1ldGFkYXRhID0ge1xuICB0aXRsZTogJ0Z1bW8nLFxuICBkZXNjcmlwdGlvbjogJ0Z1bW8gLSBNb2Rlcm4gd2ViIGFwcGxpY2F0aW9uJyxcbn07XG5cbmV4cG9ydCBkZWZhdWx0IGZ1bmN0aW9uIFJvb3RMYXlvdXQoeyBjaGlsZHJlbiB9OiB7IGNoaWxkcmVuOiBSZWFjdC5SZWFjdE5vZGUgfSkge1xuICByZXR1cm4gKFxuICAgIDxodG1sIGxhbmc9XCJlblwiPlxuICAgICAgPGJvZHk+XG4gICAgICAgIDxTZW50cnlQcm92aWRlcj5cbiAgICAgICAgICA8VGhlbWVQcm92aWRlcj5cbiAgICAgICAgICAgIDxFcnJvckJvdW5kYXJ5PntjaGlsZHJlbn08L0Vycm9yQm91bmRhcnk+XG4gICAgICAgICAgPC9UaGVtZVByb3ZpZGVyPlxuICAgICAgICA8L1NlbnRyeVByb3ZpZGVyPlxuICAgICAgPC9ib2R5PlxuICAgIDwvaHRtbD5cbiAgKTtcbn1cbiJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0lBWXFDO0lBQUFBLGFBQUEsWUFBQUEsQ0FBQTtNQUFBLE9BQUFDLGNBQUE7SUFBQTtFQUFBO0VBQUEsT0FBQUEsY0FBQTtBQUFBO0FBQUFELGFBQUE7QUFBQUEsYUFBQSxHQUFBRSxDQUFBOzs7Ozs7Ozs7QUFBckNDLE9BQUEsQ0FBQUMsT0FBQSxHQUFBQyxVQUFBOzs7O0FBWEE7QUFDQSxJQUFBQyxRQUFBO0FBQUE7QUFBQSxDQUFBTixhQUFBLEdBQUFFLENBQUEsT0FBQUssT0FBQTtBQUNBLElBQUFDLE9BQUE7QUFBQTtBQUFBLENBQUFSLGFBQUEsR0FBQUUsQ0FBQSxPQUFBSyxPQUFBO0FBQ0EsSUFBQUUsZ0JBQUE7QUFBQTtBQUFBLENBQUFULGFBQUEsR0FBQUUsQ0FBQSxPQUFBSyxPQUFBO0FBQWdFO0FBQUFQLGFBQUEsR0FBQUUsQ0FBQTtBQUNoRUssT0FBQTtBQUF1QjtBQUFBUCxhQUFBLEdBQUFFLENBQUE7QUFFVkMsT0FBQSxDQUFBTyxRQUFRLEdBQWE7RUFDaENDLEtBQUssRUFBRSxNQUFNO0VBQ2JDLFdBQVcsRUFBRTtDQUNkO0FBRUQsU0FBd0JQLFVBQVVBLENBQUNRLEVBQTJDO0VBQUE7RUFBQWIsYUFBQSxHQUFBYyxDQUFBO01BQXpDQyxRQUFRO0VBQUE7RUFBQSxDQUFBZixhQUFBLEdBQUFFLENBQUEsT0FBQVcsRUFBQSxDQUFBRSxRQUFBO0VBQUE7RUFBQWYsYUFBQSxHQUFBRSxDQUFBO0VBQzNDLE9BQ0UsSUFBQWMsYUFBQSxDQUFBQyxHQUFBO0lBQU1DLElBQUksRUFBQyxJQUFJO0lBQUFILFFBQUEsRUFDYixJQUFBQyxhQUFBLENBQUFDLEdBQUE7TUFBQUYsUUFBQSxFQUNFLElBQUFDLGFBQUEsQ0FBQUMsR0FBQSxFQUFDWCxRQUFBLENBQUFhLGNBQWM7UUFBQUosUUFBQSxFQUNiLElBQUFDLGFBQUEsQ0FBQUMsR0FBQSxFQUFDVCxPQUFBLENBQUFZLGFBQWE7VUFBQUwsUUFBQSxFQUNaLElBQUFDLGFBQUEsQ0FBQUMsR0FBQSxFQUFDUixnQkFBQSxDQUFBWSxhQUFhO1lBQUFOLFFBQUEsRUFBRUE7VUFBUTtRQUFpQjtNQUMzQjtJQUNEO0VBQ1osRUFDRjtBQUVYIiwiaWdub3JlTGlzdCI6W119

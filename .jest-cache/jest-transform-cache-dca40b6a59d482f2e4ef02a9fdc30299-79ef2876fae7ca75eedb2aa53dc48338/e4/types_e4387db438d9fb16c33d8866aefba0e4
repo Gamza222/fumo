@@ -1,0 +1,273 @@
+5e4cad742b6430ed7e839b2ec08ad2a5
+"use strict";
+
+/**
+ * State Management Types
+ *
+ * Universal types for state management that work with any application.
+ * Foundation-level only - no overengineering.
+ */
+/* istanbul ignore next */
+function cov_2c2oe9wni2() {
+  var path = "/Users/gamzaramazanov/Desktop/fumo/src/infrastructure/state/types/types.ts";
+  var hash = "c39a548f20474e2cccd9e6b6ce6950768980b98c";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/gamzaramazanov/Desktop/fumo/src/infrastructure/state/types/types.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 8,
+          column: 0
+        },
+        end: {
+          line: 8,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 9,
+          column: 0
+        },
+        end: {
+          line: 9,
+          column: 79
+        }
+      },
+      "2": {
+        start: {
+          line: 13,
+          column: 19
+        },
+        end: {
+          line: 13,
+          column: 42
+        }
+      },
+      "3": {
+        start: {
+          line: 14,
+          column: 0
+        },
+        end: {
+          line: 14,
+          column: 123
+        }
+      },
+      "4": {
+        start: {
+          line: 14,
+          column: 85
+        },
+        end: {
+          line: 14,
+          column: 117
+        }
+      },
+      "5": {
+        start: {
+          line: 15,
+          column: 0
+        },
+        end: {
+          line: 15,
+          column: 123
+        }
+      },
+      "6": {
+        start: {
+          line: 15,
+          column: 85
+        },
+        end: {
+          line: 15,
+          column: 117
+        }
+      },
+      "7": {
+        start: {
+          line: 16,
+          column: 0
+        },
+        end: {
+          line: 16,
+          column: 135
+        }
+      },
+      "8": {
+        start: {
+          line: 16,
+          column: 91
+        },
+        end: {
+          line: 16,
+          column: 129
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 14,
+            column: 71
+          },
+          end: {
+            line: 14,
+            column: 72
+          }
+        },
+        loc: {
+          start: {
+            line: 14,
+            column: 83
+          },
+          end: {
+            line: 14,
+            column: 119
+          }
+        },
+        line: 14
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 15,
+            column: 71
+          },
+          end: {
+            line: 15,
+            column: 72
+          }
+        },
+        loc: {
+          start: {
+            line: 15,
+            column: 83
+          },
+          end: {
+            line: 15,
+            column: 119
+          }
+        },
+        line: 15
+      },
+      "2": {
+        name: "(anonymous_2)",
+        decl: {
+          start: {
+            line: 16,
+            column: 77
+          },
+          end: {
+            line: 16,
+            column: 78
+          }
+        },
+        loc: {
+          start: {
+            line: 16,
+            column: 89
+          },
+          end: {
+            line: 16,
+            column: 131
+          }
+        },
+        line: 16
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    b: {},
+    inputSourceMap: {
+      file: "/Users/gamzaramazanov/Desktop/fumo/src/infrastructure/state/types/types.ts",
+      mappings: ";AAAA;;;;;GAKG;;;AAEH,+EAA+E;AAC/E,cAAc;AACd,+EAA+E;AAE/E,2CAA2E;AAAlE,yGAAA,WAAW,OAAA;AAAE,yGAAA,WAAW,OAAA;AAAE,+GAAA,iBAAiB,OAAA",
+      names: [],
+      sources: ["/Users/gamzaramazanov/Desktop/fumo/src/infrastructure/state/types/types.ts"],
+      sourcesContent: ["/**\n * State Management Types\n *\n * Universal types for state management that work with any application.\n * Foundation-level only - no overengineering.\n */\n\n// ============================================================================\n// STATE ENUMS\n// ============================================================================\n\nexport { StorageType, Environment, BaseStateProperty } from './stateEnums';\nimport { StorageType } from './stateEnums';\n\n// ============================================================================\n// CORE TYPES\n// ============================================================================\n\nexport interface BaseState {\n  _hydrated: boolean;\n}\n\nexport interface StoreConfig<T> {\n  name: string;\n  initialState: T;\n  persist?: {\n    key: string;\n    storage?: StorageType;\n  };\n  devtools?: boolean;\n}\n\nexport interface EnhancedStore<T> {\n  getState: () => T;\n  setState: (partial: T | Partial<T> | ((state: T) => T | Partial<T>)) => void;\n  subscribe: (listener: (state: T, prevState: T) => void) => () => void;\n  reset: () => void;\n  clearStorage: () => void;\n}\n\n// ============================================================================\n// COMMON STATE PATTERNS\n// ============================================================================\n\n/**\n * Standard async operation state\n */\nexport interface AsyncState<T = unknown> {\n  data: T | null;\n  loading: boolean;\n  error: string | null;\n}\n\n/**\n * Standard pagination state\n */\nexport interface PaginationState {\n  page: number;\n  limit: number;\n  total: number;\n  hasNext: boolean;\n  hasPrev: boolean;\n}\n\n/**\n * Standard filter state\n */\nexport interface FilterState {\n  search: string;\n  filters: Record<string, unknown>;\n  sortBy: string;\n  sortOrder: 'asc' | 'desc';\n}\n\n/**\n * Standard UI state\n */\nexport interface UIState {\n  sidebarOpen: boolean;\n  theme: 'light' | 'dark';\n  currentRoute: string;\n}\n\n// ============================================================================\n// STORE UTILITIES\n// ============================================================================\n\n/**\n * Helper type to extract state type from store\n */\nexport type StoreState<T> = T extends EnhancedStore<infer S> ? S : never;\n\n/**\n * Helper type for store selector functions\n */\nexport type Selector<TStore, TResult> = (state: StoreState<TStore>) => TResult;\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "c39a548f20474e2cccd9e6b6ce6950768980b98c"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_2c2oe9wni2 = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_2c2oe9wni2();
+cov_2c2oe9wni2().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_2c2oe9wni2().s[1]++;
+exports.BaseStateProperty = exports.Environment = exports.StorageType = void 0;
+// ============================================================================
+// STATE ENUMS
+// ============================================================================
+var stateEnums_1 =
+/* istanbul ignore next */
+(cov_2c2oe9wni2().s[2]++, require("./stateEnums"));
+/* istanbul ignore next */
+cov_2c2oe9wni2().s[3]++;
+Object.defineProperty(exports, "StorageType", {
+  enumerable: true,
+  get: function () {
+    /* istanbul ignore next */
+    cov_2c2oe9wni2().f[0]++;
+    cov_2c2oe9wni2().s[4]++;
+    return stateEnums_1.StorageType;
+  }
+});
+/* istanbul ignore next */
+cov_2c2oe9wni2().s[5]++;
+Object.defineProperty(exports, "Environment", {
+  enumerable: true,
+  get: function () {
+    /* istanbul ignore next */
+    cov_2c2oe9wni2().f[1]++;
+    cov_2c2oe9wni2().s[6]++;
+    return stateEnums_1.Environment;
+  }
+});
+/* istanbul ignore next */
+cov_2c2oe9wni2().s[7]++;
+Object.defineProperty(exports, "BaseStateProperty", {
+  enumerable: true,
+  get: function () {
+    /* istanbul ignore next */
+    cov_2c2oe9wni2().f[2]++;
+    cov_2c2oe9wni2().s[8]++;
+    return stateEnums_1.BaseStateProperty;
+  }
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMmMyb2U5d25pMiIsInBhdGgiLCJoYXNoIiwiZ2xvYmFsIiwiRnVuY3Rpb24iLCJnY3YiLCJjb3ZlcmFnZURhdGEiLCJzdGF0ZW1lbnRNYXAiLCJzdGFydCIsImxpbmUiLCJjb2x1bW4iLCJlbmQiLCJmbk1hcCIsIm5hbWUiLCJkZWNsIiwibG9jIiwiYnJhbmNoTWFwIiwicyIsImYiLCJiIiwiaW5wdXRTb3VyY2VNYXAiLCJmaWxlIiwibWFwcGluZ3MiLCJuYW1lcyIsInNvdXJjZXMiLCJzb3VyY2VzQ29udGVudCIsInZlcnNpb24iLCJfY292ZXJhZ2VTY2hlbWEiLCJjb3ZlcmFnZSIsImFjdHVhbENvdmVyYWdlIiwic3RhdGVFbnVtc18xIiwicmVxdWlyZSIsIk9iamVjdCIsImRlZmluZVByb3BlcnR5IiwiZXhwb3J0cyIsImVudW1lcmFibGUiLCJnZXQiLCJTdG9yYWdlVHlwZSIsIkVudmlyb25tZW50IiwiQmFzZVN0YXRlUHJvcGVydHkiXSwic291cmNlcyI6WyIvVXNlcnMvZ2FtemFyYW1hemFub3YvRGVza3RvcC9mdW1vL3NyYy9pbmZyYXN0cnVjdHVyZS9zdGF0ZS90eXBlcy90eXBlcy50cyJdLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIFN0YXRlIE1hbmFnZW1lbnQgVHlwZXNcbiAqXG4gKiBVbml2ZXJzYWwgdHlwZXMgZm9yIHN0YXRlIG1hbmFnZW1lbnQgdGhhdCB3b3JrIHdpdGggYW55IGFwcGxpY2F0aW9uLlxuICogRm91bmRhdGlvbi1sZXZlbCBvbmx5IC0gbm8gb3ZlcmVuZ2luZWVyaW5nLlxuICovXG5cbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbi8vIFNUQVRFIEVOVU1TXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG5cbmV4cG9ydCB7IFN0b3JhZ2VUeXBlLCBFbnZpcm9ubWVudCwgQmFzZVN0YXRlUHJvcGVydHkgfSBmcm9tICcuL3N0YXRlRW51bXMnO1xuaW1wb3J0IHsgU3RvcmFnZVR5cGUgfSBmcm9tICcuL3N0YXRlRW51bXMnO1xuXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4vLyBDT1JFIFRZUEVTXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG5cbmV4cG9ydCBpbnRlcmZhY2UgQmFzZVN0YXRlIHtcbiAgX2h5ZHJhdGVkOiBib29sZWFuO1xufVxuXG5leHBvcnQgaW50ZXJmYWNlIFN0b3JlQ29uZmlnPFQ+IHtcbiAgbmFtZTogc3RyaW5nO1xuICBpbml0aWFsU3RhdGU6IFQ7XG4gIHBlcnNpc3Q/OiB7XG4gICAga2V5OiBzdHJpbmc7XG4gICAgc3RvcmFnZT86IFN0b3JhZ2VUeXBlO1xuICB9O1xuICBkZXZ0b29scz86IGJvb2xlYW47XG59XG5cbmV4cG9ydCBpbnRlcmZhY2UgRW5oYW5jZWRTdG9yZTxUPiB7XG4gIGdldFN0YXRlOiAoKSA9PiBUO1xuICBzZXRTdGF0ZTogKHBhcnRpYWw6IFQgfCBQYXJ0aWFsPFQ+IHwgKChzdGF0ZTogVCkgPT4gVCB8IFBhcnRpYWw8VD4pKSA9PiB2b2lkO1xuICBzdWJzY3JpYmU6IChsaXN0ZW5lcjogKHN0YXRlOiBULCBwcmV2U3RhdGU6IFQpID0+IHZvaWQpID0+ICgpID0+IHZvaWQ7XG4gIHJlc2V0OiAoKSA9PiB2b2lkO1xuICBjbGVhclN0b3JhZ2U6ICgpID0+IHZvaWQ7XG59XG5cbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbi8vIENPTU1PTiBTVEFURSBQQVRURVJOU1xuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuXG4vKipcbiAqIFN0YW5kYXJkIGFzeW5jIG9wZXJhdGlvbiBzdGF0ZVxuICovXG5leHBvcnQgaW50ZXJmYWNlIEFzeW5jU3RhdGU8VCA9IHVua25vd24+IHtcbiAgZGF0YTogVCB8IG51bGw7XG4gIGxvYWRpbmc6IGJvb2xlYW47XG4gIGVycm9yOiBzdHJpbmcgfCBudWxsO1xufVxuXG4vKipcbiAqIFN0YW5kYXJkIHBhZ2luYXRpb24gc3RhdGVcbiAqL1xuZXhwb3J0IGludGVyZmFjZSBQYWdpbmF0aW9uU3RhdGUge1xuICBwYWdlOiBudW1iZXI7XG4gIGxpbWl0OiBudW1iZXI7XG4gIHRvdGFsOiBudW1iZXI7XG4gIGhhc05leHQ6IGJvb2xlYW47XG4gIGhhc1ByZXY6IGJvb2xlYW47XG59XG5cbi8qKlxuICogU3RhbmRhcmQgZmlsdGVyIHN0YXRlXG4gKi9cbmV4cG9ydCBpbnRlcmZhY2UgRmlsdGVyU3RhdGUge1xuICBzZWFyY2g6IHN0cmluZztcbiAgZmlsdGVyczogUmVjb3JkPHN0cmluZywgdW5rbm93bj47XG4gIHNvcnRCeTogc3RyaW5nO1xuICBzb3J0T3JkZXI6ICdhc2MnIHwgJ2Rlc2MnO1xufVxuXG4vKipcbiAqIFN0YW5kYXJkIFVJIHN0YXRlXG4gKi9cbmV4cG9ydCBpbnRlcmZhY2UgVUlTdGF0ZSB7XG4gIHNpZGViYXJPcGVuOiBib29sZWFuO1xuICB0aGVtZTogJ2xpZ2h0JyB8ICdkYXJrJztcbiAgY3VycmVudFJvdXRlOiBzdHJpbmc7XG59XG5cbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbi8vIFNUT1JFIFVUSUxJVElFU1xuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuXG4vKipcbiAqIEhlbHBlciB0eXBlIHRvIGV4dHJhY3Qgc3RhdGUgdHlwZSBmcm9tIHN0b3JlXG4gKi9cbmV4cG9ydCB0eXBlIFN0b3JlU3RhdGU8VD4gPSBUIGV4dGVuZHMgRW5oYW5jZWRTdG9yZTxpbmZlciBTPiA/IFMgOiBuZXZlcjtcblxuLyoqXG4gKiBIZWxwZXIgdHlwZSBmb3Igc3RvcmUgc2VsZWN0b3IgZnVuY3Rpb25zXG4gKi9cbmV4cG9ydCB0eXBlIFNlbGVjdG9yPFRTdG9yZSwgVFJlc3VsdD4gPSAoc3RhdGU6IFN0b3JlU3RhdGU8VFN0b3JlPikgPT4gVFJlc3VsdDtcbiJdLCJtYXBwaW5ncyI6Ijs7QUFBQTs7Ozs7O0FBQUE7QUFBQSxTQUFBQSxlQUFBO0VBQUEsSUFBQUMsSUFBQTtFQUFBLElBQUFDLElBQUE7RUFBQSxJQUFBQyxNQUFBLE9BQUFDLFFBQUE7RUFBQSxJQUFBQyxHQUFBO0VBQUEsSUFBQUMsWUFBQTtJQUFBTCxJQUFBO0lBQUFNLFlBQUE7TUFBQTtRQUFBQyxLQUFBO1VBQUFDLElBQUE7VUFBQUMsTUFBQTtRQUFBO1FBQUFDLEdBQUE7VUFBQUYsSUFBQTtVQUFBQyxNQUFBO1FBQUE7TUFBQTtNQUFBO1FBQUFGLEtBQUE7VUFBQUMsSUFBQTtVQUFBQyxNQUFBO1FBQUE7UUFBQUMsR0FBQTtVQUFBRixJQUFBO1VBQUFDLE1BQUE7UUFBQTtNQUFBO01BQUE7UUFBQUYsS0FBQTtVQUFBQyxJQUFBO1VBQUFDLE1BQUE7UUFBQTtRQUFBQyxHQUFBO1VBQUFGLElBQUE7VUFBQUMsTUFBQTtRQUFBO01BQUE7TUFBQTtRQUFBRixLQUFBO1VBQUFDLElBQUE7VUFBQUMsTUFBQTtRQUFBO1FBQUFDLEdBQUE7VUFBQUYsSUFBQTtVQUFBQyxNQUFBO1FBQUE7TUFBQTtNQUFBO1FBQUFGLEtBQUE7VUFBQUMsSUFBQTtVQUFBQyxNQUFBO1FBQUE7UUFBQUMsR0FBQTtVQUFBRixJQUFBO1VBQUFDLE1BQUE7UUFBQTtNQUFBO01BQUE7UUFBQUYsS0FBQTtVQUFBQyxJQUFBO1VBQUFDLE1BQUE7UUFBQTtRQUFBQyxHQUFBO1VBQUFGLElBQUE7VUFBQUMsTUFBQTtRQUFBO01BQUE7TUFBQTtRQUFBRixLQUFBO1VBQUFDLElBQUE7VUFBQUMsTUFBQTtRQUFBO1FBQUFDLEdBQUE7VUFBQUYsSUFBQTtVQUFBQyxNQUFBO1FBQUE7TUFBQTtNQUFBO1FBQUFGLEtBQUE7VUFBQUMsSUFBQTtVQUFBQyxNQUFBO1FBQUE7UUFBQUMsR0FBQTtVQUFBRixJQUFBO1VBQUFDLE1BQUE7UUFBQTtNQUFBO01BQUE7UUFBQUYsS0FBQTtVQUFBQyxJQUFBO1VBQUFDLE1BQUE7UUFBQTtRQUFBQyxHQUFBO1VBQUFGLElBQUE7VUFBQUMsTUFBQTtRQUFBO01BQUE7SUFBQTtJQUFBRSxLQUFBO01BQUE7UUFBQUMsSUFBQTtRQUFBQyxJQUFBO1VBQUFOLEtBQUE7WUFBQUMsSUFBQTtZQUFBQyxNQUFBO1VBQUE7VUFBQUMsR0FBQTtZQUFBRixJQUFBO1lBQUFDLE1BQUE7VUFBQTtRQUFBO1FBQUFLLEdBQUE7VUFBQVAsS0FBQTtZQUFBQyxJQUFBO1lBQUFDLE1BQUE7VUFBQTtVQUFBQyxHQUFBO1lBQUFGLElBQUE7WUFBQUMsTUFBQTtVQUFBO1FBQUE7UUFBQUQsSUFBQTtNQUFBO01BQUE7UUFBQUksSUFBQTtRQUFBQyxJQUFBO1VBQUFOLEtBQUE7WUFBQUMsSUFBQTtZQUFBQyxNQUFBO1VBQUE7VUFBQUMsR0FBQTtZQUFBRixJQUFBO1lBQUFDLE1BQUE7VUFBQTtRQUFBO1FBQUFLLEdBQUE7VUFBQVAsS0FBQTtZQUFBQyxJQUFBO1lBQUFDLE1BQUE7VUFBQTtVQUFBQyxHQUFBO1lBQUFGLElBQUE7WUFBQUMsTUFBQTtVQUFBO1FBQUE7UUFBQUQsSUFBQTtNQUFBO01BQUE7UUFBQUksSUFBQTtRQUFBQyxJQUFBO1VBQUFOLEtBQUE7WUFBQUMsSUFBQTtZQUFBQyxNQUFBO1VBQUE7VUFBQUMsR0FBQTtZQUFBRixJQUFBO1lBQUFDLE1BQUE7VUFBQTtRQUFBO1FBQUFLLEdBQUE7VUFBQVAsS0FBQTtZQUFBQyxJQUFBO1lBQUFDLE1BQUE7VUFBQTtVQUFBQyxHQUFBO1lBQUFGLElBQUE7WUFBQUMsTUFBQTtVQUFBO1FBQUE7UUFBQUQsSUFBQTtNQUFBO0lBQUE7SUFBQU8sU0FBQTtJQUFBQyxDQUFBO01BQUE7TUFBQTtNQUFBO01BQUE7TUFBQTtNQUFBO01BQUE7TUFBQTtNQUFBO0lBQUE7SUFBQUMsQ0FBQTtNQUFBO01BQUE7TUFBQTtJQUFBO0lBQUFDLENBQUE7SUFBQUMsY0FBQTtNQUFBQyxJQUFBO01BQUFDLFFBQUE7TUFBQUMsS0FBQTtNQUFBQyxPQUFBO01BQUFDLGNBQUE7TUFBQUMsT0FBQTtJQUFBO0lBQUFDLGVBQUE7SUFBQXpCLElBQUE7RUFBQTtFQUFBLElBQUEwQixRQUFBLEdBQUF6QixNQUFBLENBQUFFLEdBQUEsTUFBQUYsTUFBQSxDQUFBRSxHQUFBO0VBQUEsS0FBQXVCLFFBQUEsQ0FBQTNCLElBQUEsS0FBQTJCLFFBQUEsQ0FBQTNCLElBQUEsRUFBQUMsSUFBQSxLQUFBQSxJQUFBO0lBQUEwQixRQUFBLENBQUEzQixJQUFBLElBQUFLLFlBQUE7RUFBQTtFQUFBLElBQUF1QixjQUFBLEdBQUFELFFBQUEsQ0FBQTNCLElBQUE7RUFBQTtJQVdtQztJQUFBRCxjQUFBLFlBQUFBLENBQUE7TUFBQSxPQUFBNkIsY0FBQTtJQUFBO0VBQUE7RUFBQSxPQUFBQSxjQUFBO0FBQUE7QUFBQTdCLGNBQUE7QUFBQUEsY0FBQSxHQUFBaUIsQ0FBQTs7Ozs7OztBQUpuQztBQUNBO0FBQ0E7QUFFQSxJQUFBYSxZQUFBO0FBQUE7QUFBQSxDQUFBOUIsY0FBQSxHQUFBaUIsQ0FBQSxPQUFBYyxPQUFBO0FBQTJFO0FBQUEvQixjQUFBLEdBQUFpQixDQUFBO0FBQWxFZSxNQUFBLENBQUFDLGNBQUEsQ0FBQUMsT0FBQTtFQUFBQyxVQUFBO0VBQUFDLEdBQUEsV0FBQUEsQ0FBQTtJQUFBO0lBQUFwQyxjQUFBLEdBQUFrQixDQUFBO0lBQUFsQixjQUFBLEdBQUFpQixDQUFBO0lBQUEsT0FBQWEsWUFBQSxDQUFBTyxXQUFXO0VBQUE7QUFBQTtBQUFBO0FBQUFyQyxjQUFBLEdBQUFpQixDQUFBO0FBQUVlLE1BQUEsQ0FBQUMsY0FBQSxDQUFBQyxPQUFBO0VBQUFDLFVBQUE7RUFBQUMsR0FBQSxXQUFBQSxDQUFBO0lBQUE7SUFBQXBDLGNBQUEsR0FBQWtCLENBQUE7SUFBQWxCLGNBQUEsR0FBQWlCLENBQUE7SUFBQSxPQUFBYSxZQUFBLENBQUFRLFdBQVc7RUFBQTtBQUFBO0FBQUE7QUFBQXRDLGNBQUEsR0FBQWlCLENBQUE7QUFBRWUsTUFBQSxDQUFBQyxjQUFBLENBQUFDLE9BQUE7RUFBQUMsVUFBQTtFQUFBQyxHQUFBLFdBQUFBLENBQUE7SUFBQTtJQUFBcEMsY0FBQSxHQUFBa0IsQ0FBQTtJQUFBbEIsY0FBQSxHQUFBaUIsQ0FBQTtJQUFBLE9BQUFhLFlBQUEsQ0FBQVMsaUJBQWlCO0VBQUE7QUFBQSIsImlnbm9yZUxpc3QiOltdfQ==

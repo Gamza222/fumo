@@ -1,0 +1,119 @@
+77ea5e727edefe3c9ea5aa08e67d04cd
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || (function () {
+    var ownKeys = function(o) {
+        ownKeys = Object.getOwnPropertyNames || function (o) {
+            var ar = [];
+            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
+            return ar;
+        };
+        return ownKeys(o);
+    };
+    return function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
+        __setModuleDefault(result, mod);
+        return result;
+    };
+})();
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g = Object.create((typeof Iterator === "function" ? Iterator : Object).prototype);
+    return g.next = verb(0), g["throw"] = verb(1), g["return"] = verb(2), typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var jsx_runtime_1 = require("react/jsx-runtime");
+// Mock the web-vitals module
+jest.mock('../../lib/web-vitals', function () { return ({
+    initWebVitals: jest.fn(),
+}); });
+var react_1 = require("@testing-library/react");
+var PerformanceInitializer_1 = require("./PerformanceInitializer");
+describe('PerformanceInitializer', function () {
+    beforeEach(function () {
+        jest.clearAllMocks();
+    });
+    it('should initialize web vitals on mount', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var initWebVitals;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, Promise.resolve().then(function () { return __importStar(require('../../lib/web-vitals')); })];
+                case 1:
+                    initWebVitals = (_a.sent()).initWebVitals;
+                    (0, react_1.render)((0, jsx_runtime_1.jsx)(PerformanceInitializer_1.PerformanceInitializer, {}));
+                    expect(initWebVitals).toHaveBeenCalledWith({
+                        debug: process.env.NODE_ENV === 'development',
+                        reportToSentry: true,
+                    });
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('should only call initWebVitals once', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var initWebVitals, rerender;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, Promise.resolve().then(function () { return __importStar(require('../../lib/web-vitals')); })];
+                case 1:
+                    initWebVitals = (_a.sent()).initWebVitals;
+                    rerender = (0, react_1.render)((0, jsx_runtime_1.jsx)(PerformanceInitializer_1.PerformanceInitializer, {})).rerender;
+                    rerender((0, jsx_runtime_1.jsx)(PerformanceInitializer_1.PerformanceInitializer, {}));
+                    expect(initWebVitals).toHaveBeenCalledTimes(1);
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('should render nothing', function () {
+        var container = (0, react_1.render)((0, jsx_runtime_1.jsx)(PerformanceInitializer_1.PerformanceInitializer, {})).container;
+        expect(container.firstChild).toBeNull();
+    });
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvaW5mcmFzdHJ1Y3R1cmUvcGVyZm9ybWFuY2UvY29tcG9uZW50cy9QZXJmb3JtYW5jZUluaXRpYWxpemVyL1BlcmZvcm1hbmNlSW5pdGlhbGl6ZXIudGVzdC50c3giLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBRUEsNkJBQTZCO0FBQzdCLElBQUksQ0FBQyxJQUFJLENBQUMsc0JBQXNCLEVBQUUsY0FBTSxPQUFBLENBQUM7SUFDdkMsYUFBYSxFQUFFLElBQUksQ0FBQyxFQUFFLEVBQUU7Q0FDekIsQ0FBQyxFQUZzQyxDQUV0QyxDQUFDLENBQUM7QUFMSixnREFBZ0Q7QUFDaEQsbUVBQWtFO0FBTWxFLFFBQVEsQ0FBQyx3QkFBd0IsRUFBRTtJQUNqQyxVQUFVLENBQUM7UUFDVCxJQUFJLENBQUMsYUFBYSxFQUFFLENBQUM7SUFDdkIsQ0FBQyxDQUFDLENBQUM7SUFFSCxFQUFFLENBQUMsdUNBQXVDLEVBQUU7Ozs7d0JBQ2hCLHNGQUFhLHNCQUFzQixRQUFDOztvQkFBdEQsYUFBYSxHQUFLLENBQUEsU0FBb0MsQ0FBQSxjQUF6QztvQkFFckIsSUFBQSxjQUFNLEVBQUMsdUJBQUMsK0NBQXNCLEtBQUcsQ0FBQyxDQUFDO29CQUVuQyxNQUFNLENBQUMsYUFBYSxDQUFDLENBQUMsb0JBQW9CLENBQUM7d0JBQ3pDLEtBQUssRUFBRSxPQUFPLENBQUMsR0FBRyxDQUFDLFFBQVEsS0FBSyxhQUFhO3dCQUM3QyxjQUFjLEVBQUUsSUFBSTtxQkFDckIsQ0FBQyxDQUFDOzs7O1NBQ0osQ0FBQyxDQUFDO0lBRUgsRUFBRSxDQUFDLHFDQUFxQyxFQUFFOzs7O3dCQUNkLHNGQUFhLHNCQUFzQixRQUFDOztvQkFBdEQsYUFBYSxHQUFLLENBQUEsU0FBb0MsQ0FBQSxjQUF6QztvQkFFYixRQUFRLEdBQUssSUFBQSxjQUFNLEVBQUMsdUJBQUMsK0NBQXNCLEtBQUcsQ0FBQyxTQUF2QyxDQUF3QztvQkFDeEQsUUFBUSxDQUFDLHVCQUFDLCtDQUFzQixLQUFHLENBQUMsQ0FBQztvQkFFckMsTUFBTSxDQUFDLGFBQWEsQ0FBQyxDQUFDLHFCQUFxQixDQUFDLENBQUMsQ0FBQyxDQUFDOzs7O1NBQ2hELENBQUMsQ0FBQztJQUVILEVBQUUsQ0FBQyx1QkFBdUIsRUFBRTtRQUNsQixJQUFBLFNBQVMsR0FBSyxJQUFBLGNBQU0sRUFBQyx1QkFBQywrQ0FBc0IsS0FBRyxDQUFDLFVBQXZDLENBQXdDO1FBRXpELE1BQU0sQ0FBQyxTQUFTLENBQUMsVUFBVSxDQUFDLENBQUMsUUFBUSxFQUFFLENBQUM7SUFDMUMsQ0FBQyxDQUFDLENBQUM7QUFDTCxDQUFDLENBQUMsQ0FBQyIsIm5hbWVzIjpbXSwic291cmNlcyI6WyIvVXNlcnMvZ2FtemFyYW1hemFub3YvRGVza3RvcC9mdW1vL3NyYy9pbmZyYXN0cnVjdHVyZS9wZXJmb3JtYW5jZS9jb21wb25lbnRzL1BlcmZvcm1hbmNlSW5pdGlhbGl6ZXIvUGVyZm9ybWFuY2VJbml0aWFsaXplci50ZXN0LnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyByZW5kZXIgfSBmcm9tICdAdGVzdGluZy1saWJyYXJ5L3JlYWN0JztcbmltcG9ydCB7IFBlcmZvcm1hbmNlSW5pdGlhbGl6ZXIgfSBmcm9tICcuL1BlcmZvcm1hbmNlSW5pdGlhbGl6ZXInO1xuLy8gTW9jayB0aGUgd2ViLXZpdGFscyBtb2R1bGVcbmplc3QubW9jaygnLi4vLi4vbGliL3dlYi12aXRhbHMnLCAoKSA9PiAoe1xuICBpbml0V2ViVml0YWxzOiBqZXN0LmZuKCksXG59KSk7XG5cbmRlc2NyaWJlKCdQZXJmb3JtYW5jZUluaXRpYWxpemVyJywgKCkgPT4ge1xuICBiZWZvcmVFYWNoKCgpID0+IHtcbiAgICBqZXN0LmNsZWFyQWxsTW9ja3MoKTtcbiAgfSk7XG5cbiAgaXQoJ3Nob3VsZCBpbml0aWFsaXplIHdlYiB2aXRhbHMgb24gbW91bnQnLCBhc3luYyAoKSA9PiB7XG4gICAgY29uc3QgeyBpbml0V2ViVml0YWxzIH0gPSBhd2FpdCBpbXBvcnQoJy4uLy4uL2xpYi93ZWItdml0YWxzJyk7XG5cbiAgICByZW5kZXIoPFBlcmZvcm1hbmNlSW5pdGlhbGl6ZXIgLz4pO1xuXG4gICAgZXhwZWN0KGluaXRXZWJWaXRhbHMpLnRvSGF2ZUJlZW5DYWxsZWRXaXRoKHtcbiAgICAgIGRlYnVnOiBwcm9jZXNzLmVudi5OT0RFX0VOViA9PT0gJ2RldmVsb3BtZW50JyxcbiAgICAgIHJlcG9ydFRvU2VudHJ5OiB0cnVlLFxuICAgIH0pO1xuICB9KTtcblxuICBpdCgnc2hvdWxkIG9ubHkgY2FsbCBpbml0V2ViVml0YWxzIG9uY2UnLCBhc3luYyAoKSA9PiB7XG4gICAgY29uc3QgeyBpbml0V2ViVml0YWxzIH0gPSBhd2FpdCBpbXBvcnQoJy4uLy4uL2xpYi93ZWItdml0YWxzJyk7XG5cbiAgICBjb25zdCB7IHJlcmVuZGVyIH0gPSByZW5kZXIoPFBlcmZvcm1hbmNlSW5pdGlhbGl6ZXIgLz4pO1xuICAgIHJlcmVuZGVyKDxQZXJmb3JtYW5jZUluaXRpYWxpemVyIC8+KTtcblxuICAgIGV4cGVjdChpbml0V2ViVml0YWxzKS50b0hhdmVCZWVuQ2FsbGVkVGltZXMoMSk7XG4gIH0pO1xuXG4gIGl0KCdzaG91bGQgcmVuZGVyIG5vdGhpbmcnLCAoKSA9PiB7XG4gICAgY29uc3QgeyBjb250YWluZXIgfSA9IHJlbmRlcig8UGVyZm9ybWFuY2VJbml0aWFsaXplciAvPik7XG5cbiAgICBleHBlY3QoY29udGFpbmVyLmZpcnN0Q2hpbGQpLnRvQmVOdWxsKCk7XG4gIH0pO1xufSk7XG4iXSwidmVyc2lvbiI6M30=

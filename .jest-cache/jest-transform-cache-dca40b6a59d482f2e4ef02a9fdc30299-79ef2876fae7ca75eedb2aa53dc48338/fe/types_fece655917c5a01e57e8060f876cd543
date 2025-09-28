@@ -1,0 +1,60 @@
+9c24dcfdd89a980fb87a9f74c2ae67d3
+"use strict";
+
+/* istanbul ignore next */
+function cov_2o88bkka4z() {
+  var path = "/Users/gamzaramazanov/Desktop/fumo/src/shared/testing/mocks/api/types/types.ts";
+  var hash = "27dae1b40e8c289dddcf9565d706b0d589e3abe5";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/gamzaramazanov/Desktop/fumo/src/shared/testing/mocks/api/types/types.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      }
+    },
+    fnMap: {},
+    branchMap: {},
+    s: {
+      "0": 0
+    },
+    f: {},
+    b: {},
+    inputSourceMap: {
+      file: "/Users/gamzaramazanov/Desktop/fumo/src/shared/testing/mocks/api/types/types.ts",
+      mappings: "",
+      names: [],
+      sources: ["/Users/gamzaramazanov/Desktop/fumo/src/shared/testing/mocks/api/types/types.ts"],
+      sourcesContent: ["// GraphQL Request Types\nexport type GraphQLRequest = {\n  query: string;\n  variables?: Record<string, unknown> | undefined;\n};\n\nexport type GraphQLMutationRequest = {\n  mutation: string;\n  variables?: Record<string, unknown> | undefined;\n};\n\nexport type GraphQLCacheRequest<T> = {\n  query: string;\n  variables?: Record<string, unknown> | undefined;\n  data?: T;\n};\n\n// GraphQL Operation Types\nexport interface mockGraphQLOperationInterface {\n  request: {\n    query: string;\n    variables?: Record<string, unknown>;\n  };\n  result?: mockGraphQLResponseInterface;\n  error?: Error; // Network errors\n  delay?: number; // Simulate network delay\n}\n\n// Response Types\nexport interface mockGraphQLResponseInterface<T = unknown> {\n  data?: T;\n  errors?: mockGraphQLErrorInterface[];\n  loading?: boolean;\n  networkStatus?: number;\n}\n\n// Error Types\nexport interface mockGraphQLErrorInterface {\n  message: string;\n  locations?: { line: number; column: number }[];\n  path?: string[];\n  extensions?: Record<string, unknown>;\n}\n\n// WebSocket Types\nexport interface mockWebSocketMessageInterface {\n  type: 'subscription' | 'next' | 'error' | 'complete';\n  payload?: unknown;\n  id?: string;\n}\n\nexport interface mockWebSocketInstanceInterface {\n  addEventListener(type: string, handler: (event: MessageEvent) => void): void;\n  removeEventListener(type: string, handler: (event: MessageEvent) => void): void;\n  send(data: string): void;\n  close(): void;\n  mockMessage(message: mockWebSocketMessageInterface): void;\n}\n\n// Cache Types\nexport interface mockGraphQLCacheInterface {\n  readQuery: <T>(options: GraphQLRequest) => T | null;\n  writeQuery: <T>(options: GraphQLCacheRequest<T> & { data: T }) => void;\n}\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "27dae1b40e8c289dddcf9565d706b0d589e3abe5"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_2o88bkka4z = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_2o88bkka4z();
+cov_2o88bkka4z().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL3Rlc3RpbmcvbW9ja3MvYXBpL3R5cGVzL3R5cGVzLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIEdyYXBoUUwgUmVxdWVzdCBUeXBlc1xuZXhwb3J0IHR5cGUgR3JhcGhRTFJlcXVlc3QgPSB7XG4gIHF1ZXJ5OiBzdHJpbmc7XG4gIHZhcmlhYmxlcz86IFJlY29yZDxzdHJpbmcsIHVua25vd24+IHwgdW5kZWZpbmVkO1xufTtcblxuZXhwb3J0IHR5cGUgR3JhcGhRTE11dGF0aW9uUmVxdWVzdCA9IHtcbiAgbXV0YXRpb246IHN0cmluZztcbiAgdmFyaWFibGVzPzogUmVjb3JkPHN0cmluZywgdW5rbm93bj4gfCB1bmRlZmluZWQ7XG59O1xuXG5leHBvcnQgdHlwZSBHcmFwaFFMQ2FjaGVSZXF1ZXN0PFQ+ID0ge1xuICBxdWVyeTogc3RyaW5nO1xuICB2YXJpYWJsZXM/OiBSZWNvcmQ8c3RyaW5nLCB1bmtub3duPiB8IHVuZGVmaW5lZDtcbiAgZGF0YT86IFQ7XG59O1xuXG4vLyBHcmFwaFFMIE9wZXJhdGlvbiBUeXBlc1xuZXhwb3J0IGludGVyZmFjZSBtb2NrR3JhcGhRTE9wZXJhdGlvbkludGVyZmFjZSB7XG4gIHJlcXVlc3Q6IHtcbiAgICBxdWVyeTogc3RyaW5nO1xuICAgIHZhcmlhYmxlcz86IFJlY29yZDxzdHJpbmcsIHVua25vd24+O1xuICB9O1xuICByZXN1bHQ/OiBtb2NrR3JhcGhRTFJlc3BvbnNlSW50ZXJmYWNlO1xuICBlcnJvcj86IEVycm9yOyAvLyBOZXR3b3JrIGVycm9yc1xuICBkZWxheT86IG51bWJlcjsgLy8gU2ltdWxhdGUgbmV0d29yayBkZWxheVxufVxuXG4vLyBSZXNwb25zZSBUeXBlc1xuZXhwb3J0IGludGVyZmFjZSBtb2NrR3JhcGhRTFJlc3BvbnNlSW50ZXJmYWNlPFQgPSB1bmtub3duPiB7XG4gIGRhdGE/OiBUO1xuICBlcnJvcnM/OiBtb2NrR3JhcGhRTEVycm9ySW50ZXJmYWNlW107XG4gIGxvYWRpbmc/OiBib29sZWFuO1xuICBuZXR3b3JrU3RhdHVzPzogbnVtYmVyO1xufVxuXG4vLyBFcnJvciBUeXBlc1xuZXhwb3J0IGludGVyZmFjZSBtb2NrR3JhcGhRTEVycm9ySW50ZXJmYWNlIHtcbiAgbWVzc2FnZTogc3RyaW5nO1xuICBsb2NhdGlvbnM/OiB7IGxpbmU6IG51bWJlcjsgY29sdW1uOiBudW1iZXIgfVtdO1xuICBwYXRoPzogc3RyaW5nW107XG4gIGV4dGVuc2lvbnM/OiBSZWNvcmQ8c3RyaW5nLCB1bmtub3duPjtcbn1cblxuLy8gV2ViU29ja2V0IFR5cGVzXG5leHBvcnQgaW50ZXJmYWNlIG1vY2tXZWJTb2NrZXRNZXNzYWdlSW50ZXJmYWNlIHtcbiAgdHlwZTogJ3N1YnNjcmlwdGlvbicgfCAnbmV4dCcgfCAnZXJyb3InIHwgJ2NvbXBsZXRlJztcbiAgcGF5bG9hZD86IHVua25vd247XG4gIGlkPzogc3RyaW5nO1xufVxuXG5leHBvcnQgaW50ZXJmYWNlIG1vY2tXZWJTb2NrZXRJbnN0YW5jZUludGVyZmFjZSB7XG4gIGFkZEV2ZW50TGlzdGVuZXIodHlwZTogc3RyaW5nLCBoYW5kbGVyOiAoZXZlbnQ6IE1lc3NhZ2VFdmVudCkgPT4gdm9pZCk6IHZvaWQ7XG4gIHJlbW92ZUV2ZW50TGlzdGVuZXIodHlwZTogc3RyaW5nLCBoYW5kbGVyOiAoZXZlbnQ6IE1lc3NhZ2VFdmVudCkgPT4gdm9pZCk6IHZvaWQ7XG4gIHNlbmQoZGF0YTogc3RyaW5nKTogdm9pZDtcbiAgY2xvc2UoKTogdm9pZDtcbiAgbW9ja01lc3NhZ2UobWVzc2FnZTogbW9ja1dlYlNvY2tldE1lc3NhZ2VJbnRlcmZhY2UpOiB2b2lkO1xufVxuXG4vLyBDYWNoZSBUeXBlc1xuZXhwb3J0IGludGVyZmFjZSBtb2NrR3JhcGhRTENhY2hlSW50ZXJmYWNlIHtcbiAgcmVhZFF1ZXJ5OiA8VD4ob3B0aW9uczogR3JhcGhRTFJlcXVlc3QpID0+IFQgfCBudWxsO1xuICB3cml0ZVF1ZXJ5OiA8VD4ob3B0aW9uczogR3JhcGhRTENhY2hlUmVxdWVzdDxUPiAmIHsgZGF0YTogVCB9KSA9PiB2b2lkO1xufVxuIl0sIm1hcHBpbmdzIjoiIiwiaWdub3JlTGlzdCI6W119

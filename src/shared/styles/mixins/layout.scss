@@ -1,0 +1,405 @@
+@use '../design-tokens/spacing' as spacing;
+@use '../design-tokens/borders' as borders;
+
+// ===== LAYOUT MIXINS =====
+// Comprehensive layout utilities for modern web development
+
+// ===== FLEXBOX MIXINS =====
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-start {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@mixin flex-end {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@mixin flex-nowrap {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+// ===== GRID MIXINS =====
+@mixin grid($columns: 'auto', $gap: 'md') {
+  display: grid;
+  grid-template-columns: $columns;
+  gap: spacing.grid-gap($gap);
+}
+
+@mixin grid-auto-fit($min-width: 250px, $gap: 'md') {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+  gap: spacing.grid-gap($gap);
+}
+
+@mixin grid-auto-fill($min-width: 250px, $gap: 'md') {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax($min-width, 1fr));
+  gap: spacing.grid-gap($gap);
+}
+
+@mixin grid-columns($count, $gap: 'md') {
+  display: grid;
+  grid-template-columns: repeat($count, 1fr);
+  gap: spacing.grid-gap($gap);
+}
+
+@mixin grid-area($row-start, $col-start, $row-end: null, $col-end: null) {
+  @if $row-end and $col-end {
+    grid-area: $row-start / $col-start / $row-end / $col-end;
+  } @else if $row-end {
+    grid-area: $row-start / $col-start / $row-end;
+  } @else {
+    grid-area: $row-start / $col-start;
+  }
+}
+
+// ===== POSITIONING MIXINS =====
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin absolute-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@mixin fixed-center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin fixed-fill {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@mixin sticky-top($offset: 0) {
+  position: sticky;
+  top: $offset;
+  z-index: 10;
+}
+
+// ===== CONTAINER MIXINS =====
+@mixin container($size: '6xl', $padding: 'lg') {
+  width: 100%;
+  max-width: spacing.container-size($size);
+  margin: 0 auto;
+  padding-left: spacing.spacing($padding);
+  padding-right: spacing.spacing($padding);
+}
+
+@mixin container-fluid($padding: 'lg') {
+  width: 100%;
+  padding-left: spacing.spacing($padding);
+  padding-right: spacing.spacing($padding);
+}
+
+@mixin section-container {
+  @include container;
+  @include spacing.section-padding;
+}
+
+// ===== RESPONSIVE MIXINS =====
+$breakpoints: (
+  'xs': 480px,
+  'sm': 640px,
+  'md': 768px,
+  'lg': 1024px,
+  'xl': 1280px,
+  '2xl': 1536px,
+);
+
+@mixin responsive($breakpoint) {
+  $bp-value: map-get($breakpoints, $breakpoint);
+
+  @if not $bp-value {
+    @error "Breakpoint '#{$breakpoint}' not found in $breakpoints map.";
+  }
+
+  @media (min-width: $bp-value) {
+    @content;
+  }
+}
+
+@mixin responsive-max($breakpoint) {
+  $bp-value: map-get($breakpoints, $breakpoint);
+
+  @if not $bp-value {
+    @error "Breakpoint '#{$breakpoint}' not found in $breakpoints map.";
+  }
+
+  @media (max-width: $bp-value - 1px) {
+    @content;
+  }
+}
+
+@mixin responsive-between($min-breakpoint, $max-breakpoint) {
+  $min-value: map-get($breakpoints, $min-breakpoint);
+  $max-value: map-get($breakpoints, $max-breakpoint);
+
+  @if not $min-value {
+    @error "Breakpoint '#{$min-breakpoint}' not found in $breakpoints map.";
+  }
+
+  @if not $max-value {
+    @error "Breakpoint '#{$max-breakpoint}' not found in $breakpoints map.";
+  }
+
+  @media (min-width: $min-value) and (max-width: $max-value - 1px) {
+    @content;
+  }
+}
+
+// ===== STACK & INLINE LAYOUTS =====
+@mixin stack($gap: 'md', $align: stretch) {
+  display: flex;
+  flex-direction: column;
+  gap: spacing.grid-gap($gap);
+
+  @if $align != stretch {
+    align-items: $align;
+  }
+}
+
+@mixin inline($gap: 'md', $align: center, $justify: flex-start) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  gap: spacing.grid-gap($gap);
+}
+
+@mixin cluster($gap: 'md', $justify: flex-start, $align: center) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: spacing.grid-gap($gap);
+  justify-content: $justify;
+  align-items: $align;
+}
+
+// ===== ASPECT RATIO MIXINS =====
+@mixin aspect-ratio($ratio: '16/9') {
+  @if $ratio == '1/1' or $ratio == 'square' {
+    aspect-ratio: 1 / 1;
+  } @else if $ratio == '16/9' or $ratio == 'video' {
+    aspect-ratio: 16 / 9;
+  } @else if $ratio == '4/3' {
+    aspect-ratio: 4 / 3;
+  } @else if $ratio == '3/2' {
+    aspect-ratio: 3 / 2;
+  } @else if $ratio == '21/9' or $ratio == 'ultrawide' {
+    aspect-ratio: 21 / 9;
+  } @else {
+    aspect-ratio: $ratio;
+  }
+}
+
+// ===== SIZE UTILITIES =====
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin min-size($width, $height: $width) {
+  min-width: $width;
+  min-height: $height;
+}
+
+@mixin max-size($width, $height: $width) {
+  max-width: $width;
+  max-height: $height;
+}
+
+@mixin square($size) {
+  @include size($size);
+}
+
+@mixin circle($size) {
+  @include size($size);
+  border-radius: borders.border-radius('full');
+}
+
+// ===== OVERFLOW UTILITIES =====
+@mixin overflow-hidden {
+  overflow: hidden;
+}
+
+@mixin overflow-scroll {
+  overflow: auto;
+}
+
+@mixin overflow-x-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+@mixin overflow-y-scroll {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+@mixin scrollbar-hide {
+  /* Firefox */
+  scrollbar-width: none;
+
+  /* Safari and Chrome */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin custom-scrollbar(
+  $track-color: transparent,
+  $thumb-color: var(--color-gray-400),
+  $width: 8px
+) {
+  &::-webkit-scrollbar {
+    width: $width;
+    height: $width;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $track-color;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $thumb-color;
+    border-radius: borders.border-radius('full');
+
+    &:hover {
+      background: var(--color-gray-500);
+    }
+  }
+}
+
+// ===== VISIBILITY UTILITIES =====
+@mixin visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@mixin show-for-screen-readers {
+  @include visually-hidden;
+}
+
+// ===== Z-INDEX SYSTEM =====
+$z-index: (
+  'dropdown': 1000,
+  'sticky': 1020,
+  'fixed': 1030,
+  'modal-backdrop': 1040,
+  'modal': 1050,
+  'popover': 1060,
+  'tooltip': 1070,
+  'toast': 1080,
+);
+
+@function z-index($layer) {
+  $index: map-get($z-index, $layer);
+
+  @if not $index {
+    @error "Z-index layer '#{$layer}' not found in $z-index map.";
+  }
+
+  @return $index;
+}
+
+@mixin z-index($layer) {
+  z-index: z-index($layer);
+}
+
+// ===== PRINT UTILITIES =====
+@mixin print-only {
+  @media print {
+    @content;
+  }
+}
+
+@mixin screen-only {
+  @media screen {
+    @content;
+  }
+}
+
+@mixin print-hidden {
+  @media print {
+    display: none !important;
+  }
+}
+
+// ===== LAYOUT PATTERNS =====
+@mixin sidebar-layout($sidebar-width: 250px, $gap: 'lg') {
+  display: grid;
+  grid-template-columns: $sidebar-width 1fr;
+  gap: spacing.grid-gap($gap);
+
+  @include responsive-max('md') {
+    grid-template-columns: 1fr;
+  }
+}
+
+@mixin header-main-footer {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+@mixin masonry($column-width: 250px, $gap: 'md') {
+  columns: $column-width;
+  column-gap: spacing.grid-gap($gap);
+
+  > * {
+    break-inside: avoid;
+    margin-bottom: spacing.grid-gap($gap);
+  }
+}

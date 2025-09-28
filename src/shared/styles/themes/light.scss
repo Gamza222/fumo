@@ -1,0 +1,183 @@
+@use '../design-tokens/colors' as colors;
+
+// ===== LIGHT THEME =====
+// Default light theme for the application
+
+:root,
+[data-theme='light'] {
+  // ===== BACKGROUND COLORS =====
+  --color-background: #{colors.color('surface', 'background')}; // #ffffff
+  --color-background-alt: #{colors.color('surface', 'background-alt')}; // #f8fafc
+  --color-background-subtle: #{colors.gray(50)}; // #f9fafb
+  --color-background-muted: #{colors.gray(100)}; // #f3f4f6
+
+  // ===== SURFACE COLORS =====
+  --color-surface: #{colors.color('surface', 'card')}; // #ffffff
+  --color-surface-alt: #{colors.color('surface', 'card-alt')}; // #f9fafb
+  --color-surface-raised: #{colors.gray(50)}; // #f9fafb
+  --color-surface-overlay: #{colors.color('surface', 'overlay')}; // rgba(0, 0, 0, 0.6)
+  --color-surface-modal: #{colors.color('surface', 'modal')}; // #ffffff
+  --color-surface-popover: #{colors.color('surface', 'popover')}; // #ffffff
+  --color-surface-tooltip: #{colors.color('surface', 'tooltip')}; // #1f2937
+
+  // ===== TEXT COLORS =====
+  --color-text-primary: #{colors.text('primary')}; // #111827
+  --color-text-secondary: #{colors.text('secondary')}; // #6b7280
+  --color-text-tertiary: #{colors.text('tertiary')}; // #9ca3af
+  --color-text-inverse: #{colors.text('inverse')}; // #ffffff
+  --color-text-disabled: #{colors.text('disabled')}; // #d1d5db
+  --color-text-link: #{colors.text('link')}; // #3b82f6
+  --color-text-link-hover: #{colors.text('link-hover')}; // #2563eb
+  --color-text-on-primary: #{colors.text('inverse')}; // #ffffff
+  --color-text-on-surface: #{colors.text('primary')}; // #111827
+
+  // ===== BORDER COLORS =====
+  --color-border-default: #{colors.border('default')}; // #e5e7eb
+  --color-border-light: #{colors.border('light')}; // #f3f4f6
+  --color-border-medium: #{colors.border('medium')}; // #d1d5db
+  --color-border-strong: #{colors.border('strong')}; // #9ca3af
+  --color-border-focus: #{colors.border('focus')}; // #3b82f6
+  --color-border-error: #{colors.border('error')}; // #ef4444
+  --color-border-success: #{colors.border('success')}; // #22c55e
+  --color-border-warning: #{colors.border('warning')}; // #f59e0b
+
+  // ===== BRAND COLORS =====
+  --color-primary-50: #{colors.primary(50)}; // #eff6ff
+  --color-primary-100: #{colors.primary(100)}; // #dbeafe
+  --color-primary-200: #{colors.primary(200)}; // #bfdbfe
+  --color-primary-300: #{colors.primary(300)}; // #93c5fd
+  --color-primary-400: #{colors.primary(400)}; // #60a5fa
+  --color-primary-500: #{colors.primary(500)}; // #3b82f6
+  --color-primary-600: #{colors.primary(600)}; // #2563eb
+  --color-primary-700: #{colors.primary(700)}; // #1d4ed8
+  --color-primary-800: #{colors.primary(800)}; // #1e40af
+  --color-primary-900: #{colors.primary(900)}; // #1e3a8a
+  --color-primary-950: #{colors.primary(950)}; // #172554
+
+  // ===== SEMANTIC COLORS =====
+  // Success
+  --color-success-50: #{colors.color('success', 50)}; // #f0fdf4
+  --color-success-100: #{colors.color('success', 100)}; // #dcfce7
+  --color-success-500: #{colors.color('success', 500)}; // #22c55e
+  --color-success-600: #{colors.color('success', 600)}; // #16a34a
+  --color-success-700: #{colors.color('success', 700)}; // #15803d
+
+  // Error
+  --color-error-50: #{colors.color('error', 50)}; // #fef2f2
+  --color-error-100: #{colors.color('error', 100)}; // #fee2e2
+  --color-error-500: #{colors.color('error', 500)}; // #ef4444
+  --color-error-600: #{colors.color('error', 600)}; // #dc2626
+  --color-error-700: #{colors.color('error', 700)}; // #b91c1c
+
+  // Warning
+  --color-warning-50: #{colors.color('warning', 50)}; // #fffbeb
+  --color-warning-100: #{colors.color('warning', 100)}; // #fef3c7
+  --color-warning-500: #{colors.color('warning', 500)}; // #f59e0b
+  --color-warning-600: #{colors.color('warning', 600)}; // #d97706
+  --color-warning-700: #{colors.color('warning', 700)}; // #b45309
+
+  // Info
+  --color-info-50: #{colors.color('info', 50)}; // #eff6ff
+  --color-info-100: #{colors.color('info', 100)}; // #dbeafe
+  --color-info-500: #{colors.color('info', 500)}; // #3b82f6
+  --color-info-600: #{colors.color('info', 600)}; // #2563eb
+  --color-info-700: #{colors.color('info', 700)}; // #1d4ed8
+
+  // ===== NEUTRAL COLORS =====
+  --color-gray-50: #{colors.gray(50)}; // #f9fafb
+  --color-gray-100: #{colors.gray(100)}; // #f3f4f6
+  --color-gray-200: #{colors.gray(200)}; // #e5e7eb
+  --color-gray-300: #{colors.gray(300)}; // #d1d5db
+  --color-gray-400: #{colors.gray(400)}; // #9ca3af
+  --color-gray-500: #{colors.gray(500)}; // #6b7280
+  --color-gray-600: #{colors.gray(600)}; // #4b5563
+  --color-gray-700: #{colors.gray(700)}; // #374151
+  --color-gray-800: #{colors.gray(800)}; // #1f2937
+  --color-gray-900: #{colors.gray(900)}; // #111827
+  --color-gray-950: #{colors.gray(950)}; // #030712
+
+  // ===== INTERACTIVE STATES =====
+  --color-state-hover: #{colors.color('state', 'hover')}; // rgba(0, 0, 0, 0.05)
+  --color-state-pressed: #{colors.color('state', 'pressed')}; // rgba(0, 0, 0, 0.1)
+  --color-state-focus: #{colors.color('state', 'focus')}; // rgba(59, 130, 246, 0.1)
+  --color-state-selected: #{colors.color('state', 'selected')}; // rgba(59, 130, 246, 0.05)
+  --color-state-disabled: #{colors.color('state', 'disabled')}; // rgba(0, 0, 0, 0.05)
+
+  // ===== COMPONENT SPECIFIC =====
+  // Button colors
+  --color-button-primary-bg: var(--color-primary-500);
+  --color-button-primary-bg-hover: var(--color-primary-600);
+  --color-button-primary-bg-active: var(--color-primary-700);
+  --color-button-primary-text: var(--color-text-inverse);
+
+  --color-button-secondary-bg: transparent;
+  --color-button-secondary-bg-hover: var(--color-state-hover);
+  --color-button-secondary-bg-active: var(--color-state-pressed);
+  --color-button-secondary-text: var(--color-text-primary);
+  --color-button-secondary-border: var(--color-border-default);
+
+  --color-button-ghost-bg: transparent;
+  --color-button-ghost-bg-hover: var(--color-state-hover);
+  --color-button-ghost-bg-active: var(--color-state-pressed);
+  --color-button-ghost-text: var(--color-text-primary);
+
+  // Input colors
+  --color-input-bg: var(--color-surface);
+  --color-input-bg-disabled: var(--color-background-muted);
+  --color-input-border: var(--color-border-default);
+  --color-input-border-focus: var(--color-border-focus);
+  --color-input-border-error: var(--color-border-error);
+  --color-input-text: var(--color-text-primary);
+  --color-input-placeholder: var(--color-text-tertiary);
+
+  // Card colors
+  --color-card-bg: var(--color-surface);
+  --color-card-border: var(--color-border-light);
+
+  // Modal/Dialog colors
+  --color-modal-bg: var(--color-surface-modal);
+  --color-modal-overlay: var(--color-surface-overlay);
+
+  // Navigation colors
+  --color-nav-bg: var(--color-surface);
+  --color-nav-border: var(--color-border-light);
+  --color-nav-item-hover: var(--color-state-hover);
+  --color-nav-item-active: var(--color-state-selected);
+
+  // Form colors
+  --color-form-label: var(--color-text-secondary);
+  --color-form-helper: var(--color-text-tertiary);
+  --color-form-error: var(--color-error-600);
+  --color-form-success: var(--color-success-600);
+}
+
+// ===== COMPONENT STATE VARIATIONS =====
+.light-theme {
+  // Additional light theme specific styles can go here
+  color-scheme: light;
+}
+
+// ===== LIGHT THEME SPECIFIC ADJUSTMENTS =====
+[data-theme='light'] {
+  // Code blocks and syntax highlighting
+  --color-code-bg: #{colors.gray(50)};
+  --color-code-border: #{colors.gray(200)};
+  --color-code-text: #{colors.gray(800)};
+
+  // Table styles
+  --color-table-header-bg: #{colors.gray(50)};
+  --color-table-border: #{colors.gray(200)};
+  --color-table-row-hover: #{colors.gray(50)};
+
+  // Tooltip specific
+  --color-tooltip-bg: var(--color-surface-tooltip);
+  --color-tooltip-text: var(--color-text-inverse);
+
+  // Focus ring
+  --color-focus-ring: #{colors.primary(500)};
+  --color-focus-ring-offset: var(--color-surface);
+
+  // Selection
+  --color-selection-bg: #{colors.primary(100)};
+  --color-selection-text: #{colors.primary(900)};
+}

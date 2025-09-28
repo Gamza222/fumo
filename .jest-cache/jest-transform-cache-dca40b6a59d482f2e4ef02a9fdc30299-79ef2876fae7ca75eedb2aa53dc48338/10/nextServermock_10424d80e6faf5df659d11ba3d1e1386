@@ -1,0 +1,285 @@
+ebf746197cbbc3e694a32752d7bc122b
+"use strict";
+
+/**
+ * Next.js Server Mock Setup
+ *
+ * Provides Jest mock setup for Next.js server components.
+ * This file should be imported in test files that need Next.js server mocks.
+ */
+/* istanbul ignore next */
+function cov_1mknh1xinv() {
+  var path = "/Users/gamzaramazanov/Desktop/fumo/src/shared/testing/mocks/nextjs/lib/server/nextServer.mock.ts";
+  var hash = "107d1fb9ba5d1d8b46737b3e39c18f598d7a2de8";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/gamzaramazanov/Desktop/fumo/src/shared/testing/mocks/nextjs/lib/server/nextServer.mock.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 8,
+          column: 0
+        },
+        end: {
+          line: 8,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 9,
+          column: 0
+        },
+        end: {
+          line: 9,
+          column: 60
+        }
+      },
+      "2": {
+        start: {
+          line: 11,
+          column: 0
+        },
+        end: {
+          line: 14,
+          column: 7
+        }
+      },
+      "3": {
+        start: {
+          line: 11,
+          column: 39
+        },
+        end: {
+          line: 14,
+          column: 3
+        }
+      },
+      "4": {
+        start: {
+          line: 15,
+          column: 25
+        },
+        end: {
+          line: 15,
+          column: 54
+        }
+      },
+      "5": {
+        start: {
+          line: 16,
+          column: 0
+        },
+        end: {
+          line: 16,
+          column: 137
+        }
+      },
+      "6": {
+        start: {
+          line: 16,
+          column: 89
+        },
+        end: {
+          line: 16,
+          column: 131
+        }
+      },
+      "7": {
+        start: {
+          line: 17,
+          column: 26
+        },
+        end: {
+          line: 17,
+          column: 56
+        }
+      },
+      "8": {
+        start: {
+          line: 18,
+          column: 0
+        },
+        end: {
+          line: 18,
+          column: 140
+        }
+      },
+      "9": {
+        start: {
+          line: 18,
+          column: 90
+        },
+        end: {
+          line: 18,
+          column: 134
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 11,
+            column: 25
+          },
+          end: {
+            line: 11,
+            column: 26
+          }
+        },
+        loc: {
+          start: {
+            line: 11,
+            column: 37
+          },
+          end: {
+            line: 14,
+            column: 5
+          }
+        },
+        line: 11
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 16,
+            column: 75
+          },
+          end: {
+            line: 16,
+            column: 76
+          }
+        },
+        loc: {
+          start: {
+            line: 16,
+            column: 87
+          },
+          end: {
+            line: 16,
+            column: 133
+          }
+        },
+        line: 16
+      },
+      "2": {
+        name: "(anonymous_2)",
+        decl: {
+          start: {
+            line: 18,
+            column: 76
+          },
+          end: {
+            line: 18,
+            column: 77
+          }
+        },
+        loc: {
+          start: {
+            line: 18,
+            column: 88
+          },
+          end: {
+            line: 18,
+            column: 136
+          }
+        },
+        line: 18
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    b: {},
+    inputSourceMap: {
+      file: "/Users/gamzaramazanov/Desktop/fumo/src/shared/testing/mocks/nextjs/lib/server/nextServer.mock.ts",
+      mappings: ";AAAA;;;;;GAKG;;;AAKH,mCAAmC;AACnC,IAAI,CAAC,IAAI,CAAC,aAAa,EAAE,cAAM,OAAA,CAAC;IAC9B,WAAW,EAAE,kCAAe;IAC5B,YAAY,EAAE,oCAAgB;CAC/B,CAAC,EAH6B,CAG7B,CAAC,CAAC;AAPJ,uDAAqD;AAU5C,gGAVA,kCAAe,OAUA;AATxB,yDAAuD;AAS7B,iGATjB,oCAAgB,OASiB",
+      names: [],
+      sources: ["/Users/gamzaramazanov/Desktop/fumo/src/shared/testing/mocks/nextjs/lib/server/nextServer.mock.ts"],
+      sourcesContent: ["/**\n * Next.js Server Mock Setup\n *\n * Provides Jest mock setup for Next.js server components.\n * This file should be imported in test files that need Next.js server mocks.\n */\n\nimport { MockNextRequest } from './nextRequest.mock';\nimport { MockNextResponse } from './nextResponse.mock';\n\n// Jest mock for next/server module\njest.mock('next/server', () => ({\n  NextRequest: MockNextRequest,\n  NextResponse: MockNextResponse,\n}));\n\n// Export the mock classes for direct use in tests\nexport { MockNextRequest, MockNextResponse };\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "107d1fb9ba5d1d8b46737b3e39c18f598d7a2de8"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_1mknh1xinv = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_1mknh1xinv();
+cov_1mknh1xinv().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_1mknh1xinv().s[1]++;
+exports.MockNextResponse = exports.MockNextRequest = void 0;
+// Jest mock for next/server module
+/* istanbul ignore next */
+cov_1mknh1xinv().s[2]++;
+jest.mock('next/server', function () {
+  /* istanbul ignore next */
+  cov_1mknh1xinv().f[0]++;
+  cov_1mknh1xinv().s[3]++;
+  return {
+    NextRequest: nextRequest_mock_1.MockNextRequest,
+    NextResponse: nextResponse_mock_1.MockNextResponse
+  };
+});
+var nextRequest_mock_1 =
+/* istanbul ignore next */
+(cov_1mknh1xinv().s[4]++, require("./nextRequest.mock"));
+/* istanbul ignore next */
+cov_1mknh1xinv().s[5]++;
+Object.defineProperty(exports, "MockNextRequest", {
+  enumerable: true,
+  get: function () {
+    /* istanbul ignore next */
+    cov_1mknh1xinv().f[1]++;
+    cov_1mknh1xinv().s[6]++;
+    return nextRequest_mock_1.MockNextRequest;
+  }
+});
+var nextResponse_mock_1 =
+/* istanbul ignore next */
+(cov_1mknh1xinv().s[7]++, require("./nextResponse.mock"));
+/* istanbul ignore next */
+cov_1mknh1xinv().s[8]++;
+Object.defineProperty(exports, "MockNextResponse", {
+  enumerable: true,
+  get: function () {
+    /* istanbul ignore next */
+    cov_1mknh1xinv().f[2]++;
+    cov_1mknh1xinv().s[9]++;
+    return nextResponse_mock_1.MockNextResponse;
+  }
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMW1rbmgxeGludiIsInBhdGgiLCJoYXNoIiwiZ2xvYmFsIiwiRnVuY3Rpb24iLCJnY3YiLCJjb3ZlcmFnZURhdGEiLCJzdGF0ZW1lbnRNYXAiLCJzdGFydCIsImxpbmUiLCJjb2x1bW4iLCJlbmQiLCJmbk1hcCIsIm5hbWUiLCJkZWNsIiwibG9jIiwiYnJhbmNoTWFwIiwicyIsImYiLCJiIiwiaW5wdXRTb3VyY2VNYXAiLCJmaWxlIiwibWFwcGluZ3MiLCJuYW1lcyIsInNvdXJjZXMiLCJzb3VyY2VzQ29udGVudCIsInZlcnNpb24iLCJfY292ZXJhZ2VTY2hlbWEiLCJjb3ZlcmFnZSIsImFjdHVhbENvdmVyYWdlIiwiamVzdCIsIm1vY2siLCJOZXh0UmVxdWVzdCIsIm5leHRSZXF1ZXN0X21vY2tfMSIsIk1vY2tOZXh0UmVxdWVzdCIsIk5leHRSZXNwb25zZSIsIm5leHRSZXNwb25zZV9tb2NrXzEiLCJNb2NrTmV4dFJlc3BvbnNlIiwicmVxdWlyZSIsIk9iamVjdCIsImRlZmluZVByb3BlcnR5IiwiZXhwb3J0cyIsImVudW1lcmFibGUiLCJnZXQiXSwic291cmNlcyI6WyIvVXNlcnMvZ2FtemFyYW1hemFub3YvRGVza3RvcC9mdW1vL3NyYy9zaGFyZWQvdGVzdGluZy9tb2Nrcy9uZXh0anMvbGliL3NlcnZlci9uZXh0U2VydmVyLm1vY2sudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBOZXh0LmpzIFNlcnZlciBNb2NrIFNldHVwXG4gKlxuICogUHJvdmlkZXMgSmVzdCBtb2NrIHNldHVwIGZvciBOZXh0LmpzIHNlcnZlciBjb21wb25lbnRzLlxuICogVGhpcyBmaWxlIHNob3VsZCBiZSBpbXBvcnRlZCBpbiB0ZXN0IGZpbGVzIHRoYXQgbmVlZCBOZXh0LmpzIHNlcnZlciBtb2Nrcy5cbiAqL1xuXG5pbXBvcnQgeyBNb2NrTmV4dFJlcXVlc3QgfSBmcm9tICcuL25leHRSZXF1ZXN0Lm1vY2snO1xuaW1wb3J0IHsgTW9ja05leHRSZXNwb25zZSB9IGZyb20gJy4vbmV4dFJlc3BvbnNlLm1vY2snO1xuXG4vLyBKZXN0IG1vY2sgZm9yIG5leHQvc2VydmVyIG1vZHVsZVxuamVzdC5tb2NrKCduZXh0L3NlcnZlcicsICgpID0+ICh7XG4gIE5leHRSZXF1ZXN0OiBNb2NrTmV4dFJlcXVlc3QsXG4gIE5leHRSZXNwb25zZTogTW9ja05leHRSZXNwb25zZSxcbn0pKTtcblxuLy8gRXhwb3J0IHRoZSBtb2NrIGNsYXNzZXMgZm9yIGRpcmVjdCB1c2UgaW4gdGVzdHNcbmV4cG9ydCB7IE1vY2tOZXh0UmVxdWVzdCwgTW9ja05leHRSZXNwb25zZSB9O1xuIl0sIm1hcHBpbmdzIjoiOztBQUFBOzs7Ozs7QUFBQTtBQUFBLFNBQUFBLGVBQUE7RUFBQSxJQUFBQyxJQUFBO0VBQUEsSUFBQUMsSUFBQTtFQUFBLElBQUFDLE1BQUEsT0FBQUMsUUFBQTtFQUFBLElBQUFDLEdBQUE7RUFBQSxJQUFBQyxZQUFBO0lBQUFMLElBQUE7SUFBQU0sWUFBQTtNQUFBO1FBQUFDLEtBQUE7VUFBQUMsSUFBQTtVQUFBQyxNQUFBO1FBQUE7UUFBQUMsR0FBQTtVQUFBRixJQUFBO1VBQUFDLE1BQUE7UUFBQTtNQUFBO01BQUE7UUFBQUYsS0FBQTtVQUFBQyxJQUFBO1VBQUFDLE1BQUE7UUFBQTtRQUFBQyxHQUFBO1VBQUFGLElBQUE7VUFBQUMsTUFBQTtRQUFBO01BQUE7TUFBQTtRQUFBRixLQUFBO1VBQUFDLElBQUE7VUFBQUMsTUFBQTtRQUFBO1FBQUFDLEdBQUE7VUFBQUYsSUFBQTtVQUFBQyxNQUFBO1FBQUE7TUFBQTtNQUFBO1FBQUFGLEtBQUE7VUFBQUMsSUFBQTtVQUFBQyxNQUFBO1FBQUE7UUFBQUMsR0FBQTtVQUFBRixJQUFBO1VBQUFDLE1BQUE7UUFBQTtNQUFBO01BQUE7UUFBQUYsS0FBQTtVQUFBQyxJQUFBO1VBQUFDLE1BQUE7UUFBQTtRQUFBQyxHQUFBO1VBQUFGLElBQUE7VUFBQUMsTUFBQTtRQUFBO01BQUE7TUFBQTtRQUFBRixLQUFBO1VBQUFDLElBQUE7VUFBQUMsTUFBQTtRQUFBO1FBQUFDLEdBQUE7VUFBQUYsSUFBQTtVQUFBQyxNQUFBO1FBQUE7TUFBQTtNQUFBO1FBQUFGLEtBQUE7VUFBQUMsSUFBQTtVQUFBQyxNQUFBO1FBQUE7UUFBQUMsR0FBQTtVQUFBRixJQUFBO1VBQUFDLE1BQUE7UUFBQTtNQUFBO01BQUE7UUFBQUYsS0FBQTtVQUFBQyxJQUFBO1VBQUFDLE1BQUE7UUFBQTtRQUFBQyxHQUFBO1VBQUFGLElBQUE7VUFBQUMsTUFBQTtRQUFBO01BQUE7TUFBQTtRQUFBRixLQUFBO1VBQUFDLElBQUE7VUFBQUMsTUFBQTtRQUFBO1FBQUFDLEdBQUE7VUFBQUYsSUFBQTtVQUFBQyxNQUFBO1FBQUE7TUFBQTtNQUFBO1FBQUFGLEtBQUE7VUFBQUMsSUFBQTtVQUFBQyxNQUFBO1FBQUE7UUFBQUMsR0FBQTtVQUFBRixJQUFBO1VBQUFDLE1BQUE7UUFBQTtNQUFBO0lBQUE7SUFBQUUsS0FBQTtNQUFBO1FBQUFDLElBQUE7UUFBQUMsSUFBQTtVQUFBTixLQUFBO1lBQUFDLElBQUE7WUFBQUMsTUFBQTtVQUFBO1VBQUFDLEdBQUE7WUFBQUYsSUFBQTtZQUFBQyxNQUFBO1VBQUE7UUFBQTtRQUFBSyxHQUFBO1VBQUFQLEtBQUE7WUFBQUMsSUFBQTtZQUFBQyxNQUFBO1VBQUE7VUFBQUMsR0FBQTtZQUFBRixJQUFBO1lBQUFDLE1BQUE7VUFBQTtRQUFBO1FBQUFELElBQUE7TUFBQTtNQUFBO1FBQUFJLElBQUE7UUFBQUMsSUFBQTtVQUFBTixLQUFBO1lBQUFDLElBQUE7WUFBQUMsTUFBQTtVQUFBO1VBQUFDLEdBQUE7WUFBQUYsSUFBQTtZQUFBQyxNQUFBO1VBQUE7UUFBQTtRQUFBSyxHQUFBO1VBQUFQLEtBQUE7WUFBQUMsSUFBQTtZQUFBQyxNQUFBO1VBQUE7VUFBQUMsR0FBQTtZQUFBRixJQUFBO1lBQUFDLE1BQUE7VUFBQTtRQUFBO1FBQUFELElBQUE7TUFBQTtNQUFBO1FBQUFJLElBQUE7UUFBQUMsSUFBQTtVQUFBTixLQUFBO1lBQUFDLElBQUE7WUFBQUMsTUFBQTtVQUFBO1VBQUFDLEdBQUE7WUFBQUYsSUFBQTtZQUFBQyxNQUFBO1VBQUE7UUFBQTtRQUFBSyxHQUFBO1VBQUFQLEtBQUE7WUFBQUMsSUFBQTtZQUFBQyxNQUFBO1VBQUE7VUFBQUMsR0FBQTtZQUFBRixJQUFBO1lBQUFDLE1BQUE7VUFBQTtRQUFBO1FBQUFELElBQUE7TUFBQTtJQUFBO0lBQUFPLFNBQUE7SUFBQUMsQ0FBQTtNQUFBO01BQUE7TUFBQTtNQUFBO01BQUE7TUFBQTtNQUFBO01BQUE7TUFBQTtNQUFBO0lBQUE7SUFBQUMsQ0FBQTtNQUFBO01BQUE7TUFBQTtJQUFBO0lBQUFDLENBQUE7SUFBQUMsY0FBQTtNQUFBQyxJQUFBO01BQUFDLFFBQUE7TUFBQUMsS0FBQTtNQUFBQyxPQUFBO01BQUFDLGNBQUE7TUFBQUMsT0FBQTtJQUFBO0lBQUFDLGVBQUE7SUFBQXpCLElBQUE7RUFBQTtFQUFBLElBQUEwQixRQUFBLEdBQUF6QixNQUFBLENBQUFFLEdBQUEsTUFBQUYsTUFBQSxDQUFBRSxHQUFBO0VBQUEsS0FBQXVCLFFBQUEsQ0FBQTNCLElBQUEsS0FBQTJCLFFBQUEsQ0FBQTNCLElBQUEsRUFBQUMsSUFBQSxLQUFBQSxJQUFBO0lBQUEwQixRQUFBLENBQUEzQixJQUFBLElBQUFLLFlBQUE7RUFBQTtFQUFBLElBQUF1QixjQUFBLEdBQUFELFFBQUEsQ0FBQTNCLElBQUE7RUFBQTtJQWlCUztJQUFBRCxjQUFBLFlBQUFBLENBQUE7TUFBQSxPQUFBNkIsY0FBQTtJQUFBO0VBQUE7RUFBQSxPQUFBQSxjQUFBO0FBQUE7QUFBQTdCLGNBQUE7QUFBQUEsY0FBQSxHQUFBaUIsQ0FBQTs7Ozs7OztBQVBUO0FBQUE7QUFBQWpCLGNBQUEsR0FBQWlCLENBQUE7QUFDQWEsSUFBSSxDQUFDQyxJQUFJLENBQUMsYUFBYSxFQUFFO0VBQUE7RUFBQS9CLGNBQUEsR0FBQWtCLENBQUE7RUFBQWxCLGNBQUEsR0FBQWlCLENBQUE7RUFBTSxPQUFDO0lBQzlCZSxXQUFXLEVBQUVDLGtCQUFBLENBQUFDLGVBQWU7SUFDNUJDLFlBQVksRUFBRUMsbUJBQUEsQ0FBQUM7R0FDZjtBQUg4QixDQUc3QixDQUFDO0FBUEgsSUFBQUosa0JBQUE7QUFBQTtBQUFBLENBQUFqQyxjQUFBLEdBQUFpQixDQUFBLE9BQUFxQixPQUFBO0FBQXFEO0FBQUF0QyxjQUFBLEdBQUFpQixDQUFBO0FBVTVDc0IsTUFBQSxDQUFBQyxjQUFBLENBQUFDLE9BQUE7RUFBQUMsVUFBQTtFQUFBQyxHQUFBLFdBQUFBLENBQUE7SUFBQTtJQUFBM0MsY0FBQSxHQUFBa0IsQ0FBQTtJQUFBbEIsY0FBQSxHQUFBaUIsQ0FBQTtJQUFBLE9BVkFnQixrQkFBQSxDQUFBQyxlQUFlO0VBQUE7QUFBQTtBQUN4QixJQUFBRSxtQkFBQTtBQUFBO0FBQUEsQ0FBQXBDLGNBQUEsR0FBQWlCLENBQUEsT0FBQXFCLE9BQUE7QUFBdUQ7QUFBQXRDLGNBQUEsR0FBQWlCLENBQUE7QUFTN0JzQixNQUFBLENBQUFDLGNBQUEsQ0FBQUMsT0FBQTtFQUFBQyxVQUFBO0VBQUFDLEdBQUEsV0FBQUEsQ0FBQTtJQUFBO0lBQUEzQyxjQUFBLEdBQUFrQixDQUFBO0lBQUFsQixjQUFBLEdBQUFpQixDQUFBO0lBQUEsT0FUakJtQixtQkFBQSxDQUFBQyxnQkFBZ0I7RUFBQTtBQUFBIiwiaWdub3JlTGlzdCI6W119

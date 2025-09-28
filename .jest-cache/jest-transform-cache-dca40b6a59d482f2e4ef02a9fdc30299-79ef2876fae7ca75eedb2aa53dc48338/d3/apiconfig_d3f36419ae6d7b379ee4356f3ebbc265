@@ -1,0 +1,137 @@
+f52b7cc74208c4e60e339a2b322c00fb
+"use strict";
+
+/* istanbul ignore next */
+function cov_1xyot9pdu0() {
+  var path = "/Users/gamzaramazanov/Desktop/fumo/src/shared/config/api/api.config.ts";
+  var hash = "64f98301e59c011a5349c70ee9a973970244c39c";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/gamzaramazanov/Desktop/fumo/src/shared/config/api/api.config.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 46
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 12
+        },
+        end: {
+          line: 4,
+          column: 45
+        }
+      },
+      "3": {
+        start: {
+          line: 8,
+          column: 0
+        },
+        end: {
+          line: 16,
+          column: 2
+        }
+      },
+      "4": {
+        start: {
+          line: 20,
+          column: 0
+        },
+        end: {
+          line: 25,
+          column: 2
+        }
+      }
+    },
+    fnMap: {},
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    f: {},
+    b: {},
+    inputSourceMap: {
+      file: "/Users/gamzaramazanov/Desktop/fumo/src/shared/config/api/api.config.ts",
+      mappings: ";;;AACA,8CAAmD;AAEnD;;GAEG;AACU,QAAA,SAAS,GAAc;IAClC,OAAO,EAAE,eAAS,CAAC,MAAM;IACzB,OAAO,EAAE,KAAK,EAAE,aAAa;IAC7B,aAAa,EAAE,CAAC;IAChB,OAAO,EAAE;QACP,cAAc,EAAE,kBAAkB;QAClC,MAAM,EAAE,kBAAkB;KAC3B;CACF,CAAC;AAEF;;GAEG;AACU,QAAA,QAAQ,GAAG;IACtB,GAAG,EAAE,eAAS,CAAC,KAAK;IACpB,iBAAiB,EAAE,CAAC;IACpB,iBAAiB,EAAE,IAAI,EAAE,YAAY;IACrC,iBAAiB,EAAE,KAAK,EAAE,aAAa;CAC/B,CAAC",
+      names: [],
+      sources: ["/Users/gamzaramazanov/Desktop/fumo/src/shared/config/api/api.config.ts"],
+      sourcesContent: ["import { ApiConfig } from './api.types';\nimport { envConfig } from '../../../../config/env';\n\n/**\n * API client configuration\n */\nexport const apiConfig: ApiConfig = {\n  baseUrl: envConfig.apiUrl,\n  timeout: 30000, // 30 seconds\n  retryAttempts: 3,\n  headers: {\n    'Content-Type': 'application/json',\n    Accept: 'application/json',\n  },\n};\n\n/**\n * WebSocket configuration\n */\nexport const wsConfig = {\n  url: envConfig.wsUrl,\n  reconnectAttempts: 5,\n  reconnectInterval: 3000, // 3 seconds\n  heartbeatInterval: 30000, // 30 seconds\n} as const;\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "64f98301e59c011a5349c70ee9a973970244c39c"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_1xyot9pdu0 = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_1xyot9pdu0();
+cov_1xyot9pdu0().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_1xyot9pdu0().s[1]++;
+exports.wsConfig = exports.apiConfig = void 0;
+var env_1 =
+/* istanbul ignore next */
+(cov_1xyot9pdu0().s[2]++, require("../../../../config/env"));
+/**
+ * API client configuration
+ */
+/* istanbul ignore next */
+cov_1xyot9pdu0().s[3]++;
+exports.apiConfig = {
+  baseUrl: env_1.envConfig.apiUrl,
+  timeout: 30000,
+  // 30 seconds
+  retryAttempts: 3,
+  headers: {
+    'Content-Type': 'application/json',
+    Accept: 'application/json'
+  }
+};
+/**
+ * WebSocket configuration
+ */
+/* istanbul ignore next */
+cov_1xyot9pdu0().s[4]++;
+exports.wsConfig = {
+  url: env_1.envConfig.wsUrl,
+  reconnectAttempts: 5,
+  reconnectInterval: 3000,
+  // 3 seconds
+  heartbeatInterval: 30000 // 30 seconds
+};
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMXh5b3Q5cGR1MCIsImFjdHVhbENvdmVyYWdlIiwicyIsImVudl8xIiwicmVxdWlyZSIsImV4cG9ydHMiLCJhcGlDb25maWciLCJiYXNlVXJsIiwiZW52Q29uZmlnIiwiYXBpVXJsIiwidGltZW91dCIsInJldHJ5QXR0ZW1wdHMiLCJoZWFkZXJzIiwiQWNjZXB0Iiwid3NDb25maWciLCJ1cmwiLCJ3c1VybCIsInJlY29ubmVjdEF0dGVtcHRzIiwicmVjb25uZWN0SW50ZXJ2YWwiLCJoZWFydGJlYXRJbnRlcnZhbCJdLCJzb3VyY2VzIjpbIi9Vc2Vycy9nYW16YXJhbWF6YW5vdi9EZXNrdG9wL2Z1bW8vc3JjL3NoYXJlZC9jb25maWcvYXBpL2FwaS5jb25maWcudHMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgQXBpQ29uZmlnIH0gZnJvbSAnLi9hcGkudHlwZXMnO1xuaW1wb3J0IHsgZW52Q29uZmlnIH0gZnJvbSAnLi4vLi4vLi4vLi4vY29uZmlnL2Vudic7XG5cbi8qKlxuICogQVBJIGNsaWVudCBjb25maWd1cmF0aW9uXG4gKi9cbmV4cG9ydCBjb25zdCBhcGlDb25maWc6IEFwaUNvbmZpZyA9IHtcbiAgYmFzZVVybDogZW52Q29uZmlnLmFwaVVybCxcbiAgdGltZW91dDogMzAwMDAsIC8vIDMwIHNlY29uZHNcbiAgcmV0cnlBdHRlbXB0czogMyxcbiAgaGVhZGVyczoge1xuICAgICdDb250ZW50LVR5cGUnOiAnYXBwbGljYXRpb24vanNvbicsXG4gICAgQWNjZXB0OiAnYXBwbGljYXRpb24vanNvbicsXG4gIH0sXG59O1xuXG4vKipcbiAqIFdlYlNvY2tldCBjb25maWd1cmF0aW9uXG4gKi9cbmV4cG9ydCBjb25zdCB3c0NvbmZpZyA9IHtcbiAgdXJsOiBlbnZDb25maWcud3NVcmwsXG4gIHJlY29ubmVjdEF0dGVtcHRzOiA1LFxuICByZWNvbm5lY3RJbnRlcnZhbDogMzAwMCwgLy8gMyBzZWNvbmRzXG4gIGhlYXJ0YmVhdEludGVydmFsOiAzMDAwMCwgLy8gMzAgc2Vjb25kc1xufSBhcyBjb25zdDtcbiJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0lBY0U7SUFBQUEsY0FBQSxZQUFBQSxDQUFBO01BQUEsT0FBQUMsY0FBQTtJQUFBO0VBQUE7RUFBQSxPQUFBQSxjQUFBO0FBQUE7QUFBQUQsY0FBQTtBQUFBQSxjQUFBLEdBQUFFLENBQUE7Ozs7Ozs7QUFiRixJQUFBQyxLQUFBO0FBQUE7QUFBQSxDQUFBSCxjQUFBLEdBQUFFLENBQUEsT0FBQUUsT0FBQTtBQUVBOzs7QUFBQTtBQUFBSixjQUFBLEdBQUFFLENBQUE7QUFHYUcsT0FBQSxDQUFBQyxTQUFTLEdBQWM7RUFDbENDLE9BQU8sRUFBRUosS0FBQSxDQUFBSyxTQUFTLENBQUNDLE1BQU07RUFDekJDLE9BQU8sRUFBRSxLQUFLO0VBQUU7RUFDaEJDLGFBQWEsRUFBRSxDQUFDO0VBQ2hCQyxPQUFPLEVBQUU7SUFDUCxjQUFjLEVBQUUsa0JBQWtCO0lBQ2xDQyxNQUFNLEVBQUU7O0NBRVg7QUFFRDs7O0FBQUE7QUFBQWIsY0FBQSxHQUFBRSxDQUFBO0FBR2FHLE9BQUEsQ0FBQVMsUUFBUSxHQUFHO0VBQ3RCQyxHQUFHLEVBQUVaLEtBQUEsQ0FBQUssU0FBUyxDQUFDUSxLQUFLO0VBQ3BCQyxpQkFBaUIsRUFBRSxDQUFDO0VBQ3BCQyxpQkFBaUIsRUFBRSxJQUFJO0VBQUU7RUFDekJDLGlCQUFpQixFQUFFLEtBQUssQ0FBRTtDQUNsQiIsImlnbm9yZUxpc3QiOltdfQ==

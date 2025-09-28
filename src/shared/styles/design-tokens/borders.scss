@@ -1,0 +1,442 @@
+@use 'sass:map';
+
+// ===== BORDER SYSTEM =====
+// Complete border system for enterprise applications
+
+// ===== BORDER WIDTHS =====
+$border-widths: (
+  'none': 0,
+  'thin': 1px,
+  'base': 1px,
+  'thick': 2px,
+  'thicker': 3px,
+  'thickest': 4px,
+  '0': 0,
+  '1': 1px,
+  '2': 2px,
+  '3': 3px,
+  '4': 4px,
+  '8': 8px,
+);
+
+// ===== BORDER RADIUS =====
+$border-radius: (
+  'none': 0,
+  'xs': 0.125rem,
+  // 2px
+  'sm': 0.25rem,
+  // 4px
+  'base': 0.375rem,
+  // 6px
+  'md': 0.375rem,
+  // 6px (alias)
+  'lg': 0.5rem,
+  // 8px
+  'xl': 0.75rem,
+  // 12px
+  '2xl': 1rem,
+  // 16px
+  '3xl': 1.5rem,
+  // 24px
+  'full': 9999px,
+
+  // fully rounded
+  // Specific values for better control
+  '1': 0.25rem,
+  // 4px
+  '2': 0.5rem,
+  // 8px
+  '3': 0.75rem,
+  // 12px
+  '4': 1rem,
+  // 16px
+  '5': 1.25rem,
+  // 20px
+  '6': 1.5rem,
+  // 24px
+  '8': 2rem,
+  // 32px
+  '12': 3rem,
+  // 48px
+  '16': 4rem,
+  // 64px
+  '20': 5rem,
+  // 80px
+  '24': 6rem, // 96px
+);
+
+// ===== BORDER STYLES =====
+$border-styles: (
+  'none': none,
+  'solid': solid,
+  'dashed': dashed,
+  'dotted': dotted,
+  'double': double,
+  'groove': groove,
+  'ridge': ridge,
+  'inset': inset,
+  'outset': outset,
+);
+
+// ===== BORDER COLORS =====
+// Using semantic color names for better context
+$border-colors: (
+  // Default borders
+  'default': #e5e7eb,
+  // gray-200
+  'light': #f3f4f6,
+  // gray-100
+  'medium': #d1d5db,
+  // gray-300
+  'strong': #9ca3af,
+  // gray-400
+  'stronger': #6b7280,
+
+  // gray-500
+  // Semantic borders
+  'primary': #3b82f6,
+  // primary-500
+  'primary-light': #dbeafe,
+  // primary-100
+  'secondary': #64748b,
+  // secondary-500
+  'secondary-light': #f1f5f9,
+
+  // secondary-100
+  // State borders
+  'success': #22c55e,
+  // success-500
+  'success-light': #dcfce7,
+  // success-100
+  'warning': #f59e0b,
+  // warning-500
+  'warning-light': #fef3c7,
+  // warning-100
+  'error': #ef4444,
+  // error-500
+  'error-light': #fee2e2,
+  // error-100
+  'info': #3b82f6,
+  // info-500
+  'info-light': #dbeafe,
+
+  // info-100
+  // Interactive borders
+  'focus': #3b82f6,
+  // primary-500
+  'hover': #2563eb,
+  // primary-600
+  'active': #1d4ed8,
+  // primary-700
+  'disabled': #d1d5db,
+
+  // gray-300
+  // Special borders
+  'transparent': transparent,
+  'current': currentColor,
+  'white': #ffffff,
+  'black': #000000
+);
+
+// ===== OUTLINE STYLES =====
+$outline-styles: (
+  'none': none,
+  'thin': (
+    width: 1px,
+    style: solid,
+    offset: 2px,
+  ),
+  'thick': (
+    width: 2px,
+    style: solid,
+    offset: 2px,
+  ),
+  'dashed': (
+    width: 2px,
+    style: dashed,
+    offset: 2px,
+  ),
+  'dotted': (
+    width: 2px,
+    style: dotted,
+    offset: 2px,
+  ),
+);
+
+// ===== COMPONENT BORDER PRESETS =====
+$component-borders: (
+  // Card borders
+  'card': (
+      width: map.get($border-widths, 'base'),
+      style: map.get($border-styles, 'solid'),
+      color: map.get($border-colors, 'default'),
+      radius: map.get($border-radius, 'lg'),
+    ),
+  'card-hover': (
+    width: map.get($border-widths, 'base'),
+    style: map.get($border-styles, 'solid'),
+    color: map.get($border-colors, 'medium'),
+    radius: map.get($border-radius, 'lg'),
+  ),
+
+  // Button borders
+  'button': (
+      width: map.get($border-widths, 'base'),
+      style: map.get($border-styles, 'solid'),
+      color: map.get($border-colors, 'transparent'),
+      radius: map.get($border-radius, 'md'),
+    ),
+  'button-secondary': (
+    width: map.get($border-widths, 'base'),
+    style: map.get($border-styles, 'solid'),
+    color: map.get($border-colors, 'default'),
+    radius: map.get($border-radius, 'md'),
+  ),
+
+  // Input borders
+  'input': (
+      width: map.get($border-widths, 'base'),
+      style: map.get($border-styles, 'solid'),
+      color: map.get($border-colors, 'default'),
+      radius: map.get($border-radius, 'md'),
+    ),
+  'input-focus': (
+    width: map.get($border-widths, 'thick'),
+    style: map.get($border-styles, 'solid'),
+    color: map.get($border-colors, 'focus'),
+    radius: map.get($border-radius, 'md'),
+  ),
+  'input-error': (
+    width: map.get($border-widths, 'base'),
+    style: map.get($border-styles, 'solid'),
+    color: map.get($border-colors, 'error'),
+    radius: map.get($border-radius, 'md'),
+  ),
+
+  // Modal/Dialog borders
+  'modal': (
+      width: map.get($border-widths, 'none'),
+      style: map.get($border-styles, 'none'),
+      color: map.get($border-colors, 'transparent'),
+      radius: map.get($border-radius, 'xl'),
+    ),
+
+  // Divider borders
+  'divider': (
+      width: map.get($border-widths, 'base'),
+      style: map.get($border-styles, 'solid'),
+      color: map.get($border-colors, 'light'),
+      radius: map.get($border-radius, 'none'),
+    ),
+  'divider-strong': (
+    width: map.get($border-widths, 'base'),
+    style: map.get($border-styles, 'solid'),
+    color: map.get($border-colors, 'medium'),
+    radius: map.get($border-radius, 'none'),
+  )
+);
+
+// ===== COMBINED BORDER MAP =====
+$all-borders: (
+  'widths': $border-widths,
+  'radius': $border-radius,
+  'styles': $border-styles,
+  'colors': $border-colors,
+  'outlines': $outline-styles,
+  'presets': $component-borders,
+);
+
+// ===== BORDER FUNCTIONS =====
+@function border-width($width: 'base') {
+  $width-value: map.get($border-widths, $width);
+
+  @if not $width-value {
+    @error "Border width '#{$width}' not found in $border-widths map.";
+  }
+
+  @return $width-value;
+}
+
+@function border-radius($radius: 'base') {
+  $radius-value: map.get($border-radius, $radius);
+
+  @if not $radius-value {
+    @error "Border radius '#{$radius}' not found in $border-radius map.";
+  }
+
+  @return $radius-value;
+}
+
+@function border-style($style: 'solid') {
+  $style-value: map.get($border-styles, $style);
+
+  @if not $style-value {
+    @error "Border style '#{$style}' not found in $border-styles map.";
+  }
+
+  @return $style-value;
+}
+
+@function border-color($color: 'default') {
+  $color-value: map.get($border-colors, $color);
+
+  @if not $color-value {
+    @error "Border color '#{$color}' not found in $border-colors map.";
+  }
+
+  @return $color-value;
+}
+
+// Quick access functions
+@function radius($size: 'base') {
+  @return border-radius($size);
+}
+
+@function border($width: 'base', $style: 'solid', $color: 'default') {
+  @return border-width($width) border-style($style) border-color($color);
+}
+
+// ===== BORDER MIXINS =====
+@mixin border($width: 'base', $style: 'solid', $color: 'default') {
+  border: border-width($width) border-style($style) border-color($color);
+}
+
+@mixin border-top($width: 'base', $style: 'solid', $color: 'default') {
+  border-top: border-width($width) border-style($style) border-color($color);
+}
+
+@mixin border-right($width: 'base', $style: 'solid', $color: 'default') {
+  border-right: border-width($width) border-style($style) border-color($color);
+}
+
+@mixin border-bottom($width: 'base', $style: 'solid', $color: 'default') {
+  border-bottom: border-width($width) border-style($style) border-color($color);
+}
+
+@mixin border-left($width: 'base', $style: 'solid', $color: 'default') {
+  border-left: border-width($width) border-style($style) border-color($color);
+}
+
+@mixin border-x($width: 'base', $style: 'solid', $color: 'default') {
+  border-left: border-width($width) border-style($style) border-color($color);
+  border-right: border-width($width) border-style($style) border-color($color);
+}
+
+@mixin border-y($width: 'base', $style: 'solid', $color: 'default') {
+  border-top: border-width($width) border-style($style) border-color($color);
+  border-bottom: border-width($width) border-style($style) border-color($color);
+}
+
+@mixin rounded($radius: 'base') {
+  border-radius: border-radius($radius);
+}
+
+@mixin rounded-top($radius: 'base') {
+  border-top-left-radius: border-radius($radius);
+  border-top-right-radius: border-radius($radius);
+}
+
+@mixin rounded-bottom($radius: 'base') {
+  border-bottom-left-radius: border-radius($radius);
+  border-bottom-right-radius: border-radius($radius);
+}
+
+@mixin rounded-left($radius: 'base') {
+  border-top-left-radius: border-radius($radius);
+  border-bottom-left-radius: border-radius($radius);
+}
+
+@mixin rounded-right($radius: 'base') {
+  border-top-right-radius: border-radius($radius);
+  border-bottom-right-radius: border-radius($radius);
+}
+
+// ===== COMPONENT BORDER MIXINS =====
+@mixin component-border($preset) {
+  $border-config: map.get($component-borders, $preset);
+
+  @if not $border-config {
+    @error "Border preset '#{$preset}' not found in $component-borders map.";
+  }
+
+  border-width: map.get($border-config, 'width');
+  border-style: map.get($border-config, 'style');
+  border-color: map.get($border-config, 'color');
+  border-radius: map.get($border-config, 'radius');
+}
+
+@mixin focus-outline($type: 'thin', $color: 'focus') {
+  $outline-config: map.get($outline-styles, $type);
+
+  @if not $outline-config {
+    @error "Outline type '#{$type}' not found in $outline-styles map.";
+  }
+
+  &:focus {
+    outline: map.get($outline-config, 'width') map.get($outline-config, 'style')
+      border-color($color);
+    outline-offset: map.get($outline-config, 'offset');
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+@mixin interactive-border($default: 'default', $hover: 'medium', $focus: 'focus') {
+  border-color: border-color($default);
+  transition: border-color 150ms ease-in-out;
+
+  &:hover {
+    border-color: border-color($hover);
+  }
+
+  &:focus {
+    border-color: border-color($focus);
+  }
+}
+
+@mixin state-border($state: 'default') {
+  @if $state == 'success' {
+    border-color: border-color('success');
+  } @else if $state == 'error' {
+    border-color: border-color('error');
+  } @else if $state == 'warning' {
+    border-color: border-color('warning');
+  } @else if $state == 'info' {
+    border-color: border-color('info');
+  } @else {
+    border-color: border-color('default');
+  }
+}
+
+// ===== UTILITY MIXINS =====
+@mixin divider($orientation: 'horizontal', $color: 'light') {
+  @if $orientation == 'horizontal' {
+    border-top: border-width('base') border-style('solid') border-color($color);
+  } @else {
+    border-left: border-width('base') border-style('solid') border-color($color);
+  }
+}
+
+@mixin card-border {
+  @include component-border('card');
+}
+
+@mixin button-border($variant: 'primary') {
+  @if $variant == 'secondary' {
+    @include component-border('button-secondary');
+  } @else {
+    @include component-border('button');
+  }
+}
+
+@mixin input-border($state: 'default') {
+  @if $state == 'focus' {
+    @include component-border('input-focus');
+  } @else if $state == 'error' {
+    @include component-border('input-error');
+  } @else {
+    @include component-border('input');
+  }
+}

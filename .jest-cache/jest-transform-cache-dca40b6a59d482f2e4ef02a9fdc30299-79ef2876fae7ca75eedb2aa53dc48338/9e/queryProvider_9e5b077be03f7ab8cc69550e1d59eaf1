@@ -1,0 +1,259 @@
+071b0e5db04dfade982b06bd73d5d005
+"use strict";
+
+/* istanbul ignore next */
+function cov_2lsr9shwep() {
+  var path = "/Users/gamzaramazanov/Desktop/fumo/src/infrastructure/providers/query/ui/queryProvider.tsx";
+  var hash = "32a1385a6bdf3f62af9d0e9ab436ad1ccc55ab98";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/gamzaramazanov/Desktop/fumo/src/infrastructure/providers/query/ui/queryProvider.tsx",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 20
+        },
+        end: {
+          line: 3,
+          column: 48
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 20
+        },
+        end: {
+          line: 4,
+          column: 52
+        }
+      },
+      "3": {
+        start: {
+          line: 5,
+          column: 20
+        },
+        end: {
+          line: 5,
+          column: 68
+        }
+      },
+      "4": {
+        start: {
+          line: 6,
+          column: 20
+        },
+        end: {
+          line: 9,
+          column: 1
+        }
+      },
+      "5": {
+        start: {
+          line: 7,
+          column: 19
+        },
+        end: {
+          line: 7,
+          column: 33
+        }
+      },
+      "6": {
+        start: {
+          line: 7,
+          column: 40
+        },
+        end: {
+          line: 7,
+          column: 52
+        }
+      },
+      "7": {
+        start: {
+          line: 7,
+          column: 63
+        },
+        end: {
+          line: 7,
+          column: 109
+        }
+      },
+      "8": {
+        start: {
+          line: 8,
+          column: 4
+        },
+        end: {
+          line: 8,
+          column: 109
+        }
+      },
+      "9": {
+        start: {
+          line: 10,
+          column: 0
+        },
+        end: {
+          line: 10,
+          column: 32
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 6,
+            column: 20
+          },
+          end: {
+            line: 6,
+            column: 21
+          }
+        },
+        loc: {
+          start: {
+            line: 6,
+            column: 37
+          },
+          end: {
+            line: 9,
+            column: 1
+          }
+        },
+        line: 6
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 7,
+            column: 63
+          },
+          end: {
+            line: 7,
+            column: 109
+          }
+        },
+        type: "cond-expr",
+        locations: [{
+          start: {
+            line: 7,
+            column: 79
+          },
+          end: {
+            line: 7,
+            column: 104
+          }
+        }, {
+          start: {
+            line: 7,
+            column: 107
+          },
+          end: {
+            line: 7,
+            column: 109
+          }
+        }],
+        line: 7
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0
+    },
+    f: {
+      "0": 0
+    },
+    b: {
+      "0": [0, 0]
+    },
+    inputSourceMap: {
+      file: "/Users/gamzaramazanov/Desktop/fumo/src/infrastructure/providers/query/ui/queryProvider.tsx",
+      mappings: ";;;AACA,qDAA4D;AAC5D,qEAAoE;AAOpE,IAAM,aAAa,GAA2B,UAAC,KAAK;IAC1C,IAAA,QAAQ,GAA2B,KAAK,SAAhC,EAAE,KAAyB,KAAK,OAAV,EAApB,MAAM,mBAAG,yBAAW,KAAA,CAAW;IAEjD,OAAO,uBAAC,iCAAmB,IAAC,MAAM,EAAE,MAAM,YAAG,QAAQ,GAAuB,CAAC;AAC/E,CAAC,CAAC;AAEF,kBAAe,aAAa,CAAC",
+      names: [],
+      sources: ["/Users/gamzaramazanov/Desktop/fumo/src/infrastructure/providers/query/ui/queryProvider.tsx"],
+      sourcesContent: ["import { type FC, type PropsWithChildren } from 'react';\nimport { QueryClientProvider } from '@tanstack/react-query';\nimport { queryClient } from '../../../data/react-query/queryClient';\n\ninterface QueryProviderProps extends PropsWithChildren {\n  // Add custom query client if needed\n  client?: typeof queryClient;\n}\n\nconst QueryProvider: FC<QueryProviderProps> = (props) => {\n  const { children, client = queryClient } = props;\n\n  return <QueryClientProvider client={client}>{children}</QueryClientProvider>;\n};\n\nexport default QueryProvider;\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "32a1385a6bdf3f62af9d0e9ab436ad1ccc55ab98"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_2lsr9shwep = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_2lsr9shwep();
+cov_2lsr9shwep().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var jsx_runtime_1 =
+/* istanbul ignore next */
+(cov_2lsr9shwep().s[1]++, require("react/jsx-runtime"));
+var react_query_1 =
+/* istanbul ignore next */
+(cov_2lsr9shwep().s[2]++, require("@tanstack/react-query"));
+var queryClient_1 =
+/* istanbul ignore next */
+(cov_2lsr9shwep().s[3]++, require("../../../data/react-query/queryClient"));
+/* istanbul ignore next */
+cov_2lsr9shwep().s[4]++;
+var QueryProvider = function (props) {
+  /* istanbul ignore next */
+  cov_2lsr9shwep().f[0]++;
+  var children =
+    /* istanbul ignore next */
+    (cov_2lsr9shwep().s[5]++, props.children),
+    _a =
+    /* istanbul ignore next */
+    (cov_2lsr9shwep().s[6]++, props.client),
+    client =
+    /* istanbul ignore next */
+    (cov_2lsr9shwep().s[7]++, _a === void 0 ?
+    /* istanbul ignore next */
+    (cov_2lsr9shwep().b[0][0]++, queryClient_1.queryClient) :
+    /* istanbul ignore next */
+    (cov_2lsr9shwep().b[0][1]++, _a));
+  /* istanbul ignore next */
+  cov_2lsr9shwep().s[8]++;
+  return (0, jsx_runtime_1.jsx)(react_query_1.QueryClientProvider, {
+    client: client,
+    children: children
+  });
+};
+/* istanbul ignore next */
+cov_2lsr9shwep().s[9]++;
+exports.default = QueryProvider;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJyZWFjdF9xdWVyeV8xIiwiY292XzJsc3I5c2h3ZXAiLCJzIiwicmVxdWlyZSIsInF1ZXJ5Q2xpZW50XzEiLCJRdWVyeVByb3ZpZGVyIiwicHJvcHMiLCJmIiwiY2hpbGRyZW4iLCJfYSIsImNsaWVudCIsImIiLCJxdWVyeUNsaWVudCIsImpzeF9ydW50aW1lXzEiLCJqc3giLCJRdWVyeUNsaWVudFByb3ZpZGVyIiwiZXhwb3J0cyIsImRlZmF1bHQiXSwic291cmNlcyI6WyIvVXNlcnMvZ2FtemFyYW1hemFub3YvRGVza3RvcC9mdW1vL3NyYy9pbmZyYXN0cnVjdHVyZS9wcm92aWRlcnMvcXVlcnkvdWkvcXVlcnlQcm92aWRlci50c3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgdHlwZSBGQywgdHlwZSBQcm9wc1dpdGhDaGlsZHJlbiB9IGZyb20gJ3JlYWN0JztcbmltcG9ydCB7IFF1ZXJ5Q2xpZW50UHJvdmlkZXIgfSBmcm9tICdAdGFuc3RhY2svcmVhY3QtcXVlcnknO1xuaW1wb3J0IHsgcXVlcnlDbGllbnQgfSBmcm9tICcuLi8uLi8uLi9kYXRhL3JlYWN0LXF1ZXJ5L3F1ZXJ5Q2xpZW50JztcblxuaW50ZXJmYWNlIFF1ZXJ5UHJvdmlkZXJQcm9wcyBleHRlbmRzIFByb3BzV2l0aENoaWxkcmVuIHtcbiAgLy8gQWRkIGN1c3RvbSBxdWVyeSBjbGllbnQgaWYgbmVlZGVkXG4gIGNsaWVudD86IHR5cGVvZiBxdWVyeUNsaWVudDtcbn1cblxuY29uc3QgUXVlcnlQcm92aWRlcjogRkM8UXVlcnlQcm92aWRlclByb3BzPiA9IChwcm9wcykgPT4ge1xuICBjb25zdCB7IGNoaWxkcmVuLCBjbGllbnQgPSBxdWVyeUNsaWVudCB9ID0gcHJvcHM7XG5cbiAgcmV0dXJuIDxRdWVyeUNsaWVudFByb3ZpZGVyIGNsaWVudD17Y2xpZW50fT57Y2hpbGRyZW59PC9RdWVyeUNsaWVudFByb3ZpZGVyPjtcbn07XG5cbmV4cG9ydCBkZWZhdWx0IFF1ZXJ5UHJvdmlkZXI7XG4iXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFDQSxJQUFBQSxhQUFBO0FBQUE7QUFBQSxDQUFBQyxjQUFBLEdBQUFDLENBQUEsT0FBQUMsT0FBQTtBQUNBLElBQUFDLGFBQUE7QUFBQTtBQUFBLENBQUFILGNBQUEsR0FBQUMsQ0FBQSxPQUFBQyxPQUFBO0FBQW9FO0FBQUFGLGNBQUEsR0FBQUMsQ0FBQTtBQU9wRSxJQUFNRyxhQUFhLEdBQTJCLFNBQUFBLENBQUNDLEtBQUs7RUFBQTtFQUFBTCxjQUFBLEdBQUFNLENBQUE7RUFDMUMsSUFBQUMsUUFBUTtJQUFBO0lBQUEsQ0FBQVAsY0FBQSxHQUFBQyxDQUFBLE9BQTJCSSxLQUFLLENBQUFFLFFBQWhDO0lBQUVDLEVBQUE7SUFBQTtJQUFBLENBQUFSLGNBQUEsR0FBQUMsQ0FBQSxPQUF5QkksS0FBSyxDQUFBSSxNQUFWO0lBQXBCQSxNQUFNO0lBQUE7SUFBQSxDQUFBVCxjQUFBLEdBQUFDLENBQUEsT0FBQU8sRUFBQTtJQUFBO0lBQUEsQ0FBQVIsY0FBQSxHQUFBVSxDQUFBLFVBQUdQLGFBQUEsQ0FBQVEsV0FBVztJQUFBO0lBQUEsQ0FBQVgsY0FBQSxHQUFBVSxDQUFBLFVBQUFGLEVBQUE7RUFBVztFQUFBUixjQUFBLEdBQUFDLENBQUE7RUFFakQsT0FBTyxJQUFBVyxhQUFBLENBQUFDLEdBQUEsRUFBQ2QsYUFBQSxDQUFBZSxtQkFBbUI7SUFBQ0wsTUFBTSxFQUFFQSxNQUFNO0lBQUFGLFFBQUEsRUFBR0E7RUFBUSxFQUF1QjtBQUM5RSxDQUFDO0FBQUM7QUFBQVAsY0FBQSxHQUFBQyxDQUFBO0FBRUZjLE9BQUEsQ0FBQUMsT0FBQSxHQUFlWixhQUFhIiwiaWdub3JlTGlzdCI6W119

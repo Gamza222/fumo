@@ -1,0 +1,241 @@
+@use 'sass:map';
+
+// ===== SHADOW SYSTEM =====
+// Complete elevation system for enterprise applications
+
+// ===== ELEVATION LEVELS =====
+// Following Material Design elevation principles
+$shadows: (
+  // No elevation
+  'none': none,
+
+  // Subtle elevations - for cards, panels
+  'xs': (0 1px 2px 0 rgb(0 0 0 / 0.05)),
+  'sm': (0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)),
+  'base': (0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)),
+  // Medium elevations - for dropdowns, tooltips
+  'md': (0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)),
+  'lg': (0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)),
+  // High elevations - for modals, popovers
+  'xl': (0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)),
+  '2xl': (0 25px 50px -12px rgb(0 0 0 / 0.25)),
+  // Maximum elevation - for overlays
+  '3xl': (0 35px 60px -12px rgb(0 0 0 / 0.35))
+);
+
+// ===== COLORED SHADOWS =====
+// Shadows with color tints for interactive elements
+$colored-shadows: (
+  'primary': (
+    'sm': 0 1px 2px 0 rgb(59 130 246 / 0.05),
+    'md': 0 4px 6px -1px rgb(59 130 246 / 0.1),
+    'lg': 0 10px 15px -3px rgb(59 130 246 / 0.1),
+    'xl': 0 20px 25px -5px rgb(59 130 246 / 0.1),
+  ),
+  'success': (
+    'sm': 0 1px 2px 0 rgb(34 197 94 / 0.05),
+    'md': 0 4px 6px -1px rgb(34 197 94 / 0.1),
+    'lg': 0 10px 15px -3px rgb(34 197 94 / 0.1),
+    'xl': 0 20px 25px -5px rgb(34 197 94 / 0.1),
+  ),
+  'error': (
+    'sm': 0 1px 2px 0 rgb(239 68 68 / 0.05),
+    'md': 0 4px 6px -1px rgb(239 68 68 / 0.1),
+    'lg': 0 10px 15px -3px rgb(239 68 68 / 0.1),
+    'xl': 0 20px 25px -5px rgb(239 68 68 / 0.1),
+  ),
+  'warning': (
+    'sm': 0 1px 2px 0 rgb(245 158 11 / 0.05),
+    'md': 0 4px 6px -1px rgb(245 158 11 / 0.1),
+    'lg': 0 10px 15px -3px rgb(245 158 11 / 0.1),
+    'xl': 0 20px 25px -5px rgb(245 158 11 / 0.1),
+  ),
+);
+
+// ===== INNER SHADOWS =====
+// For inset effects and depth
+$inner-shadows: (
+  'sm': inset 0 1px 2px 0 rgb(0 0 0 / 0.05),
+  'base': inset 0 2px 4px 0 rgb(0 0 0 / 0.06),
+  'md': inset 0 2px 4px 0 rgb(0 0 0 / 0.1),
+  'lg': inset 0 4px 6px -1px rgb(0 0 0 / 0.1),
+);
+
+// ===== FOCUS SHADOWS =====
+// For focus states and accessibility
+$focus-shadows: (
+  'default': 0 0 0 2px rgb(59 130 246 / 0.5),
+  'primary': 0 0 0 2px rgb(59 130 246 / 0.5),
+  'secondary': 0 0 0 2px rgb(100 116 139 / 0.5),
+  'success': 0 0 0 2px rgb(34 197 94 / 0.5),
+  'error': 0 0 0 2px rgb(239 68 68 / 0.5),
+  'warning': 0 0 0 2px rgb(245 158 11 / 0.5),
+  // Offset focus rings
+  'offset': (
+      0 0 0 2px rgb(255 255 255 / 1),
+      0 0 0 4px rgb(59 130 246 / 0.5),
+    ),
+  'offset-dark': (
+    0 0 0 2px rgb(17 24 39 / 1),
+    0 0 0 4px rgb(59 130 246 / 0.5),
+  ),
+);
+
+// ===== GLOW EFFECTS =====
+// For special emphasis and interactive states
+$glow-effects: (
+  'subtle': 0 0 15px rgb(59 130 246 / 0.1),
+  'medium': 0 0 30px rgb(59 130 246 / 0.2),
+  'strong': 0 0 45px rgb(59 130 246 / 0.3),
+  // Success glow
+  'success-subtle': 0 0 15px rgb(34 197 94 / 0.1),
+  'success-medium': 0 0 30px rgb(34 197 94 / 0.2),
+  // Error glow
+  'error-subtle': 0 0 15px rgb(239 68 68 / 0.1),
+  'error-medium': 0 0 30px rgb(239 68 68 / 0.2),
+  // Warning glow
+  'warning-subtle': 0 0 15px rgb(245 158 11 / 0.1),
+  'warning-medium': 0 0 30px rgb(245 158 11 / 0.2),
+);
+
+// ===== COMBINED SHADOW MAP =====
+$all-shadows: (
+  'shadows': $shadows,
+  'colored': $colored-shadows,
+  'inner': $inner-shadows,
+  'focus': $focus-shadows,
+  'glow': $glow-effects,
+);
+
+// ===== SHADOW FUNCTIONS =====
+@function shadow($size: 'base') {
+  $shadow-value: map.get($shadows, $size);
+
+  @if not $shadow-value {
+    @error "Shadow size '#{$size}' not found in $shadows map.";
+  }
+
+  @return $shadow-value;
+}
+
+@function colored-shadow($color, $size: 'md') {
+  $color-map: map.get($colored-shadows, $color);
+
+  @if not $color-map {
+    @error "Colored shadow color '#{$color}' not found in $colored-shadows map.";
+  }
+
+  $shadow-value: map.get($color-map, $size);
+
+  @if not $shadow-value {
+    @error "Colored shadow size '#{$size}' not found in '#{$color}' color map.";
+  }
+
+  @return $shadow-value;
+}
+
+@function inner-shadow($size: 'base') {
+  $shadow-value: map.get($inner-shadows, $size);
+
+  @if not $shadow-value {
+    @error "Inner shadow size '#{$size}' not found in $inner-shadows map.";
+  }
+
+  @return $shadow-value;
+}
+
+@function focus-shadow($type: 'default') {
+  $shadow-value: map.get($focus-shadows, $type);
+
+  @if not $shadow-value {
+    @error "Focus shadow type '#{$type}' not found in $focus-shadows map.";
+  }
+
+  @return $shadow-value;
+}
+
+@function glow-effect($type: 'subtle') {
+  $glow-value: map.get($glow-effects, $type);
+
+  @if not $glow-value {
+    @error "Glow effect type '#{$type}' not found in $glow-effects map.";
+  }
+
+  @return $glow-value;
+}
+
+// ===== SHADOW MIXINS =====
+@mixin elevation($level: 'base') {
+  box-shadow: shadow($level);
+}
+
+@mixin elevation-hover($base: 'sm', $hover: 'md') {
+  box-shadow: shadow($base);
+  transition: box-shadow 150ms ease-in-out;
+
+  &:hover {
+    box-shadow: shadow($hover);
+  }
+}
+
+@mixin focus-ring($type: 'default') {
+  &:focus {
+    outline: none;
+    box-shadow: focus-shadow($type);
+  }
+
+  &:focus:not(:focus-visible) {
+    box-shadow: none;
+  }
+
+  &:focus-visible {
+    box-shadow: focus-shadow($type);
+  }
+}
+
+@mixin card-elevation {
+  box-shadow: shadow('sm');
+  transition: box-shadow 200ms ease-in-out;
+
+  &:hover {
+    box-shadow: shadow('md');
+  }
+}
+
+@mixin floating-element {
+  box-shadow: shadow('lg');
+}
+
+@mixin overlay-element {
+  box-shadow: shadow('2xl');
+}
+
+@mixin pressed-state {
+  box-shadow: inner-shadow('md');
+}
+
+@mixin glow($type: 'subtle') {
+  box-shadow: glow-effect($type);
+}
+
+@mixin interactive-shadow($color: 'primary', $size: 'md') {
+  box-shadow: shadow('sm');
+  transition: box-shadow 150ms ease-in-out;
+
+  &:hover {
+    box-shadow: colored-shadow($color, $size);
+  }
+
+  &:focus {
+    box-shadow: colored-shadow($color, $size), focus-shadow('default');
+  }
+}
+
+// ===== SHADOW COMBINATIONS =====
+@mixin layered-shadow($base: 'sm', $accent: 'primary') {
+  box-shadow: shadow($base), colored-shadow($accent, 'sm');
+}
+
+@mixin complex-elevation($level: 'md') {
+  box-shadow: shadow($level), inner-shadow('sm');
+}

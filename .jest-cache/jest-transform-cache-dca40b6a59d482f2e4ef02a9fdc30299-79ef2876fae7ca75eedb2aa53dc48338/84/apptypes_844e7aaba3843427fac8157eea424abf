@@ -1,0 +1,60 @@
+1862344c4bd27e2d3acbc409ed5ee449
+"use strict";
+
+/* istanbul ignore next */
+function cov_jyge03aof() {
+  var path = "/Users/gamzaramazanov/Desktop/fumo/src/shared/config/app/app.types.ts";
+  var hash = "e31978d563a0b68b5b65eec69832df3a4b86849c";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/gamzaramazanov/Desktop/fumo/src/shared/config/app/app.types.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      }
+    },
+    fnMap: {},
+    branchMap: {},
+    s: {
+      "0": 0
+    },
+    f: {},
+    b: {},
+    inputSourceMap: {
+      file: "/Users/gamzaramazanov/Desktop/fumo/src/shared/config/app/app.types.ts",
+      mappings: "",
+      names: [],
+      sources: ["/Users/gamzaramazanov/Desktop/fumo/src/shared/config/app/app.types.ts"],
+      sourcesContent: ["import { BuildMode } from '../common';\n\n/**\n * Core application configuration interface\n */\nexport interface AppConfig {\n  apiUrl: string;\n  wsUrl: string;\n  isProd: boolean;\n  isDev: boolean;\n  mode: BuildMode;\n  port: number;\n}\n\n/**\n * Defines the essential build paths for the application\n */\nexport interface BuildPaths {\n  entry: string;\n  output: string;\n  public: string;\n}\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "e31978d563a0b68b5b65eec69832df3a4b86849c"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_jyge03aof = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_jyge03aof();
+cov_jyge03aof().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL2NvbmZpZy9hcHAvYXBwLnR5cGVzLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IEJ1aWxkTW9kZSB9IGZyb20gJy4uL2NvbW1vbic7XG5cbi8qKlxuICogQ29yZSBhcHBsaWNhdGlvbiBjb25maWd1cmF0aW9uIGludGVyZmFjZVxuICovXG5leHBvcnQgaW50ZXJmYWNlIEFwcENvbmZpZyB7XG4gIGFwaVVybDogc3RyaW5nO1xuICB3c1VybDogc3RyaW5nO1xuICBpc1Byb2Q6IGJvb2xlYW47XG4gIGlzRGV2OiBib29sZWFuO1xuICBtb2RlOiBCdWlsZE1vZGU7XG4gIHBvcnQ6IG51bWJlcjtcbn1cblxuLyoqXG4gKiBEZWZpbmVzIHRoZSBlc3NlbnRpYWwgYnVpbGQgcGF0aHMgZm9yIHRoZSBhcHBsaWNhdGlvblxuICovXG5leHBvcnQgaW50ZXJmYWNlIEJ1aWxkUGF0aHMge1xuICBlbnRyeTogc3RyaW5nO1xuICBvdXRwdXQ6IHN0cmluZztcbiAgcHVibGljOiBzdHJpbmc7XG59XG4iXSwibWFwcGluZ3MiOiIiLCJpZ25vcmVMaXN0IjpbXX0=

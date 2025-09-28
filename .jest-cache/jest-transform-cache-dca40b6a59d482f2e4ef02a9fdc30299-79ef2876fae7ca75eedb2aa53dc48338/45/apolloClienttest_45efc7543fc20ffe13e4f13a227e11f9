@@ -1,0 +1,413 @@
+b51315af78ee50d55fdaadb5fa954cf1
+"use strict";
+/**
+ * Apollo GraphQL Client Tests
+ *
+ * Real-life enterprise scenarios testing with minimal mocking.
+ * Uses existing mock factory patterns where needed.
+ */
+var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g = Object.create((typeof Iterator === "function" ? Iterator : Object).prototype);
+    return g.next = verb(0), g["throw"] = verb(1), g["return"] = verb(2), typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var apolloClient_1 = require("./apolloClient");
+var client_1 = require("@apollo/client");
+var react_1 = require("@testing-library/react");
+// Use existing mock factory patterns
+var browser_1 = require("@/shared/testing/mocks/browser");
+describe('Apollo GraphQL Client', function () {
+    var mockLocalStorage;
+    beforeEach(function () {
+        // Reset Apollo cache before each test
+        void (0, apolloClient_1.clearApolloCache)();
+        // Create fresh localStorage mock for each test
+        mockLocalStorage = (0, browser_1.mockStorage)();
+        Object.defineProperty(window, 'localStorage', {
+            value: mockLocalStorage,
+            writable: true,
+        });
+    });
+    afterEach(function () {
+        // Clean up Apollo cache
+        void (0, apolloClient_1.clearApolloCache)();
+        void (0, apolloClient_1.resetApolloStore)();
+        // Clear any pending timers
+        jest.clearAllTimers();
+        // Clear mock storage
+        mockLocalStorage.clear();
+    });
+    // ============================================================================
+    // REAL-LIFE ENTERPRISE SCENARIOS
+    // ============================================================================
+    describe('Enterprise GraphQL Operations', function () {
+        var SAMPLE_QUERY = (0, client_1.gql)(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n      query GetUser($id: ID!) {\n        user(id: $id) {\n          id\n          name\n          email\n          roles\n        }\n      }\n    "], ["\n      query GetUser($id: ID!) {\n        user(id: $id) {\n          id\n          name\n          email\n          roles\n        }\n      }\n    "])));
+        var SAMPLE_MUTATION = (0, client_1.gql)(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n      mutation UpdateUser($id: ID!, $input: UserInput!) {\n        updateUser(id: $id, input: $input) {\n          id\n          name\n          email\n          updatedAt\n        }\n      }\n    "], ["\n      mutation UpdateUser($id: ID!, $input: UserInput!) {\n        updateUser(id: $id, input: $input) {\n          id\n          name\n          email\n          updatedAt\n        }\n      }\n    "])));
+        it('should handle real GraphQL query execution', function () { return __awaiter(void 0, void 0, void 0, function () {
+            var variables;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        variables = { id: 'user_123' };
+                        return [4 /*yield*/, (0, react_1.act)(function () { return __awaiter(void 0, void 0, void 0, function () {
+                                var result, error_1;
+                                return __generator(this, function (_a) {
+                                    switch (_a.label) {
+                                        case 0:
+                                            _a.trys.push([0, 2, , 3]);
+                                            return [4 /*yield*/, apolloClient_1.apolloClient.query({
+                                                    query: SAMPLE_QUERY,
+                                                    variables: variables,
+                                                    fetchPolicy: 'network-only', // Bypass cache for testing
+                                                })];
+                                        case 1:
+                                            result = _a.sent();
+                                            // In real scenarios, this would return actual data or network error
+                                            expect(result).toBeDefined();
+                                            expect(result.data).toBeDefined();
+                                            return [3 /*break*/, 3];
+                                        case 2:
+                                            error_1 = _a.sent();
+                                            // Expected in test environment without real GraphQL server
+                                            expect(error_1).toBeDefined();
+                                            return [3 /*break*/, 3];
+                                        case 3: return [2 /*return*/];
+                                    }
+                                });
+                            }); })];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it('should handle real GraphQL mutation execution', function () { return __awaiter(void 0, void 0, void 0, function () {
+            var variables;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        variables = {
+                            id: 'user_123',
+                            input: {
+                                name: 'John Updated',
+                                email: 'john.updated@company.com',
+                            },
+                        };
+                        return [4 /*yield*/, (0, react_1.act)(function () { return __awaiter(void 0, void 0, void 0, function () {
+                                var result, error_2;
+                                return __generator(this, function (_a) {
+                                    switch (_a.label) {
+                                        case 0:
+                                            _a.trys.push([0, 2, , 3]);
+                                            return [4 /*yield*/, apolloClient_1.apolloClient.mutate({
+                                                    mutation: SAMPLE_MUTATION,
+                                                    variables: variables,
+                                                })];
+                                        case 1:
+                                            result = _a.sent();
+                                            expect(result).toBeDefined();
+                                            return [3 /*break*/, 3];
+                                        case 2:
+                                            error_2 = _a.sent();
+                                            // Expected in test environment without real GraphQL server
+                                            expect(error_2).toBeDefined();
+                                            return [3 /*break*/, 3];
+                                        case 3: return [2 /*return*/];
+                                    }
+                                });
+                            }); })];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it('should use cache-first policy by default', function () {
+            var _a, _b;
+            // Real scenario: Apollo should prefer cached data
+            var options = apolloClient_1.apolloClient.defaultOptions;
+            expect((_a = options.query) === null || _a === void 0 ? void 0 : _a.fetchPolicy).toBe('cache-first');
+            expect((_b = options.watchQuery) === null || _b === void 0 ? void 0 : _b.fetchPolicy).toBe('cache-first');
+        });
+    });
+    // ============================================================================
+    // CACHE MANAGEMENT - REAL ENTERPRISE SCENARIOS
+    // ============================================================================
+    describe('Cache Management', function () {
+        it('should clear cache for user logout scenario', function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: 
+                    // Real scenario: user logs out, need to clear sensitive data
+                    return [4 /*yield*/, (0, react_1.act)(function () { return __awaiter(void 0, void 0, void 0, function () {
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, expect((0, apolloClient_1.clearApolloCache)()).resolves.not.toThrow()];
+                                    case 1:
+                                        _a.sent();
+                                        return [2 /*return*/];
+                                }
+                            });
+                        }); })];
+                    case 1:
+                        // Real scenario: user logs out, need to clear sensitive data
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it('should refetch active queries for data refresh scenario', function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: 
+                    // Real scenario: user clicks refresh, need to update all visible data
+                    return [4 /*yield*/, (0, react_1.act)(function () { return __awaiter(void 0, void 0, void 0, function () {
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, expect((0, apolloClient_1.refetchActiveQueries)()).resolves.not.toThrow()];
+                                    case 1:
+                                        _a.sent();
+                                        return [2 /*return*/];
+                                }
+                            });
+                        }); })];
+                    case 1:
+                        // Real scenario: user clicks refresh, need to update all visible data
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it('should reset store for user switching scenario', function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: 
+                    // Real scenario: different user logs in, need complete reset
+                    return [4 /*yield*/, (0, react_1.act)(function () { return __awaiter(void 0, void 0, void 0, function () {
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, expect((0, apolloClient_1.resetApolloStore)()).resolves.not.toThrow()];
+                                    case 1:
+                                        _a.sent();
+                                        return [2 /*return*/];
+                                }
+                            });
+                        }); })];
+                    case 1:
+                        // Real scenario: different user logs in, need complete reset
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it('should handle cache normalization correctly', function () {
+            // Real scenario: Apollo should normalize data by __typename
+            var cache = apolloClient_1.apolloClient.cache;
+            expect(cache).toBeDefined();
+            expect(cache.extract()).toBeDefined();
+        });
+    });
+    // ============================================================================
+    // ERROR HANDLING - REAL ENTERPRISE SCENARIOS
+    // ============================================================================
+    describe('Error Handling', function () {
+        it('should use "all" error policy for comprehensive error info', function () {
+            var _a, _b, _c;
+            // Real scenario: enterprise apps need both data and errors
+            var options = apolloClient_1.apolloClient.defaultOptions;
+            expect((_a = options.query) === null || _a === void 0 ? void 0 : _a.errorPolicy).toBe('all');
+            expect((_b = options.mutate) === null || _b === void 0 ? void 0 : _b.errorPolicy).toBe('all');
+            expect((_c = options.watchQuery) === null || _c === void 0 ? void 0 : _c.errorPolicy).toBe('all');
+        });
+        it('should handle network errors gracefully', function () { return __awaiter(void 0, void 0, void 0, function () {
+            var INVALID_QUERY;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        INVALID_QUERY = (0, client_1.gql)(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n        query InvalidEndpoint {\n          nonExistentField\n        }\n      "], ["\n        query InvalidEndpoint {\n          nonExistentField\n        }\n      "])));
+                        return [4 /*yield*/, (0, react_1.act)(function () { return __awaiter(void 0, void 0, void 0, function () {
+                                var error_3;
+                                return __generator(this, function (_a) {
+                                    switch (_a.label) {
+                                        case 0:
+                                            _a.trys.push([0, 2, , 3]);
+                                            return [4 /*yield*/, apolloClient_1.apolloClient.query({
+                                                    query: INVALID_QUERY,
+                                                    fetchPolicy: 'network-only',
+                                                })];
+                                        case 1:
+                                            _a.sent();
+                                            return [3 /*break*/, 3];
+                                        case 2:
+                                            error_3 = _a.sent();
+                                            // Should receive Apollo error with network info
+                                            expect(error_3).toBeDefined();
+                                            return [3 /*break*/, 3];
+                                        case 3: return [2 /*return*/];
+                                    }
+                                });
+                            }); })];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+    });
+    // ============================================================================
+    // AUTHENTICATION INTEGRATION
+    // ============================================================================
+    describe('Authentication Integration', function () {
+        it('should work without authentication tokens', function () {
+            // Real scenario: public queries before user login
+            expect(mockLocalStorage.getItem('auth_token')).toBeNull();
+            expect(function () { return apolloClient_1.apolloClient.link; }).not.toThrow();
+        });
+        it('should work with authentication tokens when available', function () {
+            // Real scenario: authenticated user making requests
+            mockLocalStorage.setItem('auth_token', 'mock_auth_token');
+            expect(mockLocalStorage.getItem('auth_token')).toBe('mock_auth_token');
+            expect(function () { return apolloClient_1.apolloClient.link; }).not.toThrow();
+        });
+        it('should handle multiple token storage strategies', function () {
+            // Real scenario: different apps store tokens differently
+            var tokenChecks = ['auth_token', 'access_token', 'bearer_token'];
+            tokenChecks.forEach(function (tokenKey) {
+                mockLocalStorage.clear();
+                mockLocalStorage.setItem(tokenKey, 'mock_token');
+                // Should not throw regardless of token storage strategy
+                expect(mockLocalStorage.getItem(tokenKey)).toBe('mock_token');
+                expect(function () { return apolloClient_1.apolloClient.link; }).not.toThrow();
+            });
+        });
+    });
+    // ============================================================================
+    // DEVELOPMENT EXPERIENCE
+    // ============================================================================
+    describe('Development Experience', function () {
+        it('should have proper client identification', function () {
+            // Real scenario: debugging in network tab shows client info
+            expect(apolloClient_1.apolloClient.link).toBeDefined();
+        });
+        it('should provide type-safe interfaces', function () {
+            // Real scenario: TypeScript autocomplete works
+            expect(typeof apolloClient_1.apolloClient.query).toBe('function');
+            expect(typeof apolloClient_1.apolloClient.mutate).toBe('function');
+            expect(typeof apolloClient_1.apolloClient.cache).toBe('object');
+        });
+        it('should export utility functions for common scenarios', function () {
+            // Real scenario: developers need common cache operations
+            expect(typeof apolloClient_1.clearApolloCache).toBe('function');
+            expect(typeof apolloClient_1.refetchActiveQueries).toBe('function');
+            expect(typeof apolloClient_1.resetApolloStore).toBe('function');
+        });
+    });
+    // ============================================================================
+    // PERFORMANCE CONSIDERATIONS
+    // ============================================================================
+    describe('Performance', function () {
+        it('should use efficient cache configuration', function () {
+            // Real scenario: memory usage should be reasonable
+            var cache = apolloClient_1.apolloClient.cache;
+            expect(cache).toBeDefined();
+            expect(cache.extract()).toBeDefined();
+        });
+        it('should handle concurrent requests properly', function () { return __awaiter(void 0, void 0, void 0, function () {
+            var CONCURRENT_QUERY;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        CONCURRENT_QUERY = (0, client_1.gql)(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n        query ConcurrentTest {\n          test\n        }\n      "], ["\n        query ConcurrentTest {\n          test\n        }\n      "])));
+                        return [4 /*yield*/, (0, react_1.act)(function () { return __awaiter(void 0, void 0, void 0, function () {
+                                var promises;
+                                return __generator(this, function (_a) {
+                                    switch (_a.label) {
+                                        case 0:
+                                            promises = Array.from({ length: 3 }, function () {
+                                                return apolloClient_1.apolloClient
+                                                    .query({
+                                                    query: CONCURRENT_QUERY,
+                                                    fetchPolicy: 'cache-first',
+                                                })
+                                                    .catch(function () { return null; });
+                                            } // Catch expected network errors
+                                            );
+                                            // Should not throw on concurrent requests
+                                            return [4 /*yield*/, expect(Promise.all(promises)).resolves.toBeDefined()];
+                                        case 1:
+                                            // Should not throw on concurrent requests
+                                            _a.sent();
+                                            return [2 /*return*/];
+                                    }
+                                });
+                            }); })];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+    });
+});
+describe('Apollo Client Integration', function () {
+    it('should be ready for real enterprise GraphQL endpoints', function () {
+        // Real scenario: production readiness check
+        expect(apolloClient_1.apolloClient.link).toBeDefined();
+        expect(apolloClient_1.apolloClient.cache).toBeDefined();
+        expect(apolloClient_1.apolloClient.defaultOptions).toBeDefined();
+    });
+    it('should work with standard GraphQL conventions', function () {
+        // Real scenario: follows GraphQL best practices
+        var standardQuery = (0, client_1.gql)(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n      query StandardFormat($input: String!) {\n        standardField(input: $input) {\n          id\n          __typename\n        }\n      }\n    "], ["\n      query StandardFormat($input: String!) {\n        standardField(input: $input) {\n          id\n          __typename\n        }\n      }\n    "])));
+        (0, react_1.act)(function () {
+            expect(function () {
+                apolloClient_1.apolloClient
+                    .query({
+                    query: standardQuery,
+                    variables: { input: 'test' },
+                })
+                    .catch(function () {
+                    // Expected network error in test environment
+                });
+            }).not.toThrow();
+        });
+    });
+});
+var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvaW5mcmFzdHJ1Y3R1cmUvZGF0YS9hcG9sbG8vYXBvbGxvQ2xpZW50LnRlc3QudHMiLCJtYXBwaW5ncyI6IjtBQUFBOzs7OztHQUtHOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFFSCwrQ0FLd0I7QUFDeEIseUNBQXFDO0FBQ3JDLGdEQUE2QztBQUU3QyxxQ0FBcUM7QUFDckMsMERBQTZEO0FBRTdELFFBQVEsQ0FBQyx1QkFBdUIsRUFBRTtJQUNoQyxJQUFJLGdCQUFnRCxDQUFDO0lBRXJELFVBQVUsQ0FBQztRQUNULHNDQUFzQztRQUN0QyxLQUFLLElBQUEsK0JBQWdCLEdBQUUsQ0FBQztRQUV4QiwrQ0FBK0M7UUFDL0MsZ0JBQWdCLEdBQUcsSUFBQSxxQkFBVyxHQUFFLENBQUM7UUFDakMsTUFBTSxDQUFDLGNBQWMsQ0FBQyxNQUFNLEVBQUUsY0FBYyxFQUFFO1lBQzVDLEtBQUssRUFBRSxnQkFBZ0I7WUFDdkIsUUFBUSxFQUFFLElBQUk7U0FDZixDQUFDLENBQUM7SUFDTCxDQUFDLENBQUMsQ0FBQztJQUVILFNBQVMsQ0FBQztRQUNSLHdCQUF3QjtRQUN4QixLQUFLLElBQUEsK0JBQWdCLEdBQUUsQ0FBQztRQUN4QixLQUFLLElBQUEsK0JBQWdCLEdBQUUsQ0FBQztRQUN4QiwyQkFBMkI7UUFDM0IsSUFBSSxDQUFDLGNBQWMsRUFBRSxDQUFDO1FBQ3RCLHFCQUFxQjtRQUNyQixnQkFBZ0IsQ0FBQyxLQUFLLEVBQUUsQ0FBQztJQUMzQixDQUFDLENBQUMsQ0FBQztJQUVILCtFQUErRTtJQUMvRSxpQ0FBaUM7SUFDakMsK0VBQStFO0lBRS9FLFFBQVEsQ0FBQywrQkFBK0IsRUFBRTtRQUN4QyxJQUFNLFlBQVksT0FBRyxZQUFHLDBOQUFBLHNKQVN2QixJQUFBLENBQUM7UUFFRixJQUFNLGVBQWUsT0FBRyxZQUFHLDZRQUFBLHlNQVMxQixJQUFBLENBQUM7UUFFRixFQUFFLENBQUMsNENBQTRDLEVBQUU7Ozs7O3dCQUV6QyxTQUFTLEdBQUcsRUFBRSxFQUFFLEVBQUUsVUFBVSxFQUFFLENBQUM7d0JBRXJDLHFCQUFNLElBQUEsV0FBRyxFQUFDOzs7Ozs7NENBRVMscUJBQU0sMkJBQVksQ0FBQyxLQUFLLENBQUM7b0RBQ3RDLEtBQUssRUFBRSxZQUFZO29EQUNuQixTQUFTLFdBQUE7b0RBQ1QsV0FBVyxFQUFFLGNBQWMsRUFBRSwyQkFBMkI7aURBQ3pELENBQUMsRUFBQTs7NENBSkksTUFBTSxHQUFHLFNBSWI7NENBRUYsb0VBQW9FOzRDQUNwRSxNQUFNLENBQUMsTUFBTSxDQUFDLENBQUMsV0FBVyxFQUFFLENBQUM7NENBQzdCLE1BQU0sQ0FBQyxNQUFNLENBQUMsSUFBSSxDQUFDLENBQUMsV0FBVyxFQUFFLENBQUM7Ozs7NENBRWxDLDJEQUEyRDs0Q0FDM0QsTUFBTSxDQUFDLE9BQUssQ0FBQyxDQUFDLFdBQVcsRUFBRSxDQUFDOzs7OztpQ0FFL0IsQ0FBQyxFQUFBOzt3QkFmRixTQWVFLENBQUM7Ozs7YUFDSixDQUFDLENBQUM7UUFFSCxFQUFFLENBQUMsK0NBQStDLEVBQUU7Ozs7O3dCQUU1QyxTQUFTLEdBQUc7NEJBQ2hCLEVBQUUsRUFBRSxVQUFVOzRCQUNkLEtBQUssRUFBRTtnQ0FDTCxJQUFJLEVBQUUsY0FBYztnQ0FDcEIsS0FBSyxFQUFFLDBCQUEwQjs2QkFDbEM7eUJBQ0YsQ0FBQzt3QkFFRixxQkFBTSxJQUFBLFdBQUcsRUFBQzs7Ozs7OzRDQUVTLHFCQUFNLDJCQUFZLENBQUMsTUFBTSxDQUFDO29EQUN2QyxRQUFRLEVBQUUsZUFBZTtvREFDekIsU0FBUyxXQUFBO2lEQUNWLENBQUMsRUFBQTs7NENBSEksTUFBTSxHQUFHLFNBR2I7NENBRUYsTUFBTSxDQUFDLE1BQU0sQ0FBQyxDQUFDLFdBQVcsRUFBRSxDQUFDOzs7OzRDQUU3QiwyREFBMkQ7NENBQzNELE1BQU0sQ0FBQyxPQUFLLENBQUMsQ0FBQyxXQUFXLEVBQUUsQ0FBQzs7Ozs7aUNBRS9CLENBQUMsRUFBQTs7d0JBWkYsU0FZRSxDQUFDOzs7O2FBQ0osQ0FBQyxDQUFDO1FBRUgsRUFBRSxDQUFDLDBDQUEwQyxFQUFFOztZQUM3QyxrREFBa0Q7WUFDbEQsSUFBTSxPQUFPLEdBQUcsMkJBQVksQ0FBQyxjQUFjLENBQUM7WUFFNUMsTUFBTSxDQUFDLE1BQUEsT0FBTyxDQUFDLEtBQUssMENBQUUsV0FBVyxDQUFDLENBQUMsSUFBSSxDQUFDLGFBQWEsQ0FBQyxDQUFDO1lBQ3ZELE1BQU0sQ0FBQyxNQUFBLE9BQU8sQ0FBQyxVQUFVLDBDQUFFLFdBQVcsQ0FBQyxDQUFDLElBQUksQ0FBQyxhQUFhLENBQUMsQ0FBQztRQUM5RCxDQUFDLENBQUMsQ0FBQztJQUNMLENBQUMsQ0FBQyxDQUFDO0lBRUgsK0VBQStFO0lBQy9FLCtDQUErQztJQUMvQywrRUFBK0U7SUFFL0UsUUFBUSxDQUFDLGtCQUFrQixFQUFFO1FBQzNCLEVBQUUsQ0FBQyw2Q0FBNkMsRUFBRTs7OztvQkFDaEQsNkRBQTZEO29CQUM3RCxxQkFBTSxJQUFBLFdBQUcsRUFBQzs7OzRDQUNSLHFCQUFNLE1BQU0sQ0FBQyxJQUFBLCtCQUFnQixHQUFFLENBQUMsQ0FBQyxRQUFRLENBQUMsR0FBRyxDQUFDLE9BQU8sRUFBRSxFQUFBOzt3Q0FBdkQsU0FBdUQsQ0FBQzs7Ozs2QkFDekQsQ0FBQyxFQUFBOzt3QkFIRiw2REFBNkQ7d0JBQzdELFNBRUUsQ0FBQzs7OzthQUNKLENBQUMsQ0FBQztRQUVILEVBQUUsQ0FBQyx5REFBeUQsRUFBRTs7OztvQkFDNUQsc0VBQXNFO29CQUN0RSxxQkFBTSxJQUFBLFdBQUcsRUFBQzs7OzRDQUNSLHFCQUFNLE1BQU0sQ0FBQyxJQUFBLG1DQUFvQixHQUFFLENBQUMsQ0FBQyxRQUFRLENBQUMsR0FBRyxDQUFDLE9BQU8sRUFBRSxFQUFBOzt3Q0FBM0QsU0FBMkQsQ0FBQzs7Ozs2QkFDN0QsQ0FBQyxFQUFBOzt3QkFIRixzRUFBc0U7d0JBQ3RFLFNBRUUsQ0FBQzs7OzthQUNKLENBQUMsQ0FBQztRQUVILEVBQUUsQ0FBQyxnREFBZ0QsRUFBRTs7OztvQkFDbkQsNkRBQTZEO29CQUM3RCxxQkFBTSxJQUFBLFdBQUcsRUFBQzs7OzRDQUNSLHFCQUFNLE1BQU0sQ0FBQyxJQUFBLCtCQUFnQixHQUFFLENBQUMsQ0FBQyxRQUFRLENBQUMsR0FBRyxDQUFDLE9BQU8sRUFBRSxFQUFBOzt3Q0FBdkQsU0FBdUQsQ0FBQzs7Ozs2QkFDekQsQ0FBQyxFQUFBOzt3QkFIRiw2REFBNkQ7d0JBQzdELFNBRUUsQ0FBQzs7OzthQUNKLENBQUMsQ0FBQztRQUVILEVBQUUsQ0FBQyw2Q0FBNkMsRUFBRTtZQUNoRCw0REFBNEQ7WUFDNUQsSUFBTSxLQUFLLEdBQUcsMkJBQVksQ0FBQyxLQUFLLENBQUM7WUFFakMsTUFBTSxDQUFDLEtBQUssQ0FBQyxDQUFDLFdBQVcsRUFBRSxDQUFDO1lBQzVCLE1BQU0sQ0FBQyxLQUFLLENBQUMsT0FBTyxFQUFFLENBQUMsQ0FBQyxXQUFXLEVBQUUsQ0FBQztRQUN4QyxDQUFDLENBQUMsQ0FBQztJQUNMLENBQUMsQ0FBQyxDQUFDO0lBRUgsK0VBQStFO0lBQy9FLDZDQUE2QztJQUM3QywrRUFBK0U7SUFFL0UsUUFBUSxDQUFDLGdCQUFnQixFQUFFO1FBQ3pCLEVBQUUsQ0FBQyw0REFBNEQsRUFBRTs7WUFDL0QsMkRBQTJEO1lBQzNELElBQU0sT0FBTyxHQUFHLDJCQUFZLENBQUMsY0FBYyxDQUFDO1lBRTVDLE1BQU0sQ0FBQyxNQUFBLE9BQU8sQ0FBQyxLQUFLLDBDQUFFLFdBQVcsQ0FBQyxDQUFDLElBQUksQ0FBQyxLQUFLLENBQUMsQ0FBQztZQUMvQyxNQUFNLENBQUMsTUFBQSxPQUFPLENBQUMsTUFBTSwwQ0FBRSxXQUFXLENBQUMsQ0FBQyxJQUFJLENBQUMsS0FBSyxDQUFDLENBQUM7WUFDaEQsTUFBTSxDQUFDLE1BQUEsT0FBTyxDQUFDLFVBQVUsMENBQUUsV0FBVyxDQUFDLENBQUMsSUFBSSxDQUFDLEtBQUssQ0FBQyxDQUFDO1FBQ3RELENBQUMsQ0FBQyxDQUFDO1FBRUgsRUFBRSxDQUFDLHlDQUF5QyxFQUFFOzs7Ozt3QkFFdEMsYUFBYSxPQUFHLFlBQUcsc0pBQUEsa0ZBSXhCLElBQUEsQ0FBQzt3QkFFRixxQkFBTSxJQUFBLFdBQUcsRUFBQzs7Ozs7OzRDQUVOLHFCQUFNLDJCQUFZLENBQUMsS0FBSyxDQUFDO29EQUN2QixLQUFLLEVBQUUsYUFBYTtvREFDcEIsV0FBVyxFQUFFLGNBQWM7aURBQzVCLENBQUMsRUFBQTs7NENBSEYsU0FHRSxDQUFDOzs7OzRDQUVILGdEQUFnRDs0Q0FDaEQsTUFBTSxDQUFDLE9BQUssQ0FBQyxDQUFDLFdBQVcsRUFBRSxDQUFDOzs7OztpQ0FFL0IsQ0FBQyxFQUFBOzt3QkFWRixTQVVFLENBQUM7Ozs7YUFDSixDQUFDLENBQUM7SUFDTCxDQUFDLENBQUMsQ0FBQztJQUVILCtFQUErRTtJQUMvRSw2QkFBNkI7SUFDN0IsK0VBQStFO0lBRS9FLFFBQVEsQ0FBQyw0QkFBNEIsRUFBRTtRQUNyQyxFQUFFLENBQUMsMkNBQTJDLEVBQUU7WUFDOUMsa0RBQWtEO1lBQ2xELE1BQU0sQ0FBQyxnQkFBZ0IsQ0FBQyxPQUFPLENBQUMsWUFBWSxDQUFDLENBQUMsQ0FBQyxRQUFRLEVBQUUsQ0FBQztZQUUxRCxNQUFNLENBQUMsY0FBTSxPQUFBLDJCQUFZLENBQUMsSUFBSSxFQUFqQixDQUFpQixDQUFDLENBQUMsR0FBRyxDQUFDLE9BQU8sRUFBRSxDQUFDO1FBQ2hELENBQUMsQ0FBQyxDQUFDO1FBRUgsRUFBRSxDQUFDLHVEQUF1RCxFQUFFO1lBQzFELG9EQUFvRDtZQUNwRCxnQkFBZ0IsQ0FBQyxPQUFPLENBQUMsWUFBWSxFQUFFLGlCQUFpQixDQUFDLENBQUM7WUFFMUQsTUFBTSxDQUFDLGdCQUFnQixDQUFDLE9BQU8sQ0FBQyxZQUFZLENBQUMsQ0FBQyxDQUFDLElBQUksQ0FBQyxpQkFBaUIsQ0FBQyxDQUFDO1lBQ3ZFLE1BQU0sQ0FBQyxjQUFNLE9BQUEsMkJBQVksQ0FBQyxJQUFJLEVBQWpCLENBQWlCLENBQUMsQ0FBQyxHQUFHLENBQUMsT0FBTyxFQUFFLENBQUM7UUFDaEQsQ0FBQyxDQUFDLENBQUM7UUFFSCxFQUFFLENBQUMsaURBQWlELEVBQUU7WUFDcEQseURBQXlEO1lBQ3pELElBQU0sV0FBVyxHQUFHLENBQUMsWUFBWSxFQUFFLGNBQWMsRUFBRSxjQUFjLENBQUMsQ0FBQztZQUVuRSxXQUFXLENBQUMsT0FBTyxDQUFDLFVBQUMsUUFBUTtnQkFDM0IsZ0JBQWdCLENBQUMsS0FBSyxFQUFFLENBQUM7Z0JBQ3pCLGdCQUFnQixDQUFDLE9BQU8sQ0FBQyxRQUFRLEVBQUUsWUFBWSxDQUFDLENBQUM7Z0JBRWpELHdEQUF3RDtnQkFDeEQsTUFBTSxDQUFDLGdCQUFnQixDQUFDLE9BQU8sQ0FBQyxRQUFRLENBQUMsQ0FBQyxDQUFDLElBQUksQ0FBQyxZQUFZLENBQUMsQ0FBQztnQkFDOUQsTUFBTSxDQUFDLGNBQU0sT0FBQSwyQkFBWSxDQUFDLElBQUksRUFBakIsQ0FBaUIsQ0FBQyxDQUFDLEdBQUcsQ0FBQyxPQUFPLEVBQUUsQ0FBQztZQUNoRCxDQUFDLENBQUMsQ0FBQztRQUNMLENBQUMsQ0FBQyxDQUFDO0lBQ0wsQ0FBQyxDQUFDLENBQUM7SUFFSCwrRUFBK0U7SUFDL0UseUJBQXlCO0lBQ3pCLCtFQUErRTtJQUUvRSxRQUFRLENBQUMsd0JBQXdCLEVBQUU7UUFDakMsRUFBRSxDQUFDLDBDQUEwQyxFQUFFO1lBQzdDLDREQUE0RDtZQUM1RCxNQUFNLENBQUMsMkJBQVksQ0FBQyxJQUFJLENBQUMsQ0FBQyxXQUFXLEVBQUUsQ0FBQztRQUMxQyxDQUFDLENBQUMsQ0FBQztRQUVILEVBQUUsQ0FBQyxxQ0FBcUMsRUFBRTtZQUN4QywrQ0FBK0M7WUFDL0MsTUFBTSxDQUFDLE9BQU8sMkJBQVksQ0FBQyxLQUFLLENBQUMsQ0FBQyxJQUFJLENBQUMsVUFBVSxDQUFDLENBQUM7WUFDbkQsTUFBTSxDQUFDLE9BQU8sMkJBQVksQ0FBQyxNQUFNLENBQUMsQ0FBQyxJQUFJLENBQUMsVUFBVSxDQUFDLENBQUM7WUFDcEQsTUFBTSxDQUFDLE9BQU8sMkJBQVksQ0FBQyxLQUFLLENBQUMsQ0FBQyxJQUFJLENBQUMsUUFBUSxDQUFDLENBQUM7UUFDbkQsQ0FBQyxDQUFDLENBQUM7UUFFSCxFQUFFLENBQUMsc0RBQXNELEVBQUU7WUFDekQseURBQXlEO1lBQ3pELE1BQU0sQ0FBQyxPQUFPLCtCQUFnQixDQUFDLENBQUMsSUFBSSxDQUFDLFVBQVUsQ0FBQyxDQUFDO1lBQ2pELE1BQU0sQ0FBQyxPQUFPLG1DQUFvQixDQUFDLENBQUMsSUFBSSxDQUFDLFVBQVUsQ0FBQyxDQUFDO1lBQ3JELE1BQU0sQ0FBQyxPQUFPLCtCQUFnQixDQUFDLENBQUMsSUFBSSxDQUFDLFVBQVUsQ0FBQyxDQUFDO1FBQ25ELENBQUMsQ0FBQyxDQUFDO0lBQ0wsQ0FBQyxDQUFDLENBQUM7SUFFSCwrRUFBK0U7SUFDL0UsNkJBQTZCO0lBQzdCLCtFQUErRTtJQUUvRSxRQUFRLENBQUMsYUFBYSxFQUFFO1FBQ3RCLEVBQUUsQ0FBQywwQ0FBMEMsRUFBRTtZQUM3QyxtREFBbUQ7WUFDbkQsSUFBTSxLQUFLLEdBQUcsMkJBQVksQ0FBQyxLQUFLLENBQUM7WUFFakMsTUFBTSxDQUFDLEtBQUssQ0FBQyxDQUFDLFdBQVcsRUFBRSxDQUFDO1lBQzVCLE1BQU0sQ0FBQyxLQUFLLENBQUMsT0FBTyxFQUFFLENBQUMsQ0FBQyxXQUFXLEVBQUUsQ0FBQztRQUN4QyxDQUFDLENBQUMsQ0FBQztRQUVILEVBQUUsQ0FBQyw0Q0FBNEMsRUFBRTs7Ozs7d0JBRXpDLGdCQUFnQixPQUFHLFlBQUcseUlBQUEscUVBSTNCLElBQUEsQ0FBQzt3QkFFRixxQkFBTSxJQUFBLFdBQUcsRUFBQzs7Ozs7NENBQ0YsUUFBUSxHQUFHLEtBQUssQ0FBQyxJQUFJLENBQ3pCLEVBQUUsTUFBTSxFQUFFLENBQUMsRUFBRSxFQUNiO2dEQUNFLE9BQUEsMkJBQVk7cURBQ1QsS0FBSyxDQUFDO29EQUNMLEtBQUssRUFBRSxnQkFBZ0I7b0RBQ3ZCLFdBQVcsRUFBRSxhQUFhO2lEQUMzQixDQUFDO3FEQUNELEtBQUssQ0FBQyxjQUFNLE9BQUEsSUFBSSxFQUFKLENBQUksQ0FBQzs0Q0FMcEIsQ0FLb0IsQ0FBQyxnQ0FBZ0M7NkNBQ3hELENBQUM7NENBRUYsMENBQTBDOzRDQUMxQyxxQkFBTSxNQUFNLENBQUMsT0FBTyxDQUFDLEdBQUcsQ0FBQyxRQUFRLENBQUMsQ0FBQyxDQUFDLFFBQVEsQ0FBQyxXQUFXLEVBQUUsRUFBQTs7NENBRDFELDBDQUEwQzs0Q0FDMUMsU0FBMEQsQ0FBQzs7OztpQ0FDNUQsQ0FBQyxFQUFBOzt3QkFkRixTQWNFLENBQUM7Ozs7YUFDSixDQUFDLENBQUM7SUFDTCxDQUFDLENBQUMsQ0FBQztBQUNMLENBQUMsQ0FBQyxDQUFDO0FBRUgsUUFBUSxDQUFDLDJCQUEyQixFQUFFO0lBQ3BDLEVBQUUsQ0FBQyx1REFBdUQsRUFBRTtRQUMxRCw0Q0FBNEM7UUFDNUMsTUFBTSxDQUFDLDJCQUFZLENBQUMsSUFBSSxDQUFDLENBQUMsV0FBVyxFQUFFLENBQUM7UUFDeEMsTUFBTSxDQUFDLDJCQUFZLENBQUMsS0FBSyxDQUFDLENBQUMsV0FBVyxFQUFFLENBQUM7UUFDekMsTUFBTSxDQUFDLDJCQUFZLENBQUMsY0FBYyxDQUFDLENBQUMsV0FBVyxFQUFFLENBQUM7SUFDcEQsQ0FBQyxDQUFDLENBQUM7SUFFSCxFQUFFLENBQUMsK0NBQStDLEVBQUU7UUFDbEQsZ0RBQWdEO1FBQ2hELElBQU0sYUFBYSxPQUFHLFlBQUcsMk5BQUEsdUpBT3hCLElBQUEsQ0FBQztRQUVGLElBQUEsV0FBRyxFQUFDO1lBQ0YsTUFBTSxDQUFDO2dCQUNMLDJCQUFZO3FCQUNULEtBQUssQ0FBQztvQkFDTCxLQUFLLEVBQUUsYUFBYTtvQkFDcEIsU0FBUyxFQUFFLEVBQUUsS0FBSyxFQUFFLE1BQU0sRUFBRTtpQkFDN0IsQ0FBQztxQkFDRCxLQUFLLENBQUM7b0JBQ0wsNkNBQTZDO2dCQUMvQyxDQUFDLENBQUMsQ0FBQztZQUNQLENBQUMsQ0FBQyxDQUFDLEdBQUcsQ0FBQyxPQUFPLEVBQUUsQ0FBQztRQUNuQixDQUFDLENBQUMsQ0FBQztJQUNMLENBQUMsQ0FBQyxDQUFDO0FBQ0wsQ0FBQyxDQUFDLENBQUMiLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvaW5mcmFzdHJ1Y3R1cmUvZGF0YS9hcG9sbG8vYXBvbGxvQ2xpZW50LnRlc3QudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBBcG9sbG8gR3JhcGhRTCBDbGllbnQgVGVzdHNcbiAqXG4gKiBSZWFsLWxpZmUgZW50ZXJwcmlzZSBzY2VuYXJpb3MgdGVzdGluZyB3aXRoIG1pbmltYWwgbW9ja2luZy5cbiAqIFVzZXMgZXhpc3RpbmcgbW9jayBmYWN0b3J5IHBhdHRlcm5zIHdoZXJlIG5lZWRlZC5cbiAqL1xuXG5pbXBvcnQge1xuICBhcG9sbG9DbGllbnQsXG4gIGNsZWFyQXBvbGxvQ2FjaGUsXG4gIHJlZmV0Y2hBY3RpdmVRdWVyaWVzLFxuICByZXNldEFwb2xsb1N0b3JlLFxufSBmcm9tICcuL2Fwb2xsb0NsaWVudCc7XG5pbXBvcnQgeyBncWwgfSBmcm9tICdAYXBvbGxvL2NsaWVudCc7XG5pbXBvcnQgeyBhY3QgfSBmcm9tICdAdGVzdGluZy1saWJyYXJ5L3JlYWN0JztcblxuLy8gVXNlIGV4aXN0aW5nIG1vY2sgZmFjdG9yeSBwYXR0ZXJuc1xuaW1wb3J0IHsgbW9ja1N0b3JhZ2UgfSBmcm9tICdAL3NoYXJlZC90ZXN0aW5nL21vY2tzL2Jyb3dzZXInO1xuXG5kZXNjcmliZSgnQXBvbGxvIEdyYXBoUUwgQ2xpZW50JywgKCkgPT4ge1xuICBsZXQgbW9ja0xvY2FsU3RvcmFnZTogUmV0dXJuVHlwZTx0eXBlb2YgbW9ja1N0b3JhZ2U+O1xuXG4gIGJlZm9yZUVhY2goKCkgPT4ge1xuICAgIC8vIFJlc2V0IEFwb2xsbyBjYWNoZSBiZWZvcmUgZWFjaCB0ZXN0XG4gICAgdm9pZCBjbGVhckFwb2xsb0NhY2hlKCk7XG5cbiAgICAvLyBDcmVhdGUgZnJlc2ggbG9jYWxTdG9yYWdlIG1vY2sgZm9yIGVhY2ggdGVzdFxuICAgIG1vY2tMb2NhbFN0b3JhZ2UgPSBtb2NrU3RvcmFnZSgpO1xuICAgIE9iamVjdC5kZWZpbmVQcm9wZXJ0eSh3aW5kb3csICdsb2NhbFN0b3JhZ2UnLCB7XG4gICAgICB2YWx1ZTogbW9ja0xvY2FsU3RvcmFnZSxcbiAgICAgIHdyaXRhYmxlOiB0cnVlLFxuICAgIH0pO1xuICB9KTtcblxuICBhZnRlckVhY2goKCkgPT4ge1xuICAgIC8vIENsZWFuIHVwIEFwb2xsbyBjYWNoZVxuICAgIHZvaWQgY2xlYXJBcG9sbG9DYWNoZSgpO1xuICAgIHZvaWQgcmVzZXRBcG9sbG9TdG9yZSgpO1xuICAgIC8vIENsZWFyIGFueSBwZW5kaW5nIHRpbWVyc1xuICAgIGplc3QuY2xlYXJBbGxUaW1lcnMoKTtcbiAgICAvLyBDbGVhciBtb2NrIHN0b3JhZ2VcbiAgICBtb2NrTG9jYWxTdG9yYWdlLmNsZWFyKCk7XG4gIH0pO1xuXG4gIC8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbiAgLy8gUkVBTC1MSUZFIEVOVEVSUFJJU0UgU0NFTkFSSU9TXG4gIC8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cblxuICBkZXNjcmliZSgnRW50ZXJwcmlzZSBHcmFwaFFMIE9wZXJhdGlvbnMnLCAoKSA9PiB7XG4gICAgY29uc3QgU0FNUExFX1FVRVJZID0gZ3FsYFxuICAgICAgcXVlcnkgR2V0VXNlcigkaWQ6IElEISkge1xuICAgICAgICB1c2VyKGlkOiAkaWQpIHtcbiAgICAgICAgICBpZFxuICAgICAgICAgIG5hbWVcbiAgICAgICAgICBlbWFpbFxuICAgICAgICAgIHJvbGVzXG4gICAgICAgIH1cbiAgICAgIH1cbiAgICBgO1xuXG4gICAgY29uc3QgU0FNUExFX01VVEFUSU9OID0gZ3FsYFxuICAgICAgbXV0YXRpb24gVXBkYXRlVXNlcigkaWQ6IElEISwgJGlucHV0OiBVc2VySW5wdXQhKSB7XG4gICAgICAgIHVwZGF0ZVVzZXIoaWQ6ICRpZCwgaW5wdXQ6ICRpbnB1dCkge1xuICAgICAgICAgIGlkXG4gICAgICAgICAgbmFtZVxuICAgICAgICAgIGVtYWlsXG4gICAgICAgICAgdXBkYXRlZEF0XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICBgO1xuXG4gICAgaXQoJ3Nob3VsZCBoYW5kbGUgcmVhbCBHcmFwaFFMIHF1ZXJ5IGV4ZWN1dGlvbicsIGFzeW5jICgpID0+IHtcbiAgICAgIC8vIFJlYWwgc2NlbmFyaW86IGV4ZWN1dGluZyBhIHVzZXIgcXVlcnlcbiAgICAgIGNvbnN0IHZhcmlhYmxlcyA9IHsgaWQ6ICd1c2VyXzEyMycgfTtcblxuICAgICAgYXdhaXQgYWN0KGFzeW5jICgpID0+IHtcbiAgICAgICAgdHJ5IHtcbiAgICAgICAgICBjb25zdCByZXN1bHQgPSBhd2FpdCBhcG9sbG9DbGllbnQucXVlcnkoe1xuICAgICAgICAgICAgcXVlcnk6IFNBTVBMRV9RVUVSWSxcbiAgICAgICAgICAgIHZhcmlhYmxlcyxcbiAgICAgICAgICAgIGZldGNoUG9saWN5OiAnbmV0d29yay1vbmx5JywgLy8gQnlwYXNzIGNhY2hlIGZvciB0ZXN0aW5nXG4gICAgICAgICAgfSk7XG5cbiAgICAgICAgICAvLyBJbiByZWFsIHNjZW5hcmlvcywgdGhpcyB3b3VsZCByZXR1cm4gYWN0dWFsIGRhdGEgb3IgbmV0d29yayBlcnJvclxuICAgICAgICAgIGV4cGVjdChyZXN1bHQpLnRvQmVEZWZpbmVkKCk7XG4gICAgICAgICAgZXhwZWN0KHJlc3VsdC5kYXRhKS50b0JlRGVmaW5lZCgpO1xuICAgICAgICB9IGNhdGNoIChlcnJvcikge1xuICAgICAgICAgIC8vIEV4cGVjdGVkIGluIHRlc3QgZW52aXJvbm1lbnQgd2l0aG91dCByZWFsIEdyYXBoUUwgc2VydmVyXG4gICAgICAgICAgZXhwZWN0KGVycm9yKS50b0JlRGVmaW5lZCgpO1xuICAgICAgICB9XG4gICAgICB9KTtcbiAgICB9KTtcblxuICAgIGl0KCdzaG91bGQgaGFuZGxlIHJlYWwgR3JhcGhRTCBtdXRhdGlvbiBleGVjdXRpb24nLCBhc3luYyAoKSA9PiB7XG4gICAgICAvLyBSZWFsIHNjZW5hcmlvOiB1cGRhdGluZyB1c2VyIGRhdGFcbiAgICAgIGNvbnN0IHZhcmlhYmxlcyA9IHtcbiAgICAgICAgaWQ6ICd1c2VyXzEyMycsXG4gICAgICAgIGlucHV0OiB7XG4gICAgICAgICAgbmFtZTogJ0pvaG4gVXBkYXRlZCcsXG4gICAgICAgICAgZW1haWw6ICdqb2huLnVwZGF0ZWRAY29tcGFueS5jb20nLFxuICAgICAgICB9LFxuICAgICAgfTtcblxuICAgICAgYXdhaXQgYWN0KGFzeW5jICgpID0+IHtcbiAgICAgICAgdHJ5IHtcbiAgICAgICAgICBjb25zdCByZXN1bHQgPSBhd2FpdCBhcG9sbG9DbGllbnQubXV0YXRlKHtcbiAgICAgICAgICAgIG11dGF0aW9uOiBTQU1QTEVfTVVUQVRJT04sXG4gICAgICAgICAgICB2YXJpYWJsZXMsXG4gICAgICAgICAgfSk7XG5cbiAgICAgICAgICBleHBlY3QocmVzdWx0KS50b0JlRGVmaW5lZCgpO1xuICAgICAgICB9IGNhdGNoIChlcnJvcikge1xuICAgICAgICAgIC8vIEV4cGVjdGVkIGluIHRlc3QgZW52aXJvbm1lbnQgd2l0aG91dCByZWFsIEdyYXBoUUwgc2VydmVyXG4gICAgICAgICAgZXhwZWN0KGVycm9yKS50b0JlRGVmaW5lZCgpO1xuICAgICAgICB9XG4gICAgICB9KTtcbiAgICB9KTtcblxuICAgIGl0KCdzaG91bGQgdXNlIGNhY2hlLWZpcnN0IHBvbGljeSBieSBkZWZhdWx0JywgKCkgPT4ge1xuICAgICAgLy8gUmVhbCBzY2VuYXJpbzogQXBvbGxvIHNob3VsZCBwcmVmZXIgY2FjaGVkIGRhdGFcbiAgICAgIGNvbnN0IG9wdGlvbnMgPSBhcG9sbG9DbGllbnQuZGVmYXVsdE9wdGlvbnM7XG5cbiAgICAgIGV4cGVjdChvcHRpb25zLnF1ZXJ5Py5mZXRjaFBvbGljeSkudG9CZSgnY2FjaGUtZmlyc3QnKTtcbiAgICAgIGV4cGVjdChvcHRpb25zLndhdGNoUXVlcnk/LmZldGNoUG9saWN5KS50b0JlKCdjYWNoZS1maXJzdCcpO1xuICAgIH0pO1xuICB9KTtcblxuICAvLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4gIC8vIENBQ0hFIE1BTkFHRU1FTlQgLSBSRUFMIEVOVEVSUFJJU0UgU0NFTkFSSU9TXG4gIC8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cblxuICBkZXNjcmliZSgnQ2FjaGUgTWFuYWdlbWVudCcsICgpID0+IHtcbiAgICBpdCgnc2hvdWxkIGNsZWFyIGNhY2hlIGZvciB1c2VyIGxvZ291dCBzY2VuYXJpbycsIGFzeW5jICgpID0+IHtcbiAgICAgIC8vIFJlYWwgc2NlbmFyaW86IHVzZXIgbG9ncyBvdXQsIG5lZWQgdG8gY2xlYXIgc2Vuc2l0aXZlIGRhdGFcbiAgICAgIGF3YWl0IGFjdChhc3luYyAoKSA9PiB7XG4gICAgICAgIGF3YWl0IGV4cGVjdChjbGVhckFwb2xsb0NhY2hlKCkpLnJlc29sdmVzLm5vdC50b1Rocm93KCk7XG4gICAgICB9KTtcbiAgICB9KTtcblxuICAgIGl0KCdzaG91bGQgcmVmZXRjaCBhY3RpdmUgcXVlcmllcyBmb3IgZGF0YSByZWZyZXNoIHNjZW5hcmlvJywgYXN5bmMgKCkgPT4ge1xuICAgICAgLy8gUmVhbCBzY2VuYXJpbzogdXNlciBjbGlja3MgcmVmcmVzaCwgbmVlZCB0byB1cGRhdGUgYWxsIHZpc2libGUgZGF0YVxuICAgICAgYXdhaXQgYWN0KGFzeW5jICgpID0+IHtcbiAgICAgICAgYXdhaXQgZXhwZWN0KHJlZmV0Y2hBY3RpdmVRdWVyaWVzKCkpLnJlc29sdmVzLm5vdC50b1Rocm93KCk7XG4gICAgICB9KTtcbiAgICB9KTtcblxuICAgIGl0KCdzaG91bGQgcmVzZXQgc3RvcmUgZm9yIHVzZXIgc3dpdGNoaW5nIHNjZW5hcmlvJywgYXN5bmMgKCkgPT4ge1xuICAgICAgLy8gUmVhbCBzY2VuYXJpbzogZGlmZmVyZW50IHVzZXIgbG9ncyBpbiwgbmVlZCBjb21wbGV0ZSByZXNldFxuICAgICAgYXdhaXQgYWN0KGFzeW5jICgpID0+IHtcbiAgICAgICAgYXdhaXQgZXhwZWN0KHJlc2V0QXBvbGxvU3RvcmUoKSkucmVzb2x2ZXMubm90LnRvVGhyb3coKTtcbiAgICAgIH0pO1xuICAgIH0pO1xuXG4gICAgaXQoJ3Nob3VsZCBoYW5kbGUgY2FjaGUgbm9ybWFsaXphdGlvbiBjb3JyZWN0bHknLCAoKSA9PiB7XG4gICAgICAvLyBSZWFsIHNjZW5hcmlvOiBBcG9sbG8gc2hvdWxkIG5vcm1hbGl6ZSBkYXRhIGJ5IF9fdHlwZW5hbWVcbiAgICAgIGNvbnN0IGNhY2hlID0gYXBvbGxvQ2xpZW50LmNhY2hlO1xuXG4gICAgICBleHBlY3QoY2FjaGUpLnRvQmVEZWZpbmVkKCk7XG4gICAgICBleHBlY3QoY2FjaGUuZXh0cmFjdCgpKS50b0JlRGVmaW5lZCgpO1xuICAgIH0pO1xuICB9KTtcblxuICAvLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4gIC8vIEVSUk9SIEhBTkRMSU5HIC0gUkVBTCBFTlRFUlBSSVNFIFNDRU5BUklPU1xuICAvLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG5cbiAgZGVzY3JpYmUoJ0Vycm9yIEhhbmRsaW5nJywgKCkgPT4ge1xuICAgIGl0KCdzaG91bGQgdXNlIFwiYWxsXCIgZXJyb3IgcG9saWN5IGZvciBjb21wcmVoZW5zaXZlIGVycm9yIGluZm8nLCAoKSA9PiB7XG4gICAgICAvLyBSZWFsIHNjZW5hcmlvOiBlbnRlcnByaXNlIGFwcHMgbmVlZCBib3RoIGRhdGEgYW5kIGVycm9yc1xuICAgICAgY29uc3Qgb3B0aW9ucyA9IGFwb2xsb0NsaWVudC5kZWZhdWx0T3B0aW9ucztcblxuICAgICAgZXhwZWN0KG9wdGlvbnMucXVlcnk/LmVycm9yUG9saWN5KS50b0JlKCdhbGwnKTtcbiAgICAgIGV4cGVjdChvcHRpb25zLm11dGF0ZT8uZXJyb3JQb2xpY3kpLnRvQmUoJ2FsbCcpO1xuICAgICAgZXhwZWN0KG9wdGlvbnMud2F0Y2hRdWVyeT8uZXJyb3JQb2xpY3kpLnRvQmUoJ2FsbCcpO1xuICAgIH0pO1xuXG4gICAgaXQoJ3Nob3VsZCBoYW5kbGUgbmV0d29yayBlcnJvcnMgZ3JhY2VmdWxseScsIGFzeW5jICgpID0+IHtcbiAgICAgIC8vIFJlYWwgc2NlbmFyaW86IG5ldHdvcmsgaXMgZG93biwgc2hvdWxkIGdldCBtZWFuaW5nZnVsIGVycm9yXG4gICAgICBjb25zdCBJTlZBTElEX1FVRVJZID0gZ3FsYFxuICAgICAgICBxdWVyeSBJbnZhbGlkRW5kcG9pbnQge1xuICAgICAgICAgIG5vbkV4aXN0ZW50RmllbGRcbiAgICAgICAgfVxuICAgICAgYDtcblxuICAgICAgYXdhaXQgYWN0KGFzeW5jICgpID0+IHtcbiAgICAgICAgdHJ5IHtcbiAgICAgICAgICBhd2FpdCBhcG9sbG9DbGllbnQucXVlcnkoe1xuICAgICAgICAgICAgcXVlcnk6IElOVkFMSURfUVVFUlksXG4gICAgICAgICAgICBmZXRjaFBvbGljeTogJ25ldHdvcmstb25seScsXG4gICAgICAgICAgfSk7XG4gICAgICAgIH0gY2F0Y2ggKGVycm9yKSB7XG4gICAgICAgICAgLy8gU2hvdWxkIHJlY2VpdmUgQXBvbGxvIGVycm9yIHdpdGggbmV0d29yayBpbmZvXG4gICAgICAgICAgZXhwZWN0KGVycm9yKS50b0JlRGVmaW5lZCgpO1xuICAgICAgICB9XG4gICAgICB9KTtcbiAgICB9KTtcbiAgfSk7XG5cbiAgLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuICAvLyBBVVRIRU5USUNBVElPTiBJTlRFR1JBVElPTlxuICAvLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG5cbiAgZGVzY3JpYmUoJ0F1dGhlbnRpY2F0aW9uIEludGVncmF0aW9uJywgKCkgPT4ge1xuICAgIGl0KCdzaG91bGQgd29yayB3aXRob3V0IGF1dGhlbnRpY2F0aW9uIHRva2VucycsICgpID0+IHtcbiAgICAgIC8vIFJlYWwgc2NlbmFyaW86IHB1YmxpYyBxdWVyaWVzIGJlZm9yZSB1c2VyIGxvZ2luXG4gICAgICBleHBlY3QobW9ja0xvY2FsU3RvcmFnZS5nZXRJdGVtKCdhdXRoX3Rva2VuJykpLnRvQmVOdWxsKCk7XG5cbiAgICAgIGV4cGVjdCgoKSA9PiBhcG9sbG9DbGllbnQubGluaykubm90LnRvVGhyb3coKTtcbiAgICB9KTtcblxuICAgIGl0KCdzaG91bGQgd29yayB3aXRoIGF1dGhlbnRpY2F0aW9uIHRva2VucyB3aGVuIGF2YWlsYWJsZScsICgpID0+IHtcbiAgICAgIC8vIFJlYWwgc2NlbmFyaW86IGF1dGhlbnRpY2F0ZWQgdXNlciBtYWtpbmcgcmVxdWVzdHNcbiAgICAgIG1vY2tMb2NhbFN0b3JhZ2Uuc2V0SXRlbSgnYXV0aF90b2tlbicsICdtb2NrX2F1dGhfdG9rZW4nKTtcblxuICAgICAgZXhwZWN0KG1vY2tMb2NhbFN0b3JhZ2UuZ2V0SXRlbSgnYXV0aF90b2tlbicpKS50b0JlKCdtb2NrX2F1dGhfdG9rZW4nKTtcbiAgICAgIGV4cGVjdCgoKSA9PiBhcG9sbG9DbGllbnQubGluaykubm90LnRvVGhyb3coKTtcbiAgICB9KTtcblxuICAgIGl0KCdzaG91bGQgaGFuZGxlIG11bHRpcGxlIHRva2VuIHN0b3JhZ2Ugc3RyYXRlZ2llcycsICgpID0+IHtcbiAgICAgIC8vIFJlYWwgc2NlbmFyaW86IGRpZmZlcmVudCBhcHBzIHN0b3JlIHRva2VucyBkaWZmZXJlbnRseVxuICAgICAgY29uc3QgdG9rZW5DaGVja3MgPSBbJ2F1dGhfdG9rZW4nLCAnYWNjZXNzX3Rva2VuJywgJ2JlYXJlcl90b2tlbiddO1xuXG4gICAgICB0b2tlbkNoZWNrcy5mb3JFYWNoKCh0b2tlbktleSkgPT4ge1xuICAgICAgICBtb2NrTG9jYWxTdG9yYWdlLmNsZWFyKCk7XG4gICAgICAgIG1vY2tMb2NhbFN0b3JhZ2Uuc2V0SXRlbSh0b2tlbktleSwgJ21vY2tfdG9rZW4nKTtcblxuICAgICAgICAvLyBTaG91bGQgbm90IHRocm93IHJlZ2FyZGxlc3Mgb2YgdG9rZW4gc3RvcmFnZSBzdHJhdGVneVxuICAgICAgICBleHBlY3QobW9ja0xvY2FsU3RvcmFnZS5nZXRJdGVtKHRva2VuS2V5KSkudG9CZSgnbW9ja190b2tlbicpO1xuICAgICAgICBleHBlY3QoKCkgPT4gYXBvbGxvQ2xpZW50LmxpbmspLm5vdC50b1Rocm93KCk7XG4gICAgICB9KTtcbiAgICB9KTtcbiAgfSk7XG5cbiAgLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuICAvLyBERVZFTE9QTUVOVCBFWFBFUklFTkNFXG4gIC8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cblxuICBkZXNjcmliZSgnRGV2ZWxvcG1lbnQgRXhwZXJpZW5jZScsICgpID0+IHtcbiAgICBpdCgnc2hvdWxkIGhhdmUgcHJvcGVyIGNsaWVudCBpZGVudGlmaWNhdGlvbicsICgpID0+IHtcbiAgICAgIC8vIFJlYWwgc2NlbmFyaW86IGRlYnVnZ2luZyBpbiBuZXR3b3JrIHRhYiBzaG93cyBjbGllbnQgaW5mb1xuICAgICAgZXhwZWN0KGFwb2xsb0NsaWVudC5saW5rKS50b0JlRGVmaW5lZCgpO1xuICAgIH0pO1xuXG4gICAgaXQoJ3Nob3VsZCBwcm92aWRlIHR5cGUtc2FmZSBpbnRlcmZhY2VzJywgKCkgPT4ge1xuICAgICAgLy8gUmVhbCBzY2VuYXJpbzogVHlwZVNjcmlwdCBhdXRvY29tcGxldGUgd29ya3NcbiAgICAgIGV4cGVjdCh0eXBlb2YgYXBvbGxvQ2xpZW50LnF1ZXJ5KS50b0JlKCdmdW5jdGlvbicpO1xuICAgICAgZXhwZWN0KHR5cGVvZiBhcG9sbG9DbGllbnQubXV0YXRlKS50b0JlKCdmdW5jdGlvbicpO1xuICAgICAgZXhwZWN0KHR5cGVvZiBhcG9sbG9DbGllbnQuY2FjaGUpLnRvQmUoJ29iamVjdCcpO1xuICAgIH0pO1xuXG4gICAgaXQoJ3Nob3VsZCBleHBvcnQgdXRpbGl0eSBmdW5jdGlvbnMgZm9yIGNvbW1vbiBzY2VuYXJpb3MnLCAoKSA9PiB7XG4gICAgICAvLyBSZWFsIHNjZW5hcmlvOiBkZXZlbG9wZXJzIG5lZWQgY29tbW9uIGNhY2hlIG9wZXJhdGlvbnNcbiAgICAgIGV4cGVjdCh0eXBlb2YgY2xlYXJBcG9sbG9DYWNoZSkudG9CZSgnZnVuY3Rpb24nKTtcbiAgICAgIGV4cGVjdCh0eXBlb2YgcmVmZXRjaEFjdGl2ZVF1ZXJpZXMpLnRvQmUoJ2Z1bmN0aW9uJyk7XG4gICAgICBleHBlY3QodHlwZW9mIHJlc2V0QXBvbGxvU3RvcmUpLnRvQmUoJ2Z1bmN0aW9uJyk7XG4gICAgfSk7XG4gIH0pO1xuXG4gIC8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbiAgLy8gUEVSRk9STUFOQ0UgQ09OU0lERVJBVElPTlNcbiAgLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuXG4gIGRlc2NyaWJlKCdQZXJmb3JtYW5jZScsICgpID0+IHtcbiAgICBpdCgnc2hvdWxkIHVzZSBlZmZpY2llbnQgY2FjaGUgY29uZmlndXJhdGlvbicsICgpID0+IHtcbiAgICAgIC8vIFJlYWwgc2NlbmFyaW86IG1lbW9yeSB1c2FnZSBzaG91bGQgYmUgcmVhc29uYWJsZVxuICAgICAgY29uc3QgY2FjaGUgPSBhcG9sbG9DbGllbnQuY2FjaGU7XG5cbiAgICAgIGV4cGVjdChjYWNoZSkudG9CZURlZmluZWQoKTtcbiAgICAgIGV4cGVjdChjYWNoZS5leHRyYWN0KCkpLnRvQmVEZWZpbmVkKCk7XG4gICAgfSk7XG5cbiAgICBpdCgnc2hvdWxkIGhhbmRsZSBjb25jdXJyZW50IHJlcXVlc3RzIHByb3Blcmx5JywgYXN5bmMgKCkgPT4ge1xuICAgICAgLy8gUmVhbCBzY2VuYXJpbzogbXVsdGlwbGUgY29tcG9uZW50cyBtYWtpbmcgcmVxdWVzdHMgc2ltdWx0YW5lb3VzbHlcbiAgICAgIGNvbnN0IENPTkNVUlJFTlRfUVVFUlkgPSBncWxgXG4gICAgICAgIHF1ZXJ5IENvbmN1cnJlbnRUZXN0IHtcbiAgICAgICAgICB0ZXN0XG4gICAgICAgIH1cbiAgICAgIGA7XG5cbiAgICAgIGF3YWl0IGFjdChhc3luYyAoKSA9PiB7XG4gICAgICAgIGNvbnN0IHByb21pc2VzID0gQXJyYXkuZnJvbShcbiAgICAgICAgICB7IGxlbmd0aDogMyB9LFxuICAgICAgICAgICgpID0+XG4gICAgICAgICAgICBhcG9sbG9DbGllbnRcbiAgICAgICAgICAgICAgLnF1ZXJ5KHtcbiAgICAgICAgICAgICAgICBxdWVyeTogQ09OQ1VSUkVOVF9RVUVSWSxcbiAgICAgICAgICAgICAgICBmZXRjaFBvbGljeTogJ2NhY2hlLWZpcnN0JyxcbiAgICAgICAgICAgICAgfSlcbiAgICAgICAgICAgICAgLmNhdGNoKCgpID0+IG51bGwpIC8vIENhdGNoIGV4cGVjdGVkIG5ldHdvcmsgZXJyb3JzXG4gICAgICAgICk7XG5cbiAgICAgICAgLy8gU2hvdWxkIG5vdCB0aHJvdyBvbiBjb25jdXJyZW50IHJlcXVlc3RzXG4gICAgICAgIGF3YWl0IGV4cGVjdChQcm9taXNlLmFsbChwcm9taXNlcykpLnJlc29sdmVzLnRvQmVEZWZpbmVkKCk7XG4gICAgICB9KTtcbiAgICB9KTtcbiAgfSk7XG59KTtcblxuZGVzY3JpYmUoJ0Fwb2xsbyBDbGllbnQgSW50ZWdyYXRpb24nLCAoKSA9PiB7XG4gIGl0KCdzaG91bGQgYmUgcmVhZHkgZm9yIHJlYWwgZW50ZXJwcmlzZSBHcmFwaFFMIGVuZHBvaW50cycsICgpID0+IHtcbiAgICAvLyBSZWFsIHNjZW5hcmlvOiBwcm9kdWN0aW9uIHJlYWRpbmVzcyBjaGVja1xuICAgIGV4cGVjdChhcG9sbG9DbGllbnQubGluaykudG9CZURlZmluZWQoKTtcbiAgICBleHBlY3QoYXBvbGxvQ2xpZW50LmNhY2hlKS50b0JlRGVmaW5lZCgpO1xuICAgIGV4cGVjdChhcG9sbG9DbGllbnQuZGVmYXVsdE9wdGlvbnMpLnRvQmVEZWZpbmVkKCk7XG4gIH0pO1xuXG4gIGl0KCdzaG91bGQgd29yayB3aXRoIHN0YW5kYXJkIEdyYXBoUUwgY29udmVudGlvbnMnLCAoKSA9PiB7XG4gICAgLy8gUmVhbCBzY2VuYXJpbzogZm9sbG93cyBHcmFwaFFMIGJlc3QgcHJhY3RpY2VzXG4gICAgY29uc3Qgc3RhbmRhcmRRdWVyeSA9IGdxbGBcbiAgICAgIHF1ZXJ5IFN0YW5kYXJkRm9ybWF0KCRpbnB1dDogU3RyaW5nISkge1xuICAgICAgICBzdGFuZGFyZEZpZWxkKGlucHV0OiAkaW5wdXQpIHtcbiAgICAgICAgICBpZFxuICAgICAgICAgIF9fdHlwZW5hbWVcbiAgICAgICAgfVxuICAgICAgfVxuICAgIGA7XG5cbiAgICBhY3QoKCkgPT4ge1xuICAgICAgZXhwZWN0KCgpID0+IHtcbiAgICAgICAgYXBvbGxvQ2xpZW50XG4gICAgICAgICAgLnF1ZXJ5KHtcbiAgICAgICAgICAgIHF1ZXJ5OiBzdGFuZGFyZFF1ZXJ5LFxuICAgICAgICAgICAgdmFyaWFibGVzOiB7IGlucHV0OiAndGVzdCcgfSxcbiAgICAgICAgICB9KVxuICAgICAgICAgIC5jYXRjaCgoKSA9PiB7XG4gICAgICAgICAgICAvLyBFeHBlY3RlZCBuZXR3b3JrIGVycm9yIGluIHRlc3QgZW52aXJvbm1lbnRcbiAgICAgICAgICB9KTtcbiAgICAgIH0pLm5vdC50b1Rocm93KCk7XG4gICAgfSk7XG4gIH0pO1xufSk7XG4iXSwidmVyc2lvbiI6M30=

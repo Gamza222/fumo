@@ -1,0 +1,357 @@
+@use 'sass:map';
+
+// ===== SPACING SYSTEM =====
+// Complete spacing scale for enterprise applications
+
+// ===== BASE SPACING SCALE =====
+// Following 4px grid system with logical naming
+$spacing: (
+  // Micro spacing - for fine adjustments
+  'px': 1px,
+  '0.5': 0.125rem,
+  // 2px
+  '1': 0.25rem,
+  // 4px
+  '1.5': 0.375rem,
+
+  // 6px
+  // Base spacing - most commonly used
+  '2': 0.5rem,
+  // 8px
+  '2.5': 0.625rem,
+  // 10px
+  '3': 0.75rem,
+  // 12px
+  '3.5': 0.875rem,
+  // 14px
+  '4': 1rem,
+  // 16px
+  '5': 1.25rem,
+  // 20px
+  '6': 1.5rem,
+  // 24px
+  '7': 1.75rem,
+  // 28px
+  '8': 2rem,
+  // 32px
+  '9': 2.25rem,
+  // 36px
+  '10': 2.5rem,
+  // 40px
+  '11': 2.75rem,
+  // 44px
+  '12': 3rem,
+
+  // 48px
+  // Extended spacing - for larger layouts
+  '14': 3.5rem,
+  // 56px
+  '16': 4rem,
+  // 64px
+  '20': 5rem,
+  // 80px
+  '24': 6rem,
+  // 96px
+  '28': 7rem,
+  // 112px
+  '32': 8rem,
+  // 128px
+  '36': 9rem,
+  // 144px
+  '40': 10rem,
+  // 160px
+  '44': 11rem,
+  // 176px
+  '48': 12rem,
+  // 192px
+  '52': 13rem,
+  // 208px
+  '56': 14rem,
+  // 224px
+  '60': 15rem,
+  // 240px
+  '64': 16rem,
+  // 256px
+  '72': 18rem,
+  // 288px
+  '80': 20rem,
+  // 320px
+  '96': 24rem // 384px
+);
+
+// ===== SEMANTIC SPACING =====
+// Context-based spacing for better UX consistency
+$semantic-spacing: (
+  // Component internal spacing
+  'component-xs': map.get($spacing, '1'),
+  // 4px
+  'component-sm': map.get($spacing, '2'),
+  // 8px
+  'component-md': map.get($spacing, '4'),
+  // 16px
+  'component-lg': map.get($spacing, '6'),
+  // 24px
+  'component-xl': map.get($spacing, '8'),
+  // 32px
+  // Layout spacing
+  'layout-xs': map.get($spacing, '4'),
+  // 16px
+  'layout-sm': map.get($spacing, '6'),
+  // 24px
+  'layout-md': map.get($spacing, '8'),
+  // 32px
+  'layout-lg': map.get($spacing, '12'),
+  // 48px
+  'layout-xl': map.get($spacing, '16'),
+  // 64px
+  'layout-2xl': map.get($spacing, '24'),
+  // 96px
+  'layout-3xl': map.get($spacing, '32'),
+  // 128px
+  // Content spacing
+  'content-xs': map.get($spacing, '2'),
+  // 8px
+  'content-sm': map.get($spacing, '4'),
+  // 16px
+  'content-md': map.get($spacing, '6'),
+  // 24px
+  'content-lg': map.get($spacing, '8'),
+  // 32px
+  'content-xl': map.get($spacing, '12'),
+  // 48px
+  // Interactive spacing (buttons, form elements)
+  'interactive-xs': map.get($spacing, '2'),
+  // 8px
+  'interactive-sm': map.get($spacing, '3'),
+  // 12px
+  'interactive-md': map.get($spacing, '4'),
+  // 16px
+  'interactive-lg': map.get($spacing, '6'),
+  // 24px
+  'interactive-xl': map.get($spacing, '8') // 32px
+);
+
+// ===== CONTAINER SIZES =====
+$containers: (
+  'xs': 20rem,
+  // 320px
+  'sm': 24rem,
+  // 384px
+  'md': 28rem,
+  // 448px
+  'lg': 32rem,
+  // 512px
+  'xl': 36rem,
+  // 576px
+  '2xl': 42rem,
+  // 672px
+  '3xl': 48rem,
+  // 768px
+  '4xl': 56rem,
+  // 896px
+  '5xl': 64rem,
+  // 1024px
+  '6xl': 72rem,
+  // 1152px
+  '7xl': 80rem,
+  // 1280px
+  'full': 100%,
+  'screen': 100vw,
+  'min': min-content,
+  'max': max-content,
+);
+
+// ===== GRID GAPS =====
+$grid-gaps: (
+  'none': 0,
+  'xs': map.get($spacing, '1'),
+  // 4px
+  'sm': map.get($spacing, '2'),
+  // 8px
+  'md': map.get($spacing, '4'),
+  // 16px
+  'lg': map.get($spacing, '6'),
+  // 24px
+  'xl': map.get($spacing, '8'),
+  // 32px
+  '2xl': map.get($spacing, '12'),
+  // 48px
+  '3xl': map.get($spacing, '16'), // 64px
+);
+
+// ===== INSET VALUES =====
+$insets: (
+  'auto': auto,
+  'px': 1px,
+  '0': 0,
+  '0.5': map.get($spacing, '0.5'),
+  '1': map.get($spacing, '1'),
+  '1.5': map.get($spacing, '1.5'),
+  '2': map.get($spacing, '2'),
+  '2.5': map.get($spacing, '2.5'),
+  '3': map.get($spacing, '3'),
+  '3.5': map.get($spacing, '3.5'),
+  '4': map.get($spacing, '4'),
+  '5': map.get($spacing, '5'),
+  '6': map.get($spacing, '6'),
+  '7': map.get($spacing, '7'),
+  '8': map.get($spacing, '8'),
+  '9': map.get($spacing, '9'),
+  '10': map.get($spacing, '10'),
+  '11': map.get($spacing, '11'),
+  '12': map.get($spacing, '12'),
+  '14': map.get($spacing, '14'),
+  '16': map.get($spacing, '16'),
+  '20': map.get($spacing, '20'),
+  '24': map.get($spacing, '24'),
+  '28': map.get($spacing, '28'),
+  '32': map.get($spacing, '32'),
+  '36': map.get($spacing, '36'),
+  '40': map.get($spacing, '40'),
+  '44': map.get($spacing, '44'),
+  '48': map.get($spacing, '48'),
+  '52': map.get($spacing, '52'),
+  '56': map.get($spacing, '56'),
+  '60': map.get($spacing, '60'),
+  '64': map.get($spacing, '64'),
+  '72': map.get($spacing, '72'),
+  '80': map.get($spacing, '80'),
+  '96': map.get($spacing, '96'),
+  // Percentage based
+  '1/2': 50%,
+  '1/3': 33.333333%,
+  '2/3': 66.666667%,
+  '1/4': 25%,
+  '2/4': 50%,
+  '3/4': 75%,
+  'full': 100%,
+);
+
+// ===== COMBINED SPACING MAP =====
+$all-spacing: (
+  'spacing': $spacing,
+  'semantic': $semantic-spacing,
+  'containers': $containers,
+  'gaps': $grid-gaps,
+  'insets': $insets,
+);
+
+// ===== SPACING FUNCTIONS =====
+@function spacing($size) {
+  $spacing-value: map.get($spacing, $size);
+
+  @if not $spacing-value {
+    @error "Spacing size '#{$size}' not found in $spacing map.";
+  }
+
+  @return $spacing-value;
+}
+
+@function semantic-spacing($context) {
+  $spacing-value: map.get($semantic-spacing, $context);
+
+  @if not $spacing-value {
+    @error "Semantic spacing '#{$context}' not found in $semantic-spacing map.";
+  }
+
+  @return $spacing-value;
+}
+
+@function container-size($size) {
+  $container-value: map.get($containers, $size);
+
+  @if not $container-value {
+    @error "Container size '#{$size}' not found in $containers map.";
+  }
+
+  @return $container-value;
+}
+
+@function grid-gap($size) {
+  $gap-value: map.get($grid-gaps, $size);
+
+  @if not $gap-value {
+    @error "Grid gap size '#{$size}' not found in $grid-gaps map.";
+  }
+
+  @return $gap-value;
+}
+
+@function inset($value) {
+  $inset-value: map.get($insets, $value);
+
+  @if not $inset-value {
+    @error "Inset value '#{$value}' not found in $insets map.";
+  }
+
+  @return $inset-value;
+}
+
+// ===== SPACING MIXINS =====
+@mixin padding($value) {
+  padding: spacing($value);
+}
+
+@mixin padding-x($value) {
+  padding-left: spacing($value);
+  padding-right: spacing($value);
+}
+
+@mixin padding-y($value) {
+  padding-top: spacing($value);
+  padding-bottom: spacing($value);
+}
+
+@mixin margin($value) {
+  margin: spacing($value);
+}
+
+@mixin margin-x($value) {
+  margin-left: spacing($value);
+  margin-right: spacing($value);
+}
+
+@mixin margin-y($value) {
+  margin-top: spacing($value);
+  margin-bottom: spacing($value);
+}
+
+@mixin gap($value) {
+  gap: grid-gap($value);
+}
+
+@mixin stack($gap: 'md') {
+  display: flex;
+  flex-direction: column;
+  gap: grid-gap($gap);
+}
+
+@mixin inline($gap: 'md') {
+  display: flex;
+  align-items: center;
+  gap: grid-gap($gap);
+}
+
+@mixin container($size: '6xl', $padding: 'lg') {
+  width: 100%;
+  max-width: container-size($size);
+  margin: 0 auto;
+  padding-left: spacing($padding);
+  padding-right: spacing($padding);
+}
+
+// Quick utility mixins for common spacing patterns
+@mixin card-padding {
+  padding: semantic-spacing('component-lg');
+}
+
+@mixin section-padding {
+  padding-top: semantic-spacing('layout-lg');
+  padding-bottom: semantic-spacing('layout-lg');
+}
+
+@mixin content-spacing {
+  > * + * {
+    margin-top: semantic-spacing('content-md');
+  }
+}

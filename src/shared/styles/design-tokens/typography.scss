@@ -1,0 +1,343 @@
+@use 'sass:map';
+
+// ===== TYPOGRAPHY SYSTEM =====
+// Complete typography scale for enterprise applications
+
+// ===== FONT FAMILIES =====
+$font-families: (
+  'primary': (
+    'Inter',
+    -apple-system,
+    'BlinkMacSystemFont',
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    sans-serif,
+  ),
+  'secondary': (
+    'Inter',
+    -apple-system,
+    'BlinkMacSystemFont',
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    sans-serif,
+  ),
+  'mono': (
+    'JetBrains Mono',
+    'Fira Code',
+    'Monaco',
+    'Consolas',
+    'Liberation Mono',
+    'Courier New',
+    monospace,
+  ),
+  'display': (
+    'Inter',
+    -apple-system,
+    'BlinkMacSystemFont',
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    sans-serif,
+  ),
+);
+
+// ===== FONT SIZES =====
+$font-sizes: (
+  // Micro text - disclaimers, captions
+  'xs': 0.75rem,
+  // 12px
+  'sm': 0.875rem,
+
+  // 14px
+  // Body text
+  'base': 1rem,
+  // 16px (base)
+  'md': 1rem,
+  // 16px (alias)
+  'lg': 1.125rem,
+
+  // 18px
+  // Headings
+  'xl': 1.25rem,
+  // 20px
+  '2xl': 1.5rem,
+  // 24px
+  '3xl': 1.875rem,
+  // 30px
+  '4xl': 2.25rem,
+  // 36px
+  '5xl': 3rem,
+  // 48px
+  '6xl': 3.75rem,
+  // 60px
+  '7xl': 4.5rem,
+  // 72px
+  '8xl': 6rem,
+  // 96px
+  '9xl': 8rem // 128px
+);
+
+// ===== FONT WEIGHTS =====
+$font-weights: (
+  'thin': 100,
+  'extralight': 200,
+  'light': 300,
+  'normal': 400,
+  'medium': 500,
+  'semibold': 600,
+  'bold': 700,
+  'extrabold': 800,
+  'black': 900,
+);
+
+// ===== LINE HEIGHTS =====
+$line-heights: (
+  'none': 1,
+  'tight': 1.25,
+  'snug': 1.375,
+  'normal': 1.5,
+  'relaxed': 1.625,
+  'loose': 2,
+
+  // Specific values for better control
+  '3': 0.75rem,
+  // 12px
+  '4': 1rem,
+  // 16px
+  '5': 1.25rem,
+  // 20px
+  '6': 1.5rem,
+  // 24px
+  '7': 1.75rem,
+  // 28px
+  '8': 2rem,
+  // 32px
+  '9': 2.25rem,
+  // 36px
+  '10': 2.5rem, // 40px
+);
+
+// ===== LETTER SPACING =====
+$letter-spacing: (
+  'tighter': -0.05em,
+  'tight': -0.025em,
+  'normal': 0,
+  'wide': 0.025em,
+  'wider': 0.05em,
+  'widest': 0.1em,
+);
+
+// ===== TEXT TRANSFORM =====
+$text-transform: (
+  'none': none,
+  'uppercase': uppercase,
+  'lowercase': lowercase,
+  'capitalize': capitalize,
+);
+
+// ===== TYPOGRAPHY SCALES =====
+// Predefined typography scales for common use cases
+
+$heading-scale: (
+  'h1': (
+    'font-size': map.get($font-sizes, '4xl'),
+    'line-height': map.get($line-heights, 'tight'),
+    'font-weight': map.get($font-weights, 'bold'),
+    'letter-spacing': map.get($letter-spacing, 'tight'),
+  ),
+  'h2': (
+    'font-size': map.get($font-sizes, '3xl'),
+    'line-height': map.get($line-heights, 'tight'),
+    'font-weight': map.get($font-weights, 'bold'),
+    'letter-spacing': map.get($letter-spacing, 'tight'),
+  ),
+  'h3': (
+    'font-size': map.get($font-sizes, '2xl'),
+    'line-height': map.get($line-heights, 'snug'),
+    'font-weight': map.get($font-weights, 'semibold'),
+    'letter-spacing': map.get($letter-spacing, 'normal'),
+  ),
+  'h4': (
+    'font-size': map.get($font-sizes, 'xl'),
+    'line-height': map.get($line-heights, 'snug'),
+    'font-weight': map.get($font-weights, 'semibold'),
+    'letter-spacing': map.get($letter-spacing, 'normal'),
+  ),
+  'h5': (
+    'font-size': map.get($font-sizes, 'lg'),
+    'line-height': map.get($line-heights, 'normal'),
+    'font-weight': map.get($font-weights, 'medium'),
+    'letter-spacing': map.get($letter-spacing, 'normal'),
+  ),
+  'h6': (
+    'font-size': map.get($font-sizes, 'base'),
+    'line-height': map.get($line-heights, 'normal'),
+    'font-weight': map.get($font-weights, 'medium'),
+    'letter-spacing': map.get($letter-spacing, 'normal'),
+  ),
+);
+
+$body-scale: (
+  'large': (
+    'font-size': map.get($font-sizes, 'lg'),
+    'line-height': map.get($line-heights, 'relaxed'),
+    'font-weight': map.get($font-weights, 'normal'),
+  ),
+  'base': (
+    'font-size': map.get($font-sizes, 'base'),
+    'line-height': map.get($line-heights, 'normal'),
+    'font-weight': map.get($font-weights, 'normal'),
+  ),
+  'small': (
+    'font-size': map.get($font-sizes, 'sm'),
+    'line-height': map.get($line-heights, 'normal'),
+    'font-weight': map.get($font-weights, 'normal'),
+  ),
+  'caption': (
+    'font-size': map.get($font-sizes, 'xs'),
+    'line-height': map.get($line-heights, 'tight'),
+    'font-weight': map.get($font-weights, 'normal'),
+  ),
+);
+
+$display-scale: (
+  'large': (
+    'font-size': map.get($font-sizes, '6xl'),
+    'line-height': map.get($line-heights, 'none'),
+    'font-weight': map.get($font-weights, 'bold'),
+    'letter-spacing': map.get($letter-spacing, 'tight'),
+  ),
+  'medium': (
+    'font-size': map.get($font-sizes, '5xl'),
+    'line-height': map.get($line-heights, 'tight'),
+    'font-weight': map.get($font-weights, 'bold'),
+    'letter-spacing': map.get($letter-spacing, 'tight'),
+  ),
+  'small': (
+    'font-size': map.get($font-sizes, '4xl'),
+    'line-height': map.get($line-heights, 'tight'),
+    'font-weight': map.get($font-weights, 'bold'),
+    'letter-spacing': map.get($letter-spacing, 'normal'),
+  ),
+);
+
+// ===== TYPOGRAPHY MAPS =====
+$typography: (
+  'font-families': $font-families,
+  'font-sizes': $font-sizes,
+  'font-weights': $font-weights,
+  'line-heights': $line-heights,
+  'letter-spacing': $letter-spacing,
+  'text-transform': $text-transform,
+  'heading-scale': $heading-scale,
+  'body-scale': $body-scale,
+  'display-scale': $display-scale,
+);
+
+// ===== TYPOGRAPHY FUNCTIONS =====
+@function font-family($family: 'primary') {
+  $family-list: map.get($font-families, $family);
+
+  @if not $family-list {
+    @error "Font family '#{$family}' not found in $font-families map.";
+  }
+
+  @return $family-list;
+}
+
+@function font-size($size: 'base') {
+  $size-value: map.get($font-sizes, $size);
+
+  @if not $size-value {
+    @error "Font size '#{$size}' not found in $font-sizes map.";
+  }
+
+  @return $size-value;
+}
+
+@function font-weight($weight: 'normal') {
+  $weight-value: map.get($font-weights, $weight);
+
+  @if not $weight-value {
+    @error "Font weight '#{$weight}' not found in $font-weights map.";
+  }
+
+  @return $weight-value;
+}
+
+@function line-height($height: 'normal') {
+  $height-value: map.get($line-heights, $height);
+
+  @if not $height-value {
+    @error "Line height '#{$height}' not found in $line-heights map.";
+  }
+
+  @return $height-value;
+}
+
+@function letter-spacing($spacing: 'normal') {
+  $spacing-value: map.get($letter-spacing, $spacing);
+
+  @if not $spacing-value {
+    @error "Letter spacing '#{$spacing}' not found in $letter-spacing map.";
+  }
+
+  @return $spacing-value;
+}
+
+// ===== TYPOGRAPHY MIXINS =====
+@mixin typography-scale($scale-type, $scale-name) {
+  $scale-map: map.get($typography, $scale-type);
+
+  @if not $scale-map {
+    @error "Typography scale type '#{$scale-type}' not found.";
+  }
+
+  $scale-config: map.get($scale-map, $scale-name);
+
+  @if not $scale-config {
+    @error "Typography scale '#{$scale-name}' not found in '#{$scale-type}'.";
+  }
+
+  @each $property, $value in $scale-config {
+    #{$property}: $value;
+  }
+}
+
+@mixin heading($level: 'h1') {
+  @include typography-scale('heading-scale', $level);
+}
+
+@mixin body($size: 'base') {
+  @include typography-scale('body-scale', $size);
+}
+
+@mixin display($size: 'medium') {
+  @include typography-scale('display-scale', $size);
+}
+
+@mixin font-smoothing {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin text-truncate-lines($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

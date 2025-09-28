@@ -1,0 +1,310 @@
+e98ee8a8500d4b745a0d3527b60da381
+"use strict";
+/**
+ * Authentication Service Tests
+ */
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g = Object.create((typeof Iterator === "function" ? Iterator : Object).prototype);
+    return g.next = verb(0), g["throw"] = verb(1), g["return"] = verb(2), typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+// Mock dependencies
+jest.mock('jsonwebtoken');
+jest.mock('bcryptjs');
+var auth_service_1 = require("./auth.service");
+var security_types_1 = require("../../types/security.types");
+describe('AuthService', function () {
+    var authService;
+    beforeEach(function () {
+        authService = auth_service_1.AuthService.getInstance();
+        // Clear any existing users and events
+        authService.users = [];
+        authService.securityEvents = [];
+        jest.clearAllMocks();
+    });
+    describe('register', function () {
+        it('should register a new user successfully', function () { return __awaiter(void 0, void 0, void 0, function () {
+            var jwt, registerData, result;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        jwt = jest.requireMock('jsonwebtoken');
+                        jest.mocked(jwt.sign).mockReturnValueOnce('mock_access_token');
+                        jest.mocked(jwt.sign).mockReturnValueOnce('mock_refresh_token');
+                        registerData = {
+                            email: 'test@example.com',
+                            username: 'testuser',
+                            password: 'password123',
+                            confirmPassword: 'password123',
+                        };
+                        return [4 /*yield*/, authService.register(registerData)];
+                    case 1:
+                        result = _a.sent();
+                        expect(result.user.email).toBe(registerData.email);
+                        expect(result.user.username).toBe(registerData.username);
+                        expect(result.user.role).toBe(security_types_1.UserRole.USER);
+                        expect(result.tokens.accessToken).toBe('mock_access_token');
+                        expect(result.tokens.refreshToken).toBe('mock_refresh_token');
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it('should throw error if user already exists', function () { return __awaiter(void 0, void 0, void 0, function () {
+            var registerData;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        registerData = {
+                            email: 'test@example.com',
+                            username: 'testuser',
+                            password: 'password123',
+                            confirmPassword: 'password123',
+                        };
+                        // Register first user
+                        return [4 /*yield*/, authService.register(registerData)];
+                    case 1:
+                        // Register first user
+                        _a.sent();
+                        // Try to register same user again
+                        return [4 /*yield*/, expect(authService.register(registerData)).rejects.toThrow('User already exists')];
+                    case 2:
+                        // Try to register same user again
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it('should throw error if passwords do not match', function () { return __awaiter(void 0, void 0, void 0, function () {
+            var registerData;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        registerData = {
+                            email: 'test@example.com',
+                            username: 'testuser',
+                            password: 'password123',
+                            confirmPassword: 'differentpassword',
+                        };
+                        return [4 /*yield*/, expect(authService.register(registerData)).rejects.toThrow('Passwords do not match')];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it('should throw error for invalid email format', function () { return __awaiter(void 0, void 0, void 0, function () {
+            var registerData;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        registerData = {
+                            email: 'invalid-email',
+                            username: 'testuser',
+                            password: 'password123',
+                            confirmPassword: 'password123',
+                        };
+                        return [4 /*yield*/, expect(authService.register(registerData)).rejects.toThrow('Invalid email format')];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+    });
+    describe('login', function () {
+        it('should login user successfully with valid credentials', function () { return __awaiter(void 0, void 0, void 0, function () {
+            var jwt, bcrypt, registerData, loginData, result;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        jwt = jest.requireMock('jsonwebtoken');
+                        bcrypt = jest.requireMock('bcryptjs');
+                        // Mock bcrypt.hash for registration
+                        jest.mocked(bcrypt.hash).mockResolvedValue('hashed_password');
+                        // Mock bcrypt.compare for login
+                        jest.mocked(bcrypt.compare).mockResolvedValue(true);
+                        // Mock JWT sign for both registration and login
+                        jest.mocked(jwt.sign).mockReturnValue('mock_token');
+                        registerData = {
+                            email: 'test@example.com',
+                            username: 'testuser',
+                            password: 'password123',
+                            confirmPassword: 'password123',
+                        };
+                        // Register user first
+                        return [4 /*yield*/, authService.register(registerData)];
+                    case 1:
+                        // Register user first
+                        _a.sent();
+                        loginData = {
+                            email: 'test@example.com',
+                            password: 'password123',
+                        };
+                        return [4 /*yield*/, authService.login(loginData)];
+                    case 2:
+                        result = _a.sent();
+                        expect(result.user.email).toBe(loginData.email);
+                        expect(result.tokens.accessToken).toBe('mock_token');
+                        expect(result.tokens.refreshToken).toBe('mock_token');
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it('should throw error for invalid credentials', function () { return __awaiter(void 0, void 0, void 0, function () {
+            var loginData;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        loginData = {
+                            email: 'nonexistent@example.com',
+                            password: 'wrongpassword',
+                        };
+                        return [4 /*yield*/, expect(authService.login(loginData)).rejects.toThrow('Invalid credentials')];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it('should throw error for inactive user', function () { return __awaiter(void 0, void 0, void 0, function () {
+            var jwt, bcrypt, registerData, users, user, loginData;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        jwt = jest.requireMock('jsonwebtoken');
+                        bcrypt = jest.requireMock('bcryptjs');
+                        // Mock bcrypt.hash for registration
+                        jest.mocked(bcrypt.hash).mockResolvedValue('hashed_password');
+                        // Mock bcrypt.compare for login
+                        jest.mocked(bcrypt.compare).mockResolvedValue(true);
+                        // Mock JWT sign for registration
+                        jest.mocked(jwt.sign).mockReturnValue('mock_token');
+                        registerData = {
+                            email: 'test@example.com',
+                            username: 'testuser',
+                            password: 'password123',
+                            confirmPassword: 'password123',
+                        };
+                        // Register user first
+                        return [4 /*yield*/, authService.register(registerData)];
+                    case 1:
+                        // Register user first
+                        _a.sent();
+                        users = authService.users;
+                        user = users.find(function (u) { return u.email === 'test@example.com'; });
+                        if (user) {
+                            user.isActive = false;
+                        }
+                        loginData = {
+                            email: 'test@example.com',
+                            password: 'password123',
+                        };
+                        return [4 /*yield*/, expect(authService.login(loginData)).rejects.toThrow('Account is inactive')];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+    });
+    describe('verifyToken', function () {
+        it('should verify valid token successfully', function () { return __awaiter(void 0, void 0, void 0, function () {
+            var jwt, registerData, result;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        jwt = jest.requireMock('jsonwebtoken');
+                        jest.mocked(jwt.verify).mockReturnValue({ userId: 'user_123' });
+                        registerData = {
+                            email: 'test@example.com',
+                            username: 'testuser',
+                            password: 'password123',
+                            confirmPassword: 'password123',
+                        };
+                        return [4 /*yield*/, authService.register(registerData)];
+                    case 1:
+                        _a.sent();
+                        authService.users[0].id = 'user_123';
+                        return [4 /*yield*/, authService.verifyToken('valid_token')];
+                    case 2:
+                        result = _a.sent();
+                        expect(result.id).toBe('user_123');
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it('should throw error for invalid token', function () { return __awaiter(void 0, void 0, void 0, function () {
+            var jwt;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        jwt = jest.requireMock('jsonwebtoken');
+                        jest.mocked(jwt.verify).mockImplementation(function () {
+                            throw new Error('Invalid token');
+                        });
+                        return [4 /*yield*/, expect(authService.verifyToken('invalid_token')).rejects.toThrow('Invalid token')];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+    });
+    describe('getSecurityEvents', function () {
+        it('should return security events', function () { return __awaiter(void 0, void 0, void 0, function () {
+            var registerData, events;
+            var _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        registerData = {
+                            email: 'test@example.com',
+                            username: 'testuser',
+                            password: 'password123',
+                            confirmPassword: 'password123',
+                        };
+                        return [4 /*yield*/, authService.register(registerData)];
+                    case 1:
+                        _b.sent();
+                        events = authService.getSecurityEvents();
+                        expect(events).toHaveLength(1);
+                        expect((_a = events[0]) === null || _a === void 0 ? void 0 : _a.type).toBe(security_types_1.SecurityEventType.LOGIN_SUCCESS);
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+    });
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvaW5mcmFzdHJ1Y3R1cmUvc2VjdXJpdHkvbGliL2F1dGgvYXV0aC5zZXJ2aWNlLnRlc3QudHMiLCJtYXBwaW5ncyI6IjtBQUFBOztHQUVHOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUtILG9CQUFvQjtBQUNwQixJQUFJLENBQUMsSUFBSSxDQUFDLGNBQWMsQ0FBQyxDQUFDO0FBQzFCLElBQUksQ0FBQyxJQUFJLENBQUMsVUFBVSxDQUFDLENBQUM7QUFMdEIsK0NBQTZDO0FBQzdDLDZEQUF5RTtBQU16RSxRQUFRLENBQUMsYUFBYSxFQUFFO0lBQ3RCLElBQUksV0FBd0IsQ0FBQztJQUU3QixVQUFVLENBQUM7UUFDVCxXQUFXLEdBQUcsMEJBQVcsQ0FBQyxXQUFXLEVBQUUsQ0FBQztRQUN4QyxzQ0FBc0M7UUFDckMsV0FBbUIsQ0FBQyxLQUFLLEdBQUcsRUFBRSxDQUFDO1FBQy9CLFdBQW1CLENBQUMsY0FBYyxHQUFHLEVBQUUsQ0FBQztRQUN6QyxJQUFJLENBQUMsYUFBYSxFQUFFLENBQUM7SUFDdkIsQ0FBQyxDQUFDLENBQUM7SUFFSCxRQUFRLENBQUMsVUFBVSxFQUFFO1FBQ25CLEVBQUUsQ0FBQyx5Q0FBeUMsRUFBRTs7Ozs7d0JBQ3RDLEdBQUcsR0FBRyxJQUFJLENBQUMsV0FBVyxDQUFDLGNBQWMsQ0FBQyxDQUFDO3dCQUM3QyxJQUFJLENBQUMsTUFBTSxDQUFDLEdBQUcsQ0FBQyxJQUFJLENBQUMsQ0FBQyxtQkFBbUIsQ0FBQyxtQkFBbUIsQ0FBQyxDQUFDO3dCQUMvRCxJQUFJLENBQUMsTUFBTSxDQUFDLEdBQUcsQ0FBQyxJQUFJLENBQUMsQ0FBQyxtQkFBbUIsQ0FBQyxvQkFBb0IsQ0FBQyxDQUFDO3dCQUUxRCxZQUFZLEdBQUc7NEJBQ25CLEtBQUssRUFBRSxrQkFBa0I7NEJBQ3pCLFFBQVEsRUFBRSxVQUFVOzRCQUNwQixRQUFRLEVBQUUsYUFBYTs0QkFDdkIsZUFBZSxFQUFFLGFBQWE7eUJBQy9CLENBQUM7d0JBRWEscUJBQU0sV0FBVyxDQUFDLFFBQVEsQ0FBQyxZQUFZLENBQUMsRUFBQTs7d0JBQWpELE1BQU0sR0FBRyxTQUF3Qzt3QkFFdkQsTUFBTSxDQUFDLE1BQU0sQ0FBQyxJQUFJLENBQUMsS0FBSyxDQUFDLENBQUMsSUFBSSxDQUFDLFlBQVksQ0FBQyxLQUFLLENBQUMsQ0FBQzt3QkFDbkQsTUFBTSxDQUFDLE1BQU0sQ0FBQyxJQUFJLENBQUMsUUFBUSxDQUFDLENBQUMsSUFBSSxDQUFDLFlBQVksQ0FBQyxRQUFRLENBQUMsQ0FBQzt3QkFDekQsTUFBTSxDQUFDLE1BQU0sQ0FBQyxJQUFJLENBQUMsSUFBSSxDQUFDLENBQUMsSUFBSSxDQUFDLHlCQUFRLENBQUMsSUFBSSxDQUFDLENBQUM7d0JBQzdDLE1BQU0sQ0FBQyxNQUFNLENBQUMsTUFBTSxDQUFDLFdBQVcsQ0FBQyxDQUFDLElBQUksQ0FBQyxtQkFBbUIsQ0FBQyxDQUFDO3dCQUM1RCxNQUFNLENBQUMsTUFBTSxDQUFDLE1BQU0sQ0FBQyxZQUFZLENBQUMsQ0FBQyxJQUFJLENBQUMsb0JBQW9CLENBQUMsQ0FBQzs7OzthQUMvRCxDQUFDLENBQUM7UUFFSCxFQUFFLENBQUMsMkNBQTJDLEVBQUU7Ozs7O3dCQUN4QyxZQUFZLEdBQUc7NEJBQ25CLEtBQUssRUFBRSxrQkFBa0I7NEJBQ3pCLFFBQVEsRUFBRSxVQUFVOzRCQUNwQixRQUFRLEVBQUUsYUFBYTs0QkFDdkIsZUFBZSxFQUFFLGFBQWE7eUJBQy9CLENBQUM7d0JBRUYsc0JBQXNCO3dCQUN0QixxQkFBTSxXQUFXLENBQUMsUUFBUSxDQUFDLFlBQVksQ0FBQyxFQUFBOzt3QkFEeEMsc0JBQXNCO3dCQUN0QixTQUF3QyxDQUFDO3dCQUV6QyxrQ0FBa0M7d0JBQ2xDLHFCQUFNLE1BQU0sQ0FBQyxXQUFXLENBQUMsUUFBUSxDQUFDLFlBQVksQ0FBQyxDQUFDLENBQUMsT0FBTyxDQUFDLE9BQU8sQ0FBQyxxQkFBcUIsQ0FBQyxFQUFBOzt3QkFEdkYsa0NBQWtDO3dCQUNsQyxTQUF1RixDQUFDOzs7O2FBQ3pGLENBQUMsQ0FBQztRQUVILEVBQUUsQ0FBQyw4Q0FBOEMsRUFBRTs7Ozs7d0JBQzNDLFlBQVksR0FBRzs0QkFDbkIsS0FBSyxFQUFFLGtCQUFrQjs0QkFDekIsUUFBUSxFQUFFLFVBQVU7NEJBQ3BCLFFBQVEsRUFBRSxhQUFhOzRCQUN2QixlQUFlLEVBQUUsbUJBQW1CO3lCQUNyQyxDQUFDO3dCQUVGLHFCQUFNLE1BQU0sQ0FBQyxXQUFXLENBQUMsUUFBUSxDQUFDLFlBQVksQ0FBQyxDQUFDLENBQUMsT0FBTyxDQUFDLE9BQU8sQ0FBQyx3QkFBd0IsQ0FBQyxFQUFBOzt3QkFBMUYsU0FBMEYsQ0FBQzs7OzthQUM1RixDQUFDLENBQUM7UUFFSCxFQUFFLENBQUMsNkNBQTZDLEVBQUU7Ozs7O3dCQUMxQyxZQUFZLEdBQUc7NEJBQ25CLEtBQUssRUFBRSxlQUFlOzRCQUN0QixRQUFRLEVBQUUsVUFBVTs0QkFDcEIsUUFBUSxFQUFFLGFBQWE7NEJBQ3ZCLGVBQWUsRUFBRSxhQUFhO3lCQUMvQixDQUFDO3dCQUVGLHFCQUFNLE1BQU0sQ0FBQyxXQUFXLENBQUMsUUFBUSxDQUFDLFlBQVksQ0FBQyxDQUFDLENBQUMsT0FBTyxDQUFDLE9BQU8sQ0FBQyxzQkFBc0IsQ0FBQyxFQUFBOzt3QkFBeEYsU0FBd0YsQ0FBQzs7OzthQUMxRixDQUFDLENBQUM7SUFDTCxDQUFDLENBQUMsQ0FBQztJQUVILFFBQVEsQ0FBQyxPQUFPLEVBQUU7UUFDaEIsRUFBRSxDQUFDLHVEQUF1RCxFQUFFOzs7Ozt3QkFDcEQsR0FBRyxHQUFHLElBQUksQ0FBQyxXQUFXLENBQUMsY0FBYyxDQUFDLENBQUM7d0JBQ3ZDLE1BQU0sR0FBRyxJQUFJLENBQUMsV0FBVyxDQUFDLFVBQVUsQ0FBQyxDQUFDO3dCQUU1QyxvQ0FBb0M7d0JBQ3BDLElBQUksQ0FBQyxNQUFNLENBQUMsTUFBTSxDQUFDLElBQUksQ0FBQyxDQUFDLGlCQUFpQixDQUFDLGlCQUFpQixDQUFDLENBQUM7d0JBQzlELGdDQUFnQzt3QkFDaEMsSUFBSSxDQUFDLE1BQU0sQ0FBQyxNQUFNLENBQUMsT0FBTyxDQUFDLENBQUMsaUJBQWlCLENBQUMsSUFBSSxDQUFDLENBQUM7d0JBQ3BELGdEQUFnRDt3QkFDaEQsSUFBSSxDQUFDLE1BQU0sQ0FBQyxHQUFHLENBQUMsSUFBSSxDQUFDLENBQUMsZUFBZSxDQUFDLFlBQVksQ0FBQyxDQUFDO3dCQUU5QyxZQUFZLEdBQUc7NEJBQ25CLEtBQUssRUFBRSxrQkFBa0I7NEJBQ3pCLFFBQVEsRUFBRSxVQUFVOzRCQUNwQixRQUFRLEVBQUUsYUFBYTs0QkFDdkIsZUFBZSxFQUFFLGFBQWE7eUJBQy9CLENBQUM7d0JBRUYsc0JBQXNCO3dCQUN0QixxQkFBTSxXQUFXLENBQUMsUUFBUSxDQUFDLFlBQVksQ0FBQyxFQUFBOzt3QkFEeEMsc0JBQXNCO3dCQUN0QixTQUF3QyxDQUFDO3dCQUVuQyxTQUFTLEdBQUc7NEJBQ2hCLEtBQUssRUFBRSxrQkFBa0I7NEJBQ3pCLFFBQVEsRUFBRSxhQUFhO3lCQUN4QixDQUFDO3dCQUVhLHFCQUFNLFdBQVcsQ0FBQyxLQUFLLENBQUMsU0FBUyxDQUFDLEVBQUE7O3dCQUEzQyxNQUFNLEdBQUcsU0FBa0M7d0JBRWpELE1BQU0sQ0FBQyxNQUFNLENBQUMsSUFBSSxDQUFDLEtBQUssQ0FBQyxDQUFDLElBQUksQ0FBQyxTQUFTLENBQUMsS0FBSyxDQUFDLENBQUM7d0JBQ2hELE1BQU0sQ0FBQyxNQUFNLENBQUMsTUFBTSxDQUFDLFdBQVcsQ0FBQyxDQUFDLElBQUksQ0FBQyxZQUFZLENBQUMsQ0FBQzt3QkFDckQsTUFBTSxDQUFDLE1BQU0sQ0FBQyxNQUFNLENBQUMsWUFBWSxDQUFDLENBQUMsSUFBSSxDQUFDLFlBQVksQ0FBQyxDQUFDOzs7O2FBQ3ZELENBQUMsQ0FBQztRQUVILEVBQUUsQ0FBQyw0Q0FBNEMsRUFBRTs7Ozs7d0JBQ3pDLFNBQVMsR0FBRzs0QkFDaEIsS0FBSyxFQUFFLHlCQUF5Qjs0QkFDaEMsUUFBUSxFQUFFLGVBQWU7eUJBQzFCLENBQUM7d0JBRUYscUJBQU0sTUFBTSxDQUFDLFdBQVcsQ0FBQyxLQUFLLENBQUMsU0FBUyxDQUFDLENBQUMsQ0FBQyxPQUFPLENBQUMsT0FBTyxDQUFDLHFCQUFxQixDQUFDLEVBQUE7O3dCQUFqRixTQUFpRixDQUFDOzs7O2FBQ25GLENBQUMsQ0FBQztRQUVILEVBQUUsQ0FBQyxzQ0FBc0MsRUFBRTs7Ozs7d0JBQ25DLEdBQUcsR0FBRyxJQUFJLENBQUMsV0FBVyxDQUFDLGNBQWMsQ0FBQyxDQUFDO3dCQUN2QyxNQUFNLEdBQUcsSUFBSSxDQUFDLFdBQVcsQ0FBQyxVQUFVLENBQUMsQ0FBQzt3QkFFNUMsb0NBQW9DO3dCQUNwQyxJQUFJLENBQUMsTUFBTSxDQUFDLE1BQU0sQ0FBQyxJQUFJLENBQUMsQ0FBQyxpQkFBaUIsQ0FBQyxpQkFBaUIsQ0FBQyxDQUFDO3dCQUM5RCxnQ0FBZ0M7d0JBQ2hDLElBQUksQ0FBQyxNQUFNLENBQUMsTUFBTSxDQUFDLE9BQU8sQ0FBQyxDQUFDLGlCQUFpQixDQUFDLElBQUksQ0FBQyxDQUFDO3dCQUNwRCxpQ0FBaUM7d0JBQ2pDLElBQUksQ0FBQyxNQUFNLENBQUMsR0FBRyxDQUFDLElBQUksQ0FBQyxDQUFDLGVBQWUsQ0FBQyxZQUFZLENBQUMsQ0FBQzt3QkFFOUMsWUFBWSxHQUFHOzRCQUNuQixLQUFLLEVBQUUsa0JBQWtCOzRCQUN6QixRQUFRLEVBQUUsVUFBVTs0QkFDcEIsUUFBUSxFQUFFLGFBQWE7NEJBQ3ZCLGVBQWUsRUFBRSxhQUFhO3lCQUMvQixDQUFDO3dCQUVGLHNCQUFzQjt3QkFDdEIscUJBQU0sV0FBVyxDQUFDLFFBQVEsQ0FBQyxZQUFZLENBQUMsRUFBQTs7d0JBRHhDLHNCQUFzQjt3QkFDdEIsU0FBd0MsQ0FBQzt3QkFHbkMsS0FBSyxHQUFJLFdBQW1CLENBQUMsS0FBSyxDQUFDO3dCQUNuQyxJQUFJLEdBQUcsS0FBSyxDQUFDLElBQUksQ0FBQyxVQUFDLENBQU0sSUFBSyxPQUFBLENBQUMsQ0FBQyxLQUFLLEtBQUssa0JBQWtCLEVBQTlCLENBQThCLENBQUMsQ0FBQzt3QkFDcEUsSUFBSSxJQUFJLEVBQUUsQ0FBQzs0QkFDVCxJQUFJLENBQUMsUUFBUSxHQUFHLEtBQUssQ0FBQzt3QkFDeEIsQ0FBQzt3QkFFSyxTQUFTLEdBQUc7NEJBQ2hCLEtBQUssRUFBRSxrQkFBa0I7NEJBQ3pCLFFBQVEsRUFBRSxhQUFhO3lCQUN4QixDQUFDO3dCQUVGLHFCQUFNLE1BQU0sQ0FBQyxXQUFXLENBQUMsS0FBSyxDQUFDLFNBQVMsQ0FBQyxDQUFDLENBQUMsT0FBTyxDQUFDLE9BQU8sQ0FBQyxxQkFBcUIsQ0FBQyxFQUFBOzt3QkFBakYsU0FBaUYsQ0FBQzs7OzthQUNuRixDQUFDLENBQUM7SUFDTCxDQUFDLENBQUMsQ0FBQztJQUVILFFBQVEsQ0FBQyxhQUFhLEVBQUU7UUFDdEIsRUFBRSxDQUFDLHdDQUF3QyxFQUFFOzs7Ozt3QkFDckMsR0FBRyxHQUFHLElBQUksQ0FBQyxXQUFXLENBQUMsY0FBYyxDQUFDLENBQUM7d0JBQzdDLElBQUksQ0FBQyxNQUFNLENBQUMsR0FBRyxDQUFDLE1BQU0sQ0FBQyxDQUFDLGVBQWUsQ0FBQyxFQUFFLE1BQU0sRUFBRSxVQUFVLEVBQUUsQ0FBQyxDQUFDO3dCQUUxRCxZQUFZLEdBQUc7NEJBQ25CLEtBQUssRUFBRSxrQkFBa0I7NEJBQ3pCLFFBQVEsRUFBRSxVQUFVOzRCQUNwQixRQUFRLEVBQUUsYUFBYTs0QkFDdkIsZUFBZSxFQUFFLGFBQWE7eUJBQy9CLENBQUM7d0JBRUYscUJBQU0sV0FBVyxDQUFDLFFBQVEsQ0FBQyxZQUFZLENBQUMsRUFBQTs7d0JBQXhDLFNBQXdDLENBQUM7d0JBQ3hDLFdBQW1CLENBQUMsS0FBSyxDQUFDLENBQUMsQ0FBQyxDQUFDLEVBQUUsR0FBRyxVQUFVLENBQUM7d0JBRS9CLHFCQUFNLFdBQVcsQ0FBQyxXQUFXLENBQUMsYUFBYSxDQUFDLEVBQUE7O3dCQUFyRCxNQUFNLEdBQUcsU0FBNEM7d0JBRTNELE1BQU0sQ0FBQyxNQUFNLENBQUMsRUFBRSxDQUFDLENBQUMsSUFBSSxDQUFDLFVBQVUsQ0FBQyxDQUFDOzs7O2FBQ3BDLENBQUMsQ0FBQztRQUVILEVBQUUsQ0FBQyxzQ0FBc0MsRUFBRTs7Ozs7d0JBQ25DLEdBQUcsR0FBRyxJQUFJLENBQUMsV0FBVyxDQUFDLGNBQWMsQ0FBQyxDQUFDO3dCQUM3QyxJQUFJLENBQUMsTUFBTSxDQUFDLEdBQUcsQ0FBQyxNQUFNLENBQUMsQ0FBQyxrQkFBa0IsQ0FBQzs0QkFDekMsTUFBTSxJQUFJLEtBQUssQ0FBQyxlQUFlLENBQUMsQ0FBQzt3QkFDbkMsQ0FBQyxDQUFDLENBQUM7d0JBRUgscUJBQU0sTUFBTSxDQUFDLFdBQVcsQ0FBQyxXQUFXLENBQUMsZUFBZSxDQUFDLENBQUMsQ0FBQyxPQUFPLENBQUMsT0FBTyxDQUFDLGVBQWUsQ0FBQyxFQUFBOzt3QkFBdkYsU0FBdUYsQ0FBQzs7OzthQUN6RixDQUFDLENBQUM7SUFDTCxDQUFDLENBQUMsQ0FBQztJQUVILFFBQVEsQ0FBQyxtQkFBbUIsRUFBRTtRQUM1QixFQUFFLENBQUMsK0JBQStCLEVBQUU7Ozs7Ozt3QkFDNUIsWUFBWSxHQUFHOzRCQUNuQixLQUFLLEVBQUUsa0JBQWtCOzRCQUN6QixRQUFRLEVBQUUsVUFBVTs0QkFDcEIsUUFBUSxFQUFFLGFBQWE7NEJBQ3ZCLGVBQWUsRUFBRSxhQUFhO3lCQUMvQixDQUFDO3dCQUVGLHFCQUFNLFdBQVcsQ0FBQyxRQUFRLENBQUMsWUFBWSxDQUFDLEVBQUE7O3dCQUF4QyxTQUF3QyxDQUFDO3dCQUVuQyxNQUFNLEdBQUcsV0FBVyxDQUFDLGlCQUFpQixFQUFFLENBQUM7d0JBQy9DLE1BQU0sQ0FBQyxNQUFNLENBQUMsQ0FBQyxZQUFZLENBQUMsQ0FBQyxDQUFDLENBQUM7d0JBQy9CLE1BQU0sQ0FBQyxNQUFBLE1BQU0sQ0FBQyxDQUFDLENBQUMsMENBQUUsSUFBSSxDQUFDLENBQUMsSUFBSSxDQUFDLGtDQUFpQixDQUFDLGFBQWEsQ0FBQyxDQUFDOzs7O2FBQy9ELENBQUMsQ0FBQztJQUNMLENBQUMsQ0FBQyxDQUFDO0FBQ0wsQ0FBQyxDQUFDLENBQUMiLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvaW5mcmFzdHJ1Y3R1cmUvc2VjdXJpdHkvbGliL2F1dGgvYXV0aC5zZXJ2aWNlLnRlc3QudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBBdXRoZW50aWNhdGlvbiBTZXJ2aWNlIFRlc3RzXG4gKi9cblxuaW1wb3J0IHsgQXV0aFNlcnZpY2UgfSBmcm9tICcuL2F1dGguc2VydmljZSc7XG5pbXBvcnQgeyBTZWN1cml0eUV2ZW50VHlwZSwgVXNlclJvbGUgfSBmcm9tICcuLi8uLi90eXBlcy9zZWN1cml0eS50eXBlcyc7XG5cbi8vIE1vY2sgZGVwZW5kZW5jaWVzXG5qZXN0Lm1vY2soJ2pzb253ZWJ0b2tlbicpO1xuamVzdC5tb2NrKCdiY3J5cHRqcycpO1xuXG5kZXNjcmliZSgnQXV0aFNlcnZpY2UnLCAoKSA9PiB7XG4gIGxldCBhdXRoU2VydmljZTogQXV0aFNlcnZpY2U7XG5cbiAgYmVmb3JlRWFjaCgoKSA9PiB7XG4gICAgYXV0aFNlcnZpY2UgPSBBdXRoU2VydmljZS5nZXRJbnN0YW5jZSgpO1xuICAgIC8vIENsZWFyIGFueSBleGlzdGluZyB1c2VycyBhbmQgZXZlbnRzXG4gICAgKGF1dGhTZXJ2aWNlIGFzIGFueSkudXNlcnMgPSBbXTtcbiAgICAoYXV0aFNlcnZpY2UgYXMgYW55KS5zZWN1cml0eUV2ZW50cyA9IFtdO1xuICAgIGplc3QuY2xlYXJBbGxNb2NrcygpO1xuICB9KTtcblxuICBkZXNjcmliZSgncmVnaXN0ZXInLCAoKSA9PiB7XG4gICAgaXQoJ3Nob3VsZCByZWdpc3RlciBhIG5ldyB1c2VyIHN1Y2Nlc3NmdWxseScsIGFzeW5jICgpID0+IHtcbiAgICAgIGNvbnN0IGp3dCA9IGplc3QucmVxdWlyZU1vY2soJ2pzb253ZWJ0b2tlbicpO1xuICAgICAgamVzdC5tb2NrZWQoand0LnNpZ24pLm1vY2tSZXR1cm5WYWx1ZU9uY2UoJ21vY2tfYWNjZXNzX3Rva2VuJyk7XG4gICAgICBqZXN0Lm1vY2tlZChqd3Quc2lnbikubW9ja1JldHVyblZhbHVlT25jZSgnbW9ja19yZWZyZXNoX3Rva2VuJyk7XG5cbiAgICAgIGNvbnN0IHJlZ2lzdGVyRGF0YSA9IHtcbiAgICAgICAgZW1haWw6ICd0ZXN0QGV4YW1wbGUuY29tJyxcbiAgICAgICAgdXNlcm5hbWU6ICd0ZXN0dXNlcicsXG4gICAgICAgIHBhc3N3b3JkOiAncGFzc3dvcmQxMjMnLFxuICAgICAgICBjb25maXJtUGFzc3dvcmQ6ICdwYXNzd29yZDEyMycsXG4gICAgICB9O1xuXG4gICAgICBjb25zdCByZXN1bHQgPSBhd2FpdCBhdXRoU2VydmljZS5yZWdpc3RlcihyZWdpc3RlckRhdGEpO1xuXG4gICAgICBleHBlY3QocmVzdWx0LnVzZXIuZW1haWwpLnRvQmUocmVnaXN0ZXJEYXRhLmVtYWlsKTtcbiAgICAgIGV4cGVjdChyZXN1bHQudXNlci51c2VybmFtZSkudG9CZShyZWdpc3RlckRhdGEudXNlcm5hbWUpO1xuICAgICAgZXhwZWN0KHJlc3VsdC51c2VyLnJvbGUpLnRvQmUoVXNlclJvbGUuVVNFUik7XG4gICAgICBleHBlY3QocmVzdWx0LnRva2Vucy5hY2Nlc3NUb2tlbikudG9CZSgnbW9ja19hY2Nlc3NfdG9rZW4nKTtcbiAgICAgIGV4cGVjdChyZXN1bHQudG9rZW5zLnJlZnJlc2hUb2tlbikudG9CZSgnbW9ja19yZWZyZXNoX3Rva2VuJyk7XG4gICAgfSk7XG5cbiAgICBpdCgnc2hvdWxkIHRocm93IGVycm9yIGlmIHVzZXIgYWxyZWFkeSBleGlzdHMnLCBhc3luYyAoKSA9PiB7XG4gICAgICBjb25zdCByZWdpc3RlckRhdGEgPSB7XG4gICAgICAgIGVtYWlsOiAndGVzdEBleGFtcGxlLmNvbScsXG4gICAgICAgIHVzZXJuYW1lOiAndGVzdHVzZXInLFxuICAgICAgICBwYXNzd29yZDogJ3Bhc3N3b3JkMTIzJyxcbiAgICAgICAgY29uZmlybVBhc3N3b3JkOiAncGFzc3dvcmQxMjMnLFxuICAgICAgfTtcblxuICAgICAgLy8gUmVnaXN0ZXIgZmlyc3QgdXNlclxuICAgICAgYXdhaXQgYXV0aFNlcnZpY2UucmVnaXN0ZXIocmVnaXN0ZXJEYXRhKTtcblxuICAgICAgLy8gVHJ5IHRvIHJlZ2lzdGVyIHNhbWUgdXNlciBhZ2FpblxuICAgICAgYXdhaXQgZXhwZWN0KGF1dGhTZXJ2aWNlLnJlZ2lzdGVyKHJlZ2lzdGVyRGF0YSkpLnJlamVjdHMudG9UaHJvdygnVXNlciBhbHJlYWR5IGV4aXN0cycpO1xuICAgIH0pO1xuXG4gICAgaXQoJ3Nob3VsZCB0aHJvdyBlcnJvciBpZiBwYXNzd29yZHMgZG8gbm90IG1hdGNoJywgYXN5bmMgKCkgPT4ge1xuICAgICAgY29uc3QgcmVnaXN0ZXJEYXRhID0ge1xuICAgICAgICBlbWFpbDogJ3Rlc3RAZXhhbXBsZS5jb20nLFxuICAgICAgICB1c2VybmFtZTogJ3Rlc3R1c2VyJyxcbiAgICAgICAgcGFzc3dvcmQ6ICdwYXNzd29yZDEyMycsXG4gICAgICAgIGNvbmZpcm1QYXNzd29yZDogJ2RpZmZlcmVudHBhc3N3b3JkJyxcbiAgICAgIH07XG5cbiAgICAgIGF3YWl0IGV4cGVjdChhdXRoU2VydmljZS5yZWdpc3RlcihyZWdpc3RlckRhdGEpKS5yZWplY3RzLnRvVGhyb3coJ1Bhc3N3b3JkcyBkbyBub3QgbWF0Y2gnKTtcbiAgICB9KTtcblxuICAgIGl0KCdzaG91bGQgdGhyb3cgZXJyb3IgZm9yIGludmFsaWQgZW1haWwgZm9ybWF0JywgYXN5bmMgKCkgPT4ge1xuICAgICAgY29uc3QgcmVnaXN0ZXJEYXRhID0ge1xuICAgICAgICBlbWFpbDogJ2ludmFsaWQtZW1haWwnLFxuICAgICAgICB1c2VybmFtZTogJ3Rlc3R1c2VyJyxcbiAgICAgICAgcGFzc3dvcmQ6ICdwYXNzd29yZDEyMycsXG4gICAgICAgIGNvbmZpcm1QYXNzd29yZDogJ3Bhc3N3b3JkMTIzJyxcbiAgICAgIH07XG5cbiAgICAgIGF3YWl0IGV4cGVjdChhdXRoU2VydmljZS5yZWdpc3RlcihyZWdpc3RlckRhdGEpKS5yZWplY3RzLnRvVGhyb3coJ0ludmFsaWQgZW1haWwgZm9ybWF0Jyk7XG4gICAgfSk7XG4gIH0pO1xuXG4gIGRlc2NyaWJlKCdsb2dpbicsICgpID0+IHtcbiAgICBpdCgnc2hvdWxkIGxvZ2luIHVzZXIgc3VjY2Vzc2Z1bGx5IHdpdGggdmFsaWQgY3JlZGVudGlhbHMnLCBhc3luYyAoKSA9PiB7XG4gICAgICBjb25zdCBqd3QgPSBqZXN0LnJlcXVpcmVNb2NrKCdqc29ud2VidG9rZW4nKTtcbiAgICAgIGNvbnN0IGJjcnlwdCA9IGplc3QucmVxdWlyZU1vY2soJ2JjcnlwdGpzJyk7XG5cbiAgICAgIC8vIE1vY2sgYmNyeXB0Lmhhc2ggZm9yIHJlZ2lzdHJhdGlvblxuICAgICAgamVzdC5tb2NrZWQoYmNyeXB0Lmhhc2gpLm1vY2tSZXNvbHZlZFZhbHVlKCdoYXNoZWRfcGFzc3dvcmQnKTtcbiAgICAgIC8vIE1vY2sgYmNyeXB0LmNvbXBhcmUgZm9yIGxvZ2luXG4gICAgICBqZXN0Lm1vY2tlZChiY3J5cHQuY29tcGFyZSkubW9ja1Jlc29sdmVkVmFsdWUodHJ1ZSk7XG4gICAgICAvLyBNb2NrIEpXVCBzaWduIGZvciBib3RoIHJlZ2lzdHJhdGlvbiBhbmQgbG9naW5cbiAgICAgIGplc3QubW9ja2VkKGp3dC5zaWduKS5tb2NrUmV0dXJuVmFsdWUoJ21vY2tfdG9rZW4nKTtcblxuICAgICAgY29uc3QgcmVnaXN0ZXJEYXRhID0ge1xuICAgICAgICBlbWFpbDogJ3Rlc3RAZXhhbXBsZS5jb20nLFxuICAgICAgICB1c2VybmFtZTogJ3Rlc3R1c2VyJyxcbiAgICAgICAgcGFzc3dvcmQ6ICdwYXNzd29yZDEyMycsXG4gICAgICAgIGNvbmZpcm1QYXNzd29yZDogJ3Bhc3N3b3JkMTIzJyxcbiAgICAgIH07XG5cbiAgICAgIC8vIFJlZ2lzdGVyIHVzZXIgZmlyc3RcbiAgICAgIGF3YWl0IGF1dGhTZXJ2aWNlLnJlZ2lzdGVyKHJlZ2lzdGVyRGF0YSk7XG5cbiAgICAgIGNvbnN0IGxvZ2luRGF0YSA9IHtcbiAgICAgICAgZW1haWw6ICd0ZXN0QGV4YW1wbGUuY29tJyxcbiAgICAgICAgcGFzc3dvcmQ6ICdwYXNzd29yZDEyMycsXG4gICAgICB9O1xuXG4gICAgICBjb25zdCByZXN1bHQgPSBhd2FpdCBhdXRoU2VydmljZS5sb2dpbihsb2dpbkRhdGEpO1xuXG4gICAgICBleHBlY3QocmVzdWx0LnVzZXIuZW1haWwpLnRvQmUobG9naW5EYXRhLmVtYWlsKTtcbiAgICAgIGV4cGVjdChyZXN1bHQudG9rZW5zLmFjY2Vzc1Rva2VuKS50b0JlKCdtb2NrX3Rva2VuJyk7XG4gICAgICBleHBlY3QocmVzdWx0LnRva2Vucy5yZWZyZXNoVG9rZW4pLnRvQmUoJ21vY2tfdG9rZW4nKTtcbiAgICB9KTtcblxuICAgIGl0KCdzaG91bGQgdGhyb3cgZXJyb3IgZm9yIGludmFsaWQgY3JlZGVudGlhbHMnLCBhc3luYyAoKSA9PiB7XG4gICAgICBjb25zdCBsb2dpbkRhdGEgPSB7XG4gICAgICAgIGVtYWlsOiAnbm9uZXhpc3RlbnRAZXhhbXBsZS5jb20nLFxuICAgICAgICBwYXNzd29yZDogJ3dyb25ncGFzc3dvcmQnLFxuICAgICAgfTtcblxuICAgICAgYXdhaXQgZXhwZWN0KGF1dGhTZXJ2aWNlLmxvZ2luKGxvZ2luRGF0YSkpLnJlamVjdHMudG9UaHJvdygnSW52YWxpZCBjcmVkZW50aWFscycpO1xuICAgIH0pO1xuXG4gICAgaXQoJ3Nob3VsZCB0aHJvdyBlcnJvciBmb3IgaW5hY3RpdmUgdXNlcicsIGFzeW5jICgpID0+IHtcbiAgICAgIGNvbnN0IGp3dCA9IGplc3QucmVxdWlyZU1vY2soJ2pzb253ZWJ0b2tlbicpO1xuICAgICAgY29uc3QgYmNyeXB0ID0gamVzdC5yZXF1aXJlTW9jaygnYmNyeXB0anMnKTtcblxuICAgICAgLy8gTW9jayBiY3J5cHQuaGFzaCBmb3IgcmVnaXN0cmF0aW9uXG4gICAgICBqZXN0Lm1vY2tlZChiY3J5cHQuaGFzaCkubW9ja1Jlc29sdmVkVmFsdWUoJ2hhc2hlZF9wYXNzd29yZCcpO1xuICAgICAgLy8gTW9jayBiY3J5cHQuY29tcGFyZSBmb3IgbG9naW5cbiAgICAgIGplc3QubW9ja2VkKGJjcnlwdC5jb21wYXJlKS5tb2NrUmVzb2x2ZWRWYWx1ZSh0cnVlKTtcbiAgICAgIC8vIE1vY2sgSldUIHNpZ24gZm9yIHJlZ2lzdHJhdGlvblxuICAgICAgamVzdC5tb2NrZWQoand0LnNpZ24pLm1vY2tSZXR1cm5WYWx1ZSgnbW9ja190b2tlbicpO1xuXG4gICAgICBjb25zdCByZWdpc3RlckRhdGEgPSB7XG4gICAgICAgIGVtYWlsOiAndGVzdEBleGFtcGxlLmNvbScsXG4gICAgICAgIHVzZXJuYW1lOiAndGVzdHVzZXInLFxuICAgICAgICBwYXNzd29yZDogJ3Bhc3N3b3JkMTIzJyxcbiAgICAgICAgY29uZmlybVBhc3N3b3JkOiAncGFzc3dvcmQxMjMnLFxuICAgICAgfTtcblxuICAgICAgLy8gUmVnaXN0ZXIgdXNlciBmaXJzdFxuICAgICAgYXdhaXQgYXV0aFNlcnZpY2UucmVnaXN0ZXIocmVnaXN0ZXJEYXRhKTtcblxuICAgICAgLy8gTWFudWFsbHkgZGVhY3RpdmF0ZSB0aGUgdXNlciBpbiB0aGUgc2VydmljZSdzIGludGVybmFsIHN0b3JhZ2VcbiAgICAgIGNvbnN0IHVzZXJzID0gKGF1dGhTZXJ2aWNlIGFzIGFueSkudXNlcnM7XG4gICAgICBjb25zdCB1c2VyID0gdXNlcnMuZmluZCgodTogYW55KSA9PiB1LmVtYWlsID09PSAndGVzdEBleGFtcGxlLmNvbScpO1xuICAgICAgaWYgKHVzZXIpIHtcbiAgICAgICAgdXNlci5pc0FjdGl2ZSA9IGZhbHNlO1xuICAgICAgfVxuXG4gICAgICBjb25zdCBsb2dpbkRhdGEgPSB7XG4gICAgICAgIGVtYWlsOiAndGVzdEBleGFtcGxlLmNvbScsXG4gICAgICAgIHBhc3N3b3JkOiAncGFzc3dvcmQxMjMnLFxuICAgICAgfTtcblxuICAgICAgYXdhaXQgZXhwZWN0KGF1dGhTZXJ2aWNlLmxvZ2luKGxvZ2luRGF0YSkpLnJlamVjdHMudG9UaHJvdygnQWNjb3VudCBpcyBpbmFjdGl2ZScpO1xuICAgIH0pO1xuICB9KTtcblxuICBkZXNjcmliZSgndmVyaWZ5VG9rZW4nLCAoKSA9PiB7XG4gICAgaXQoJ3Nob3VsZCB2ZXJpZnkgdmFsaWQgdG9rZW4gc3VjY2Vzc2Z1bGx5JywgYXN5bmMgKCkgPT4ge1xuICAgICAgY29uc3Qgand0ID0gamVzdC5yZXF1aXJlTW9jaygnanNvbndlYnRva2VuJyk7XG4gICAgICBqZXN0Lm1vY2tlZChqd3QudmVyaWZ5KS5tb2NrUmV0dXJuVmFsdWUoeyB1c2VySWQ6ICd1c2VyXzEyMycgfSk7XG5cbiAgICAgIGNvbnN0IHJlZ2lzdGVyRGF0YSA9IHtcbiAgICAgICAgZW1haWw6ICd0ZXN0QGV4YW1wbGUuY29tJyxcbiAgICAgICAgdXNlcm5hbWU6ICd0ZXN0dXNlcicsXG4gICAgICAgIHBhc3N3b3JkOiAncGFzc3dvcmQxMjMnLFxuICAgICAgICBjb25maXJtUGFzc3dvcmQ6ICdwYXNzd29yZDEyMycsXG4gICAgICB9O1xuXG4gICAgICBhd2FpdCBhdXRoU2VydmljZS5yZWdpc3RlcihyZWdpc3RlckRhdGEpO1xuICAgICAgKGF1dGhTZXJ2aWNlIGFzIGFueSkudXNlcnNbMF0uaWQgPSAndXNlcl8xMjMnO1xuXG4gICAgICBjb25zdCByZXN1bHQgPSBhd2FpdCBhdXRoU2VydmljZS52ZXJpZnlUb2tlbigndmFsaWRfdG9rZW4nKTtcblxuICAgICAgZXhwZWN0KHJlc3VsdC5pZCkudG9CZSgndXNlcl8xMjMnKTtcbiAgICB9KTtcblxuICAgIGl0KCdzaG91bGQgdGhyb3cgZXJyb3IgZm9yIGludmFsaWQgdG9rZW4nLCBhc3luYyAoKSA9PiB7XG4gICAgICBjb25zdCBqd3QgPSBqZXN0LnJlcXVpcmVNb2NrKCdqc29ud2VidG9rZW4nKTtcbiAgICAgIGplc3QubW9ja2VkKGp3dC52ZXJpZnkpLm1vY2tJbXBsZW1lbnRhdGlvbigoKSA9PiB7XG4gICAgICAgIHRocm93IG5ldyBFcnJvcignSW52YWxpZCB0b2tlbicpO1xuICAgICAgfSk7XG5cbiAgICAgIGF3YWl0IGV4cGVjdChhdXRoU2VydmljZS52ZXJpZnlUb2tlbignaW52YWxpZF90b2tlbicpKS5yZWplY3RzLnRvVGhyb3coJ0ludmFsaWQgdG9rZW4nKTtcbiAgICB9KTtcbiAgfSk7XG5cbiAgZGVzY3JpYmUoJ2dldFNlY3VyaXR5RXZlbnRzJywgKCkgPT4ge1xuICAgIGl0KCdzaG91bGQgcmV0dXJuIHNlY3VyaXR5IGV2ZW50cycsIGFzeW5jICgpID0+IHtcbiAgICAgIGNvbnN0IHJlZ2lzdGVyRGF0YSA9IHtcbiAgICAgICAgZW1haWw6ICd0ZXN0QGV4YW1wbGUuY29tJyxcbiAgICAgICAgdXNlcm5hbWU6ICd0ZXN0dXNlcicsXG4gICAgICAgIHBhc3N3b3JkOiAncGFzc3dvcmQxMjMnLFxuICAgICAgICBjb25maXJtUGFzc3dvcmQ6ICdwYXNzd29yZDEyMycsXG4gICAgICB9O1xuXG4gICAgICBhd2FpdCBhdXRoU2VydmljZS5yZWdpc3RlcihyZWdpc3RlckRhdGEpO1xuXG4gICAgICBjb25zdCBldmVudHMgPSBhdXRoU2VydmljZS5nZXRTZWN1cml0eUV2ZW50cygpO1xuICAgICAgZXhwZWN0KGV2ZW50cykudG9IYXZlTGVuZ3RoKDEpO1xuICAgICAgZXhwZWN0KGV2ZW50c1swXT8udHlwZSkudG9CZShTZWN1cml0eUV2ZW50VHlwZS5MT0dJTl9TVUNDRVNTKTtcbiAgICB9KTtcbiAgfSk7XG59KTtcbiJdLCJ2ZXJzaW9uIjozfQ==

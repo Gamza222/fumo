@@ -1,0 +1,190 @@
+9a65cd7189f33d03516742cc779e5ce6
+"use strict";
+
+/**
+ * Common application types and configuration interfaces
+ */
+/* istanbul ignore next */
+function cov_2hfmhcidn7() {
+  var path = "/Users/gamzaramazanov/Desktop/fumo/src/shared/config/common/common.types.ts";
+  var hash = "eb37d1efcdce1f31d0c6bbe82dd8f9130a02a0af";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/gamzaramazanov/Desktop/fumo/src/shared/config/common/common.types.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 5,
+          column: 0
+        },
+        end: {
+          line: 5,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 6,
+          column: 0
+        },
+        end: {
+          line: 6,
+          column: 27
+        }
+      },
+      "2": {
+        start: {
+          line: 9,
+          column: 0
+        },
+        end: {
+          line: 12,
+          column: 54
+        }
+      },
+      "3": {
+        start: {
+          line: 10,
+          column: 4
+        },
+        end: {
+          line: 10,
+          column: 45
+        }
+      },
+      "4": {
+        start: {
+          line: 11,
+          column: 4
+        },
+        end: {
+          line: 11,
+          column: 43
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 9,
+            column: 1
+          },
+          end: {
+            line: 9,
+            column: 2
+          }
+        },
+        loc: {
+          start: {
+            line: 9,
+            column: 22
+          },
+          end: {
+            line: 12,
+            column: 1
+          }
+        },
+        line: 9
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 12,
+            column: 3
+          },
+          end: {
+            line: 12,
+            column: 52
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 12,
+            column: 3
+          },
+          end: {
+            line: 12,
+            column: 12
+          }
+        }, {
+          start: {
+            line: 12,
+            column: 17
+          },
+          end: {
+            line: 12,
+            column: 51
+          }
+        }],
+        line: 12
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    f: {
+      "0": 0
+    },
+    b: {
+      "0": [0, 0]
+    },
+    inputSourceMap: {
+      file: "/Users/gamzaramazanov/Desktop/fumo/src/shared/config/common/common.types.ts",
+      mappings: ";AAAA;;GAEG;;;AAEH,oDAAoD;AACpD,IAAY,SAGX;AAHD,WAAY,SAAS;IACnB,wCAA2B,CAAA;IAC3B,sCAAyB,CAAA;AAC3B,CAAC,EAHW,SAAS,yBAAT,SAAS,QAGpB",
+      names: [],
+      sources: ["/Users/gamzaramazanov/Desktop/fumo/src/shared/config/common/common.types.ts"],
+      sourcesContent: ["/**\n * Common application types and configuration interfaces\n */\n\n/** Represents the build mode for the application */\nexport enum BuildMode {\n  Development = 'development',\n  Production = 'production',\n}\n\n/** Defines the essential build paths for the application */\nexport interface BuildPaths {\n  entry: string;\n  output: string;\n  public: string;\n}\n\n/** Core application configuration interface */\nexport interface AppConfig {\n  apiUrl: string;\n  wsUrl: string;\n  isProd: boolean;\n  isDev: boolean;\n  mode: BuildMode;\n  port: number;\n}\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "eb37d1efcdce1f31d0c6bbe82dd8f9130a02a0af"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_2hfmhcidn7 = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_2hfmhcidn7();
+cov_2hfmhcidn7().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_2hfmhcidn7().s[1]++;
+exports.BuildMode = void 0;
+/** Represents the build mode for the application */
+var BuildMode;
+/* istanbul ignore next */
+cov_2hfmhcidn7().s[2]++;
+(function (BuildMode) {
+  /* istanbul ignore next */
+  cov_2hfmhcidn7().f[0]++;
+  cov_2hfmhcidn7().s[3]++;
+  BuildMode["Development"] = "development";
+  /* istanbul ignore next */
+  cov_2hfmhcidn7().s[4]++;
+  BuildMode["Production"] = "production";
+})(
+/* istanbul ignore next */
+(cov_2hfmhcidn7().b[0][0]++, BuildMode) ||
+/* istanbul ignore next */
+(cov_2hfmhcidn7().b[0][1]++, exports.BuildMode = BuildMode = {}));
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMmhmbWhjaWRuNyIsInBhdGgiLCJoYXNoIiwiZ2xvYmFsIiwiRnVuY3Rpb24iLCJnY3YiLCJjb3ZlcmFnZURhdGEiLCJzdGF0ZW1lbnRNYXAiLCJzdGFydCIsImxpbmUiLCJjb2x1bW4iLCJlbmQiLCJmbk1hcCIsIm5hbWUiLCJkZWNsIiwibG9jIiwiYnJhbmNoTWFwIiwidHlwZSIsImxvY2F0aW9ucyIsInMiLCJmIiwiYiIsImlucHV0U291cmNlTWFwIiwiZmlsZSIsIm1hcHBpbmdzIiwibmFtZXMiLCJzb3VyY2VzIiwic291cmNlc0NvbnRlbnQiLCJ2ZXJzaW9uIiwiX2NvdmVyYWdlU2NoZW1hIiwiY292ZXJhZ2UiLCJhY3R1YWxDb3ZlcmFnZSIsIkJ1aWxkTW9kZSIsImV4cG9ydHMiXSwic291cmNlcyI6WyIvVXNlcnMvZ2FtemFyYW1hemFub3YvRGVza3RvcC9mdW1vL3NyYy9zaGFyZWQvY29uZmlnL2NvbW1vbi9jb21tb24udHlwZXMudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBDb21tb24gYXBwbGljYXRpb24gdHlwZXMgYW5kIGNvbmZpZ3VyYXRpb24gaW50ZXJmYWNlc1xuICovXG5cbi8qKiBSZXByZXNlbnRzIHRoZSBidWlsZCBtb2RlIGZvciB0aGUgYXBwbGljYXRpb24gKi9cbmV4cG9ydCBlbnVtIEJ1aWxkTW9kZSB7XG4gIERldmVsb3BtZW50ID0gJ2RldmVsb3BtZW50JyxcbiAgUHJvZHVjdGlvbiA9ICdwcm9kdWN0aW9uJyxcbn1cblxuLyoqIERlZmluZXMgdGhlIGVzc2VudGlhbCBidWlsZCBwYXRocyBmb3IgdGhlIGFwcGxpY2F0aW9uICovXG5leHBvcnQgaW50ZXJmYWNlIEJ1aWxkUGF0aHMge1xuICBlbnRyeTogc3RyaW5nO1xuICBvdXRwdXQ6IHN0cmluZztcbiAgcHVibGljOiBzdHJpbmc7XG59XG5cbi8qKiBDb3JlIGFwcGxpY2F0aW9uIGNvbmZpZ3VyYXRpb24gaW50ZXJmYWNlICovXG5leHBvcnQgaW50ZXJmYWNlIEFwcENvbmZpZyB7XG4gIGFwaVVybDogc3RyaW5nO1xuICB3c1VybDogc3RyaW5nO1xuICBpc1Byb2Q6IGJvb2xlYW47XG4gIGlzRGV2OiBib29sZWFuO1xuICBtb2RlOiBCdWlsZE1vZGU7XG4gIHBvcnQ6IG51bWJlcjtcbn1cbiJdLCJtYXBwaW5ncyI6Ijs7QUFBQTs7O0FBQUE7QUFBQSxTQUFBQSxlQUFBO0VBQUEsSUFBQUMsSUFBQTtFQUFBLElBQUFDLElBQUE7RUFBQSxJQUFBQyxNQUFBLE9BQUFDLFFBQUE7RUFBQSxJQUFBQyxHQUFBO0VBQUEsSUFBQUMsWUFBQTtJQUFBTCxJQUFBO0lBQUFNLFlBQUE7TUFBQTtRQUFBQyxLQUFBO1VBQUFDLElBQUE7VUFBQUMsTUFBQTtRQUFBO1FBQUFDLEdBQUE7VUFBQUYsSUFBQTtVQUFBQyxNQUFBO1FBQUE7TUFBQTtNQUFBO1FBQUFGLEtBQUE7VUFBQUMsSUFBQTtVQUFBQyxNQUFBO1FBQUE7UUFBQUMsR0FBQTtVQUFBRixJQUFBO1VBQUFDLE1BQUE7UUFBQTtNQUFBO01BQUE7UUFBQUYsS0FBQTtVQUFBQyxJQUFBO1VBQUFDLE1BQUE7UUFBQTtRQUFBQyxHQUFBO1VBQUFGLElBQUE7VUFBQUMsTUFBQTtRQUFBO01BQUE7TUFBQTtRQUFBRixLQUFBO1VBQUFDLElBQUE7VUFBQUMsTUFBQTtRQUFBO1FBQUFDLEdBQUE7VUFBQUYsSUFBQTtVQUFBQyxNQUFBO1FBQUE7TUFBQTtNQUFBO1FBQUFGLEtBQUE7VUFBQUMsSUFBQTtVQUFBQyxNQUFBO1FBQUE7UUFBQUMsR0FBQTtVQUFBRixJQUFBO1VBQUFDLE1BQUE7UUFBQTtNQUFBO0lBQUE7SUFBQUUsS0FBQTtNQUFBO1FBQUFDLElBQUE7UUFBQUMsSUFBQTtVQUFBTixLQUFBO1lBQUFDLElBQUE7WUFBQUMsTUFBQTtVQUFBO1VBQUFDLEdBQUE7WUFBQUYsSUFBQTtZQUFBQyxNQUFBO1VBQUE7UUFBQTtRQUFBSyxHQUFBO1VBQUFQLEtBQUE7WUFBQUMsSUFBQTtZQUFBQyxNQUFBO1VBQUE7VUFBQUMsR0FBQTtZQUFBRixJQUFBO1lBQUFDLE1BQUE7VUFBQTtRQUFBO1FBQUFELElBQUE7TUFBQTtJQUFBO0lBQUFPLFNBQUE7TUFBQTtRQUFBRCxHQUFBO1VBQUFQLEtBQUE7WUFBQUMsSUFBQTtZQUFBQyxNQUFBO1VBQUE7VUFBQUMsR0FBQTtZQUFBRixJQUFBO1lBQUFDLE1BQUE7VUFBQTtRQUFBO1FBQUFPLElBQUE7UUFBQUMsU0FBQTtVQUFBVixLQUFBO1lBQUFDLElBQUE7WUFBQUMsTUFBQTtVQUFBO1VBQUFDLEdBQUE7WUFBQUYsSUFBQTtZQUFBQyxNQUFBO1VBQUE7UUFBQTtVQUFBRixLQUFBO1lBQUFDLElBQUE7WUFBQUMsTUFBQTtVQUFBO1VBQUFDLEdBQUE7WUFBQUYsSUFBQTtZQUFBQyxNQUFBO1VBQUE7UUFBQTtRQUFBRCxJQUFBO01BQUE7SUFBQTtJQUFBVSxDQUFBO01BQUE7TUFBQTtNQUFBO01BQUE7TUFBQTtJQUFBO0lBQUFDLENBQUE7TUFBQTtJQUFBO0lBQUFDLENBQUE7TUFBQTtJQUFBO0lBQUFDLGNBQUE7TUFBQUMsSUFBQTtNQUFBQyxRQUFBO01BQUFDLEtBQUE7TUFBQUMsT0FBQTtNQUFBQyxjQUFBO01BQUFDLE9BQUE7SUFBQTtJQUFBQyxlQUFBO0lBQUEzQixJQUFBO0VBQUE7RUFBQSxJQUFBNEIsUUFBQSxHQUFBM0IsTUFBQSxDQUFBRSxHQUFBLE1BQUFGLE1BQUEsQ0FBQUUsR0FBQTtFQUFBLEtBQUF5QixRQUFBLENBQUE3QixJQUFBLEtBQUE2QixRQUFBLENBQUE3QixJQUFBLEVBQUFDLElBQUEsS0FBQUEsSUFBQTtJQUFBNEIsUUFBQSxDQUFBN0IsSUFBQSxJQUFBSyxZQUFBO0VBQUE7RUFBQSxJQUFBeUIsY0FBQSxHQUFBRCxRQUFBLENBQUE3QixJQUFBO0VBQUE7Ozs7Ozs7Ozs7Ozs7Ozs7QUFJQTtBQUNBLElBQVkrQixTQUdYO0FBQUE7QUFBQWhDLGNBQUEsR0FBQW1CLENBQUE7QUFIRCxXQUFZYSxTQUFTO0VBQUE7RUFBQWhDLGNBQUEsR0FBQW9CLENBQUE7RUFBQXBCLGNBQUEsR0FBQW1CLENBQUE7RUFDbkJhLFNBQUEsK0JBQTJCO0VBQUE7RUFBQWhDLGNBQUEsR0FBQW1CLENBQUE7RUFDM0JhLFNBQUEsNkJBQXlCO0FBQzNCLENBQUM7QUFIVztBQUFBLENBQUFoQyxjQUFBLEdBQUFxQixDQUFBLFVBQUFXLFNBQVM7QUFBQTtBQUFBLENBQUFoQyxjQUFBLEdBQUFxQixDQUFBLFVBQUFZLE9BQUEsQ0FBQUQsU0FBQSxHQUFUQSxTQUFTIiwiaWdub3JlTGlzdCI6W119

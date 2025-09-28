@@ -1,0 +1,220 @@
+c6242c9fa9f983cad6070a21796a8adf
+"use strict";
+
+/* istanbul ignore next */
+function cov_1q4524455l() {
+  var path = "/Users/gamzaramazanov/Desktop/fumo/src/infrastructure/error-handling/index.ts";
+  var hash = "730baa7491323b77a5dbdd0c34976276df820cf9";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/gamzaramazanov/Desktop/fumo/src/infrastructure/error-handling/index.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 50
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 29
+        },
+        end: {
+          line: 4,
+          column: 65
+        }
+      },
+      "3": {
+        start: {
+          line: 5,
+          column: 0
+        },
+        end: {
+          line: 5,
+          column: 144
+        }
+      },
+      "4": {
+        start: {
+          line: 5,
+          column: 87
+        },
+        end: {
+          line: 5,
+          column: 138
+        }
+      },
+      "5": {
+        start: {
+          line: 6,
+          column: 12
+        },
+        end: {
+          line: 6,
+          column: 32
+        }
+      },
+      "6": {
+        start: {
+          line: 7,
+          column: 0
+        },
+        end: {
+          line: 7,
+          column: 110
+        }
+      },
+      "7": {
+        start: {
+          line: 7,
+          column: 82
+        },
+        end: {
+          line: 7,
+          column: 104
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 5,
+            column: 73
+          },
+          end: {
+            line: 5,
+            column: 74
+          }
+        },
+        loc: {
+          start: {
+            line: 5,
+            column: 85
+          },
+          end: {
+            line: 5,
+            column: 140
+          }
+        },
+        line: 5
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 7,
+            column: 68
+          },
+          end: {
+            line: 7,
+            column: 69
+          }
+        },
+        loc: {
+          start: {
+            line: 7,
+            column: 80
+          },
+          end: {
+            line: 7,
+            column: 106
+          }
+        },
+        line: 7
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0
+    },
+    b: {},
+    inputSourceMap: {
+      file: "/Users/gamzaramazanov/Desktop/fumo/src/infrastructure/error-handling/index.ts",
+      mappings: ";;;AAAA,kEAAkF;AAAzE,qHAAA,oBAAoB,OAAiB;AAC9C,iCAAqC;AAA5B,+FAAA,QAAQ,OAAA",
+      names: [],
+      sources: ["/Users/gamzaramazanov/Desktop/fumo/src/infrastructure/error-handling/index.ts"],
+      sourcesContent: ["export { ErrorBoundaryWrapper as ErrorBoundary } from './ui/ErrorBoundaryWrapper';\nexport { logError } from './lib/lib';\nexport type { ErrorBoundaryProps, ErrorBoundaryState } from './types/types';\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "730baa7491323b77a5dbdd0c34976276df820cf9"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_1q4524455l = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_1q4524455l();
+cov_1q4524455l().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_1q4524455l().s[1]++;
+exports.logError = exports.ErrorBoundary = void 0;
+var ErrorBoundaryWrapper_1 =
+/* istanbul ignore next */
+(cov_1q4524455l().s[2]++, require("./ui/ErrorBoundaryWrapper"));
+/* istanbul ignore next */
+cov_1q4524455l().s[3]++;
+Object.defineProperty(exports, "ErrorBoundary", {
+  enumerable: true,
+  get: function () {
+    /* istanbul ignore next */
+    cov_1q4524455l().f[0]++;
+    cov_1q4524455l().s[4]++;
+    return ErrorBoundaryWrapper_1.ErrorBoundaryWrapper;
+  }
+});
+var lib_1 =
+/* istanbul ignore next */
+(cov_1q4524455l().s[5]++, require("./lib/lib"));
+/* istanbul ignore next */
+cov_1q4524455l().s[6]++;
+Object.defineProperty(exports, "logError", {
+  enumerable: true,
+  get: function () {
+    /* istanbul ignore next */
+    cov_1q4524455l().f[1]++;
+    cov_1q4524455l().s[7]++;
+    return lib_1.logError;
+  }
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJFcnJvckJvdW5kYXJ5V3JhcHBlcl8xIiwiY292XzFxNDUyNDQ1NWwiLCJzIiwicmVxdWlyZSIsIk9iamVjdCIsImRlZmluZVByb3BlcnR5IiwiZXhwb3J0cyIsImVudW1lcmFibGUiLCJnZXQiLCJmIiwiRXJyb3JCb3VuZGFyeVdyYXBwZXIiLCJsaWJfMSIsImxvZ0Vycm9yIl0sInNvdXJjZXMiOlsiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvaW5mcmFzdHJ1Y3R1cmUvZXJyb3ItaGFuZGxpbmcvaW5kZXgudHMiXSwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IHsgRXJyb3JCb3VuZGFyeVdyYXBwZXIgYXMgRXJyb3JCb3VuZGFyeSB9IGZyb20gJy4vdWkvRXJyb3JCb3VuZGFyeVdyYXBwZXInO1xuZXhwb3J0IHsgbG9nRXJyb3IgfSBmcm9tICcuL2xpYi9saWInO1xuZXhwb3J0IHR5cGUgeyBFcnJvckJvdW5kYXJ5UHJvcHMsIEVycm9yQm91bmRhcnlTdGF0ZSB9IGZyb20gJy4vdHlwZXMvdHlwZXMnO1xuIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUEsSUFBQUEsc0JBQUE7QUFBQTtBQUFBLENBQUFDLGNBQUEsR0FBQUMsQ0FBQSxPQUFBQyxPQUFBO0FBQWtGO0FBQUFGLGNBQUEsR0FBQUMsQ0FBQTtBQUF6RUUsTUFBQSxDQUFBQyxjQUFBLENBQUFDLE9BQUE7RUFBQUMsVUFBQTtFQUFBQyxHQUFBLFdBQUFBLENBQUE7SUFBQTtJQUFBUCxjQUFBLEdBQUFRLENBQUE7SUFBQVIsY0FBQSxHQUFBQyxDQUFBO0lBQUEsT0FBQUYsc0JBQUEsQ0FBQVUsb0JBQW9CO0VBQUE7QUFBQTtBQUM3QixJQUFBQyxLQUFBO0FBQUE7QUFBQSxDQUFBVixjQUFBLEdBQUFDLENBQUEsT0FBQUMsT0FBQTtBQUFxQztBQUFBRixjQUFBLEdBQUFDLENBQUE7QUFBNUJFLE1BQUEsQ0FBQUMsY0FBQSxDQUFBQyxPQUFBO0VBQUFDLFVBQUE7RUFBQUMsR0FBQSxXQUFBQSxDQUFBO0lBQUE7SUFBQVAsY0FBQSxHQUFBUSxDQUFBO0lBQUFSLGNBQUEsR0FBQUMsQ0FBQTtJQUFBLE9BQUFTLEtBQUEsQ0FBQUMsUUFBUTtFQUFBO0FBQUEiLCJpZ25vcmVMaXN0IjpbXX0=

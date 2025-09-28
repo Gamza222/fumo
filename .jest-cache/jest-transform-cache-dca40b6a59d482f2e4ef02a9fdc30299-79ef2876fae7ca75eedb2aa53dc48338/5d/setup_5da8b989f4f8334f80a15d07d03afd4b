@@ -1,0 +1,151 @@
+ad88558fda2d0313aa7ee387c07fe9ef
+"use strict";
+
+/**
+ * External Mocks Auto-Setup
+ *
+ * Automatically applies external library mocks globally for all tests.
+ * This file is imported by the Jest setup to ensure consistent mocking.
+ */
+/* istanbul ignore next */
+function cov_28g237gy9i() {
+  var path = "/Users/gamzaramazanov/Desktop/fumo/src/shared/testing/mocks/external/lib/setup.ts";
+  var hash = "68407ccdb4ab0145782bd7945e9ccdee6abfa544";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/gamzaramazanov/Desktop/fumo/src/shared/testing/mocks/external/lib/setup.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 8,
+          column: 0
+        },
+        end: {
+          line: 8,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 16,
+          column: 0
+        },
+        end: {
+          line: 16,
+          column: 77
+        }
+      },
+      "2": {
+        start: {
+          line: 16,
+          column: 41
+        },
+        end: {
+          line: 16,
+          column: 73
+        }
+      },
+      "3": {
+        start: {
+          line: 17,
+          column: 20
+        },
+        end: {
+          line: 17,
+          column: 44
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 16,
+            column: 27
+          },
+          end: {
+            line: 16,
+            column: 28
+          }
+        },
+        loc: {
+          start: {
+            line: 16,
+            column: 39
+          },
+          end: {
+            line: 16,
+            column: 75
+          }
+        },
+        line: 16
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    f: {
+      "0": 0
+    },
+    b: {},
+    inputSourceMap: {
+      file: "/Users/gamzaramazanov/Desktop/fumo/src/shared/testing/mocks/external/lib/setup.ts",
+      mappings: ";AAAA;;;;;GAKG;;AAIH,+EAA+E;AAC/E,uBAAuB;AACvB,+EAA+E;AAE/E;;;GAGG;AACH,IAAI,CAAC,IAAI,CAAC,eAAe,EAAE,cAAyB,OAAA,wBAAU,EAAV,CAAU,CAAC,CAAC;AAVhE,6CAA2C;AAY3C,+EAA+E;AAC/E,oBAAoB;AACpB,+EAA+E;AAE/E,+CAA+C;AAC/C,4DAA4D;AAC5D,oDAAoD;AACpD,OAAO",
+      names: [],
+      sources: ["/Users/gamzaramazanov/Desktop/fumo/src/shared/testing/mocks/external/lib/setup.ts"],
+      sourcesContent: ["/**\n * External Mocks Auto-Setup\n *\n * Automatically applies external library mocks globally for all tests.\n * This file is imported by the Jest setup to ensure consistent mocking.\n */\n\nimport { mockSentry } from './sentry.mock';\n\n// ============================================================================\n// AUTOMATIC MOCK SETUP\n// ============================================================================\n\n/**\n * Auto-mock @sentry/react with our centralized mock\n * This ensures all test files get the same Sentry mock without manual setup\n */\njest.mock('@sentry/react', (): typeof mockSentry => mockSentry);\n\n// ============================================================================\n// FUTURE AUTO-MOCKS\n// ============================================================================\n\n// NOTE: Add other global mocks here as needed:\n// jest.mock('google-analytics', () => mockGoogleAnalytics);\n// jest.mock('@stripe/stripe-js', () => mockStripe);\n// etc.\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "68407ccdb4ab0145782bd7945e9ccdee6abfa544"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_28g237gy9i = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_28g237gy9i();
+cov_28g237gy9i().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+// ============================================================================
+// AUTOMATIC MOCK SETUP
+// ============================================================================
+/**
+ * Auto-mock @sentry/react with our centralized mock
+ * This ensures all test files get the same Sentry mock without manual setup
+ */
+/* istanbul ignore next */
+cov_28g237gy9i().s[1]++;
+jest.mock('@sentry/react', function () {
+  /* istanbul ignore next */
+  cov_28g237gy9i().f[0]++;
+  cov_28g237gy9i().s[2]++;
+  return sentry_mock_1.mockSentry;
+});
+var sentry_mock_1 =
+/* istanbul ignore next */
+(cov_28g237gy9i().s[3]++, require("./sentry.mock"));
+// ============================================================================
+// FUTURE AUTO-MOCKS
+// ============================================================================
+// NOTE: Add other global mocks here as needed:
+// jest.mock('google-analytics', () => mockGoogleAnalytics);
+// jest.mock('@stripe/stripe-js', () => mockStripe);
+// etc.
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMjhnMjM3Z3k5aSIsInBhdGgiLCJoYXNoIiwiZ2xvYmFsIiwiRnVuY3Rpb24iLCJnY3YiLCJjb3ZlcmFnZURhdGEiLCJzdGF0ZW1lbnRNYXAiLCJzdGFydCIsImxpbmUiLCJjb2x1bW4iLCJlbmQiLCJmbk1hcCIsIm5hbWUiLCJkZWNsIiwibG9jIiwiYnJhbmNoTWFwIiwicyIsImYiLCJiIiwiaW5wdXRTb3VyY2VNYXAiLCJmaWxlIiwibWFwcGluZ3MiLCJuYW1lcyIsInNvdXJjZXMiLCJzb3VyY2VzQ29udGVudCIsInZlcnNpb24iLCJfY292ZXJhZ2VTY2hlbWEiLCJjb3ZlcmFnZSIsImFjdHVhbENvdmVyYWdlIiwiamVzdCIsIm1vY2siLCJzZW50cnlfbW9ja18xIiwibW9ja1NlbnRyeSIsInJlcXVpcmUiXSwic291cmNlcyI6WyIvVXNlcnMvZ2FtemFyYW1hemFub3YvRGVza3RvcC9mdW1vL3NyYy9zaGFyZWQvdGVzdGluZy9tb2Nrcy9leHRlcm5hbC9saWIvc2V0dXAudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBFeHRlcm5hbCBNb2NrcyBBdXRvLVNldHVwXG4gKlxuICogQXV0b21hdGljYWxseSBhcHBsaWVzIGV4dGVybmFsIGxpYnJhcnkgbW9ja3MgZ2xvYmFsbHkgZm9yIGFsbCB0ZXN0cy5cbiAqIFRoaXMgZmlsZSBpcyBpbXBvcnRlZCBieSB0aGUgSmVzdCBzZXR1cCB0byBlbnN1cmUgY29uc2lzdGVudCBtb2NraW5nLlxuICovXG5cbmltcG9ydCB7IG1vY2tTZW50cnkgfSBmcm9tICcuL3NlbnRyeS5tb2NrJztcblxuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuLy8gQVVUT01BVElDIE1PQ0sgU0VUVVBcbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cblxuLyoqXG4gKiBBdXRvLW1vY2sgQHNlbnRyeS9yZWFjdCB3aXRoIG91ciBjZW50cmFsaXplZCBtb2NrXG4gKiBUaGlzIGVuc3VyZXMgYWxsIHRlc3QgZmlsZXMgZ2V0IHRoZSBzYW1lIFNlbnRyeSBtb2NrIHdpdGhvdXQgbWFudWFsIHNldHVwXG4gKi9cbmplc3QubW9jaygnQHNlbnRyeS9yZWFjdCcsICgpOiB0eXBlb2YgbW9ja1NlbnRyeSA9PiBtb2NrU2VudHJ5KTtcblxuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuLy8gRlVUVVJFIEFVVE8tTU9DS1Ncbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cblxuLy8gTk9URTogQWRkIG90aGVyIGdsb2JhbCBtb2NrcyBoZXJlIGFzIG5lZWRlZDpcbi8vIGplc3QubW9jaygnZ29vZ2xlLWFuYWx5dGljcycsICgpID0+IG1vY2tHb29nbGVBbmFseXRpY3MpO1xuLy8gamVzdC5tb2NrKCdAc3RyaXBlL3N0cmlwZS1qcycsICgpID0+IG1vY2tTdHJpcGUpO1xuLy8gZXRjLlxuIl0sIm1hcHBpbmdzIjoiOztBQUFBOzs7Ozs7QUFBQTtBQUFBLFNBQUFBLGVBQUE7RUFBQSxJQUFBQyxJQUFBO0VBQUEsSUFBQUMsSUFBQTtFQUFBLElBQUFDLE1BQUEsT0FBQUMsUUFBQTtFQUFBLElBQUFDLEdBQUE7RUFBQSxJQUFBQyxZQUFBO0lBQUFMLElBQUE7SUFBQU0sWUFBQTtNQUFBO1FBQUFDLEtBQUE7VUFBQUMsSUFBQTtVQUFBQyxNQUFBO1FBQUE7UUFBQUMsR0FBQTtVQUFBRixJQUFBO1VBQUFDLE1BQUE7UUFBQTtNQUFBO01BQUE7UUFBQUYsS0FBQTtVQUFBQyxJQUFBO1VBQUFDLE1BQUE7UUFBQTtRQUFBQyxHQUFBO1VBQUFGLElBQUE7VUFBQUMsTUFBQTtRQUFBO01BQUE7TUFBQTtRQUFBRixLQUFBO1VBQUFDLElBQUE7VUFBQUMsTUFBQTtRQUFBO1FBQUFDLEdBQUE7VUFBQUYsSUFBQTtVQUFBQyxNQUFBO1FBQUE7TUFBQTtNQUFBO1FBQUFGLEtBQUE7VUFBQUMsSUFBQTtVQUFBQyxNQUFBO1FBQUE7UUFBQUMsR0FBQTtVQUFBRixJQUFBO1VBQUFDLE1BQUE7UUFBQTtNQUFBO0lBQUE7SUFBQUUsS0FBQTtNQUFBO1FBQUFDLElBQUE7UUFBQUMsSUFBQTtVQUFBTixLQUFBO1lBQUFDLElBQUE7WUFBQUMsTUFBQTtVQUFBO1VBQUFDLEdBQUE7WUFBQUYsSUFBQTtZQUFBQyxNQUFBO1VBQUE7UUFBQTtRQUFBSyxHQUFBO1VBQUFQLEtBQUE7WUFBQUMsSUFBQTtZQUFBQyxNQUFBO1VBQUE7VUFBQUMsR0FBQTtZQUFBRixJQUFBO1lBQUFDLE1BQUE7VUFBQTtRQUFBO1FBQUFELElBQUE7TUFBQTtJQUFBO0lBQUFPLFNBQUE7SUFBQUMsQ0FBQTtNQUFBO01BQUE7TUFBQTtNQUFBO0lBQUE7SUFBQUMsQ0FBQTtNQUFBO0lBQUE7SUFBQUMsQ0FBQTtJQUFBQyxjQUFBO01BQUFDLElBQUE7TUFBQUMsUUFBQTtNQUFBQyxLQUFBO01BQUFDLE9BQUE7TUFBQUMsY0FBQTtNQUFBQyxPQUFBO0lBQUE7SUFBQUMsZUFBQTtJQUFBekIsSUFBQTtFQUFBO0VBQUEsSUFBQTBCLFFBQUEsR0FBQXpCLE1BQUEsQ0FBQUUsR0FBQSxNQUFBRixNQUFBLENBQUFFLEdBQUE7RUFBQSxLQUFBdUIsUUFBQSxDQUFBM0IsSUFBQSxLQUFBMkIsUUFBQSxDQUFBM0IsSUFBQSxFQUFBQyxJQUFBLEtBQUFBLElBQUE7SUFBQTBCLFFBQUEsQ0FBQTNCLElBQUEsSUFBQUssWUFBQTtFQUFBO0VBQUEsSUFBQXVCLGNBQUEsR0FBQUQsUUFBQSxDQUFBM0IsSUFBQTtFQUFBO0lBaUJVO0lBQUFELGNBQUEsWUFBQUEsQ0FBQTtNQUFBLE9BQUE2QixjQUFBO0lBQUE7RUFBQTtFQUFBLE9BQUFBLGNBQUE7QUFBQTtBQUFBN0IsY0FBQTtBQUFBQSxjQUFBLEdBQUFpQixDQUFBOzs7O0FBUlY7QUFDQTtBQUNBO0FBRUE7Ozs7QUFBQTtBQUFBakIsY0FBQSxHQUFBaUIsQ0FBQTtBQUlBYSxJQUFJLENBQUNDLElBQUksQ0FBQyxlQUFlLEVBQUU7RUFBQTtFQUFBL0IsY0FBQSxHQUFBa0IsQ0FBQTtFQUFBbEIsY0FBQSxHQUFBaUIsQ0FBQTtFQUF5QixPQUFBZSxhQUFBLENBQUFDLFVBQVU7QUFBVixDQUFVLENBQUM7QUFWL0QsSUFBQUQsYUFBQTtBQUFBO0FBQUEsQ0FBQWhDLGNBQUEsR0FBQWlCLENBQUEsT0FBQWlCLE9BQUE7QUFZQTtBQUNBO0FBQ0E7QUFFQTtBQUNBO0FBQ0E7QUFDQSIsImlnbm9yZUxpc3QiOltdfQ==

@@ -1,0 +1,232 @@
+c996c35c480404d7de43be3df7535514
+"use strict";
+
+/**
+ * API-specific types for HTTP client and request/response handling
+ */
+/* istanbul ignore next */
+function cov_f6nmqajf1() {
+  var path = "/Users/gamzaramazanov/Desktop/fumo/src/shared/config/api/api.types.ts";
+  var hash = "3d6811ae83bf13a53c4f488c4933e6ec917ea043";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/gamzaramazanov/Desktop/fumo/src/shared/config/api/api.types.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 5,
+          column: 0
+        },
+        end: {
+          line: 5,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 6,
+          column: 0
+        },
+        end: {
+          line: 6,
+          column: 27
+        }
+      },
+      "2": {
+        start: {
+          line: 9,
+          column: 0
+        },
+        end: {
+          line: 15,
+          column: 54
+        }
+      },
+      "3": {
+        start: {
+          line: 10,
+          column: 4
+        },
+        end: {
+          line: 10,
+          column: 29
+        }
+      },
+      "4": {
+        start: {
+          line: 11,
+          column: 4
+        },
+        end: {
+          line: 11,
+          column: 31
+        }
+      },
+      "5": {
+        start: {
+          line: 12,
+          column: 4
+        },
+        end: {
+          line: 12,
+          column: 29
+        }
+      },
+      "6": {
+        start: {
+          line: 13,
+          column: 4
+        },
+        end: {
+          line: 13,
+          column: 33
+        }
+      },
+      "7": {
+        start: {
+          line: 14,
+          column: 4
+        },
+        end: {
+          line: 14,
+          column: 35
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 9,
+            column: 1
+          },
+          end: {
+            line: 9,
+            column: 2
+          }
+        },
+        loc: {
+          start: {
+            line: 9,
+            column: 22
+          },
+          end: {
+            line: 15,
+            column: 1
+          }
+        },
+        line: 9
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 15,
+            column: 3
+          },
+          end: {
+            line: 15,
+            column: 52
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 15,
+            column: 3
+          },
+          end: {
+            line: 15,
+            column: 12
+          }
+        }, {
+          start: {
+            line: 15,
+            column: 17
+          },
+          end: {
+            line: 15,
+            column: 51
+          }
+        }],
+        line: 15
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0
+    },
+    f: {
+      "0": 0
+    },
+    b: {
+      "0": [0, 0]
+    },
+    inputSourceMap: {
+      file: "/Users/gamzaramazanov/Desktop/fumo/src/shared/config/api/api.types.ts",
+      mappings: ";AAAA;;GAEG;;;AAEH,6BAA6B;AAC7B,IAAY,SAMX;AAND,WAAY,SAAS;IACnB,wBAAW,CAAA;IACX,0BAAa,CAAA;IACb,wBAAW,CAAA;IACX,4BAAe,CAAA;IACf,8BAAiB,CAAA;AACnB,CAAC,EANW,SAAS,yBAAT,SAAS,QAMpB",
+      names: [],
+      sources: ["/Users/gamzaramazanov/Desktop/fumo/src/shared/config/api/api.types.ts"],
+      sourcesContent: ["/**\n * API-specific types for HTTP client and request/response handling\n */\n\n/** Supported HTTP methods */\nexport enum ApiMethod {\n  GET = 'GET',\n  POST = 'POST',\n  PUT = 'PUT',\n  PATCH = 'PATCH',\n  DELETE = 'DELETE',\n}\n\n/** API request configuration */\nexport interface ApiConfig {\n  baseUrl: string;\n  timeout: number;\n  retryAttempts: number;\n  headers?: Record<string, string>;\n}\n\n/** Base API error structure */\nexport interface ApiError {\n  message: string;\n  code: string;\n  statusCode?: number;\n  details?: unknown;\n}\n\n/** API response wrapper */\nexport interface ApiResponse<T = unknown> {\n  data?: T;\n  error?: ApiError;\n  success: boolean;\n}\n\n/** Base API request options */\nexport interface ApiRequestOptions {\n  method: ApiMethod;\n  url: string;\n  data?: unknown;\n  headers?: Record<string, string>;\n  timeout?: number;\n}\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "3d6811ae83bf13a53c4f488c4933e6ec917ea043"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_f6nmqajf1 = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_f6nmqajf1();
+cov_f6nmqajf1().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_f6nmqajf1().s[1]++;
+exports.ApiMethod = void 0;
+/** Supported HTTP methods */
+var ApiMethod;
+/* istanbul ignore next */
+cov_f6nmqajf1().s[2]++;
+(function (ApiMethod) {
+  /* istanbul ignore next */
+  cov_f6nmqajf1().f[0]++;
+  cov_f6nmqajf1().s[3]++;
+  ApiMethod["GET"] = "GET";
+  /* istanbul ignore next */
+  cov_f6nmqajf1().s[4]++;
+  ApiMethod["POST"] = "POST";
+  /* istanbul ignore next */
+  cov_f6nmqajf1().s[5]++;
+  ApiMethod["PUT"] = "PUT";
+  /* istanbul ignore next */
+  cov_f6nmqajf1().s[6]++;
+  ApiMethod["PATCH"] = "PATCH";
+  /* istanbul ignore next */
+  cov_f6nmqajf1().s[7]++;
+  ApiMethod["DELETE"] = "DELETE";
+})(
+/* istanbul ignore next */
+(cov_f6nmqajf1().b[0][0]++, ApiMethod) ||
+/* istanbul ignore next */
+(cov_f6nmqajf1().b[0][1]++, exports.ApiMethod = ApiMethod = {}));
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfZjZubXFhamYxIiwicGF0aCIsImhhc2giLCJnbG9iYWwiLCJGdW5jdGlvbiIsImdjdiIsImNvdmVyYWdlRGF0YSIsInN0YXRlbWVudE1hcCIsInN0YXJ0IiwibGluZSIsImNvbHVtbiIsImVuZCIsImZuTWFwIiwibmFtZSIsImRlY2wiLCJsb2MiLCJicmFuY2hNYXAiLCJ0eXBlIiwibG9jYXRpb25zIiwicyIsImYiLCJiIiwiaW5wdXRTb3VyY2VNYXAiLCJmaWxlIiwibWFwcGluZ3MiLCJuYW1lcyIsInNvdXJjZXMiLCJzb3VyY2VzQ29udGVudCIsInZlcnNpb24iLCJfY292ZXJhZ2VTY2hlbWEiLCJjb3ZlcmFnZSIsImFjdHVhbENvdmVyYWdlIiwiQXBpTWV0aG9kIiwiZXhwb3J0cyJdLCJzb3VyY2VzIjpbIi9Vc2Vycy9nYW16YXJhbWF6YW5vdi9EZXNrdG9wL2Z1bW8vc3JjL3NoYXJlZC9jb25maWcvYXBpL2FwaS50eXBlcy50cyJdLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIEFQSS1zcGVjaWZpYyB0eXBlcyBmb3IgSFRUUCBjbGllbnQgYW5kIHJlcXVlc3QvcmVzcG9uc2UgaGFuZGxpbmdcbiAqL1xuXG4vKiogU3VwcG9ydGVkIEhUVFAgbWV0aG9kcyAqL1xuZXhwb3J0IGVudW0gQXBpTWV0aG9kIHtcbiAgR0VUID0gJ0dFVCcsXG4gIFBPU1QgPSAnUE9TVCcsXG4gIFBVVCA9ICdQVVQnLFxuICBQQVRDSCA9ICdQQVRDSCcsXG4gIERFTEVURSA9ICdERUxFVEUnLFxufVxuXG4vKiogQVBJIHJlcXVlc3QgY29uZmlndXJhdGlvbiAqL1xuZXhwb3J0IGludGVyZmFjZSBBcGlDb25maWcge1xuICBiYXNlVXJsOiBzdHJpbmc7XG4gIHRpbWVvdXQ6IG51bWJlcjtcbiAgcmV0cnlBdHRlbXB0czogbnVtYmVyO1xuICBoZWFkZXJzPzogUmVjb3JkPHN0cmluZywgc3RyaW5nPjtcbn1cblxuLyoqIEJhc2UgQVBJIGVycm9yIHN0cnVjdHVyZSAqL1xuZXhwb3J0IGludGVyZmFjZSBBcGlFcnJvciB7XG4gIG1lc3NhZ2U6IHN0cmluZztcbiAgY29kZTogc3RyaW5nO1xuICBzdGF0dXNDb2RlPzogbnVtYmVyO1xuICBkZXRhaWxzPzogdW5rbm93bjtcbn1cblxuLyoqIEFQSSByZXNwb25zZSB3cmFwcGVyICovXG5leHBvcnQgaW50ZXJmYWNlIEFwaVJlc3BvbnNlPFQgPSB1bmtub3duPiB7XG4gIGRhdGE/OiBUO1xuICBlcnJvcj86IEFwaUVycm9yO1xuICBzdWNjZXNzOiBib29sZWFuO1xufVxuXG4vKiogQmFzZSBBUEkgcmVxdWVzdCBvcHRpb25zICovXG5leHBvcnQgaW50ZXJmYWNlIEFwaVJlcXVlc3RPcHRpb25zIHtcbiAgbWV0aG9kOiBBcGlNZXRob2Q7XG4gIHVybDogc3RyaW5nO1xuICBkYXRhPzogdW5rbm93bjtcbiAgaGVhZGVycz86IFJlY29yZDxzdHJpbmcsIHN0cmluZz47XG4gIHRpbWVvdXQ/OiBudW1iZXI7XG59XG4iXSwibWFwcGluZ3MiOiI7O0FBQUE7OztBQUFBO0FBQUEsU0FBQUEsY0FBQTtFQUFBLElBQUFDLElBQUE7RUFBQSxJQUFBQyxJQUFBO0VBQUEsSUFBQUMsTUFBQSxPQUFBQyxRQUFBO0VBQUEsSUFBQUMsR0FBQTtFQUFBLElBQUFDLFlBQUE7SUFBQUwsSUFBQTtJQUFBTSxZQUFBO01BQUE7UUFBQUMsS0FBQTtVQUFBQyxJQUFBO1VBQUFDLE1BQUE7UUFBQTtRQUFBQyxHQUFBO1VBQUFGLElBQUE7VUFBQUMsTUFBQTtRQUFBO01BQUE7TUFBQTtRQUFBRixLQUFBO1VBQUFDLElBQUE7VUFBQUMsTUFBQTtRQUFBO1FBQUFDLEdBQUE7VUFBQUYsSUFBQTtVQUFBQyxNQUFBO1FBQUE7TUFBQTtNQUFBO1FBQUFGLEtBQUE7VUFBQUMsSUFBQTtVQUFBQyxNQUFBO1FBQUE7UUFBQUMsR0FBQTtVQUFBRixJQUFBO1VBQUFDLE1BQUE7UUFBQTtNQUFBO01BQUE7UUFBQUYsS0FBQTtVQUFBQyxJQUFBO1VBQUFDLE1BQUE7UUFBQTtRQUFBQyxHQUFBO1VBQUFGLElBQUE7VUFBQUMsTUFBQTtRQUFBO01BQUE7TUFBQTtRQUFBRixLQUFBO1VBQUFDLElBQUE7VUFBQUMsTUFBQTtRQUFBO1FBQUFDLEdBQUE7VUFBQUYsSUFBQTtVQUFBQyxNQUFBO1FBQUE7TUFBQTtNQUFBO1FBQUFGLEtBQUE7VUFBQUMsSUFBQTtVQUFBQyxNQUFBO1FBQUE7UUFBQUMsR0FBQTtVQUFBRixJQUFBO1VBQUFDLE1BQUE7UUFBQTtNQUFBO01BQUE7UUFBQUYsS0FBQTtVQUFBQyxJQUFBO1VBQUFDLE1BQUE7UUFBQTtRQUFBQyxHQUFBO1VBQUFGLElBQUE7VUFBQUMsTUFBQTtRQUFBO01BQUE7TUFBQTtRQUFBRixLQUFBO1VBQUFDLElBQUE7VUFBQUMsTUFBQTtRQUFBO1FBQUFDLEdBQUE7VUFBQUYsSUFBQTtVQUFBQyxNQUFBO1FBQUE7TUFBQTtJQUFBO0lBQUFFLEtBQUE7TUFBQTtRQUFBQyxJQUFBO1FBQUFDLElBQUE7VUFBQU4sS0FBQTtZQUFBQyxJQUFBO1lBQUFDLE1BQUE7VUFBQTtVQUFBQyxHQUFBO1lBQUFGLElBQUE7WUFBQUMsTUFBQTtVQUFBO1FBQUE7UUFBQUssR0FBQTtVQUFBUCxLQUFBO1lBQUFDLElBQUE7WUFBQUMsTUFBQTtVQUFBO1VBQUFDLEdBQUE7WUFBQUYsSUFBQTtZQUFBQyxNQUFBO1VBQUE7UUFBQTtRQUFBRCxJQUFBO01BQUE7SUFBQTtJQUFBTyxTQUFBO01BQUE7UUFBQUQsR0FBQTtVQUFBUCxLQUFBO1lBQUFDLElBQUE7WUFBQUMsTUFBQTtVQUFBO1VBQUFDLEdBQUE7WUFBQUYsSUFBQTtZQUFBQyxNQUFBO1VBQUE7UUFBQTtRQUFBTyxJQUFBO1FBQUFDLFNBQUE7VUFBQVYsS0FBQTtZQUFBQyxJQUFBO1lBQUFDLE1BQUE7VUFBQTtVQUFBQyxHQUFBO1lBQUFGLElBQUE7WUFBQUMsTUFBQTtVQUFBO1FBQUE7VUFBQUYsS0FBQTtZQUFBQyxJQUFBO1lBQUFDLE1BQUE7VUFBQTtVQUFBQyxHQUFBO1lBQUFGLElBQUE7WUFBQUMsTUFBQTtVQUFBO1FBQUE7UUFBQUQsSUFBQTtNQUFBO0lBQUE7SUFBQVUsQ0FBQTtNQUFBO01BQUE7TUFBQTtNQUFBO01BQUE7TUFBQTtNQUFBO01BQUE7SUFBQTtJQUFBQyxDQUFBO01BQUE7SUFBQTtJQUFBQyxDQUFBO01BQUE7SUFBQTtJQUFBQyxjQUFBO01BQUFDLElBQUE7TUFBQUMsUUFBQTtNQUFBQyxLQUFBO01BQUFDLE9BQUE7TUFBQUMsY0FBQTtNQUFBQyxPQUFBO0lBQUE7SUFBQUMsZUFBQTtJQUFBM0IsSUFBQTtFQUFBO0VBQUEsSUFBQTRCLFFBQUEsR0FBQTNCLE1BQUEsQ0FBQUUsR0FBQSxNQUFBRixNQUFBLENBQUFFLEdBQUE7RUFBQSxLQUFBeUIsUUFBQSxDQUFBN0IsSUFBQSxLQUFBNkIsUUFBQSxDQUFBN0IsSUFBQSxFQUFBQyxJQUFBLEtBQUFBLElBQUE7SUFBQTRCLFFBQUEsQ0FBQTdCLElBQUEsSUFBQUssWUFBQTtFQUFBO0VBQUEsSUFBQXlCLGNBQUEsR0FBQUQsUUFBQSxDQUFBN0IsSUFBQTtFQUFBOzs7Ozs7Ozs7Ozs7Ozs7O0FBSUE7QUFDQSxJQUFZK0IsU0FNWDtBQUFBO0FBQUFoQyxhQUFBLEdBQUFtQixDQUFBO0FBTkQsV0FBWWEsU0FBUztFQUFBO0VBQUFoQyxhQUFBLEdBQUFvQixDQUFBO0VBQUFwQixhQUFBLEdBQUFtQixDQUFBO0VBQ25CYSxTQUFBLGVBQVc7RUFBQTtFQUFBaEMsYUFBQSxHQUFBbUIsQ0FBQTtFQUNYYSxTQUFBLGlCQUFhO0VBQUE7RUFBQWhDLGFBQUEsR0FBQW1CLENBQUE7RUFDYmEsU0FBQSxlQUFXO0VBQUE7RUFBQWhDLGFBQUEsR0FBQW1CLENBQUE7RUFDWGEsU0FBQSxtQkFBZTtFQUFBO0VBQUFoQyxhQUFBLEdBQUFtQixDQUFBO0VBQ2ZhLFNBQUEscUJBQWlCO0FBQ25CLENBQUM7QUFOVztBQUFBLENBQUFoQyxhQUFBLEdBQUFxQixDQUFBLFVBQUFXLFNBQVM7QUFBQTtBQUFBLENBQUFoQyxhQUFBLEdBQUFxQixDQUFBLFVBQUFZLE9BQUEsQ0FBQUQsU0FBQSxHQUFUQSxTQUFTIiwiaWdub3JlTGlzdCI6W119

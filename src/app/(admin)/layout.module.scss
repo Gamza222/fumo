@@ -1,0 +1,78 @@
+// Admin Layout SCSS Module - NO Tailwind
+
+.container {
+  min-height: 100vh;
+  background-color: #dcfce7;
+}
+
+[data-theme='dark'] .container {
+  background-color: #14532d;
+}
+
+.header {
+  background-color: #16a34a;
+  color: white;
+  padding: 16px;
+}
+
+.headerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  gap: 16px;
+}
+
+.content {
+  display: flex;
+}
+
+.sidebar {
+  background-color: #15803d;
+  color: white;
+  padding: 24px;
+  width: 256px;
+}
+
+.sidebarTitle {
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.sidebarNav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebarLink {
+  display: block;
+  color: #bbf7d0;
+  text-decoration: none;
+}
+
+.sidebarLink:hover {
+  color: white;
+}
+
+.main {
+  flex: 1;
+  padding: 24px;
+}
+
+.footer {
+  background-color: #166534;
+  color: white;
+  padding: 16px;
+}
+
+.footerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}

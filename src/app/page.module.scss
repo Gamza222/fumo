@@ -1,0 +1,42 @@
+// Home Page SCSS Module - NO Tailwind
+
+.container {
+  min-height: 100vh;
+  background-color: #f9fafb;
+  padding: 32px;
+}
+
+[data-theme='dark'] .container {
+  background-color: #111827;
+}
+
+.content {
+  max-width: 512px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.themeToggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 50;
+}
+
+.header {
+  margin-bottom: 48px;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.navigationTitle {
+  margin-bottom: 16px;
+}
+
+.navButton {
+  width: 100%;
+}

@@ -1,0 +1,292 @@
+9ed49f144ccc843dbde8bd818388f52c
+"use strict";
+
+/* istanbul ignore next */
+function cov_fztwyhnfn() {
+  var path = "/Users/gamzaramazanov/Desktop/fumo/src/shared/config/api/index.ts";
+  var hash = "963c1d10e1637d826ba868d6eb41d7a5aeb3f6a9";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/gamzaramazanov/Desktop/fumo/src/shared/config/api/index.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 72
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 18
+        },
+        end: {
+          line: 4,
+          column: 40
+        }
+      },
+      "3": {
+        start: {
+          line: 5,
+          column: 0
+        },
+        end: {
+          line: 5,
+          column: 118
+        }
+      },
+      "4": {
+        start: {
+          line: 5,
+          column: 83
+        },
+        end: {
+          line: 5,
+          column: 112
+        }
+      },
+      "5": {
+        start: {
+          line: 6,
+          column: 19
+        },
+        end: {
+          line: 6,
+          column: 42
+        }
+      },
+      "6": {
+        start: {
+          line: 7,
+          column: 0
+        },
+        end: {
+          line: 7,
+          column: 119
+        }
+      },
+      "7": {
+        start: {
+          line: 7,
+          column: 83
+        },
+        end: {
+          line: 7,
+          column: 113
+        }
+      },
+      "8": {
+        start: {
+          line: 8,
+          column: 22
+        },
+        end: {
+          line: 8,
+          column: 48
+        }
+      },
+      "9": {
+        start: {
+          line: 9,
+          column: 0
+        },
+        end: {
+          line: 9,
+          column: 132
+        }
+      },
+      "10": {
+        start: {
+          line: 9,
+          column: 88
+        },
+        end: {
+          line: 9,
+          column: 126
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 5,
+            column: 69
+          },
+          end: {
+            line: 5,
+            column: 70
+          }
+        },
+        loc: {
+          start: {
+            line: 5,
+            column: 81
+          },
+          end: {
+            line: 5,
+            column: 114
+          }
+        },
+        line: 5
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 7,
+            column: 69
+          },
+          end: {
+            line: 7,
+            column: 70
+          }
+        },
+        loc: {
+          start: {
+            line: 7,
+            column: 81
+          },
+          end: {
+            line: 7,
+            column: 115
+          }
+        },
+        line: 7
+      },
+      "2": {
+        name: "(anonymous_2)",
+        decl: {
+          start: {
+            line: 9,
+            column: 74
+          },
+          end: {
+            line: 9,
+            column: 75
+          }
+        },
+        loc: {
+          start: {
+            line: 9,
+            column: 86
+          },
+          end: {
+            line: 9,
+            column: 128
+          }
+        },
+        line: 9
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    b: {},
+    inputSourceMap: {
+      file: "/Users/gamzaramazanov/Desktop/fumo/src/shared/config/api/index.ts",
+      mappings: ";;;AAAA,yCAAwC;AAA/B,sGAAA,SAAS,OAAA;AAElB,2CAAyC;AAAhC,uGAAA,SAAS,OAAA;AAClB,iDAAiD;AAAxC,+GAAA,cAAc,OAAA",
+      names: [],
+      sources: ["/Users/gamzaramazanov/Desktop/fumo/src/shared/config/api/index.ts"],
+      sourcesContent: ["export { ApiMethod } from './api.types';\nexport type { ApiConfig, ApiError } from './api.types';\nexport { apiConfig } from './api.config';\nexport { ERROR_MESSAGES } from './api.constants';\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "963c1d10e1637d826ba868d6eb41d7a5aeb3f6a9"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_fztwyhnfn = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_fztwyhnfn();
+cov_fztwyhnfn().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_fztwyhnfn().s[1]++;
+exports.ERROR_MESSAGES = exports.apiConfig = exports.ApiMethod = void 0;
+var api_types_1 =
+/* istanbul ignore next */
+(cov_fztwyhnfn().s[2]++, require("./api.types"));
+/* istanbul ignore next */
+cov_fztwyhnfn().s[3]++;
+Object.defineProperty(exports, "ApiMethod", {
+  enumerable: true,
+  get: function () {
+    /* istanbul ignore next */
+    cov_fztwyhnfn().f[0]++;
+    cov_fztwyhnfn().s[4]++;
+    return api_types_1.ApiMethod;
+  }
+});
+var api_config_1 =
+/* istanbul ignore next */
+(cov_fztwyhnfn().s[5]++, require("./api.config"));
+/* istanbul ignore next */
+cov_fztwyhnfn().s[6]++;
+Object.defineProperty(exports, "apiConfig", {
+  enumerable: true,
+  get: function () {
+    /* istanbul ignore next */
+    cov_fztwyhnfn().f[1]++;
+    cov_fztwyhnfn().s[7]++;
+    return api_config_1.apiConfig;
+  }
+});
+var api_constants_1 =
+/* istanbul ignore next */
+(cov_fztwyhnfn().s[8]++, require("./api.constants"));
+/* istanbul ignore next */
+cov_fztwyhnfn().s[9]++;
+Object.defineProperty(exports, "ERROR_MESSAGES", {
+  enumerable: true,
+  get: function () {
+    /* istanbul ignore next */
+    cov_fztwyhnfn().f[2]++;
+    cov_fztwyhnfn().s[10]++;
+    return api_constants_1.ERROR_MESSAGES;
+  }
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJhcGlfdHlwZXNfMSIsImNvdl9menR3eWhuZm4iLCJzIiwicmVxdWlyZSIsIk9iamVjdCIsImRlZmluZVByb3BlcnR5IiwiZXhwb3J0cyIsImVudW1lcmFibGUiLCJnZXQiLCJmIiwiQXBpTWV0aG9kIiwiYXBpX2NvbmZpZ18xIiwiYXBpQ29uZmlnIiwiYXBpX2NvbnN0YW50c18xIiwiRVJST1JfTUVTU0FHRVMiXSwic291cmNlcyI6WyIvVXNlcnMvZ2FtemFyYW1hemFub3YvRGVza3RvcC9mdW1vL3NyYy9zaGFyZWQvY29uZmlnL2FwaS9pbmRleC50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgeyBBcGlNZXRob2QgfSBmcm9tICcuL2FwaS50eXBlcyc7XG5leHBvcnQgdHlwZSB7IEFwaUNvbmZpZywgQXBpRXJyb3IgfSBmcm9tICcuL2FwaS50eXBlcyc7XG5leHBvcnQgeyBhcGlDb25maWcgfSBmcm9tICcuL2FwaS5jb25maWcnO1xuZXhwb3J0IHsgRVJST1JfTUVTU0FHRVMgfSBmcm9tICcuL2FwaS5jb25zdGFudHMnO1xuIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBLElBQUFBLFdBQUE7QUFBQTtBQUFBLENBQUFDLGFBQUEsR0FBQUMsQ0FBQSxPQUFBQyxPQUFBO0FBQXdDO0FBQUFGLGFBQUEsR0FBQUMsQ0FBQTtBQUEvQkUsTUFBQSxDQUFBQyxjQUFBLENBQUFDLE9BQUE7RUFBQUMsVUFBQTtFQUFBQyxHQUFBLFdBQUFBLENBQUE7SUFBQTtJQUFBUCxhQUFBLEdBQUFRLENBQUE7SUFBQVIsYUFBQSxHQUFBQyxDQUFBO0lBQUEsT0FBQUYsV0FBQSxDQUFBVSxTQUFTO0VBQUE7QUFBQTtBQUVsQixJQUFBQyxZQUFBO0FBQUE7QUFBQSxDQUFBVixhQUFBLEdBQUFDLENBQUEsT0FBQUMsT0FBQTtBQUF5QztBQUFBRixhQUFBLEdBQUFDLENBQUE7QUFBaENFLE1BQUEsQ0FBQUMsY0FBQSxDQUFBQyxPQUFBO0VBQUFDLFVBQUE7RUFBQUMsR0FBQSxXQUFBQSxDQUFBO0lBQUE7SUFBQVAsYUFBQSxHQUFBUSxDQUFBO0lBQUFSLGFBQUEsR0FBQUMsQ0FBQTtJQUFBLE9BQUFTLFlBQUEsQ0FBQUMsU0FBUztFQUFBO0FBQUE7QUFDbEIsSUFBQUMsZUFBQTtBQUFBO0FBQUEsQ0FBQVosYUFBQSxHQUFBQyxDQUFBLE9BQUFDLE9BQUE7QUFBaUQ7QUFBQUYsYUFBQSxHQUFBQyxDQUFBO0FBQXhDRSxNQUFBLENBQUFDLGNBQUEsQ0FBQUMsT0FBQTtFQUFBQyxVQUFBO0VBQUFDLEdBQUEsV0FBQUEsQ0FBQTtJQUFBO0lBQUFQLGFBQUEsR0FBQVEsQ0FBQTtJQUFBUixhQUFBLEdBQUFDLENBQUE7SUFBQSxPQUFBVyxlQUFBLENBQUFDLGNBQWM7RUFBQTtBQUFBIiwiaWdub3JlTGlzdCI6W119

@@ -1,0 +1,350 @@
+@use '../design-tokens/shadows' as shadows;
+@use '../design-tokens/borders' as borders;
+@use '../design-tokens/spacing' as spacing;
+
+// ===== INTERACTION MIXINS =====
+// User interaction states and animations
+
+// ===== HOVER EFFECTS =====
+@mixin hover-lift($distance: 2px, $shadow: 'md') {
+  transition:
+    transform 150ms ease-in-out,
+    box-shadow 150ms ease-in-out;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-$distance);
+    box-shadow: shadows.shadow($shadow);
+  }
+}
+
+@mixin hover-scale($scale: 1.05) {
+  transition: transform 150ms ease-in-out;
+
+  &:hover:not(:disabled) {
+    transform: scale($scale);
+  }
+}
+
+@mixin hover-glow($color: 'primary', $intensity: 'subtle') {
+  transition: box-shadow 200ms ease-in-out;
+
+  &:hover:not(:disabled) {
+    box-shadow: shadows.glow-effect('#{$color}-#{$intensity}');
+  }
+}
+
+@mixin hover-brightness($amount: 1.1) {
+  transition: filter 150ms ease-in-out;
+
+  &:hover:not(:disabled) {
+    filter: brightness($amount);
+  }
+}
+
+// ===== FOCUS STATES =====
+@mixin focus-ring($color: 'default', $width: 2px, $offset: 2px) {
+  &:focus {
+    outline: none;
+    box-shadow: shadows.focus-shadow($color);
+  }
+
+  &:focus:not(:focus-visible) {
+    box-shadow: none;
+  }
+
+  &:focus-visible {
+    box-shadow: shadows.focus-shadow($color);
+  }
+}
+
+@mixin focus-within-ring($color: 'default') {
+  &:focus-within {
+    box-shadow: shadows.focus-shadow($color);
+  }
+}
+
+// ===== ACTIVE STATES =====
+@mixin active-press($scale: 0.98) {
+  &:active:not(:disabled) {
+    transform: scale($scale);
+    transition: transform 50ms ease-in-out;
+  }
+}
+
+@mixin active-sink($distance: 1px) {
+  &:active:not(:disabled) {
+    transform: translateY($distance);
+    transition: transform 50ms ease-in-out;
+  }
+}
+
+// ===== LOADING STATES =====
+@mixin loading-pulse {
+  &[data-loading='true'] {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@mixin loading-shimmer {
+  &[data-loading='true'] {
+    background: linear-gradient(
+      90deg,
+      var(--color-gray-200) 25%,
+      var(--color-gray-100) 50%,
+      var(--color-gray-200) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+}
+
+@mixin loading-skeleton {
+  @include loading-shimmer;
+  border-radius: borders.border-radius('sm');
+}
+
+// ===== DISABLED STATES =====
+@mixin disabled-opacity($opacity: 0.5) {
+  &:disabled,
+  &[aria-disabled='true'],
+  &[data-disabled='true'] {
+    opacity: $opacity;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+@mixin disabled-grayscale {
+  &:disabled,
+  &[aria-disabled='true'],
+  &[data-disabled='true'] {
+    filter: grayscale(1);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+// ===== SELECTION STATES =====
+@mixin selected-highlight(
+  $bg-color: 'var(--color-primary-100)',
+  $border-color: 'var(--color-primary-500)'
+) {
+  &[aria-selected='true'],
+  &[data-selected='true'] {
+    background-color: $bg-color;
+    border-color: $border-color;
+  }
+}
+
+@mixin checked-state($color: 'primary') {
+  &:checked,
+  &[aria-checked='true'],
+  &[data-checked='true'] {
+    background-color: var(--color-#{$color}-500);
+    border-color: var(--color-#{$color}-500);
+    color: var(--color-text-inverse);
+  }
+}
+
+// ===== INTERACTIVE COMBINATIONS =====
+@mixin interactive-card {
+  @include hover-lift;
+  @include focus-ring;
+  transition:
+    transform 150ms ease-in-out,
+    box-shadow 150ms ease-in-out,
+    border-color 150ms ease-in-out;
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    border-color: var(--color-border-medium);
+  }
+}
+
+@mixin interactive-button {
+  @include hover-lift(1px, 'sm');
+  @include focus-ring;
+  @include active-sink;
+  cursor: pointer;
+}
+
+@mixin interactive-input {
+  @include focus-ring;
+  transition: border-color 150ms ease-in-out;
+
+  &:hover:not(:disabled):not(:focus) {
+    border-color: var(--color-border-medium);
+  }
+}
+
+// ===== ANIMATIONS =====
+@mixin fade-in($duration: 200ms, $delay: 0ms) {
+  animation: fade-in $duration ease-in-out $delay both;
+}
+
+@mixin fade-out($duration: 200ms, $delay: 0ms) {
+  animation: fade-out $duration ease-in-out $delay both;
+}
+
+@mixin slide-in-up($duration: 300ms, $delay: 0ms, $distance: 20px) {
+  animation: slide-in-up $duration ease-out $delay both;
+
+  @keyframes slide-in-up {
+    from {
+      opacity: 0;
+      transform: translateY($distance);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@mixin slide-in-down($duration: 300ms, $delay: 0ms, $distance: 20px) {
+  animation: slide-in-down $duration ease-out $delay both;
+
+  @keyframes slide-in-down {
+    from {
+      opacity: 0;
+      transform: translateY(-$distance);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@mixin scale-in($duration: 200ms, $delay: 0ms) {
+  animation: scale-in $duration ease-out $delay both;
+}
+
+@mixin bounce-in($duration: 600ms, $delay: 0ms) {
+  animation: bounce-in $duration cubic-bezier(0.68, -0.55, 0.265, 1.55) $delay both;
+}
+
+// ===== KEYFRAMES =====
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounce-in {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// ===== MOTION PREFERENCES =====
+@mixin respect-motion-preference {
+  @media (prefers-reduced-motion: reduce) {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// ===== TOUCH INTERACTIONS =====
+@mixin touch-action($action: manipulation) {
+  touch-action: $action;
+}
+
+@mixin tap-highlight-transparent {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@mixin touch-friendly {
+  @include tap-highlight-transparent;
+  @include touch-action;
+
+  // Minimum touch target size
+  min-height: 44px;
+  min-width: 44px;
+}
+
+// ===== STATE UTILITIES =====
+@mixin state-layer($color: currentColor, $opacity: 0.08) {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: $color;
+    opacity: 0;
+    transition: opacity 150ms ease-in-out;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  &:hover::before {
+    opacity: $opacity;
+  }
+
+  &:focus-visible::before {
+    opacity: $opacity * 1.5;
+  }
+
+  &:active::before {
+    opacity: $opacity * 2;
+  }
+}

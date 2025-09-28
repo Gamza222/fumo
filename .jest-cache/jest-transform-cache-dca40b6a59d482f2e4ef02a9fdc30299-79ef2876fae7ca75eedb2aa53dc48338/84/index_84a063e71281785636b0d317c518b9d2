@@ -1,0 +1,57 @@
+75e95ea0a66333ba9092253e2e2b9b80
+"use strict";
+/**
+ * Environment Configuration - Main Entry Point
+ *
+ * This is the SINGLE entry point for all environment configuration needs.
+ * Follows FSD principles by providing a clean, organized interface.
+ *
+ * Usage:
+ *   import { envConfig, isDevelopment, getEnvVariable } from '@/config/env';
+ *   import { Environment, EnvConfig } from '@/config/env';
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = exports.ENV_VALIDATION_RULES = exports.REQUIRED_ENV_VARS = exports.ENV_OVERRIDES = exports.ENV_DEFAULTS = exports.validateEnvVariable = exports.validateEnvironmentVariables = exports.Environment = exports.getEnvVariable = exports.getCurrentEnvironment = exports.isPreview = exports.isTest = exports.isProduction = exports.isDevelopment = exports.validateEnvironment = exports.envConfig = void 0;
+// ============================================================================
+// CORE EXPORTS - Most commonly used
+// ============================================================================
+// Environment configuration (most used)
+var config_1 = require("./config");
+Object.defineProperty(exports, "envConfig", { enumerable: true, get: function () { return config_1.envConfig; } });
+Object.defineProperty(exports, "validateEnvironment", { enumerable: true, get: function () { return config_1.validateEnvironment; } });
+var validation_1 = require("./validation");
+Object.defineProperty(exports, "isDevelopment", { enumerable: true, get: function () { return validation_1.isDevelopment; } });
+Object.defineProperty(exports, "isProduction", { enumerable: true, get: function () { return validation_1.isProduction; } });
+Object.defineProperty(exports, "isTest", { enumerable: true, get: function () { return validation_1.isTest; } });
+Object.defineProperty(exports, "isPreview", { enumerable: true, get: function () { return validation_1.isPreview; } });
+Object.defineProperty(exports, "getCurrentEnvironment", { enumerable: true, get: function () { return validation_1.getCurrentEnvironment; } });
+// Environment variable access
+var getEnvVariable = function (key, defaultValue) {
+    var value = process.env[key];
+    if (value === undefined && defaultValue === undefined) {
+        throw new Error("Environment variable ".concat(key, " is required but not set"));
+    }
+    return value || defaultValue || '';
+};
+exports.getEnvVariable = getEnvVariable;
+var types_1 = require("./types");
+Object.defineProperty(exports, "Environment", { enumerable: true, get: function () { return types_1.Environment; } });
+// ============================================================================
+// ADVANCED EXPORTS - For advanced usage
+// ============================================================================
+// Validation functions
+var validation_2 = require("./validation");
+Object.defineProperty(exports, "validateEnvironmentVariables", { enumerable: true, get: function () { return validation_2.validateEnvironmentVariables; } });
+Object.defineProperty(exports, "validateEnvVariable", { enumerable: true, get: function () { return validation_2.validateEnvVariable; } });
+// Constants (for advanced usage)
+var constants_1 = require("./constants");
+Object.defineProperty(exports, "ENV_DEFAULTS", { enumerable: true, get: function () { return constants_1.ENV_DEFAULTS; } });
+Object.defineProperty(exports, "ENV_OVERRIDES", { enumerable: true, get: function () { return constants_1.ENV_OVERRIDES; } });
+Object.defineProperty(exports, "REQUIRED_ENV_VARS", { enumerable: true, get: function () { return constants_1.REQUIRED_ENV_VARS; } });
+Object.defineProperty(exports, "ENV_VALIDATION_RULES", { enumerable: true, get: function () { return constants_1.ENV_VALIDATION_RULES; } });
+// ============================================================================
+// DEFAULT EXPORT - Main configuration instance
+// ============================================================================
+var config_2 = require("./config");
+Object.defineProperty(exports, "default", { enumerable: true, get: function () { return config_2.envConfig; } });
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9jb25maWcvZW52L2luZGV4LnRzIiwibWFwcGluZ3MiOiI7QUFBQTs7Ozs7Ozs7O0dBU0c7OztBQUVILCtFQUErRTtBQUMvRSxvQ0FBb0M7QUFDcEMsK0VBQStFO0FBRS9FLHdDQUF3QztBQUN4QyxtQ0FBMEQ7QUFBakQsbUdBQUEsU0FBUyxPQUFBO0FBQUUsNkdBQUEsbUJBQW1CLE9BQUE7QUFDdkMsMkNBTXNCO0FBTHBCLDJHQUFBLGFBQWEsT0FBQTtBQUNiLDBHQUFBLFlBQVksT0FBQTtBQUNaLG9HQUFBLE1BQU0sT0FBQTtBQUNOLHVHQUFBLFNBQVMsT0FBQTtBQUNULG1IQUFBLHFCQUFxQixPQUFBO0FBR3ZCLDhCQUE4QjtBQUN2QixJQUFNLGNBQWMsR0FBRyxVQUFDLEdBQVcsRUFBRSxZQUFxQjtJQUMvRCxJQUFNLEtBQUssR0FBRyxPQUFPLENBQUMsR0FBRyxDQUFDLEdBQUcsQ0FBQyxDQUFDO0lBQy9CLElBQUksS0FBSyxLQUFLLFNBQVMsSUFBSSxZQUFZLEtBQUssU0FBUyxFQUFFLENBQUM7UUFDdEQsTUFBTSxJQUFJLEtBQUssQ0FBQywrQkFBd0IsR0FBRyw2QkFBMEIsQ0FBQyxDQUFDO0lBQ3pFLENBQUM7SUFDRCxPQUFPLEtBQUssSUFBSSxZQUFZLElBQUksRUFBRSxDQUFDO0FBQ3JDLENBQUMsQ0FBQztBQU5XLFFBQUEsY0FBYyxrQkFNekI7QUFPRixpQ0FBc0M7QUFBN0Isb0dBQUEsV0FBVyxPQUFBO0FBRXBCLCtFQUErRTtBQUMvRSx3Q0FBd0M7QUFDeEMsK0VBQStFO0FBRS9FLHVCQUF1QjtBQUN2QiwyQ0FBaUY7QUFBeEUsMEhBQUEsNEJBQTRCLE9BQUE7QUFBRSxpSEFBQSxtQkFBbUIsT0FBQTtBQUUxRCxpQ0FBaUM7QUFDakMseUNBQW1HO0FBQTFGLHlHQUFBLFlBQVksT0FBQTtBQUFFLDBHQUFBLGFBQWEsT0FBQTtBQUFFLDhHQUFBLGlCQUFpQixPQUFBO0FBQUUsaUhBQUEsb0JBQW9CLE9BQUE7QUFFN0UsK0VBQStFO0FBQy9FLCtDQUErQztBQUMvQywrRUFBK0U7QUFFL0UsbUNBQWdEO0FBQXZDLGlHQUFBLFNBQVMsT0FBVyIsIm5hbWVzIjpbXSwic291cmNlcyI6WyIvVXNlcnMvZ2FtemFyYW1hemFub3YvRGVza3RvcC9mdW1vL2NvbmZpZy9lbnYvaW5kZXgudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBFbnZpcm9ubWVudCBDb25maWd1cmF0aW9uIC0gTWFpbiBFbnRyeSBQb2ludFxuICpcbiAqIFRoaXMgaXMgdGhlIFNJTkdMRSBlbnRyeSBwb2ludCBmb3IgYWxsIGVudmlyb25tZW50IGNvbmZpZ3VyYXRpb24gbmVlZHMuXG4gKiBGb2xsb3dzIEZTRCBwcmluY2lwbGVzIGJ5IHByb3ZpZGluZyBhIGNsZWFuLCBvcmdhbml6ZWQgaW50ZXJmYWNlLlxuICpcbiAqIFVzYWdlOlxuICogICBpbXBvcnQgeyBlbnZDb25maWcsIGlzRGV2ZWxvcG1lbnQsIGdldEVudlZhcmlhYmxlIH0gZnJvbSAnQC9jb25maWcvZW52JztcbiAqICAgaW1wb3J0IHsgRW52aXJvbm1lbnQsIEVudkNvbmZpZyB9IGZyb20gJ0AvY29uZmlnL2Vudic7XG4gKi9cblxuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuLy8gQ09SRSBFWFBPUlRTIC0gTW9zdCBjb21tb25seSB1c2VkXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG5cbi8vIEVudmlyb25tZW50IGNvbmZpZ3VyYXRpb24gKG1vc3QgdXNlZClcbmV4cG9ydCB7IGVudkNvbmZpZywgdmFsaWRhdGVFbnZpcm9ubWVudCB9IGZyb20gJy4vY29uZmlnJztcbmV4cG9ydCB7XG4gIGlzRGV2ZWxvcG1lbnQsXG4gIGlzUHJvZHVjdGlvbixcbiAgaXNUZXN0LFxuICBpc1ByZXZpZXcsXG4gIGdldEN1cnJlbnRFbnZpcm9ubWVudCxcbn0gZnJvbSAnLi92YWxpZGF0aW9uJztcblxuLy8gRW52aXJvbm1lbnQgdmFyaWFibGUgYWNjZXNzXG5leHBvcnQgY29uc3QgZ2V0RW52VmFyaWFibGUgPSAoa2V5OiBzdHJpbmcsIGRlZmF1bHRWYWx1ZT86IHN0cmluZyk6IHN0cmluZyA9PiB7XG4gIGNvbnN0IHZhbHVlID0gcHJvY2Vzcy5lbnZba2V5XTtcbiAgaWYgKHZhbHVlID09PSB1bmRlZmluZWQgJiYgZGVmYXVsdFZhbHVlID09PSB1bmRlZmluZWQpIHtcbiAgICB0aHJvdyBuZXcgRXJyb3IoYEVudmlyb25tZW50IHZhcmlhYmxlICR7a2V5fSBpcyByZXF1aXJlZCBidXQgbm90IHNldGApO1xuICB9XG4gIHJldHVybiB2YWx1ZSB8fCBkZWZhdWx0VmFsdWUgfHwgJyc7XG59O1xuXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4vLyBUWVBFIEVYUE9SVFMgLSBGb3IgVHlwZVNjcmlwdCB1c2FnZVxuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuXG5leHBvcnQgdHlwZSB7IENvbXBsZXRlRW52Q29uZmlnLCBFbnZDb25maWcsIEVudlZhbGlkYXRpb25SZXN1bHQgfSBmcm9tICcuL3R5cGVzJztcbmV4cG9ydCB7IEVudmlyb25tZW50IH0gZnJvbSAnLi90eXBlcyc7XG5cbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbi8vIEFEVkFOQ0VEIEVYUE9SVFMgLSBGb3IgYWR2YW5jZWQgdXNhZ2Vcbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cblxuLy8gVmFsaWRhdGlvbiBmdW5jdGlvbnNcbmV4cG9ydCB7IHZhbGlkYXRlRW52aXJvbm1lbnRWYXJpYWJsZXMsIHZhbGlkYXRlRW52VmFyaWFibGUgfSBmcm9tICcuL3ZhbGlkYXRpb24nO1xuXG4vLyBDb25zdGFudHMgKGZvciBhZHZhbmNlZCB1c2FnZSlcbmV4cG9ydCB7IEVOVl9ERUZBVUxUUywgRU5WX09WRVJSSURFUywgUkVRVUlSRURfRU5WX1ZBUlMsIEVOVl9WQUxJREFUSU9OX1JVTEVTIH0gZnJvbSAnLi9jb25zdGFudHMnO1xuXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4vLyBERUZBVUxUIEVYUE9SVCAtIE1haW4gY29uZmlndXJhdGlvbiBpbnN0YW5jZVxuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuXG5leHBvcnQgeyBlbnZDb25maWcgYXMgZGVmYXVsdCB9IGZyb20gJy4vY29uZmlnJztcbiJdLCJ2ZXJzaW9uIjozfQ==

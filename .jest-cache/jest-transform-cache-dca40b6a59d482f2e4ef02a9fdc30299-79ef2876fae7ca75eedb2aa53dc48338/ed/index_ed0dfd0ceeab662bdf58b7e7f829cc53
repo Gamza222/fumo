@@ -1,0 +1,15 @@
+e675d7662f7cad9b6dc1e4a95f524c4b
+"use strict";
+// This file runs once before each test file is executed.
+Object.defineProperty(exports, "__esModule", { value: true });
+// Extends Jest's `expect` with custom matchers for the DOM, e.g., .toBeInTheDocument()
+require("@testing-library/jest-dom");
+// Activates all our browser-level API mocks (localStorage, IntersectionObserver, etc.)
+require("../mocks/browser");
+// Activates all our network-level API mocks (WebSocket, etc.)
+require("../mocks/api");
+// Activates all our external library mocks (Sentry, etc.)
+require("../mocks/external");
+// Initialize console mocks for clean test output
+require("../mocks/browser/lib/console/console.mock");
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL3Rlc3Rpbmcvc2V0dXAvaW5kZXgudHMiLCJtYXBwaW5ncyI6IjtBQUFBLHlEQUF5RDs7QUFFekQsdUZBQXVGO0FBQ3ZGLHFDQUFtQztBQUVuQyx1RkFBdUY7QUFDdkYsNEJBQTBCO0FBRTFCLDhEQUE4RDtBQUM5RCx3QkFBc0I7QUFFdEIsMERBQTBEO0FBQzFELDZCQUEyQjtBQUUzQixpREFBaUQ7QUFDakQscURBQW1EIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIi9Vc2Vycy9nYW16YXJhbWF6YW5vdi9EZXNrdG9wL2Z1bW8vc3JjL3NoYXJlZC90ZXN0aW5nL3NldHVwL2luZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIFRoaXMgZmlsZSBydW5zIG9uY2UgYmVmb3JlIGVhY2ggdGVzdCBmaWxlIGlzIGV4ZWN1dGVkLlxuXG4vLyBFeHRlbmRzIEplc3QncyBgZXhwZWN0YCB3aXRoIGN1c3RvbSBtYXRjaGVycyBmb3IgdGhlIERPTSwgZS5nLiwgLnRvQmVJblRoZURvY3VtZW50KClcbmltcG9ydCAnQHRlc3RpbmctbGlicmFyeS9qZXN0LWRvbSc7XG5cbi8vIEFjdGl2YXRlcyBhbGwgb3VyIGJyb3dzZXItbGV2ZWwgQVBJIG1vY2tzIChsb2NhbFN0b3JhZ2UsIEludGVyc2VjdGlvbk9ic2VydmVyLCBldGMuKVxuaW1wb3J0ICcuLi9tb2Nrcy9icm93c2VyJztcblxuLy8gQWN0aXZhdGVzIGFsbCBvdXIgbmV0d29yay1sZXZlbCBBUEkgbW9ja3MgKFdlYlNvY2tldCwgZXRjLilcbmltcG9ydCAnLi4vbW9ja3MvYXBpJztcblxuLy8gQWN0aXZhdGVzIGFsbCBvdXIgZXh0ZXJuYWwgbGlicmFyeSBtb2NrcyAoU2VudHJ5LCBldGMuKVxuaW1wb3J0ICcuLi9tb2Nrcy9leHRlcm5hbCc7XG5cbi8vIEluaXRpYWxpemUgY29uc29sZSBtb2NrcyBmb3IgY2xlYW4gdGVzdCBvdXRwdXRcbmltcG9ydCAnLi4vbW9ja3MvYnJvd3Nlci9saWIvY29uc29sZS9jb25zb2xlLm1vY2snO1xuIl0sInZlcnNpb24iOjN9

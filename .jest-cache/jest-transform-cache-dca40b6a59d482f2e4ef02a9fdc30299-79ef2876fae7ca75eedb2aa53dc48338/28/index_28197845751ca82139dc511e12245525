@@ -1,0 +1,163 @@
+4591d9e2bdb87801e1a93e0a196319af
+"use strict";
+
+/**
+ * Error Mocks
+ *
+ * Type: 📦 MANUAL
+ *
+ * This file exports only the actively used mocks for error-related testing utilities.
+ * These are MANUAL mocks - they use named exports for functions that need to be imported
+ * and controlled in tests.
+ *
+ * Organization follows SOLID principles:
+ * - errorBoundary.mock.ts: Reset function factory for ErrorBoundary testing (SRP: reset functions)
+ */
+/* istanbul ignore next */
+function cov_237biyocqt() {
+  var path = "/Users/gamzaramazanov/Desktop/fumo/src/shared/testing/mocks/errors/index.ts";
+  var hash = "307ff41356a6566422816e603428a3895d4c6adf";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/gamzaramazanov/Desktop/fumo/src/shared/testing/mocks/errors/index.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 14,
+          column: 0
+        },
+        end: {
+          line: 14,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 15,
+          column: 0
+        },
+        end: {
+          line: 15,
+          column: 41
+        }
+      },
+      "2": {
+        start: {
+          line: 19,
+          column: 27
+        },
+        end: {
+          line: 19,
+          column: 62
+        }
+      },
+      "3": {
+        start: {
+          line: 20,
+          column: 0
+        },
+        end: {
+          line: 20,
+          column: 155
+        }
+      },
+      "4": {
+        start: {
+          line: 20,
+          column: 97
+        },
+        end: {
+          line: 20,
+          column: 149
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 20,
+            column: 83
+          },
+          end: {
+            line: 20,
+            column: 84
+          }
+        },
+        loc: {
+          start: {
+            line: 20,
+            column: 95
+          },
+          end: {
+            line: 20,
+            column: 151
+          }
+        },
+        line: 20
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    f: {
+      "0": 0
+    },
+    b: {},
+    inputSourceMap: {
+      file: "/Users/gamzaramazanov/Desktop/fumo/src/shared/testing/mocks/errors/index.ts",
+      mappings: ";AAAA;;;;;;;;;;;GAWG;;;AAEH,+EAA+E;AAC/E,yBAAyB;AACzB,+EAA+E;AAE/E,+DAAmE;AAA1D,6HAAA,uBAAuB,OAAA",
+      names: [],
+      sources: ["/Users/gamzaramazanov/Desktop/fumo/src/shared/testing/mocks/errors/index.ts"],
+      sourcesContent: ["/**\n * Error Mocks\n *\n * Type: \uD83D\uDCE6 MANUAL\n *\n * This file exports only the actively used mocks for error-related testing utilities.\n * These are MANUAL mocks - they use named exports for functions that need to be imported\n * and controlled in tests.\n *\n * Organization follows SOLID principles:\n * - errorBoundary.mock.ts: Reset function factory for ErrorBoundary testing (SRP: reset functions)\n */\n\n// ============================================================================\n// ERROR BOUNDARY MOCKING\n// ============================================================================\n\nexport { createMockResetFunction } from './lib/errorBoundary.mock';\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "307ff41356a6566422816e603428a3895d4c6adf"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_237biyocqt = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_237biyocqt();
+cov_237biyocqt().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_237biyocqt().s[1]++;
+exports.createMockResetFunction = void 0;
+// ============================================================================
+// ERROR BOUNDARY MOCKING
+// ============================================================================
+var errorBoundary_mock_1 =
+/* istanbul ignore next */
+(cov_237biyocqt().s[2]++, require("./lib/errorBoundary.mock"));
+/* istanbul ignore next */
+cov_237biyocqt().s[3]++;
+Object.defineProperty(exports, "createMockResetFunction", {
+  enumerable: true,
+  get: function () {
+    /* istanbul ignore next */
+    cov_237biyocqt().f[0]++;
+    cov_237biyocqt().s[4]++;
+    return errorBoundary_mock_1.createMockResetFunction;
+  }
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMjM3Yml5b2NxdCIsInBhdGgiLCJoYXNoIiwiZ2xvYmFsIiwiRnVuY3Rpb24iLCJnY3YiLCJjb3ZlcmFnZURhdGEiLCJzdGF0ZW1lbnRNYXAiLCJzdGFydCIsImxpbmUiLCJjb2x1bW4iLCJlbmQiLCJmbk1hcCIsIm5hbWUiLCJkZWNsIiwibG9jIiwiYnJhbmNoTWFwIiwicyIsImYiLCJiIiwiaW5wdXRTb3VyY2VNYXAiLCJmaWxlIiwibWFwcGluZ3MiLCJuYW1lcyIsInNvdXJjZXMiLCJzb3VyY2VzQ29udGVudCIsInZlcnNpb24iLCJfY292ZXJhZ2VTY2hlbWEiLCJjb3ZlcmFnZSIsImFjdHVhbENvdmVyYWdlIiwiZXJyb3JCb3VuZGFyeV9tb2NrXzEiLCJyZXF1aXJlIiwiT2JqZWN0IiwiZGVmaW5lUHJvcGVydHkiLCJleHBvcnRzIiwiZW51bWVyYWJsZSIsImdldCIsImNyZWF0ZU1vY2tSZXNldEZ1bmN0aW9uIl0sInNvdXJjZXMiOlsiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL3Rlc3RpbmcvbW9ja3MvZXJyb3JzL2luZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogRXJyb3IgTW9ja3NcbiAqXG4gKiBUeXBlOiDwn5OmIE1BTlVBTFxuICpcbiAqIFRoaXMgZmlsZSBleHBvcnRzIG9ubHkgdGhlIGFjdGl2ZWx5IHVzZWQgbW9ja3MgZm9yIGVycm9yLXJlbGF0ZWQgdGVzdGluZyB1dGlsaXRpZXMuXG4gKiBUaGVzZSBhcmUgTUFOVUFMIG1vY2tzIC0gdGhleSB1c2UgbmFtZWQgZXhwb3J0cyBmb3IgZnVuY3Rpb25zIHRoYXQgbmVlZCB0byBiZSBpbXBvcnRlZFxuICogYW5kIGNvbnRyb2xsZWQgaW4gdGVzdHMuXG4gKlxuICogT3JnYW5pemF0aW9uIGZvbGxvd3MgU09MSUQgcHJpbmNpcGxlczpcbiAqIC0gZXJyb3JCb3VuZGFyeS5tb2NrLnRzOiBSZXNldCBmdW5jdGlvbiBmYWN0b3J5IGZvciBFcnJvckJvdW5kYXJ5IHRlc3RpbmcgKFNSUDogcmVzZXQgZnVuY3Rpb25zKVxuICovXG5cbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbi8vIEVSUk9SIEJPVU5EQVJZIE1PQ0tJTkdcbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cblxuZXhwb3J0IHsgY3JlYXRlTW9ja1Jlc2V0RnVuY3Rpb24gfSBmcm9tICcuL2xpYi9lcnJvckJvdW5kYXJ5Lm1vY2snO1xuIl0sIm1hcHBpbmdzIjoiOztBQUFBOzs7Ozs7Ozs7Ozs7QUFBQTtBQUFBLFNBQUFBLGVBQUE7RUFBQSxJQUFBQyxJQUFBO0VBQUEsSUFBQUMsSUFBQTtFQUFBLElBQUFDLE1BQUEsT0FBQUMsUUFBQTtFQUFBLElBQUFDLEdBQUE7RUFBQSxJQUFBQyxZQUFBO0lBQUFMLElBQUE7SUFBQU0sWUFBQTtNQUFBO1FBQUFDLEtBQUE7VUFBQUMsSUFBQTtVQUFBQyxNQUFBO1FBQUE7UUFBQUMsR0FBQTtVQUFBRixJQUFBO1VBQUFDLE1BQUE7UUFBQTtNQUFBO01BQUE7UUFBQUYsS0FBQTtVQUFBQyxJQUFBO1VBQUFDLE1BQUE7UUFBQTtRQUFBQyxHQUFBO1VBQUFGLElBQUE7VUFBQUMsTUFBQTtRQUFBO01BQUE7TUFBQTtRQUFBRixLQUFBO1VBQUFDLElBQUE7VUFBQUMsTUFBQTtRQUFBO1FBQUFDLEdBQUE7VUFBQUYsSUFBQTtVQUFBQyxNQUFBO1FBQUE7TUFBQTtNQUFBO1FBQUFGLEtBQUE7VUFBQUMsSUFBQTtVQUFBQyxNQUFBO1FBQUE7UUFBQUMsR0FBQTtVQUFBRixJQUFBO1VBQUFDLE1BQUE7UUFBQTtNQUFBO01BQUE7UUFBQUYsS0FBQTtVQUFBQyxJQUFBO1VBQUFDLE1BQUE7UUFBQTtRQUFBQyxHQUFBO1VBQUFGLElBQUE7VUFBQUMsTUFBQTtRQUFBO01BQUE7SUFBQTtJQUFBRSxLQUFBO01BQUE7UUFBQUMsSUFBQTtRQUFBQyxJQUFBO1VBQUFOLEtBQUE7WUFBQUMsSUFBQTtZQUFBQyxNQUFBO1VBQUE7VUFBQUMsR0FBQTtZQUFBRixJQUFBO1lBQUFDLE1BQUE7VUFBQTtRQUFBO1FBQUFLLEdBQUE7VUFBQVAsS0FBQTtZQUFBQyxJQUFBO1lBQUFDLE1BQUE7VUFBQTtVQUFBQyxHQUFBO1lBQUFGLElBQUE7WUFBQUMsTUFBQTtVQUFBO1FBQUE7UUFBQUQsSUFBQTtNQUFBO0lBQUE7SUFBQU8sU0FBQTtJQUFBQyxDQUFBO01BQUE7TUFBQTtNQUFBO01BQUE7TUFBQTtJQUFBO0lBQUFDLENBQUE7TUFBQTtJQUFBO0lBQUFDLENBQUE7SUFBQUMsY0FBQTtNQUFBQyxJQUFBO01BQUFDLFFBQUE7TUFBQUMsS0FBQTtNQUFBQyxPQUFBO01BQUFDLGNBQUE7TUFBQUMsT0FBQTtJQUFBO0lBQUFDLGVBQUE7SUFBQXpCLElBQUE7RUFBQTtFQUFBLElBQUEwQixRQUFBLEdBQUF6QixNQUFBLENBQUFFLEdBQUEsTUFBQUYsTUFBQSxDQUFBRSxHQUFBO0VBQUEsS0FBQXVCLFFBQUEsQ0FBQTNCLElBQUEsS0FBQTJCLFFBQUEsQ0FBQTNCLElBQUEsRUFBQUMsSUFBQSxLQUFBQSxJQUFBO0lBQUEwQixRQUFBLENBQUEzQixJQUFBLElBQUFLLFlBQUE7RUFBQTtFQUFBLElBQUF1QixjQUFBLEdBQUFELFFBQUEsQ0FBQTNCLElBQUE7RUFBQTtJQWFBO0lBQUFELGNBQUEsWUFBQUEsQ0FBQTtNQUFBLE9BQUE2QixjQUFBO0lBQUE7RUFBQTtFQUFBLE9BQUFBLGNBQUE7QUFBQTtBQUFBN0IsY0FBQTtBQUFBQSxjQUFBLEdBQUFpQixDQUFBOzs7Ozs7O0FBQUE7QUFDQTtBQUNBO0FBRUEsSUFBQWEsb0JBQUE7QUFBQTtBQUFBLENBQUE5QixjQUFBLEdBQUFpQixDQUFBLE9BQUFjLE9BQUE7QUFBbUU7QUFBQS9CLGNBQUEsR0FBQWlCLENBQUE7QUFBMURlLE1BQUEsQ0FBQUMsY0FBQSxDQUFBQyxPQUFBO0VBQUFDLFVBQUE7RUFBQUMsR0FBQSxXQUFBQSxDQUFBO0lBQUE7SUFBQXBDLGNBQUEsR0FBQWtCLENBQUE7SUFBQWxCLGNBQUEsR0FBQWlCLENBQUE7SUFBQSxPQUFBYSxvQkFBQSxDQUFBTyx1QkFBdUI7RUFBQTtBQUFBIiwiaWdub3JlTGlzdCI6W119

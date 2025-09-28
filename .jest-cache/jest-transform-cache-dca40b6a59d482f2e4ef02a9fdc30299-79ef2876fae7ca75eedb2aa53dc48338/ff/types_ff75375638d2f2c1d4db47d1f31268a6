@@ -1,0 +1,60 @@
+b73ee4439a6367fd24847f83a1dec989
+"use strict";
+
+/* istanbul ignore next */
+function cov_185g9e69gu() {
+  var path = "/Users/gamzaramazanov/Desktop/fumo/src/shared/testing/mocks/browser/types/types.ts";
+  var hash = "a77c8d773807e9e1230be48a869aef11fde70e23";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/gamzaramazanov/Desktop/fumo/src/shared/testing/mocks/browser/types/types.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      }
+    },
+    fnMap: {},
+    branchMap: {},
+    s: {
+      "0": 0
+    },
+    f: {},
+    b: {},
+    inputSourceMap: {
+      file: "/Users/gamzaramazanov/Desktop/fumo/src/shared/testing/mocks/browser/types/types.ts",
+      mappings: "",
+      names: [],
+      sources: ["/Users/gamzaramazanov/Desktop/fumo/src/shared/testing/mocks/browser/types/types.ts"],
+      sourcesContent: ["// Media Query Types\nexport interface mockMediaQueryInterface {\n  matches: boolean;\n  media: string;\n  onchange: ((this: MediaQueryList, ev: MediaQueryListEvent) => void) | null;\n  addListener: (callback: (event: MediaQueryListEvent) => void) => void;\n  removeListener: (callback: (event: MediaQueryListEvent) => void) => void;\n}\n\n// Intersection Observer Types\nexport interface mockIntersectionObserverInterface {\n  observe: (target: Element) => void;\n  unobserve: (target: Element) => void;\n  disconnect: () => void;\n  readonly root: Element | null;\n  readonly rootMargin: string;\n  readonly thresholds: ReadonlyArray<number>;\n  takeRecords: () => IntersectionObserverEntry[];\n}\n\nexport interface mockIntersectionObserverOptionsInterface {\n  root?: Element | null;\n  rootMargin?: string;\n  threshold?: number | number[];\n}\n\n// Storage Types\nexport interface mockStorageInterface {\n  readonly length: number;\n  getItem(key: string): string | null;\n  setItem(key: string, value: string): void;\n  removeItem(key: string): void;\n  clear(): void;\n  key(index: number): string | null;\n}\n\n// Location Types\nexport interface mockLocationInterface extends Location {\n  assign: jest.Mock;\n  replace: jest.Mock;\n  reload: jest.Mock;\n  ancestorOrigins: DOMStringList;\n}\n\n// Navigator Types\nexport interface mockNavigatorInterface {\n  readonly clipboard: {\n    writeText: jest.Mock;\n    readText: jest.Mock;\n  };\n  readonly userAgent: string;\n}\n\n// Performance Types\nexport interface mockPerformanceInterface {\n  now: jest.Mock;\n  timing: {\n    navigationStart: number;\n    loadEventEnd: number;\n  };\n  getEntriesByType: jest.Mock;\n}\n\n// Navigation Timing Types\nexport interface mockNavigationTimingInterface {\n  name: string;\n  startTime: number;\n  duration: number;\n  loadEventEnd: number;\n  loadEventStart: number;\n  domContentLoadedEventEnd: number;\n  domContentLoadedEventStart: number;\n  responseEnd: number;\n  responseStart: number;\n  requestStart: number;\n  connectEnd: number;\n  connectStart: number;\n  domainLookupEnd: number;\n  domainLookupStart: number;\n  navigationStart: number;\n}\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "a77c8d773807e9e1230be48a869aef11fde70e23"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_185g9e69gu = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_185g9e69gu();
+cov_185g9e69gu().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL3Rlc3RpbmcvbW9ja3MvYnJvd3Nlci90eXBlcy90eXBlcy50cyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBNZWRpYSBRdWVyeSBUeXBlc1xuZXhwb3J0IGludGVyZmFjZSBtb2NrTWVkaWFRdWVyeUludGVyZmFjZSB7XG4gIG1hdGNoZXM6IGJvb2xlYW47XG4gIG1lZGlhOiBzdHJpbmc7XG4gIG9uY2hhbmdlOiAoKHRoaXM6IE1lZGlhUXVlcnlMaXN0LCBldjogTWVkaWFRdWVyeUxpc3RFdmVudCkgPT4gdm9pZCkgfCBudWxsO1xuICBhZGRMaXN0ZW5lcjogKGNhbGxiYWNrOiAoZXZlbnQ6IE1lZGlhUXVlcnlMaXN0RXZlbnQpID0+IHZvaWQpID0+IHZvaWQ7XG4gIHJlbW92ZUxpc3RlbmVyOiAoY2FsbGJhY2s6IChldmVudDogTWVkaWFRdWVyeUxpc3RFdmVudCkgPT4gdm9pZCkgPT4gdm9pZDtcbn1cblxuLy8gSW50ZXJzZWN0aW9uIE9ic2VydmVyIFR5cGVzXG5leHBvcnQgaW50ZXJmYWNlIG1vY2tJbnRlcnNlY3Rpb25PYnNlcnZlckludGVyZmFjZSB7XG4gIG9ic2VydmU6ICh0YXJnZXQ6IEVsZW1lbnQpID0+IHZvaWQ7XG4gIHVub2JzZXJ2ZTogKHRhcmdldDogRWxlbWVudCkgPT4gdm9pZDtcbiAgZGlzY29ubmVjdDogKCkgPT4gdm9pZDtcbiAgcmVhZG9ubHkgcm9vdDogRWxlbWVudCB8IG51bGw7XG4gIHJlYWRvbmx5IHJvb3RNYXJnaW46IHN0cmluZztcbiAgcmVhZG9ubHkgdGhyZXNob2xkczogUmVhZG9ubHlBcnJheTxudW1iZXI+O1xuICB0YWtlUmVjb3JkczogKCkgPT4gSW50ZXJzZWN0aW9uT2JzZXJ2ZXJFbnRyeVtdO1xufVxuXG5leHBvcnQgaW50ZXJmYWNlIG1vY2tJbnRlcnNlY3Rpb25PYnNlcnZlck9wdGlvbnNJbnRlcmZhY2Uge1xuICByb290PzogRWxlbWVudCB8IG51bGw7XG4gIHJvb3RNYXJnaW4/OiBzdHJpbmc7XG4gIHRocmVzaG9sZD86IG51bWJlciB8IG51bWJlcltdO1xufVxuXG4vLyBTdG9yYWdlIFR5cGVzXG5leHBvcnQgaW50ZXJmYWNlIG1vY2tTdG9yYWdlSW50ZXJmYWNlIHtcbiAgcmVhZG9ubHkgbGVuZ3RoOiBudW1iZXI7XG4gIGdldEl0ZW0oa2V5OiBzdHJpbmcpOiBzdHJpbmcgfCBudWxsO1xuICBzZXRJdGVtKGtleTogc3RyaW5nLCB2YWx1ZTogc3RyaW5nKTogdm9pZDtcbiAgcmVtb3ZlSXRlbShrZXk6IHN0cmluZyk6IHZvaWQ7XG4gIGNsZWFyKCk6IHZvaWQ7XG4gIGtleShpbmRleDogbnVtYmVyKTogc3RyaW5nIHwgbnVsbDtcbn1cblxuLy8gTG9jYXRpb24gVHlwZXNcbmV4cG9ydCBpbnRlcmZhY2UgbW9ja0xvY2F0aW9uSW50ZXJmYWNlIGV4dGVuZHMgTG9jYXRpb24ge1xuICBhc3NpZ246IGplc3QuTW9jaztcbiAgcmVwbGFjZTogamVzdC5Nb2NrO1xuICByZWxvYWQ6IGplc3QuTW9jaztcbiAgYW5jZXN0b3JPcmlnaW5zOiBET01TdHJpbmdMaXN0O1xufVxuXG4vLyBOYXZpZ2F0b3IgVHlwZXNcbmV4cG9ydCBpbnRlcmZhY2UgbW9ja05hdmlnYXRvckludGVyZmFjZSB7XG4gIHJlYWRvbmx5IGNsaXBib2FyZDoge1xuICAgIHdyaXRlVGV4dDogamVzdC5Nb2NrO1xuICAgIHJlYWRUZXh0OiBqZXN0Lk1vY2s7XG4gIH07XG4gIHJlYWRvbmx5IHVzZXJBZ2VudDogc3RyaW5nO1xufVxuXG4vLyBQZXJmb3JtYW5jZSBUeXBlc1xuZXhwb3J0IGludGVyZmFjZSBtb2NrUGVyZm9ybWFuY2VJbnRlcmZhY2Uge1xuICBub3c6IGplc3QuTW9jaztcbiAgdGltaW5nOiB7XG4gICAgbmF2aWdhdGlvblN0YXJ0OiBudW1iZXI7XG4gICAgbG9hZEV2ZW50RW5kOiBudW1iZXI7XG4gIH07XG4gIGdldEVudHJpZXNCeVR5cGU6IGplc3QuTW9jaztcbn1cblxuLy8gTmF2aWdhdGlvbiBUaW1pbmcgVHlwZXNcbmV4cG9ydCBpbnRlcmZhY2UgbW9ja05hdmlnYXRpb25UaW1pbmdJbnRlcmZhY2Uge1xuICBuYW1lOiBzdHJpbmc7XG4gIHN0YXJ0VGltZTogbnVtYmVyO1xuICBkdXJhdGlvbjogbnVtYmVyO1xuICBsb2FkRXZlbnRFbmQ6IG51bWJlcjtcbiAgbG9hZEV2ZW50U3RhcnQ6IG51bWJlcjtcbiAgZG9tQ29udGVudExvYWRlZEV2ZW50RW5kOiBudW1iZXI7XG4gIGRvbUNvbnRlbnRMb2FkZWRFdmVudFN0YXJ0OiBudW1iZXI7XG4gIHJlc3BvbnNlRW5kOiBudW1iZXI7XG4gIHJlc3BvbnNlU3RhcnQ6IG51bWJlcjtcbiAgcmVxdWVzdFN0YXJ0OiBudW1iZXI7XG4gIGNvbm5lY3RFbmQ6IG51bWJlcjtcbiAgY29ubmVjdFN0YXJ0OiBudW1iZXI7XG4gIGRvbWFpbkxvb2t1cEVuZDogbnVtYmVyO1xuICBkb21haW5Mb29rdXBTdGFydDogbnVtYmVyO1xuICBuYXZpZ2F0aW9uU3RhcnQ6IG51bWJlcjtcbn1cbiJdLCJtYXBwaW5ncyI6IiIsImlnbm9yZUxpc3QiOltdfQ==
