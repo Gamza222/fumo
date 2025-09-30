@@ -1,0 +1,54 @@
+b4e5d869777c2f89083b89f246f59d89
+"use strict";
+/**
+ * State Enums
+ *
+ * Centralized constants for state management configuration.
+ * Foundation-level only - no overengineering.
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.BaseStateProperty = exports.StoreConfigDefaults = exports.Environment = exports.StorageType = void 0;
+// ============================================================================
+// STORAGE TYPES
+// ============================================================================
+/**
+ * Storage types for persistence
+ */
+var StorageType;
+(function (StorageType) {
+    StorageType["LOCAL_STORAGE"] = "localStorage";
+    StorageType["SESSION_STORAGE"] = "sessionStorage";
+})(StorageType || (exports.StorageType = StorageType = {}));
+// ============================================================================
+// ENVIRONMENT VALUES
+// ============================================================================
+/**
+ * Environment values
+ */
+var Environment;
+(function (Environment) {
+    Environment["DEVELOPMENT"] = "development";
+    Environment["PRODUCTION"] = "production";
+    Environment["TEST"] = "test";
+})(Environment || (exports.Environment = Environment = {}));
+// ============================================================================
+// STORE CONFIGURATION
+// ============================================================================
+/**
+ * Default store configuration values
+ */
+var StoreConfigDefaults;
+(function (StoreConfigDefaults) {
+    StoreConfigDefaults["DEFAULT_STORAGE"] = "localStorage";
+})(StoreConfigDefaults || (exports.StoreConfigDefaults = StoreConfigDefaults = {}));
+// ============================================================================
+// BASE STATE PROPERTIES
+// ============================================================================
+/**
+ * Base state property names
+ */
+var BaseStateProperty;
+(function (BaseStateProperty) {
+    BaseStateProperty["HYDRATED"] = "_hydrated";
+})(BaseStateProperty || (exports.BaseStateProperty = BaseStateProperty = {}));
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvaW5mcmFzdHJ1Y3R1cmUvc3RhdGUvdHlwZXMvc3RhdGVFbnVtcy50cyIsIm1hcHBpbmdzIjoiO0FBQUE7Ozs7O0dBS0c7OztBQUVILCtFQUErRTtBQUMvRSxnQkFBZ0I7QUFDaEIsK0VBQStFO0FBRS9FOztHQUVHO0FBQ0gsSUFBWSxXQUdYO0FBSEQsV0FBWSxXQUFXO0lBQ3JCLDZDQUE4QixDQUFBO0lBQzlCLGlEQUFrQyxDQUFBO0FBQ3BDLENBQUMsRUFIVyxXQUFXLDJCQUFYLFdBQVcsUUFHdEI7QUFFRCwrRUFBK0U7QUFDL0UscUJBQXFCO0FBQ3JCLCtFQUErRTtBQUUvRTs7R0FFRztBQUNILElBQVksV0FJWDtBQUpELFdBQVksV0FBVztJQUNyQiwwQ0FBMkIsQ0FBQTtJQUMzQix3Q0FBeUIsQ0FBQTtJQUN6Qiw0QkFBYSxDQUFBO0FBQ2YsQ0FBQyxFQUpXLFdBQVcsMkJBQVgsV0FBVyxRQUl0QjtBQUVELCtFQUErRTtBQUMvRSxzQkFBc0I7QUFDdEIsK0VBQStFO0FBRS9FOztHQUVHO0FBQ0gsSUFBWSxtQkFFWDtBQUZELFdBQVksbUJBQW1CO0lBQzdCLHVEQUFnQyxDQUFBO0FBQ2xDLENBQUMsRUFGVyxtQkFBbUIsbUNBQW5CLG1CQUFtQixRQUU5QjtBQUVELCtFQUErRTtBQUMvRSx3QkFBd0I7QUFDeEIsK0VBQStFO0FBRS9FOztHQUVHO0FBQ0gsSUFBWSxpQkFFWDtBQUZELFdBQVksaUJBQWlCO0lBQzNCLDJDQUFzQixDQUFBO0FBQ3hCLENBQUMsRUFGVyxpQkFBaUIsaUNBQWpCLGlCQUFpQixRQUU1QiIsIm5hbWVzIjpbXSwic291cmNlcyI6WyIvVXNlcnMvZ2FtemFyYW1hemFub3YvRGVza3RvcC9mdW1vL3NyYy9pbmZyYXN0cnVjdHVyZS9zdGF0ZS90eXBlcy9zdGF0ZUVudW1zLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogU3RhdGUgRW51bXNcbiAqXG4gKiBDZW50cmFsaXplZCBjb25zdGFudHMgZm9yIHN0YXRlIG1hbmFnZW1lbnQgY29uZmlndXJhdGlvbi5cbiAqIEZvdW5kYXRpb24tbGV2ZWwgb25seSAtIG5vIG92ZXJlbmdpbmVlcmluZy5cbiAqL1xuXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4vLyBTVE9SQUdFIFRZUEVTXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG5cbi8qKlxuICogU3RvcmFnZSB0eXBlcyBmb3IgcGVyc2lzdGVuY2VcbiAqL1xuZXhwb3J0IGVudW0gU3RvcmFnZVR5cGUge1xuICBMT0NBTF9TVE9SQUdFID0gJ2xvY2FsU3RvcmFnZScsXG4gIFNFU1NJT05fU1RPUkFHRSA9ICdzZXNzaW9uU3RvcmFnZScsXG59XG5cbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbi8vIEVOVklST05NRU5UIFZBTFVFU1xuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuXG4vKipcbiAqIEVudmlyb25tZW50IHZhbHVlc1xuICovXG5leHBvcnQgZW51bSBFbnZpcm9ubWVudCB7XG4gIERFVkVMT1BNRU5UID0gJ2RldmVsb3BtZW50JyxcbiAgUFJPRFVDVElPTiA9ICdwcm9kdWN0aW9uJyxcbiAgVEVTVCA9ICd0ZXN0Jyxcbn1cblxuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuLy8gU1RPUkUgQ09ORklHVVJBVElPTlxuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuXG4vKipcbiAqIERlZmF1bHQgc3RvcmUgY29uZmlndXJhdGlvbiB2YWx1ZXNcbiAqL1xuZXhwb3J0IGVudW0gU3RvcmVDb25maWdEZWZhdWx0cyB7XG4gIERFRkFVTFRfU1RPUkFHRSA9ICdsb2NhbFN0b3JhZ2UnLFxufVxuXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4vLyBCQVNFIFNUQVRFIFBST1BFUlRJRVNcbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cblxuLyoqXG4gKiBCYXNlIHN0YXRlIHByb3BlcnR5IG5hbWVzXG4gKi9cbmV4cG9ydCBlbnVtIEJhc2VTdGF0ZVByb3BlcnR5IHtcbiAgSFlEUkFURUQgPSAnX2h5ZHJhdGVkJyxcbn1cbiJdLCJ2ZXJzaW9uIjozfQ==

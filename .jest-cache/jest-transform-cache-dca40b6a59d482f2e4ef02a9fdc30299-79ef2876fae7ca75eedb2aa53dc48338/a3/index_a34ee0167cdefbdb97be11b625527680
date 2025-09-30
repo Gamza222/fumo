@@ -1,0 +1,53 @@
+9ba1eb6df6eb31d22dff2418a4f72510
+"use strict";
+/**
+ * Browser API Mocks
+ *
+ * Type: 🔄 AUTOMATIC
+ *
+ * This file exports browser API mocks that are automatically applied
+ * via Jest's setupFilesAfterEnv configuration. Only exports what's
+ * useful for test control.
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.defaultNavigationMock = exports.mockNavigationEntries = exports.mockNavigationTiming = exports.defaultPerformanceMock = exports.setupPerformanceMock = exports.mockPerformance = exports.createMockEffectCleanup = exports.createMockStateSetter = exports.createMockCallbackRef = exports.createMockRef = exports.createMockComponentProps = exports.createMockRenderCounterWithExpectations = exports.createMockRenderCounter = exports.createMockEventEmitter = exports.createMockEvent = exports.createMockEventListenerWithTracking = exports.createMockEventListenerWithExpectations = exports.createMockEventListener = exports.mockConsole = exports.mockNavigator = exports.mockWindowLocationReload = exports.mockLocation = exports.mockStorage = exports.mockMatchMedia = exports.MockIntersectionObserver = void 0;
+// Useful test control exports
+var intersectionObserver_mock_1 = require("./lib/media/intersectionObserver.mock");
+Object.defineProperty(exports, "MockIntersectionObserver", { enumerable: true, get: function () { return intersectionObserver_mock_1.MockIntersectionObserver; } });
+var matchMedia_mock_1 = require("./lib/media/matchMedia.mock");
+Object.defineProperty(exports, "mockMatchMedia", { enumerable: true, get: function () { return matchMedia_mock_1.mockMatchMedia; } });
+var storage_mock_1 = require("./lib/storage/storage.mock");
+Object.defineProperty(exports, "mockStorage", { enumerable: true, get: function () { return storage_mock_1.mockStorage; } });
+var location_mock_1 = require("./lib/location/location.mock");
+Object.defineProperty(exports, "mockLocation", { enumerable: true, get: function () { return location_mock_1.mockLocation; } });
+var windowLocationReload_mock_1 = require("./lib/location/windowLocationReload.mock");
+Object.defineProperty(exports, "mockWindowLocationReload", { enumerable: true, get: function () { return windowLocationReload_mock_1.mockWindowLocationReload; } });
+var navigator_mock_1 = require("./lib/navigator/navigator.mock");
+Object.defineProperty(exports, "mockNavigator", { enumerable: true, get: function () { return navigator_mock_1.mockNavigator; } });
+var console_mock_1 = require("./lib/console/console.mock");
+Object.defineProperty(exports, "mockConsole", { enumerable: true, get: function () { return console_mock_1.mockConsole; } });
+// Event and React testing utilities
+var event_mock_1 = require("./lib/event/event.mock");
+Object.defineProperty(exports, "createMockEventListener", { enumerable: true, get: function () { return event_mock_1.createMockEventListener; } });
+Object.defineProperty(exports, "createMockEventListenerWithExpectations", { enumerable: true, get: function () { return event_mock_1.createMockEventListenerWithExpectations; } });
+Object.defineProperty(exports, "createMockEventListenerWithTracking", { enumerable: true, get: function () { return event_mock_1.createMockEventListenerWithTracking; } });
+Object.defineProperty(exports, "createMockEvent", { enumerable: true, get: function () { return event_mock_1.createMockEvent; } });
+Object.defineProperty(exports, "createMockEventEmitter", { enumerable: true, get: function () { return event_mock_1.createMockEventEmitter; } });
+var react_mock_1 = require("./lib/react/react.mock");
+Object.defineProperty(exports, "createMockRenderCounter", { enumerable: true, get: function () { return react_mock_1.createMockRenderCounter; } });
+Object.defineProperty(exports, "createMockRenderCounterWithExpectations", { enumerable: true, get: function () { return react_mock_1.createMockRenderCounterWithExpectations; } });
+Object.defineProperty(exports, "createMockComponentProps", { enumerable: true, get: function () { return react_mock_1.createMockComponentProps; } });
+Object.defineProperty(exports, "createMockRef", { enumerable: true, get: function () { return react_mock_1.createMockRef; } });
+Object.defineProperty(exports, "createMockCallbackRef", { enumerable: true, get: function () { return react_mock_1.createMockCallbackRef; } });
+Object.defineProperty(exports, "createMockStateSetter", { enumerable: true, get: function () { return react_mock_1.createMockStateSetter; } });
+Object.defineProperty(exports, "createMockEffectCleanup", { enumerable: true, get: function () { return react_mock_1.createMockEffectCleanup; } });
+// Performance API exports
+var performance_mock_1 = require("./lib/performance/performance.mock");
+Object.defineProperty(exports, "mockPerformance", { enumerable: true, get: function () { return performance_mock_1.mockPerformance; } });
+Object.defineProperty(exports, "setupPerformanceMock", { enumerable: true, get: function () { return performance_mock_1.setupPerformanceMock; } });
+Object.defineProperty(exports, "defaultPerformanceMock", { enumerable: true, get: function () { return performance_mock_1.defaultPerformanceMock; } });
+var navigation_mock_1 = require("./lib/performance/navigation.mock");
+Object.defineProperty(exports, "mockNavigationTiming", { enumerable: true, get: function () { return navigation_mock_1.mockNavigationTiming; } });
+Object.defineProperty(exports, "mockNavigationEntries", { enumerable: true, get: function () { return navigation_mock_1.mockNavigationEntries; } });
+Object.defineProperty(exports, "defaultNavigationMock", { enumerable: true, get: function () { return navigation_mock_1.defaultNavigationMock; } });
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL3Rlc3RpbmcvbW9ja3MvYnJvd3Nlci9pbmRleC50cyIsIm1hcHBpbmdzIjoiO0FBQUE7Ozs7Ozs7O0dBUUc7OztBQUVILDhCQUE4QjtBQUM5QixtRkFBaUY7QUFBeEUscUlBQUEsd0JBQXdCLE9BQUE7QUFDakMsK0RBQTZEO0FBQXBELGlIQUFBLGNBQWMsT0FBQTtBQUN2QiwyREFBeUQ7QUFBaEQsMkdBQUEsV0FBVyxPQUFBO0FBQ3BCLDhEQUE0RDtBQUFuRCw2R0FBQSxZQUFZLE9BQUE7QUFDckIsc0ZBQW9GO0FBQTNFLHFJQUFBLHdCQUF3QixPQUFBO0FBQ2pDLGlFQUErRDtBQUF0RCwrR0FBQSxhQUFhLE9BQUE7QUFDdEIsMkRBQXlEO0FBQWhELDJHQUFBLFdBQVcsT0FBQTtBQUVwQixvQ0FBb0M7QUFDcEMscURBTWdDO0FBTDlCLHFIQUFBLHVCQUF1QixPQUFBO0FBQ3ZCLHFJQUFBLHVDQUF1QyxPQUFBO0FBQ3ZDLGlJQUFBLG1DQUFtQyxPQUFBO0FBQ25DLDZHQUFBLGVBQWUsT0FBQTtBQUNmLG9IQUFBLHNCQUFzQixPQUFBO0FBRXhCLHFEQVFnQztBQVA5QixxSEFBQSx1QkFBdUIsT0FBQTtBQUN2QixxSUFBQSx1Q0FBdUMsT0FBQTtBQUN2QyxzSEFBQSx3QkFBd0IsT0FBQTtBQUN4QiwyR0FBQSxhQUFhLE9BQUE7QUFDYixtSEFBQSxxQkFBcUIsT0FBQTtBQUNyQixtSEFBQSxxQkFBcUIsT0FBQTtBQUNyQixxSEFBQSx1QkFBdUIsT0FBQTtBQUd6QiwwQkFBMEI7QUFDMUIsdUVBSTRDO0FBSDFDLG1IQUFBLGVBQWUsT0FBQTtBQUNmLHdIQUFBLG9CQUFvQixPQUFBO0FBQ3BCLDBIQUFBLHNCQUFzQixPQUFBO0FBRXhCLHFFQUkyQztBQUh6Qyx1SEFBQSxvQkFBb0IsT0FBQTtBQUNwQix3SEFBQSxxQkFBcUIsT0FBQTtBQUNyQix3SEFBQSxxQkFBcUIsT0FBQSIsIm5hbWVzIjpbXSwic291cmNlcyI6WyIvVXNlcnMvZ2FtemFyYW1hemFub3YvRGVza3RvcC9mdW1vL3NyYy9zaGFyZWQvdGVzdGluZy9tb2Nrcy9icm93c2VyL2luZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogQnJvd3NlciBBUEkgTW9ja3NcbiAqXG4gKiBUeXBlOiDwn5SEIEFVVE9NQVRJQ1xuICpcbiAqIFRoaXMgZmlsZSBleHBvcnRzIGJyb3dzZXIgQVBJIG1vY2tzIHRoYXQgYXJlIGF1dG9tYXRpY2FsbHkgYXBwbGllZFxuICogdmlhIEplc3QncyBzZXR1cEZpbGVzQWZ0ZXJFbnYgY29uZmlndXJhdGlvbi4gT25seSBleHBvcnRzIHdoYXQnc1xuICogdXNlZnVsIGZvciB0ZXN0IGNvbnRyb2wuXG4gKi9cblxuLy8gVXNlZnVsIHRlc3QgY29udHJvbCBleHBvcnRzXG5leHBvcnQgeyBNb2NrSW50ZXJzZWN0aW9uT2JzZXJ2ZXIgfSBmcm9tICcuL2xpYi9tZWRpYS9pbnRlcnNlY3Rpb25PYnNlcnZlci5tb2NrJztcbmV4cG9ydCB7IG1vY2tNYXRjaE1lZGlhIH0gZnJvbSAnLi9saWIvbWVkaWEvbWF0Y2hNZWRpYS5tb2NrJztcbmV4cG9ydCB7IG1vY2tTdG9yYWdlIH0gZnJvbSAnLi9saWIvc3RvcmFnZS9zdG9yYWdlLm1vY2snO1xuZXhwb3J0IHsgbW9ja0xvY2F0aW9uIH0gZnJvbSAnLi9saWIvbG9jYXRpb24vbG9jYXRpb24ubW9jayc7XG5leHBvcnQgeyBtb2NrV2luZG93TG9jYXRpb25SZWxvYWQgfSBmcm9tICcuL2xpYi9sb2NhdGlvbi93aW5kb3dMb2NhdGlvblJlbG9hZC5tb2NrJztcbmV4cG9ydCB7IG1vY2tOYXZpZ2F0b3IgfSBmcm9tICcuL2xpYi9uYXZpZ2F0b3IvbmF2aWdhdG9yLm1vY2snO1xuZXhwb3J0IHsgbW9ja0NvbnNvbGUgfSBmcm9tICcuL2xpYi9jb25zb2xlL2NvbnNvbGUubW9jayc7XG5cbi8vIEV2ZW50IGFuZCBSZWFjdCB0ZXN0aW5nIHV0aWxpdGllc1xuZXhwb3J0IHtcbiAgY3JlYXRlTW9ja0V2ZW50TGlzdGVuZXIsXG4gIGNyZWF0ZU1vY2tFdmVudExpc3RlbmVyV2l0aEV4cGVjdGF0aW9ucyxcbiAgY3JlYXRlTW9ja0V2ZW50TGlzdGVuZXJXaXRoVHJhY2tpbmcsXG4gIGNyZWF0ZU1vY2tFdmVudCxcbiAgY3JlYXRlTW9ja0V2ZW50RW1pdHRlcixcbn0gZnJvbSAnLi9saWIvZXZlbnQvZXZlbnQubW9jayc7XG5leHBvcnQge1xuICBjcmVhdGVNb2NrUmVuZGVyQ291bnRlcixcbiAgY3JlYXRlTW9ja1JlbmRlckNvdW50ZXJXaXRoRXhwZWN0YXRpb25zLFxuICBjcmVhdGVNb2NrQ29tcG9uZW50UHJvcHMsXG4gIGNyZWF0ZU1vY2tSZWYsXG4gIGNyZWF0ZU1vY2tDYWxsYmFja1JlZixcbiAgY3JlYXRlTW9ja1N0YXRlU2V0dGVyLFxuICBjcmVhdGVNb2NrRWZmZWN0Q2xlYW51cCxcbn0gZnJvbSAnLi9saWIvcmVhY3QvcmVhY3QubW9jayc7XG5cbi8vIFBlcmZvcm1hbmNlIEFQSSBleHBvcnRzXG5leHBvcnQge1xuICBtb2NrUGVyZm9ybWFuY2UsXG4gIHNldHVwUGVyZm9ybWFuY2VNb2NrLFxuICBkZWZhdWx0UGVyZm9ybWFuY2VNb2NrLFxufSBmcm9tICcuL2xpYi9wZXJmb3JtYW5jZS9wZXJmb3JtYW5jZS5tb2NrJztcbmV4cG9ydCB7XG4gIG1vY2tOYXZpZ2F0aW9uVGltaW5nLFxuICBtb2NrTmF2aWdhdGlvbkVudHJpZXMsXG4gIGRlZmF1bHROYXZpZ2F0aW9uTW9jayxcbn0gZnJvbSAnLi9saWIvcGVyZm9ybWFuY2UvbmF2aWdhdGlvbi5tb2NrJztcblxuLy8gRXhwb3J0IHR5cGVzIHRoYXQgbWlnaHQgYmUgbmVlZGVkIGZvciB0ZXN0IHR5cGluZ1xuZXhwb3J0IHR5cGUge1xuICBtb2NrSW50ZXJzZWN0aW9uT2JzZXJ2ZXJJbnRlcmZhY2UsXG4gIG1vY2tNZWRpYVF1ZXJ5SW50ZXJmYWNlLFxuICBtb2NrU3RvcmFnZUludGVyZmFjZSxcbiAgbW9ja0xvY2F0aW9uSW50ZXJmYWNlLFxuICBtb2NrTmF2aWdhdG9ySW50ZXJmYWNlLFxuICBtb2NrUGVyZm9ybWFuY2VJbnRlcmZhY2UsXG4gIG1vY2tOYXZpZ2F0aW9uVGltaW5nSW50ZXJmYWNlLFxufSBmcm9tICcuL3R5cGVzL3R5cGVzJztcbiJdLCJ2ZXJzaW9uIjozfQ==

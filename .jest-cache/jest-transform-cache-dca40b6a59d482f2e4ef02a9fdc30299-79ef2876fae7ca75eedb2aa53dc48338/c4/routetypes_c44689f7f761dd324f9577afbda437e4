@@ -1,0 +1,60 @@
+859adffe64e7d82b6fc6921e09adabc8
+"use strict";
+
+/* istanbul ignore next */
+function cov_b6qxwzoez() {
+  var path = "/Users/gamzaramazanov/Desktop/fumo/src/shared/config/route/route.types.ts";
+  var hash = "d4a20445098987d9bbd5bf07345c3503efa9b913";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/gamzaramazanov/Desktop/fumo/src/shared/config/route/route.types.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      }
+    },
+    fnMap: {},
+    branchMap: {},
+    s: {
+      "0": 0
+    },
+    f: {},
+    b: {},
+    inputSourceMap: {
+      file: "/Users/gamzaramazanov/Desktop/fumo/src/shared/config/route/route.types.ts",
+      mappings: "",
+      names: [],
+      sources: ["/Users/gamzaramazanov/Desktop/fumo/src/shared/config/route/route.types.ts"],
+      sourcesContent: ["import { AppRoute, RouteType, LoaderType, CacheStrategy } from './route.enums';\n\n/**\n * Loader configuration for a specific route\n */\nexport interface RouteLoaderConfig {\n  type: LoaderType;\n  enabled: boolean;\n  minDisplayTime?: number;\n  showProgress?: boolean;\n  showStepDetails?: boolean;\n  customMessage?: string;\n}\n\n/**\n * Cache configuration for a specific route\n */\nexport interface RouteCacheConfig {\n  strategy: CacheStrategy;\n  enabled: boolean;\n  ttl?: number; // Time to live in milliseconds\n  key?: string; // Custom cache key\n}\n\n/**\n * Route metadata and behavior configuration\n */\nexport interface RouteConfig {\n  route: AppRoute;\n  type: RouteType;\n  loader: RouteLoaderConfig;\n  cache: RouteCacheConfig;\n  metadata?: {\n    title?: string;\n    description?: string;\n    requiresAuth?: boolean;\n    layout?: string;\n  };\n}\n\n/**\n * Default configuration that applies to all routes\n */\nexport interface DefaultRouteConfig {\n  loader: RouteLoaderConfig;\n  cache: RouteCacheConfig;\n}\n\n/**\n * Route configuration selector function type\n */\nexport type RouteConfigSelector = (route: string) => RouteConfig | null;\n\n/**\n * Current route information\n */\nexport interface CurrentRouteInfo {\n  route: AppRoute;\n  pathname: string;\n  config: RouteConfig;\n  isMatched: boolean;\n}\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "d4a20445098987d9bbd5bf07345c3503efa9b913"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_b6qxwzoez = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_b6qxwzoez();
+cov_b6qxwzoez().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL2NvbmZpZy9yb3V0ZS9yb3V0ZS50eXBlcy50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBBcHBSb3V0ZSwgUm91dGVUeXBlLCBMb2FkZXJUeXBlLCBDYWNoZVN0cmF0ZWd5IH0gZnJvbSAnLi9yb3V0ZS5lbnVtcyc7XG5cbi8qKlxuICogTG9hZGVyIGNvbmZpZ3VyYXRpb24gZm9yIGEgc3BlY2lmaWMgcm91dGVcbiAqL1xuZXhwb3J0IGludGVyZmFjZSBSb3V0ZUxvYWRlckNvbmZpZyB7XG4gIHR5cGU6IExvYWRlclR5cGU7XG4gIGVuYWJsZWQ6IGJvb2xlYW47XG4gIG1pbkRpc3BsYXlUaW1lPzogbnVtYmVyO1xuICBzaG93UHJvZ3Jlc3M/OiBib29sZWFuO1xuICBzaG93U3RlcERldGFpbHM/OiBib29sZWFuO1xuICBjdXN0b21NZXNzYWdlPzogc3RyaW5nO1xufVxuXG4vKipcbiAqIENhY2hlIGNvbmZpZ3VyYXRpb24gZm9yIGEgc3BlY2lmaWMgcm91dGVcbiAqL1xuZXhwb3J0IGludGVyZmFjZSBSb3V0ZUNhY2hlQ29uZmlnIHtcbiAgc3RyYXRlZ3k6IENhY2hlU3RyYXRlZ3k7XG4gIGVuYWJsZWQ6IGJvb2xlYW47XG4gIHR0bD86IG51bWJlcjsgLy8gVGltZSB0byBsaXZlIGluIG1pbGxpc2Vjb25kc1xuICBrZXk/OiBzdHJpbmc7IC8vIEN1c3RvbSBjYWNoZSBrZXlcbn1cblxuLyoqXG4gKiBSb3V0ZSBtZXRhZGF0YSBhbmQgYmVoYXZpb3IgY29uZmlndXJhdGlvblxuICovXG5leHBvcnQgaW50ZXJmYWNlIFJvdXRlQ29uZmlnIHtcbiAgcm91dGU6IEFwcFJvdXRlO1xuICB0eXBlOiBSb3V0ZVR5cGU7XG4gIGxvYWRlcjogUm91dGVMb2FkZXJDb25maWc7XG4gIGNhY2hlOiBSb3V0ZUNhY2hlQ29uZmlnO1xuICBtZXRhZGF0YT86IHtcbiAgICB0aXRsZT86IHN0cmluZztcbiAgICBkZXNjcmlwdGlvbj86IHN0cmluZztcbiAgICByZXF1aXJlc0F1dGg/OiBib29sZWFuO1xuICAgIGxheW91dD86IHN0cmluZztcbiAgfTtcbn1cblxuLyoqXG4gKiBEZWZhdWx0IGNvbmZpZ3VyYXRpb24gdGhhdCBhcHBsaWVzIHRvIGFsbCByb3V0ZXNcbiAqL1xuZXhwb3J0IGludGVyZmFjZSBEZWZhdWx0Um91dGVDb25maWcge1xuICBsb2FkZXI6IFJvdXRlTG9hZGVyQ29uZmlnO1xuICBjYWNoZTogUm91dGVDYWNoZUNvbmZpZztcbn1cblxuLyoqXG4gKiBSb3V0ZSBjb25maWd1cmF0aW9uIHNlbGVjdG9yIGZ1bmN0aW9uIHR5cGVcbiAqL1xuZXhwb3J0IHR5cGUgUm91dGVDb25maWdTZWxlY3RvciA9IChyb3V0ZTogc3RyaW5nKSA9PiBSb3V0ZUNvbmZpZyB8IG51bGw7XG5cbi8qKlxuICogQ3VycmVudCByb3V0ZSBpbmZvcm1hdGlvblxuICovXG5leHBvcnQgaW50ZXJmYWNlIEN1cnJlbnRSb3V0ZUluZm8ge1xuICByb3V0ZTogQXBwUm91dGU7XG4gIHBhdGhuYW1lOiBzdHJpbmc7XG4gIGNvbmZpZzogUm91dGVDb25maWc7XG4gIGlzTWF0Y2hlZDogYm9vbGVhbjtcbn1cbiJdLCJtYXBwaW5ncyI6IiIsImlnbm9yZUxpc3QiOltdfQ==

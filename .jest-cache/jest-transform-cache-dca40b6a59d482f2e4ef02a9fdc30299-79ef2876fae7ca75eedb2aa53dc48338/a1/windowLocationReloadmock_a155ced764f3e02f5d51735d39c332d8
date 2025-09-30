@@ -1,0 +1,52 @@
+e42f0458407c8dbba0aabcdf318a4f0e
+"use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.mockWindowLocationReload = void 0;
+/**
+ * WindowLocationReload.mock.ts
+ *
+ * This provides mock implementation for window.location.reload to prevent actual page reloads in tests.
+ *
+ * @usage
+ * - Use mockWindowLocationReload when you need to test reload behavior without triggering a real page reload.
+ * - Returns a Jest mock function that can be spied on to verify reload calls.
+ *
+ * @safety
+ * This mock prevents accidental page reloads during testing that would interrupt the test suite.
+ *
+ * @example
+ * ```typescript
+ * import { mockWindowLocationReload } from '@jestmocks/browser';
+ *
+ * const mockReload = mockWindowLocationReload();
+ * // ... trigger action that should reload
+ * expect(mockReload).toHaveBeenCalled();
+ * ```
+ */
+/**
+ * Creates a mock for window.location.reload
+ *
+ * @returns Mock function that replaces window.location.reload
+ */
+var mockWindowLocationReload = function () {
+    var mockReload = jest.fn();
+    // Replace the actual reload method with our mock
+    Object.defineProperty(window, 'location', {
+        value: __assign(__assign({}, window.location), { reload: mockReload }),
+        writable: true,
+    });
+    return mockReload;
+};
+exports.mockWindowLocationReload = mockWindowLocationReload;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL3Rlc3RpbmcvbW9ja3MvYnJvd3Nlci9saWIvbG9jYXRpb24vd2luZG93TG9jYXRpb25SZWxvYWQubW9jay50cyIsIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7OztBQUdBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7OztHQW9CRztBQUVIOzs7O0dBSUc7QUFDSSxJQUFNLHdCQUF3QixHQUF5QjtJQUM1RCxJQUFNLFVBQVUsR0FBRyxJQUFJLENBQUMsRUFBRSxFQUFFLENBQUM7SUFFN0IsaURBQWlEO0lBQ2pELE1BQU0sQ0FBQyxjQUFjLENBQUMsTUFBTSxFQUFFLFVBQVUsRUFBRTtRQUN4QyxLQUFLLHdCQUNBLE1BQU0sQ0FBQyxRQUFRLEtBQ2xCLE1BQU0sRUFBRSxVQUFVLEdBQ25CO1FBQ0QsUUFBUSxFQUFFLElBQUk7S0FDZixDQUFDLENBQUM7SUFFSCxPQUFPLFVBQVUsQ0FBQztBQUNwQixDQUFDLENBQUM7QUFiVyxRQUFBLHdCQUF3Qiw0QkFhbkMiLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL3Rlc3RpbmcvbW9ja3MvYnJvd3Nlci9saWIvbG9jYXRpb24vd2luZG93TG9jYXRpb25SZWxvYWQubW9jay50cyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBMb2NhbCB0eXBlIGRlZmluaXRpb24gKG1vdmVkIGZyb20gZXJyb3IgdHlwZXMgdGhhdCB3YXMgY2xlYW5lZCB1cClcbnR5cGUgbW9ja1dpbmRvd1JlbG9hZFR5cGUgPSAoKSA9PiBqZXN0Lk1vY2s7XG5cbi8qKlxuICogV2luZG93TG9jYXRpb25SZWxvYWQubW9jay50c1xuICpcbiAqIFRoaXMgcHJvdmlkZXMgbW9jayBpbXBsZW1lbnRhdGlvbiBmb3Igd2luZG93LmxvY2F0aW9uLnJlbG9hZCB0byBwcmV2ZW50IGFjdHVhbCBwYWdlIHJlbG9hZHMgaW4gdGVzdHMuXG4gKlxuICogQHVzYWdlXG4gKiAtIFVzZSBtb2NrV2luZG93TG9jYXRpb25SZWxvYWQgd2hlbiB5b3UgbmVlZCB0byB0ZXN0IHJlbG9hZCBiZWhhdmlvciB3aXRob3V0IHRyaWdnZXJpbmcgYSByZWFsIHBhZ2UgcmVsb2FkLlxuICogLSBSZXR1cm5zIGEgSmVzdCBtb2NrIGZ1bmN0aW9uIHRoYXQgY2FuIGJlIHNwaWVkIG9uIHRvIHZlcmlmeSByZWxvYWQgY2FsbHMuXG4gKlxuICogQHNhZmV0eVxuICogVGhpcyBtb2NrIHByZXZlbnRzIGFjY2lkZW50YWwgcGFnZSByZWxvYWRzIGR1cmluZyB0ZXN0aW5nIHRoYXQgd291bGQgaW50ZXJydXB0IHRoZSB0ZXN0IHN1aXRlLlxuICpcbiAqIEBleGFtcGxlXG4gKiBgYGB0eXBlc2NyaXB0XG4gKiBpbXBvcnQgeyBtb2NrV2luZG93TG9jYXRpb25SZWxvYWQgfSBmcm9tICdAamVzdG1vY2tzL2Jyb3dzZXInO1xuICpcbiAqIGNvbnN0IG1vY2tSZWxvYWQgPSBtb2NrV2luZG93TG9jYXRpb25SZWxvYWQoKTtcbiAqIC8vIC4uLiB0cmlnZ2VyIGFjdGlvbiB0aGF0IHNob3VsZCByZWxvYWRcbiAqIGV4cGVjdChtb2NrUmVsb2FkKS50b0hhdmVCZWVuQ2FsbGVkKCk7XG4gKiBgYGBcbiAqL1xuXG4vKipcbiAqIENyZWF0ZXMgYSBtb2NrIGZvciB3aW5kb3cubG9jYXRpb24ucmVsb2FkXG4gKlxuICogQHJldHVybnMgTW9jayBmdW5jdGlvbiB0aGF0IHJlcGxhY2VzIHdpbmRvdy5sb2NhdGlvbi5yZWxvYWRcbiAqL1xuZXhwb3J0IGNvbnN0IG1vY2tXaW5kb3dMb2NhdGlvblJlbG9hZDogbW9ja1dpbmRvd1JlbG9hZFR5cGUgPSAoKSA9PiB7XG4gIGNvbnN0IG1vY2tSZWxvYWQgPSBqZXN0LmZuKCk7XG5cbiAgLy8gUmVwbGFjZSB0aGUgYWN0dWFsIHJlbG9hZCBtZXRob2Qgd2l0aCBvdXIgbW9ja1xuICBPYmplY3QuZGVmaW5lUHJvcGVydHkod2luZG93LCAnbG9jYXRpb24nLCB7XG4gICAgdmFsdWU6IHtcbiAgICAgIC4uLndpbmRvdy5sb2NhdGlvbixcbiAgICAgIHJlbG9hZDogbW9ja1JlbG9hZCxcbiAgICB9LFxuICAgIHdyaXRhYmxlOiB0cnVlLFxuICB9KTtcblxuICByZXR1cm4gbW9ja1JlbG9hZDtcbn07XG4iXSwidmVyc2lvbiI6M30=

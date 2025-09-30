@@ -1,0 +1,64 @@
+15e7ea5f7a2a6cfe771e9008b96cfaf2
+"use strict";
+/**
+ * Navigation Timing Mock for Testing
+ *
+ * Provides a mock implementation of navigation timing for testing environments.
+ * Simulates navigation timing entries and performance measurements.
+ */
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.defaultNavigationMock = exports.mockNavigationEntries = exports.mockNavigationTiming = void 0;
+// Default navigation timing data
+var defaultNavigationData = {
+    name: 'navigation',
+    startTime: 0,
+    duration: 1000,
+    loadEventEnd: 1000,
+    loadEventStart: 500,
+    domContentLoadedEventEnd: 800,
+    domContentLoadedEventStart: 700,
+    responseEnd: 300,
+    responseStart: 200,
+    requestStart: 150,
+    connectEnd: 100,
+    connectStart: 50,
+    domainLookupEnd: 40,
+    domainLookupStart: 30,
+    navigationStart: 0,
+};
+/**
+ * Creates a mock navigation timing entry for testing
+ *
+ * @param customData - Optional custom navigation timing data to override defaults
+ * @returns A mock navigation timing entry
+ */
+var mockNavigationTiming = function (customData) {
+    if (customData === void 0) { customData = {}; }
+    return __assign(__assign({}, defaultNavigationData), customData);
+};
+exports.mockNavigationTiming = mockNavigationTiming;
+/**
+ * Creates an array of navigation timing entries for testing
+ *
+ * @param customData - Optional custom navigation timing data to override defaults
+ * @returns An array containing a mock navigation timing entry
+ */
+var mockNavigationEntries = function (customData) {
+    if (customData === void 0) { customData = {}; }
+    return [(0, exports.mockNavigationTiming)(customData)];
+};
+exports.mockNavigationEntries = mockNavigationEntries;
+// Default navigation timing mock instance
+exports.defaultNavigationMock = (0, exports.mockNavigationTiming)();
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL3Rlc3RpbmcvbW9ja3MvYnJvd3Nlci9saWIvcGVyZm9ybWFuY2UvbmF2aWdhdGlvbi5tb2NrLnRzIiwibWFwcGluZ3MiOiI7QUFBQTs7Ozs7R0FLRzs7Ozs7Ozs7Ozs7Ozs7QUFJSCxpQ0FBaUM7QUFDakMsSUFBTSxxQkFBcUIsR0FBa0M7SUFDM0QsSUFBSSxFQUFFLFlBQVk7SUFDbEIsU0FBUyxFQUFFLENBQUM7SUFDWixRQUFRLEVBQUUsSUFBSTtJQUNkLFlBQVksRUFBRSxJQUFJO0lBQ2xCLGNBQWMsRUFBRSxHQUFHO0lBQ25CLHdCQUF3QixFQUFFLEdBQUc7SUFDN0IsMEJBQTBCLEVBQUUsR0FBRztJQUMvQixXQUFXLEVBQUUsR0FBRztJQUNoQixhQUFhLEVBQUUsR0FBRztJQUNsQixZQUFZLEVBQUUsR0FBRztJQUNqQixVQUFVLEVBQUUsR0FBRztJQUNmLFlBQVksRUFBRSxFQUFFO0lBQ2hCLGVBQWUsRUFBRSxFQUFFO0lBQ25CLGlCQUFpQixFQUFFLEVBQUU7SUFDckIsZUFBZSxFQUFFLENBQUM7Q0FDbkIsQ0FBQztBQUVGOzs7OztHQUtHO0FBQ0ksSUFBTSxvQkFBb0IsR0FBRyxVQUNsQyxVQUF1RDtJQUF2RCwyQkFBQSxFQUFBLGVBQXVEO0lBRXZELDZCQUNLLHFCQUFxQixHQUNyQixVQUFVLEVBQ2I7QUFDSixDQUFDLENBQUM7QUFQVyxRQUFBLG9CQUFvQix3QkFPL0I7QUFFRjs7Ozs7R0FLRztBQUNJLElBQU0scUJBQXFCLEdBQUcsVUFDbkMsVUFBdUQ7SUFBdkQsMkJBQUEsRUFBQSxlQUF1RDtJQUV2RCxPQUFPLENBQUMsSUFBQSw0QkFBb0IsRUFBQyxVQUFVLENBQUMsQ0FBQyxDQUFDO0FBQzVDLENBQUMsQ0FBQztBQUpXLFFBQUEscUJBQXFCLHlCQUloQztBQUVGLDBDQUEwQztBQUM3QixRQUFBLHFCQUFxQixHQUFHLElBQUEsNEJBQW9CLEdBQUUsQ0FBQyIsIm5hbWVzIjpbXSwic291cmNlcyI6WyIvVXNlcnMvZ2FtemFyYW1hemFub3YvRGVza3RvcC9mdW1vL3NyYy9zaGFyZWQvdGVzdGluZy9tb2Nrcy9icm93c2VyL2xpYi9wZXJmb3JtYW5jZS9uYXZpZ2F0aW9uLm1vY2sudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBOYXZpZ2F0aW9uIFRpbWluZyBNb2NrIGZvciBUZXN0aW5nXG4gKlxuICogUHJvdmlkZXMgYSBtb2NrIGltcGxlbWVudGF0aW9uIG9mIG5hdmlnYXRpb24gdGltaW5nIGZvciB0ZXN0aW5nIGVudmlyb25tZW50cy5cbiAqIFNpbXVsYXRlcyBuYXZpZ2F0aW9uIHRpbWluZyBlbnRyaWVzIGFuZCBwZXJmb3JtYW5jZSBtZWFzdXJlbWVudHMuXG4gKi9cblxuaW1wb3J0IHsgbW9ja05hdmlnYXRpb25UaW1pbmdJbnRlcmZhY2UgfSBmcm9tICcuLi8uLi90eXBlcy90eXBlcyc7XG5cbi8vIERlZmF1bHQgbmF2aWdhdGlvbiB0aW1pbmcgZGF0YVxuY29uc3QgZGVmYXVsdE5hdmlnYXRpb25EYXRhOiBtb2NrTmF2aWdhdGlvblRpbWluZ0ludGVyZmFjZSA9IHtcbiAgbmFtZTogJ25hdmlnYXRpb24nLFxuICBzdGFydFRpbWU6IDAsXG4gIGR1cmF0aW9uOiAxMDAwLFxuICBsb2FkRXZlbnRFbmQ6IDEwMDAsXG4gIGxvYWRFdmVudFN0YXJ0OiA1MDAsXG4gIGRvbUNvbnRlbnRMb2FkZWRFdmVudEVuZDogODAwLFxuICBkb21Db250ZW50TG9hZGVkRXZlbnRTdGFydDogNzAwLFxuICByZXNwb25zZUVuZDogMzAwLFxuICByZXNwb25zZVN0YXJ0OiAyMDAsXG4gIHJlcXVlc3RTdGFydDogMTUwLFxuICBjb25uZWN0RW5kOiAxMDAsXG4gIGNvbm5lY3RTdGFydDogNTAsXG4gIGRvbWFpbkxvb2t1cEVuZDogNDAsXG4gIGRvbWFpbkxvb2t1cFN0YXJ0OiAzMCxcbiAgbmF2aWdhdGlvblN0YXJ0OiAwLFxufTtcblxuLyoqXG4gKiBDcmVhdGVzIGEgbW9jayBuYXZpZ2F0aW9uIHRpbWluZyBlbnRyeSBmb3IgdGVzdGluZ1xuICpcbiAqIEBwYXJhbSBjdXN0b21EYXRhIC0gT3B0aW9uYWwgY3VzdG9tIG5hdmlnYXRpb24gdGltaW5nIGRhdGEgdG8gb3ZlcnJpZGUgZGVmYXVsdHNcbiAqIEByZXR1cm5zIEEgbW9jayBuYXZpZ2F0aW9uIHRpbWluZyBlbnRyeVxuICovXG5leHBvcnQgY29uc3QgbW9ja05hdmlnYXRpb25UaW1pbmcgPSAoXG4gIGN1c3RvbURhdGE6IFBhcnRpYWw8bW9ja05hdmlnYXRpb25UaW1pbmdJbnRlcmZhY2U+ID0ge31cbik6IG1vY2tOYXZpZ2F0aW9uVGltaW5nSW50ZXJmYWNlID0+IHtcbiAgcmV0dXJuIHtcbiAgICAuLi5kZWZhdWx0TmF2aWdhdGlvbkRhdGEsXG4gICAgLi4uY3VzdG9tRGF0YSxcbiAgfTtcbn07XG5cbi8qKlxuICogQ3JlYXRlcyBhbiBhcnJheSBvZiBuYXZpZ2F0aW9uIHRpbWluZyBlbnRyaWVzIGZvciB0ZXN0aW5nXG4gKlxuICogQHBhcmFtIGN1c3RvbURhdGEgLSBPcHRpb25hbCBjdXN0b20gbmF2aWdhdGlvbiB0aW1pbmcgZGF0YSB0byBvdmVycmlkZSBkZWZhdWx0c1xuICogQHJldHVybnMgQW4gYXJyYXkgY29udGFpbmluZyBhIG1vY2sgbmF2aWdhdGlvbiB0aW1pbmcgZW50cnlcbiAqL1xuZXhwb3J0IGNvbnN0IG1vY2tOYXZpZ2F0aW9uRW50cmllcyA9IChcbiAgY3VzdG9tRGF0YTogUGFydGlhbDxtb2NrTmF2aWdhdGlvblRpbWluZ0ludGVyZmFjZT4gPSB7fVxuKTogbW9ja05hdmlnYXRpb25UaW1pbmdJbnRlcmZhY2VbXSA9PiB7XG4gIHJldHVybiBbbW9ja05hdmlnYXRpb25UaW1pbmcoY3VzdG9tRGF0YSldO1xufTtcblxuLy8gRGVmYXVsdCBuYXZpZ2F0aW9uIHRpbWluZyBtb2NrIGluc3RhbmNlXG5leHBvcnQgY29uc3QgZGVmYXVsdE5hdmlnYXRpb25Nb2NrID0gbW9ja05hdmlnYXRpb25UaW1pbmcoKTtcbiJdLCJ2ZXJzaW9uIjozfQ==

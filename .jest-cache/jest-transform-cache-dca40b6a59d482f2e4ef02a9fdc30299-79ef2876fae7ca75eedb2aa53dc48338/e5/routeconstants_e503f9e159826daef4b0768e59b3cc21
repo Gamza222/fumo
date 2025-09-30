@@ -1,0 +1,178 @@
+46901cb3c8d79267b02ed391dc2bcfec
+"use strict";
+
+/* istanbul ignore next */
+function cov_23wff29rza() {
+  var path = "/Users/gamzaramazanov/Desktop/fumo/src/shared/config/route/route.constants.ts";
+  var hash = "f2e03e2ef189b9e9e3f48935ca680448ae605917";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/gamzaramazanov/Desktop/fumo/src/shared/config/route/route.constants.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 4,
+          column: 0
+        },
+        end: {
+          line: 4,
+          column: 111
+        }
+      },
+      "2": {
+        start: {
+          line: 5,
+          column: 20
+        },
+        end: {
+          line: 5,
+          column: 44
+        }
+      },
+      "3": {
+        start: {
+          line: 9,
+          column: 0
+        },
+        end: {
+          line: 12,
+          column: 8
+        }
+      },
+      "4": {
+        start: {
+          line: 16,
+          column: 0
+        },
+        end: {
+          line: 20,
+          column: 2
+        }
+      },
+      "5": {
+        start: {
+          line: 24,
+          column: 0
+        },
+        end: {
+          line: 35,
+          column: 2
+        }
+      },
+      "6": {
+        start: {
+          line: 39,
+          column: 0
+        },
+        end: {
+          line: 44,
+          column: 2
+        }
+      }
+    },
+    fnMap: {},
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0
+    },
+    f: {},
+    b: {},
+    inputSourceMap: {
+      file: "/Users/gamzaramazanov/Desktop/fumo/src/shared/config/route/route.constants.ts",
+      mappings: ";;;;AAAA,6CAA8C;AAE9C;;GAEG;AACU,QAAA,WAAW,GAAG,CAAA;IACzB,GAAC,2BAAa,CAAC,QAAQ,IAAG,CAAC;IAC3B,GAAC,2BAAa,CAAC,KAAK,IAAG,CAAC,GAAG,EAAE,GAAG,EAAE,GAAG,EAAE,GAAG,IAAI;MACtC,CAAA,CAAC;AAEX;;GAEG;AACU,QAAA,iBAAiB,GAAG;IAC/B,IAAI,EAAE,GAAG;IACT,MAAM,EAAE,GAAG;IACX,IAAI,EAAE,IAAI;CACF,CAAC;AAEX;;GAEG;AACU,QAAA,cAAc,GAAG;IAC5B,OAAO,EAAE;QACP,YAAY,EAAE,mBAAmB;QACjC,iBAAiB,EAAE,wBAAwB;QAC3C,UAAU,EAAE,uBAAuB;KACpC;IACD,QAAQ,EAAE;QACR,GAAG,EAAE,QAAQ;QACb,KAAK,EAAE,UAAU;QACjB,SAAS,EAAE,cAAc;KAC1B;CACO,CAAC;AAEX;;GAEG;AACU,QAAA,kBAAkB,GAAG;IAChC,KAAK,EAAE,aAAa;IACpB,MAAM,EAAE,cAAc;IACtB,IAAI,EAAE,YAAY;IAClB,GAAG,EAAE,WAAW;CACR,CAAC",
+      names: [],
+      sources: ["/Users/gamzaramazanov/Desktop/fumo/src/shared/config/route/route.constants.ts"],
+      sourcesContent: ["import { CacheStrategy } from './route.enums';\n\n/**\n * Cache time constants (in milliseconds)\n */\nexport const CACHE_TIMES = {\n  [CacheStrategy.NO_CACHE]: 0,\n  [CacheStrategy.CACHE]: 7 * 24 * 60 * 60 * 1000, // 7 days\n} as const;\n\n/**\n * Default minimum display times (in milliseconds)\n */\nexport const MIN_DISPLAY_TIMES = {\n  FAST: 300,\n  NORMAL: 800,\n  SLOW: 2000,\n} as const;\n\n/**\n * Route patterns for dynamic matching\n */\nexport const ROUTE_PATTERNS = {\n  DYNAMIC: {\n    USER_PROFILE: '/profile/[userId]',\n    WORKSPACE_PROJECT: '/workspace/[projectId]',\n    ADMIN_USER: '/admin/users/[userId]',\n  },\n  WILDCARD: {\n    API: '/api/*',\n    ADMIN: '/admin/*',\n    WORKSPACE: '/workspace/*',\n  },\n} as const;\n\n/**\n * Cache key prefixes\n */\nexport const CACHE_KEY_PREFIXES = {\n  ROUTE: 'route-cache',\n  LOADER: 'loader-cache',\n  USER: 'user-cache',\n  APP: 'app-cache',\n} as const;\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "f2e03e2ef189b9e9e3f48935ca680448ae605917"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_23wff29rza = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_23wff29rza();
+var _a;
+/* istanbul ignore next */
+cov_23wff29rza().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_23wff29rza().s[1]++;
+exports.CACHE_KEY_PREFIXES = exports.ROUTE_PATTERNS = exports.MIN_DISPLAY_TIMES = exports.CACHE_TIMES = void 0;
+var route_enums_1 =
+/* istanbul ignore next */
+(cov_23wff29rza().s[2]++, require("./route.enums"));
+/**
+ * Cache time constants (in milliseconds)
+ */
+/* istanbul ignore next */
+cov_23wff29rza().s[3]++;
+exports.CACHE_TIMES = (_a = {}, _a[route_enums_1.CacheStrategy.NO_CACHE] = 0, _a[route_enums_1.CacheStrategy.CACHE] = 7 * 24 * 60 * 60 * 1000, _a);
+/**
+ * Default minimum display times (in milliseconds)
+ */
+/* istanbul ignore next */
+cov_23wff29rza().s[4]++;
+exports.MIN_DISPLAY_TIMES = {
+  FAST: 300,
+  NORMAL: 800,
+  SLOW: 2000
+};
+/**
+ * Route patterns for dynamic matching
+ */
+/* istanbul ignore next */
+cov_23wff29rza().s[5]++;
+exports.ROUTE_PATTERNS = {
+  DYNAMIC: {
+    USER_PROFILE: '/profile/[userId]',
+    WORKSPACE_PROJECT: '/workspace/[projectId]',
+    ADMIN_USER: '/admin/users/[userId]'
+  },
+  WILDCARD: {
+    API: '/api/*',
+    ADMIN: '/admin/*',
+    WORKSPACE: '/workspace/*'
+  }
+};
+/**
+ * Cache key prefixes
+ */
+/* istanbul ignore next */
+cov_23wff29rza().s[6]++;
+exports.CACHE_KEY_PREFIXES = {
+  ROUTE: 'route-cache',
+  LOADER: 'loader-cache',
+  USER: 'user-cache',
+  APP: 'app-cache'
+};
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMjN3ZmYyOXJ6YSIsImFjdHVhbENvdmVyYWdlIiwicm91dGVfZW51bXNfMSIsInMiLCJyZXF1aXJlIiwiZXhwb3J0cyIsIkNBQ0hFX1RJTUVTIiwiX2EiLCJDYWNoZVN0cmF0ZWd5IiwiTk9fQ0FDSEUiLCJDQUNIRSIsIk1JTl9ESVNQTEFZX1RJTUVTIiwiRkFTVCIsIk5PUk1BTCIsIlNMT1ciLCJST1VURV9QQVRURVJOUyIsIkRZTkFNSUMiLCJVU0VSX1BST0ZJTEUiLCJXT1JLU1BBQ0VfUFJPSkVDVCIsIkFETUlOX1VTRVIiLCJXSUxEQ0FSRCIsIkFQSSIsIkFETUlOIiwiV09SS1NQQUNFIiwiQ0FDSEVfS0VZX1BSRUZJWEVTIiwiUk9VVEUiLCJMT0FERVIiLCJVU0VSIiwiQVBQIl0sInNvdXJjZXMiOlsiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL2NvbmZpZy9yb3V0ZS9yb3V0ZS5jb25zdGFudHMudHMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgQ2FjaGVTdHJhdGVneSB9IGZyb20gJy4vcm91dGUuZW51bXMnO1xuXG4vKipcbiAqIENhY2hlIHRpbWUgY29uc3RhbnRzIChpbiBtaWxsaXNlY29uZHMpXG4gKi9cbmV4cG9ydCBjb25zdCBDQUNIRV9USU1FUyA9IHtcbiAgW0NhY2hlU3RyYXRlZ3kuTk9fQ0FDSEVdOiAwLFxuICBbQ2FjaGVTdHJhdGVneS5DQUNIRV06IDcgKiAyNCAqIDYwICogNjAgKiAxMDAwLCAvLyA3IGRheXNcbn0gYXMgY29uc3Q7XG5cbi8qKlxuICogRGVmYXVsdCBtaW5pbXVtIGRpc3BsYXkgdGltZXMgKGluIG1pbGxpc2Vjb25kcylcbiAqL1xuZXhwb3J0IGNvbnN0IE1JTl9ESVNQTEFZX1RJTUVTID0ge1xuICBGQVNUOiAzMDAsXG4gIE5PUk1BTDogODAwLFxuICBTTE9XOiAyMDAwLFxufSBhcyBjb25zdDtcblxuLyoqXG4gKiBSb3V0ZSBwYXR0ZXJucyBmb3IgZHluYW1pYyBtYXRjaGluZ1xuICovXG5leHBvcnQgY29uc3QgUk9VVEVfUEFUVEVSTlMgPSB7XG4gIERZTkFNSUM6IHtcbiAgICBVU0VSX1BST0ZJTEU6ICcvcHJvZmlsZS9bdXNlcklkXScsXG4gICAgV09SS1NQQUNFX1BST0pFQ1Q6ICcvd29ya3NwYWNlL1twcm9qZWN0SWRdJyxcbiAgICBBRE1JTl9VU0VSOiAnL2FkbWluL3VzZXJzL1t1c2VySWRdJyxcbiAgfSxcbiAgV0lMRENBUkQ6IHtcbiAgICBBUEk6ICcvYXBpLyonLFxuICAgIEFETUlOOiAnL2FkbWluLyonLFxuICAgIFdPUktTUEFDRTogJy93b3Jrc3BhY2UvKicsXG4gIH0sXG59IGFzIGNvbnN0O1xuXG4vKipcbiAqIENhY2hlIGtleSBwcmVmaXhlc1xuICovXG5leHBvcnQgY29uc3QgQ0FDSEVfS0VZX1BSRUZJWEVTID0ge1xuICBST1VURTogJ3JvdXRlLWNhY2hlJyxcbiAgTE9BREVSOiAnbG9hZGVyLWNhY2hlJyxcbiAgVVNFUjogJ3VzZXItY2FjaGUnLFxuICBBUFA6ICdhcHAtY2FjaGUnLFxufSBhcyBjb25zdDtcbiJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztJQWFhO0lBQUFBLGNBQUEsWUFBQUEsQ0FBQTtNQUFBLE9BQUFDLGNBQUE7SUFBQTtFQUFBO0VBQUEsT0FBQUEsY0FBQTtBQUFBO0FBQUFELGNBQUE7Ozs7Ozs7Ozs7QUFiYixJQUFBRSxhQUFBO0FBQUE7QUFBQSxDQUFBRixjQUFBLEdBQUFHLENBQUEsT0FBQUMsT0FBQTtBQUVBOzs7QUFBQTtBQUFBSixjQUFBLEdBQUFHLENBQUE7QUFHYUUsT0FBQSxDQUFBQyxXQUFXLElBQUdDLEVBQUEsT0FDekJBLEVBQUEsQ0FBQ0wsYUFBQSxDQUFBTSxhQUFhLENBQUNDLFFBQVEsSUFBRyxDQUFDLEVBQzNCRixFQUFBLENBQUNMLGFBQUEsQ0FBQU0sYUFBYSxDQUFDRSxLQUFLLElBQUcsQ0FBQyxHQUFHLEVBQUUsR0FBRyxFQUFFLEdBQUcsRUFBRSxHQUFHLElBQUksRSxFQUN0QztBQUVWOzs7QUFBQTtBQUFBVixjQUFBLEdBQUFHLENBQUE7QUFHYUUsT0FBQSxDQUFBTSxpQkFBaUIsR0FBRztFQUMvQkMsSUFBSSxFQUFFLEdBQUc7RUFDVEMsTUFBTSxFQUFFLEdBQUc7RUFDWEMsSUFBSSxFQUFFO0NBQ0U7QUFFVjs7O0FBQUE7QUFBQWQsY0FBQSxHQUFBRyxDQUFBO0FBR2FFLE9BQUEsQ0FBQVUsY0FBYyxHQUFHO0VBQzVCQyxPQUFPLEVBQUU7SUFDUEMsWUFBWSxFQUFFLG1CQUFtQjtJQUNqQ0MsaUJBQWlCLEVBQUUsd0JBQXdCO0lBQzNDQyxVQUFVLEVBQUU7R0FDYjtFQUNEQyxRQUFRLEVBQUU7SUFDUkMsR0FBRyxFQUFFLFFBQVE7SUFDYkMsS0FBSyxFQUFFLFVBQVU7SUFDakJDLFNBQVMsRUFBRTs7Q0FFTDtBQUVWOzs7QUFBQTtBQUFBdkIsY0FBQSxHQUFBRyxDQUFBO0FBR2FFLE9BQUEsQ0FBQW1CLGtCQUFrQixHQUFHO0VBQ2hDQyxLQUFLLEVBQUUsYUFBYTtFQUNwQkMsTUFBTSxFQUFFLGNBQWM7RUFDdEJDLElBQUksRUFBRSxZQUFZO0VBQ2xCQyxHQUFHLEVBQUU7Q0FDRyIsImlnbm9yZUxpc3QiOltdfQ==

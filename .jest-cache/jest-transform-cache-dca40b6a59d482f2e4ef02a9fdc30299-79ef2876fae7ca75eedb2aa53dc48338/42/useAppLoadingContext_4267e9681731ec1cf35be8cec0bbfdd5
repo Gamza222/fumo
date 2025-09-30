@@ -1,0 +1,42 @@
+211cd9e27b7e7d210767450c02bf5024
+"use strict";
+/**
+ * useAppLoadingContext Hook
+ *
+ * Hook for consuming AppLoading context safely.
+ */
+"use client";
+/**
+ * useAppLoadingContext Hook
+ *
+ * Hook for consuming AppLoading context safely.
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.useAppLoadingContext = useAppLoadingContext;
+var react_1 = require("react");
+var AppLoadingProvider_1 = require("../../ui/AppLoadingProvider");
+// ============================================================================
+// CONTEXT HOOK (Logic Layer)
+// ============================================================================
+/**
+ * useAppLoadingContext - Hook to access loading state from context
+ *
+ * This hook handles context consumption logic with proper error handling.
+ * Memoized for performance optimization.
+ *
+ * Usage:
+ * const { isInitialLoading, progress, forceComplete } = useAppLoadingContext();
+ *
+ * @throws Error if used outside of AppLoadingProvider
+ * @returns AppLoadingContextType - Loading state and methods
+ */
+function useAppLoadingContext() {
+    // Get context from provider
+    var context = (0, react_1.useContext)(AppLoadingProvider_1.AppLoadingContext);
+    if (!context) {
+        throw new Error("useAppLoadingContext must be used within an AppLoadingProvider. " +
+            "Make sure your component is wrapped with <AppLoadingProvider>.");
+    }
+    return context;
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvaW5mcmFzdHJ1Y3R1cmUvcHJvdmlkZXJzL2FwcC1sb2FkaW5nL2hvb2tzL3VzZUFwcExvYWRpbmdDb250ZXh0L3VzZUFwcExvYWRpbmdDb250ZXh0LnRzIiwibWFwcGluZ3MiOiI7QUFBQTs7OztHQUlHO0FBRUgsWUFBWSxDQUFDO0FBTmI7Ozs7R0FJRzs7QUF3Qkgsb0RBWUM7QUFoQ0QsK0JBQW1DO0FBQ25DLGtFQUFnRTtBQUdoRSwrRUFBK0U7QUFDL0UsNkJBQTZCO0FBQzdCLCtFQUErRTtBQUUvRTs7Ozs7Ozs7Ozs7R0FXRztBQUNILFNBQWdCLG9CQUFvQjtJQUNsQyw0QkFBNEI7SUFDNUIsSUFBTSxPQUFPLEdBQUcsSUFBQSxrQkFBVSxFQUFDLHNDQUFpQixDQUFDLENBQUM7SUFFOUMsSUFBSSxDQUFDLE9BQU8sRUFBRSxDQUFDO1FBQ2IsTUFBTSxJQUFJLEtBQUssQ0FDYixrRUFBa0U7WUFDaEUsZ0VBQWdFLENBQ25FLENBQUM7SUFDSixDQUFDO0lBRUQsT0FBTyxPQUFPLENBQUM7QUFDakIsQ0FBQyIsIm5hbWVzIjpbXSwic291cmNlcyI6WyIvVXNlcnMvZ2FtemFyYW1hemFub3YvRGVza3RvcC9mdW1vL3NyYy9pbmZyYXN0cnVjdHVyZS9wcm92aWRlcnMvYXBwLWxvYWRpbmcvaG9va3MvdXNlQXBwTG9hZGluZ0NvbnRleHQvdXNlQXBwTG9hZGluZ0NvbnRleHQudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiB1c2VBcHBMb2FkaW5nQ29udGV4dCBIb29rXG4gKlxuICogSG9vayBmb3IgY29uc3VtaW5nIEFwcExvYWRpbmcgY29udGV4dCBzYWZlbHkuXG4gKi9cblxuXCJ1c2UgY2xpZW50XCI7XG5cbmltcG9ydCB7IHVzZUNvbnRleHQgfSBmcm9tIFwicmVhY3RcIjtcbmltcG9ydCB7IEFwcExvYWRpbmdDb250ZXh0IH0gZnJvbSBcIi4uLy4uL3VpL0FwcExvYWRpbmdQcm92aWRlclwiO1xuaW1wb3J0IHsgQXBwTG9hZGluZ0NvbnRleHRUeXBlIH0gZnJvbSBcIi4uLy4uL21vZGVsL3R5cGVzL3R5cGVzXCI7XG5cbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbi8vIENPTlRFWFQgSE9PSyAoTG9naWMgTGF5ZXIpXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG5cbi8qKlxuICogdXNlQXBwTG9hZGluZ0NvbnRleHQgLSBIb29rIHRvIGFjY2VzcyBsb2FkaW5nIHN0YXRlIGZyb20gY29udGV4dFxuICpcbiAqIFRoaXMgaG9vayBoYW5kbGVzIGNvbnRleHQgY29uc3VtcHRpb24gbG9naWMgd2l0aCBwcm9wZXIgZXJyb3IgaGFuZGxpbmcuXG4gKiBNZW1vaXplZCBmb3IgcGVyZm9ybWFuY2Ugb3B0aW1pemF0aW9uLlxuICpcbiAqIFVzYWdlOlxuICogY29uc3QgeyBpc0luaXRpYWxMb2FkaW5nLCBwcm9ncmVzcywgZm9yY2VDb21wbGV0ZSB9ID0gdXNlQXBwTG9hZGluZ0NvbnRleHQoKTtcbiAqXG4gKiBAdGhyb3dzIEVycm9yIGlmIHVzZWQgb3V0c2lkZSBvZiBBcHBMb2FkaW5nUHJvdmlkZXJcbiAqIEByZXR1cm5zIEFwcExvYWRpbmdDb250ZXh0VHlwZSAtIExvYWRpbmcgc3RhdGUgYW5kIG1ldGhvZHNcbiAqL1xuZXhwb3J0IGZ1bmN0aW9uIHVzZUFwcExvYWRpbmdDb250ZXh0KCk6IEFwcExvYWRpbmdDb250ZXh0VHlwZSB7XG4gIC8vIEdldCBjb250ZXh0IGZyb20gcHJvdmlkZXJcbiAgY29uc3QgY29udGV4dCA9IHVzZUNvbnRleHQoQXBwTG9hZGluZ0NvbnRleHQpO1xuXG4gIGlmICghY29udGV4dCkge1xuICAgIHRocm93IG5ldyBFcnJvcihcbiAgICAgIFwidXNlQXBwTG9hZGluZ0NvbnRleHQgbXVzdCBiZSB1c2VkIHdpdGhpbiBhbiBBcHBMb2FkaW5nUHJvdmlkZXIuIFwiICtcbiAgICAgICAgXCJNYWtlIHN1cmUgeW91ciBjb21wb25lbnQgaXMgd3JhcHBlZCB3aXRoIDxBcHBMb2FkaW5nUHJvdmlkZXI+LlwiXG4gICAgKTtcbiAgfVxuXG4gIHJldHVybiBjb250ZXh0O1xufVxuIl0sInZlcnNpb24iOjN9

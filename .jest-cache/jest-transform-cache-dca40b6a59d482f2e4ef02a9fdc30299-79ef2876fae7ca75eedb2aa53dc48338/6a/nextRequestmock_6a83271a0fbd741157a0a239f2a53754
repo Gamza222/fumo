@@ -1,0 +1,37 @@
+8058ba41ff565bf35d7fc652a7de4644
+"use strict";
+/**
+ * NextRequest Mock for Testing
+ *
+ * Provides a mock implementation of Next.js NextRequest for testing environments.
+ * Simulates request objects with headers, method, and URL properties.
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.createMockNextRequest = exports.MockNextRequest = void 0;
+var MockNextRequest = /** @class */ (function () {
+    function MockNextRequest(url, options) {
+        if (options === void 0) { options = {}; }
+        var _this = this;
+        this.url = url;
+        this.method = options.method || 'GET';
+        this.headers = new Map();
+        if (options.headers) {
+            Object.entries(options.headers).forEach(function (_a) {
+                var key = _a[0], value = _a[1];
+                _this.headers.set(key, value);
+            });
+        }
+    }
+    MockNextRequest.prototype.get = function (name) {
+        return this.headers.get(name) || null;
+    };
+    return MockNextRequest;
+}());
+exports.MockNextRequest = MockNextRequest;
+// Factory function for creating mock requests
+var createMockNextRequest = function (url, options) {
+    if (options === void 0) { options = {}; }
+    return new MockNextRequest(url, options);
+};
+exports.createMockNextRequest = createMockNextRequest;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL3Rlc3RpbmcvbW9ja3MvbmV4dGpzL2xpYi9zZXJ2ZXIvbmV4dFJlcXVlc3QubW9jay50cyIsIm1hcHBpbmdzIjoiO0FBQUE7Ozs7O0dBS0c7OztBQUlIO0lBS0UseUJBQVksR0FBVyxFQUFFLE9BQTZDO1FBQTdDLHdCQUFBLEVBQUEsWUFBNkM7UUFBdEUsaUJBVUM7UUFUQyxJQUFJLENBQUMsR0FBRyxHQUFHLEdBQUcsQ0FBQztRQUNmLElBQUksQ0FBQyxNQUFNLEdBQUcsT0FBTyxDQUFDLE1BQU0sSUFBSSxLQUFLLENBQUM7UUFDdEMsSUFBSSxDQUFDLE9BQU8sR0FBRyxJQUFJLEdBQUcsRUFBRSxDQUFDO1FBRXpCLElBQUksT0FBTyxDQUFDLE9BQU8sRUFBRSxDQUFDO1lBQ3BCLE1BQU0sQ0FBQyxPQUFPLENBQUMsT0FBTyxDQUFDLE9BQU8sQ0FBQyxDQUFDLE9BQU8sQ0FBQyxVQUFDLEVBQVk7b0JBQVgsR0FBRyxRQUFBLEVBQUUsS0FBSyxRQUFBO2dCQUNsRCxLQUFJLENBQUMsT0FBTyxDQUFDLEdBQUcsQ0FBQyxHQUFHLEVBQUUsS0FBSyxDQUFDLENBQUM7WUFDL0IsQ0FBQyxDQUFDLENBQUM7UUFDTCxDQUFDO0lBQ0gsQ0FBQztJQUVELDZCQUFHLEdBQUgsVUFBSSxJQUFZO1FBQ2QsT0FBTyxJQUFJLENBQUMsT0FBTyxDQUFDLEdBQUcsQ0FBQyxJQUFJLENBQUMsSUFBSSxJQUFJLENBQUM7SUFDeEMsQ0FBQztJQUNILHNCQUFDO0FBQUQsQ0FBQyxBQXBCRCxJQW9CQztBQXBCWSwwQ0FBZTtBQXNCNUIsOENBQThDO0FBQ3ZDLElBQU0scUJBQXFCLEdBQUcsVUFDbkMsR0FBVyxFQUNYLE9BQTZDO0lBQTdDLHdCQUFBLEVBQUEsWUFBNkM7SUFDaEIsT0FBQSxJQUFJLGVBQWUsQ0FBQyxHQUFHLEVBQUUsT0FBTyxDQUFDO0FBQWpDLENBQWlDLENBQUM7QUFIcEQsUUFBQSxxQkFBcUIseUJBRytCIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIi9Vc2Vycy9nYW16YXJhbWF6YW5vdi9EZXNrdG9wL2Z1bW8vc3JjL3NoYXJlZC90ZXN0aW5nL21vY2tzL25leHRqcy9saWIvc2VydmVyL25leHRSZXF1ZXN0Lm1vY2sudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBOZXh0UmVxdWVzdCBNb2NrIGZvciBUZXN0aW5nXG4gKlxuICogUHJvdmlkZXMgYSBtb2NrIGltcGxlbWVudGF0aW9uIG9mIE5leHQuanMgTmV4dFJlcXVlc3QgZm9yIHRlc3RpbmcgZW52aXJvbm1lbnRzLlxuICogU2ltdWxhdGVzIHJlcXVlc3Qgb2JqZWN0cyB3aXRoIGhlYWRlcnMsIG1ldGhvZCwgYW5kIFVSTCBwcm9wZXJ0aWVzLlxuICovXG5cbmltcG9ydCB7IG1vY2tOZXh0UmVxdWVzdEludGVyZmFjZSwgbW9ja05leHRSZXF1ZXN0T3B0aW9uc0ludGVyZmFjZSB9IGZyb20gJy4uLy4uL3R5cGVzL3R5cGVzJztcblxuZXhwb3J0IGNsYXNzIE1vY2tOZXh0UmVxdWVzdCBpbXBsZW1lbnRzIG1vY2tOZXh0UmVxdWVzdEludGVyZmFjZSB7XG4gIHVybDogc3RyaW5nO1xuICBtZXRob2Q6IHN0cmluZztcbiAgaGVhZGVyczogTWFwPHN0cmluZywgc3RyaW5nPjtcblxuICBjb25zdHJ1Y3Rvcih1cmw6IHN0cmluZywgb3B0aW9uczogbW9ja05leHRSZXF1ZXN0T3B0aW9uc0ludGVyZmFjZSA9IHt9KSB7XG4gICAgdGhpcy51cmwgPSB1cmw7XG4gICAgdGhpcy5tZXRob2QgPSBvcHRpb25zLm1ldGhvZCB8fCAnR0VUJztcbiAgICB0aGlzLmhlYWRlcnMgPSBuZXcgTWFwKCk7XG5cbiAgICBpZiAob3B0aW9ucy5oZWFkZXJzKSB7XG4gICAgICBPYmplY3QuZW50cmllcyhvcHRpb25zLmhlYWRlcnMpLmZvckVhY2goKFtrZXksIHZhbHVlXSkgPT4ge1xuICAgICAgICB0aGlzLmhlYWRlcnMuc2V0KGtleSwgdmFsdWUpO1xuICAgICAgfSk7XG4gICAgfVxuICB9XG5cbiAgZ2V0KG5hbWU6IHN0cmluZyk6IHN0cmluZyB8IG51bGwge1xuICAgIHJldHVybiB0aGlzLmhlYWRlcnMuZ2V0KG5hbWUpIHx8IG51bGw7XG4gIH1cbn1cblxuLy8gRmFjdG9yeSBmdW5jdGlvbiBmb3IgY3JlYXRpbmcgbW9jayByZXF1ZXN0c1xuZXhwb3J0IGNvbnN0IGNyZWF0ZU1vY2tOZXh0UmVxdWVzdCA9IChcbiAgdXJsOiBzdHJpbmcsXG4gIG9wdGlvbnM6IG1vY2tOZXh0UmVxdWVzdE9wdGlvbnNJbnRlcmZhY2UgPSB7fVxuKTogbW9ja05leHRSZXF1ZXN0SW50ZXJmYWNlID0+IG5ldyBNb2NrTmV4dFJlcXVlc3QodXJsLCBvcHRpb25zKTtcbiJdLCJ2ZXJzaW9uIjozfQ==

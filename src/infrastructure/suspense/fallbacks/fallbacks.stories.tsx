@@ -8,6 +8,7 @@ import {
 } from './fallbacks';
 import { ComponentHeight, LoadingSize } from '@/infrastructure/suspense/types/suspenseEnums';
 import { Text, TextSize } from '@/shared/ui/Text';
+import { AppLoadingProvider } from '@/infrastructure/providers/app-loading';
 // import { Button, ButtonSize, ButtonVariant } from '@/shared/ui/Button';
 
 const meta = {
@@ -70,6 +71,13 @@ export const PageLoading: Story = {
       },
     },
   },
+  decorators: [
+    (Story) => (
+      <AppLoadingProvider>
+        <Story />
+      </AppLoadingProvider>
+    ),
+  ],
 };
 
 export const InlineLoading: Story = {

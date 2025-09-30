@@ -1,0 +1,27 @@
+b252b3bf31712e49e62b8839f2d0efdf
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ProgressBar = void 0;
+var jsx_runtime_1 = require("react/jsx-runtime");
+/**
+ * ProgressBar Component
+ *
+ * Reusable progress bar component with smooth animations.
+ * Can be moved to shared/ui later if needed elsewhere.
+ */
+var react_1 = require("react");
+var ProgressBar_module_scss_1 = __importDefault(require("./ProgressBar.module.scss"));
+var lib_1 = require("../lib/lib");
+var Text_1 = require("@/shared/ui/Text");
+var classNames_1 = require("@/shared/lib/utils/classNames");
+exports.ProgressBar = (0, react_1.memo)(function (props) {
+    var progress = props.progress, _a = props.showPercentage, showPercentage = _a === void 0 ? true : _a, className = props.className, _b = props.message, message = _b === void 0 ? '' : _b;
+    var progressBarWidth = (0, lib_1.getProgressBarWidth)(progress);
+    var displayProgress = (0, lib_1.formatProgress)(progress);
+    return ((0, jsx_runtime_1.jsxs)("div", { className: (0, classNames_1.classNames)(ProgressBar_module_scss_1.default.progressBar || '', {}, [className]), children: [(0, jsx_runtime_1.jsx)("div", { className: ProgressBar_module_scss_1.default.container, children: (0, jsx_runtime_1.jsx)("div", { className: ProgressBar_module_scss_1.default.bar, style: { width: progressBarWidth } }) }), showPercentage && (0, jsx_runtime_1.jsx)(Text_1.Text, { className: ProgressBar_module_scss_1.default.percentage, children: displayProgress }), message && (0, jsx_runtime_1.jsx)(Text_1.Text, { className: ProgressBar_module_scss_1.default.message, children: message })] }));
+});
+exports.ProgressBar.displayName = 'ProgressBar';
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvd2lkZ2V0cy9Qcm9ncmVzc0Jhci91aS9Qcm9ncmVzc0Jhci50c3giLCJtYXBwaW5ncyI6Ijs7Ozs7OztBQUFBOzs7OztHQUtHO0FBRUgsK0JBQTZCO0FBQzdCLHNGQUErQztBQUUvQyxrQ0FBaUU7QUFFakUseUNBQXdDO0FBQ3hDLDREQUEyRDtBQVM5QyxRQUFBLFdBQVcsR0FBRyxJQUFBLFlBQUksRUFBbUIsVUFBQyxLQUFLO0lBQzlDLElBQUEsUUFBUSxHQUFxRCxLQUFLLFNBQTFELEVBQUUsS0FBbUQsS0FBSyxlQUFuQyxFQUFyQixjQUFjLG1CQUFHLElBQUksS0FBQSxFQUFFLFNBQVMsR0FBbUIsS0FBSyxVQUF4QixFQUFFLEtBQWlCLEtBQUssUUFBVixFQUFaLE9BQU8sbUJBQUcsRUFBRSxLQUFBLENBQVc7SUFDM0UsSUFBTSxnQkFBZ0IsR0FBRyxJQUFBLHlCQUFtQixFQUFDLFFBQVEsQ0FBQyxDQUFDO0lBQ3ZELElBQU0sZUFBZSxHQUFHLElBQUEsb0JBQWMsRUFBQyxRQUFRLENBQUMsQ0FBQztJQUNqRCxPQUFPLENBQ0wsaUNBQUssU0FBUyxFQUFFLElBQUEsdUJBQVUsRUFBQyxpQ0FBTSxDQUFDLFdBQVcsSUFBSSxFQUFFLEVBQUUsRUFBRSxFQUFFLENBQUMsU0FBUyxDQUFDLENBQUMsYUFDbkUsZ0NBQUssU0FBUyxFQUFFLGlDQUFNLENBQUMsU0FBUyxZQUM5QixnQ0FBSyxTQUFTLEVBQUUsaUNBQU0sQ0FBQyxHQUFHLEVBQUUsS0FBSyxFQUFFLEVBQUUsS0FBSyxFQUFFLGdCQUFnQixFQUFFLEdBQUksR0FDOUQsRUFDTCxjQUFjLElBQUksdUJBQUMsV0FBSSxJQUFDLFNBQVMsRUFBRSxpQ0FBTSxDQUFDLFVBQVUsWUFBRyxlQUFlLEdBQVEsRUFDOUUsT0FBTyxJQUFJLHVCQUFDLFdBQUksSUFBQyxTQUFTLEVBQUUsaUNBQU0sQ0FBQyxPQUFPLFlBQUcsT0FBTyxHQUFRLElBQ3pELENBQ1AsQ0FBQztBQUNKLENBQUMsQ0FBQyxDQUFDO0FBRUgsbUJBQVcsQ0FBQyxXQUFXLEdBQUcsYUFBYSxDQUFDIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIi9Vc2Vycy9nYW16YXJhbWF6YW5vdi9EZXNrdG9wL2Z1bW8vc3JjL3dpZGdldHMvUHJvZ3Jlc3NCYXIvdWkvUHJvZ3Jlc3NCYXIudHN4Il0sInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogUHJvZ3Jlc3NCYXIgQ29tcG9uZW50XG4gKlxuICogUmV1c2FibGUgcHJvZ3Jlc3MgYmFyIGNvbXBvbmVudCB3aXRoIHNtb290aCBhbmltYXRpb25zLlxuICogQ2FuIGJlIG1vdmVkIHRvIHNoYXJlZC91aSBsYXRlciBpZiBuZWVkZWQgZWxzZXdoZXJlLlxuICovXG5cbmltcG9ydCB7IG1lbW8gfSBmcm9tICdyZWFjdCc7XG5pbXBvcnQgc3R5bGVzIGZyb20gJy4vUHJvZ3Jlc3NCYXIubW9kdWxlLnNjc3MnO1xuXG5pbXBvcnQgeyBmb3JtYXRQcm9ncmVzcywgZ2V0UHJvZ3Jlc3NCYXJXaWR0aCB9IGZyb20gJy4uL2xpYi9saWInO1xuXG5pbXBvcnQgeyBUZXh0IH0gZnJvbSAnQC9zaGFyZWQvdWkvVGV4dCc7XG5pbXBvcnQgeyBjbGFzc05hbWVzIH0gZnJvbSAnQC9zaGFyZWQvbGliL3V0aWxzL2NsYXNzTmFtZXMnO1xuXG5leHBvcnQgaW50ZXJmYWNlIFByb2dyZXNzQmFyUHJvcHMge1xuICBwcm9ncmVzczogbnVtYmVyO1xuICBzaG93UGVyY2VudGFnZT86IGJvb2xlYW47XG4gIGNsYXNzTmFtZT86IHN0cmluZztcbiAgbWVzc2FnZT86IHN0cmluZztcbn1cblxuZXhwb3J0IGNvbnN0IFByb2dyZXNzQmFyID0gbWVtbzxQcm9ncmVzc0JhclByb3BzPigocHJvcHMpID0+IHtcbiAgY29uc3QgeyBwcm9ncmVzcywgc2hvd1BlcmNlbnRhZ2UgPSB0cnVlLCBjbGFzc05hbWUsIG1lc3NhZ2UgPSAnJyB9ID0gcHJvcHM7XG4gIGNvbnN0IHByb2dyZXNzQmFyV2lkdGggPSBnZXRQcm9ncmVzc0JhcldpZHRoKHByb2dyZXNzKTtcbiAgY29uc3QgZGlzcGxheVByb2dyZXNzID0gZm9ybWF0UHJvZ3Jlc3MocHJvZ3Jlc3MpO1xuICByZXR1cm4gKFxuICAgIDxkaXYgY2xhc3NOYW1lPXtjbGFzc05hbWVzKHN0eWxlcy5wcm9ncmVzc0JhciB8fCAnJywge30sIFtjbGFzc05hbWVdKX0+XG4gICAgICA8ZGl2IGNsYXNzTmFtZT17c3R5bGVzLmNvbnRhaW5lcn0+XG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPXtzdHlsZXMuYmFyfSBzdHlsZT17eyB3aWR0aDogcHJvZ3Jlc3NCYXJXaWR0aCB9fSAvPlxuICAgICAgPC9kaXY+XG4gICAgICB7c2hvd1BlcmNlbnRhZ2UgJiYgPFRleHQgY2xhc3NOYW1lPXtzdHlsZXMucGVyY2VudGFnZX0+e2Rpc3BsYXlQcm9ncmVzc308L1RleHQ+fVxuICAgICAge21lc3NhZ2UgJiYgPFRleHQgY2xhc3NOYW1lPXtzdHlsZXMubWVzc2FnZX0+e21lc3NhZ2V9PC9UZXh0Pn1cbiAgICA8L2Rpdj5cbiAgKTtcbn0pO1xuXG5Qcm9ncmVzc0Jhci5kaXNwbGF5TmFtZSA9ICdQcm9ncmVzc0Jhcic7XG4iXSwidmVyc2lvbiI6M30=

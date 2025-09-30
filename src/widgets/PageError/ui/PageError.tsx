@@ -1,3 +1,5 @@
+'use client';
+
 import { type FC } from 'react';
 import { Text } from '@/shared/ui/Text';
 import { Button } from '@/shared/ui/Button';

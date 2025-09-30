@@ -1,0 +1,43 @@
+1980d8170fe344ad28c221f9ceec3cb6
+"use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.mockImage = void 0;
+var jsx_runtime_1 = require("react/jsx-runtime");
+var react_1 = __importDefault(require("react"));
+/**
+ * Mock Image component for testing
+ * Replaces Next.js Image component in tests
+ */
+var mockImage = function (_a) {
+    var alt = _a.alt, props = __rest(_a, ["alt"]);
+    return (0, jsx_runtime_1.jsx)("img", __assign({ alt: alt }, props));
+};
+exports.mockImage = mockImage;
+// Default export for Jest moduleNameMapper (image files are imported as default)
+exports.default = exports.mockImage;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL3Rlc3RpbmcvbW9ja3MvYXNzZXRzL2NvbXBvbmVudHMvSW1hZ2UubW9jay50c3giLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQSxnREFBMEI7QUFHMUI7OztHQUdHO0FBQ0ksSUFBTSxTQUFTLEdBQXNDLFVBQUMsRUFBaUI7SUFBZixJQUFBLEdBQUcsU0FBQSxFQUFLLEtBQUssY0FBZixPQUFpQixDQUFGO0lBQzFFLE9BQU8seUNBQUssR0FBRyxFQUFFLEdBQUcsSUFBTSxLQUFLLEVBQUksQ0FBQztBQUN0QyxDQUFDLENBQUM7QUFGVyxRQUFBLFNBQVMsYUFFcEI7QUFFRixpRkFBaUY7QUFDakYsa0JBQWUsaUJBQVMsQ0FBQyIsIm5hbWVzIjpbXSwic291cmNlcyI6WyIvVXNlcnMvZ2FtemFyYW1hemFub3YvRGVza3RvcC9mdW1vL3NyYy9zaGFyZWQvdGVzdGluZy9tb2Nrcy9hc3NldHMvY29tcG9uZW50cy9JbWFnZS5tb2NrLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnO1xuaW1wb3J0IHsgbW9ja0ltYWdlUHJvcHNJbnRlcmZhY2UgfSBmcm9tICcuLi90eXBlcy90eXBlcyc7XG5cbi8qKlxuICogTW9jayBJbWFnZSBjb21wb25lbnQgZm9yIHRlc3RpbmdcbiAqIFJlcGxhY2VzIE5leHQuanMgSW1hZ2UgY29tcG9uZW50IGluIHRlc3RzXG4gKi9cbmV4cG9ydCBjb25zdCBtb2NrSW1hZ2U6IFJlYWN0LkZDPG1vY2tJbWFnZVByb3BzSW50ZXJmYWNlPiA9ICh7IGFsdCwgLi4ucHJvcHMgfSkgPT4ge1xuICByZXR1cm4gPGltZyBhbHQ9e2FsdH0gey4uLnByb3BzfSAvPjtcbn07XG5cbi8vIERlZmF1bHQgZXhwb3J0IGZvciBKZXN0IG1vZHVsZU5hbWVNYXBwZXIgKGltYWdlIGZpbGVzIGFyZSBpbXBvcnRlZCBhcyBkZWZhdWx0KVxuZXhwb3J0IGRlZmF1bHQgbW9ja0ltYWdlO1xuIl0sInZlcnNpb24iOjN9

@@ -1,0 +1,35 @@
+4288d780fbb1a7a5b7bef5af56e9554c
+"use strict";
+/**
+ * External Library Mocks
+ *
+ * Type: 🔄 AUTOMATIC & 📦 MANUAL
+ *
+ * This file exports external library mocks and auto-applies global mocks.
+ * Some mocks are automatically applied globally (like Sentry), while others
+ * need to be manually imported and configured in tests.
+ *
+ * Organization follows SOLID principles:
+ * - sentry.mock.ts: Complete Sentry API mock (SRP: Sentry error reporting)
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.sentryTestUtils = exports.createSentryMock = exports.mockSentry = void 0;
+// Auto-apply global mocks (must be first)
+require("./lib/setup");
+// ============================================================================
+// ANALYTICS & MONITORING MOCKS
+// ============================================================================
+var sentry_mock_1 = require("./lib/sentry.mock");
+Object.defineProperty(exports, "mockSentry", { enumerable: true, get: function () { return sentry_mock_1.mockSentry; } });
+Object.defineProperty(exports, "createSentryMock", { enumerable: true, get: function () { return sentry_mock_1.createSentryMock; } });
+Object.defineProperty(exports, "sentryTestUtils", { enumerable: true, get: function () { return sentry_mock_1.sentryTestUtils; } });
+// ============================================================================
+// FUTURE EXTERNAL MOCKS
+// ============================================================================
+// NOTE: Add other external library mocks here as needed:
+// - Google Analytics mocks
+// - Stripe SDK mocks
+// - Auth0 mocks
+// - AWS SDK mocks
+// etc.
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL3Rlc3RpbmcvbW9ja3MvZXh0ZXJuYWwvaW5kZXgudHMiLCJtYXBwaW5ncyI6IjtBQUFBOzs7Ozs7Ozs7OztHQVdHOzs7QUFFSCwwQ0FBMEM7QUFDMUMsdUJBQXFCO0FBRXJCLCtFQUErRTtBQUMvRSwrQkFBK0I7QUFDL0IsK0VBQStFO0FBRS9FLGlEQUFrRjtBQUF6RSx5R0FBQSxVQUFVLE9BQUE7QUFBRSwrR0FBQSxnQkFBZ0IsT0FBQTtBQUFFLDhHQUFBLGVBQWUsT0FBQTtBQVl0RCwrRUFBK0U7QUFDL0Usd0JBQXdCO0FBQ3hCLCtFQUErRTtBQUUvRSx5REFBeUQ7QUFDekQsMkJBQTJCO0FBQzNCLHFCQUFxQjtBQUNyQixnQkFBZ0I7QUFDaEIsa0JBQWtCO0FBQ2xCLE9BQU8iLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL3Rlc3RpbmcvbW9ja3MvZXh0ZXJuYWwvaW5kZXgudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBFeHRlcm5hbCBMaWJyYXJ5IE1vY2tzXG4gKlxuICogVHlwZTog8J+UhCBBVVRPTUFUSUMgJiDwn5OmIE1BTlVBTFxuICpcbiAqIFRoaXMgZmlsZSBleHBvcnRzIGV4dGVybmFsIGxpYnJhcnkgbW9ja3MgYW5kIGF1dG8tYXBwbGllcyBnbG9iYWwgbW9ja3MuXG4gKiBTb21lIG1vY2tzIGFyZSBhdXRvbWF0aWNhbGx5IGFwcGxpZWQgZ2xvYmFsbHkgKGxpa2UgU2VudHJ5KSwgd2hpbGUgb3RoZXJzXG4gKiBuZWVkIHRvIGJlIG1hbnVhbGx5IGltcG9ydGVkIGFuZCBjb25maWd1cmVkIGluIHRlc3RzLlxuICpcbiAqIE9yZ2FuaXphdGlvbiBmb2xsb3dzIFNPTElEIHByaW5jaXBsZXM6XG4gKiAtIHNlbnRyeS5tb2NrLnRzOiBDb21wbGV0ZSBTZW50cnkgQVBJIG1vY2sgKFNSUDogU2VudHJ5IGVycm9yIHJlcG9ydGluZylcbiAqL1xuXG4vLyBBdXRvLWFwcGx5IGdsb2JhbCBtb2NrcyAobXVzdCBiZSBmaXJzdClcbmltcG9ydCAnLi9saWIvc2V0dXAnO1xuXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4vLyBBTkFMWVRJQ1MgJiBNT05JVE9SSU5HIE1PQ0tTXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG5cbmV4cG9ydCB7IG1vY2tTZW50cnksIGNyZWF0ZVNlbnRyeU1vY2ssIHNlbnRyeVRlc3RVdGlscyB9IGZyb20gJy4vbGliL3NlbnRyeS5tb2NrJztcblxuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuLy8gVFlQRVNcbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cblxuZXhwb3J0IHR5cGUge1xuICBNb2NrU2VudHJ5SW50ZXJmYWNlLFxuICBNb2NrU2VudHJ5VHJhbnNhY3Rpb24sXG4gIFNlbnRyeVRlc3RVdGlsc0ludGVyZmFjZSxcbn0gZnJvbSAnLi90eXBlcy90eXBlcyc7XG5cbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbi8vIEZVVFVSRSBFWFRFUk5BTCBNT0NLU1xuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuXG4vLyBOT1RFOiBBZGQgb3RoZXIgZXh0ZXJuYWwgbGlicmFyeSBtb2NrcyBoZXJlIGFzIG5lZWRlZDpcbi8vIC0gR29vZ2xlIEFuYWx5dGljcyBtb2Nrc1xuLy8gLSBTdHJpcGUgU0RLIG1vY2tzXG4vLyAtIEF1dGgwIG1vY2tzXG4vLyAtIEFXUyBTREsgbW9ja3Ncbi8vIGV0Yy5cbiJdLCJ2ZXJzaW9uIjozfQ==

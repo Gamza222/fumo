@@ -1,0 +1,66 @@
+b4374e005bebc69183981ebae5cddb64
+"use strict";
+/**
+ * Performance API Mock for Testing
+ *
+ * Provides a mock implementation of the Performance API for testing environments.
+ * Simulates performance timing and measurement capabilities.
+ */
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.defaultPerformanceMock = exports.setupPerformanceMock = exports.mockPerformance = void 0;
+// Default performance mock data
+var defaultPerformanceData = {
+    now: jest.fn(function () { return 1000; }),
+    timing: {
+        navigationStart: 0,
+        loadEventEnd: 1000,
+    },
+    getEntriesByType: jest.fn(function (type) {
+        if (type === 'navigation') {
+            return [
+                {
+                    name: 'navigation',
+                    startTime: 0,
+                    duration: 1000,
+                },
+            ];
+        }
+        return [];
+    }),
+};
+/**
+ * Creates a mock performance object for testing
+ *
+ * @param customData - Optional custom performance data to override defaults
+ * @returns A mock performance object that implements mockPerformanceInterface
+ */
+var mockPerformance = function (customData) {
+    if (customData === void 0) { customData = {}; }
+    var performanceMock = __assign(__assign({}, defaultPerformanceData), customData);
+    return performanceMock;
+};
+exports.mockPerformance = mockPerformance;
+// Global performance mock setup
+var setupPerformanceMock = function (customData) {
+    if (customData === void 0) { customData = {}; }
+    var performanceMock = (0, exports.mockPerformance)(customData);
+    Object.defineProperty(window, 'performance', {
+        value: performanceMock,
+        writable: true,
+    });
+};
+exports.setupPerformanceMock = setupPerformanceMock;
+// Default performance mock instance
+exports.defaultPerformanceMock = (0, exports.mockPerformance)();
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL3Rlc3RpbmcvbW9ja3MvYnJvd3Nlci9saWIvcGVyZm9ybWFuY2UvcGVyZm9ybWFuY2UubW9jay50cyIsIm1hcHBpbmdzIjoiO0FBQUE7Ozs7O0dBS0c7Ozs7Ozs7Ozs7Ozs7O0FBSUgsZ0NBQWdDO0FBQ2hDLElBQU0sc0JBQXNCLEdBQUc7SUFDN0IsR0FBRyxFQUFFLElBQUksQ0FBQyxFQUFFLENBQUMsY0FBTSxPQUFBLElBQUksRUFBSixDQUFJLENBQUM7SUFDeEIsTUFBTSxFQUFFO1FBQ04sZUFBZSxFQUFFLENBQUM7UUFDbEIsWUFBWSxFQUFFLElBQUk7S0FDbkI7SUFDRCxnQkFBZ0IsRUFBRSxJQUFJLENBQUMsRUFBRSxDQUFDLFVBQUMsSUFBWTtRQUNyQyxJQUFJLElBQUksS0FBSyxZQUFZLEVBQUUsQ0FBQztZQUMxQixPQUFPO2dCQUNMO29CQUNFLElBQUksRUFBRSxZQUFZO29CQUNsQixTQUFTLEVBQUUsQ0FBQztvQkFDWixRQUFRLEVBQUUsSUFBSTtpQkFDZjthQUNGLENBQUM7UUFDSixDQUFDO1FBQ0QsT0FBTyxFQUFFLENBQUM7SUFDWixDQUFDLENBQUM7Q0FDSCxDQUFDO0FBRUY7Ozs7O0dBS0c7QUFDSSxJQUFNLGVBQWUsR0FBRyxVQUM3QixVQUFrRDtJQUFsRCwyQkFBQSxFQUFBLGVBQWtEO0lBRWxELElBQU0sZUFBZSx5QkFDaEIsc0JBQXNCLEdBQ3RCLFVBQVUsQ0FDZCxDQUFDO0lBRUYsT0FBTyxlQUFlLENBQUM7QUFDekIsQ0FBQyxDQUFDO0FBVFcsUUFBQSxlQUFlLG1CQVMxQjtBQUVGLGdDQUFnQztBQUN6QixJQUFNLG9CQUFvQixHQUFHLFVBQUMsVUFBa0Q7SUFBbEQsMkJBQUEsRUFBQSxlQUFrRDtJQUNyRixJQUFNLGVBQWUsR0FBRyxJQUFBLHVCQUFlLEVBQUMsVUFBVSxDQUFDLENBQUM7SUFFcEQsTUFBTSxDQUFDLGNBQWMsQ0FBQyxNQUFNLEVBQUUsYUFBYSxFQUFFO1FBQzNDLEtBQUssRUFBRSxlQUFlO1FBQ3RCLFFBQVEsRUFBRSxJQUFJO0tBQ2YsQ0FBQyxDQUFDO0FBQ0wsQ0FBQyxDQUFDO0FBUFcsUUFBQSxvQkFBb0Isd0JBTy9CO0FBRUYsb0NBQW9DO0FBQ3ZCLFFBQUEsc0JBQXNCLEdBQUcsSUFBQSx1QkFBZSxHQUFFLENBQUMiLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL3Rlc3RpbmcvbW9ja3MvYnJvd3Nlci9saWIvcGVyZm9ybWFuY2UvcGVyZm9ybWFuY2UubW9jay50cyJdLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIFBlcmZvcm1hbmNlIEFQSSBNb2NrIGZvciBUZXN0aW5nXG4gKlxuICogUHJvdmlkZXMgYSBtb2NrIGltcGxlbWVudGF0aW9uIG9mIHRoZSBQZXJmb3JtYW5jZSBBUEkgZm9yIHRlc3RpbmcgZW52aXJvbm1lbnRzLlxuICogU2ltdWxhdGVzIHBlcmZvcm1hbmNlIHRpbWluZyBhbmQgbWVhc3VyZW1lbnQgY2FwYWJpbGl0aWVzLlxuICovXG5cbmltcG9ydCB7IG1vY2tQZXJmb3JtYW5jZUludGVyZmFjZSB9IGZyb20gJy4uLy4uL3R5cGVzL3R5cGVzJztcblxuLy8gRGVmYXVsdCBwZXJmb3JtYW5jZSBtb2NrIGRhdGFcbmNvbnN0IGRlZmF1bHRQZXJmb3JtYW5jZURhdGEgPSB7XG4gIG5vdzogamVzdC5mbigoKSA9PiAxMDAwKSxcbiAgdGltaW5nOiB7XG4gICAgbmF2aWdhdGlvblN0YXJ0OiAwLFxuICAgIGxvYWRFdmVudEVuZDogMTAwMCxcbiAgfSxcbiAgZ2V0RW50cmllc0J5VHlwZTogamVzdC5mbigodHlwZTogc3RyaW5nKSA9PiB7XG4gICAgaWYgKHR5cGUgPT09ICduYXZpZ2F0aW9uJykge1xuICAgICAgcmV0dXJuIFtcbiAgICAgICAge1xuICAgICAgICAgIG5hbWU6ICduYXZpZ2F0aW9uJyxcbiAgICAgICAgICBzdGFydFRpbWU6IDAsXG4gICAgICAgICAgZHVyYXRpb246IDEwMDAsXG4gICAgICAgIH0sXG4gICAgICBdO1xuICAgIH1cbiAgICByZXR1cm4gW107XG4gIH0pLFxufTtcblxuLyoqXG4gKiBDcmVhdGVzIGEgbW9jayBwZXJmb3JtYW5jZSBvYmplY3QgZm9yIHRlc3RpbmdcbiAqXG4gKiBAcGFyYW0gY3VzdG9tRGF0YSAtIE9wdGlvbmFsIGN1c3RvbSBwZXJmb3JtYW5jZSBkYXRhIHRvIG92ZXJyaWRlIGRlZmF1bHRzXG4gKiBAcmV0dXJucyBBIG1vY2sgcGVyZm9ybWFuY2Ugb2JqZWN0IHRoYXQgaW1wbGVtZW50cyBtb2NrUGVyZm9ybWFuY2VJbnRlcmZhY2VcbiAqL1xuZXhwb3J0IGNvbnN0IG1vY2tQZXJmb3JtYW5jZSA9IChcbiAgY3VzdG9tRGF0YTogUGFydGlhbDxtb2NrUGVyZm9ybWFuY2VJbnRlcmZhY2U+ID0ge31cbik6IG1vY2tQZXJmb3JtYW5jZUludGVyZmFjZSA9PiB7XG4gIGNvbnN0IHBlcmZvcm1hbmNlTW9jazogbW9ja1BlcmZvcm1hbmNlSW50ZXJmYWNlID0ge1xuICAgIC4uLmRlZmF1bHRQZXJmb3JtYW5jZURhdGEsXG4gICAgLi4uY3VzdG9tRGF0YSxcbiAgfTtcblxuICByZXR1cm4gcGVyZm9ybWFuY2VNb2NrO1xufTtcblxuLy8gR2xvYmFsIHBlcmZvcm1hbmNlIG1vY2sgc2V0dXBcbmV4cG9ydCBjb25zdCBzZXR1cFBlcmZvcm1hbmNlTW9jayA9IChjdXN0b21EYXRhOiBQYXJ0aWFsPG1vY2tQZXJmb3JtYW5jZUludGVyZmFjZT4gPSB7fSk6IHZvaWQgPT4ge1xuICBjb25zdCBwZXJmb3JtYW5jZU1vY2sgPSBtb2NrUGVyZm9ybWFuY2UoY3VzdG9tRGF0YSk7XG5cbiAgT2JqZWN0LmRlZmluZVByb3BlcnR5KHdpbmRvdywgJ3BlcmZvcm1hbmNlJywge1xuICAgIHZhbHVlOiBwZXJmb3JtYW5jZU1vY2ssXG4gICAgd3JpdGFibGU6IHRydWUsXG4gIH0pO1xufTtcblxuLy8gRGVmYXVsdCBwZXJmb3JtYW5jZSBtb2NrIGluc3RhbmNlXG5leHBvcnQgY29uc3QgZGVmYXVsdFBlcmZvcm1hbmNlTW9jayA9IG1vY2tQZXJmb3JtYW5jZSgpO1xuIl0sInZlcnNpb24iOjN9

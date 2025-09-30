@@ -4,10 +4,12 @@ import { SentryProvider } from '@/infrastructure/providers/sentry';
 import { ThemeProvider } from '@/infrastructure/providers/theme';
 import { ErrorBoundary } from '@/infrastructure/error-handling';
 import './globals.css';
+import { AppLoadingProvider } from '@/infrastructure/providers/app-loading';
+import { InitialLoader } from '@/widgets/InitialLoader/ui/InitialLoader';
 
 export const metadata: Metadata = {
   title: 'Fumo',
-  description: 'Fumo - Modern web application',
+  description: 'Fumo ',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -16,7 +18,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <SentryProvider>
           <ThemeProvider>
-            <ErrorBoundary>{children}</ErrorBoundary>
+            <AppLoadingProvider>
+              <InitialLoader />
+              <ErrorBoundary>{children}</ErrorBoundary>
+            </AppLoadingProvider>
           </ThemeProvider>
         </SentryProvider>
       </body>

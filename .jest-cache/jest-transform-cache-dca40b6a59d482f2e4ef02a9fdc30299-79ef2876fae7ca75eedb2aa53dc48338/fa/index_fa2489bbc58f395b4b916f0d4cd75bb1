@@ -1,0 +1,27 @@
+81436fb54c2c45c74827df2424053afd
+"use strict";
+/**
+ * State Management
+ *
+ * Enterprise-grade state management foundation for any application.
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Environment = exports.BaseStateProperty = exports.StorageType = exports.useStoreActions = exports.useStoreHydrated = exports.useStoreState = exports.useShallowStore = exports.useStore = exports.createSimpleStore = exports.createStore = void 0;
+// Store creation
+var createStore_1 = require("./createStore/createStore");
+Object.defineProperty(exports, "createStore", { enumerable: true, get: function () { return createStore_1.createStore; } });
+Object.defineProperty(exports, "createSimpleStore", { enumerable: true, get: function () { return createStore_1.createSimpleStore; } });
+// State hooks
+var stateHooks_1 = require("./stateHooks/stateHooks");
+Object.defineProperty(exports, "useStore", { enumerable: true, get: function () { return stateHooks_1.useStore; } });
+Object.defineProperty(exports, "useShallowStore", { enumerable: true, get: function () { return stateHooks_1.useShallowStore; } });
+Object.defineProperty(exports, "useStoreState", { enumerable: true, get: function () { return stateHooks_1.useStoreState; } });
+Object.defineProperty(exports, "useStoreHydrated", { enumerable: true, get: function () { return stateHooks_1.useStoreHydrated; } });
+Object.defineProperty(exports, "useStoreActions", { enumerable: true, get: function () { return stateHooks_1.useStoreActions; } });
+// Enums
+var types_1 = require("./types/types");
+Object.defineProperty(exports, "StorageType", { enumerable: true, get: function () { return types_1.StorageType; } });
+Object.defineProperty(exports, "BaseStateProperty", { enumerable: true, get: function () { return types_1.BaseStateProperty; } });
+var stateEnums_1 = require("./types/stateEnums");
+Object.defineProperty(exports, "Environment", { enumerable: true, get: function () { return stateEnums_1.Environment; } });
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvaW5mcmFzdHJ1Y3R1cmUvc3RhdGUvaW5kZXgudHMiLCJtYXBwaW5ncyI6IjtBQUFBOzs7O0dBSUc7OztBQUVILGlCQUFpQjtBQUNqQix5REFBMkU7QUFBbEUsMEdBQUEsV0FBVyxPQUFBO0FBQUUsZ0hBQUEsaUJBQWlCLE9BQUE7QUFFdkMsY0FBYztBQUNkLHNEQU1pQztBQUwvQixzR0FBQSxRQUFRLE9BQUE7QUFDUiw2R0FBQSxlQUFlLE9BQUE7QUFDZiwyR0FBQSxhQUFhLE9BQUE7QUFDYiw4R0FBQSxnQkFBZ0IsT0FBQTtBQUNoQiw2R0FBQSxlQUFlLE9BQUE7QUFnQmpCLFFBQVE7QUFDUix1Q0FBK0Q7QUFBdEQsb0dBQUEsV0FBVyxPQUFBO0FBQUUsMEdBQUEsaUJBQWlCLE9BQUE7QUFDdkMsaURBQWlEO0FBQXhDLHlHQUFBLFdBQVcsT0FBQSIsIm5hbWVzIjpbXSwic291cmNlcyI6WyIvVXNlcnMvZ2FtemFyYW1hemFub3YvRGVza3RvcC9mdW1vL3NyYy9pbmZyYXN0cnVjdHVyZS9zdGF0ZS9pbmRleC50cyJdLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIFN0YXRlIE1hbmFnZW1lbnRcbiAqXG4gKiBFbnRlcnByaXNlLWdyYWRlIHN0YXRlIG1hbmFnZW1lbnQgZm91bmRhdGlvbiBmb3IgYW55IGFwcGxpY2F0aW9uLlxuICovXG5cbi8vIFN0b3JlIGNyZWF0aW9uXG5leHBvcnQgeyBjcmVhdGVTdG9yZSwgY3JlYXRlU2ltcGxlU3RvcmUgfSBmcm9tICcuL2NyZWF0ZVN0b3JlL2NyZWF0ZVN0b3JlJztcblxuLy8gU3RhdGUgaG9va3NcbmV4cG9ydCB7XG4gIHVzZVN0b3JlLFxuICB1c2VTaGFsbG93U3RvcmUsXG4gIHVzZVN0b3JlU3RhdGUsXG4gIHVzZVN0b3JlSHlkcmF0ZWQsXG4gIHVzZVN0b3JlQWN0aW9ucyxcbn0gZnJvbSAnLi9zdGF0ZUhvb2tzL3N0YXRlSG9va3MnO1xuXG4vLyBUeXBlc1xuZXhwb3J0IHR5cGUge1xuICBCYXNlU3RhdGUsXG4gIFN0b3JlQ29uZmlnLFxuICBFbmhhbmNlZFN0b3JlLFxuICBBc3luY1N0YXRlLFxuICBQYWdpbmF0aW9uU3RhdGUsXG4gIEZpbHRlclN0YXRlLFxuICBVSVN0YXRlLFxuICBTdG9yZVN0YXRlLFxuICBTZWxlY3Rvcixcbn0gZnJvbSAnLi90eXBlcy90eXBlcyc7XG5cbi8vIEVudW1zXG5leHBvcnQgeyBTdG9yYWdlVHlwZSwgQmFzZVN0YXRlUHJvcGVydHkgfSBmcm9tICcuL3R5cGVzL3R5cGVzJztcbmV4cG9ydCB7IEVudmlyb25tZW50IH0gZnJvbSAnLi90eXBlcy9zdGF0ZUVudW1zJztcbiJdLCJ2ZXJzaW9uIjozfQ==

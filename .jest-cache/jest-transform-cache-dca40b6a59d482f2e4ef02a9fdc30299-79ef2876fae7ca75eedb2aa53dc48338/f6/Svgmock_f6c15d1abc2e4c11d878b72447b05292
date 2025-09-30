@@ -1,0 +1,43 @@
+840e29a3ea57d4b72ddb870b9bbd31f6
+"use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.mockSvg = void 0;
+var jsx_runtime_1 = require("react/jsx-runtime");
+var react_1 = __importDefault(require("react"));
+/**
+ * Mock SVG component for testing
+ * Replaces SVG imports in tests
+ */
+var mockSvg = function (_a) {
+    var title = _a.title, props = __rest(_a, ["title"]);
+    return ((0, jsx_runtime_1.jsxs)("svg", __assign({ "data-testid": "svg-mock" }, props, { children: [title && (0, jsx_runtime_1.jsx)("title", { children: title }), (0, jsx_runtime_1.jsx)("rect", { width: "24", height: "24", fill: "currentColor" })] })));
+};
+exports.mockSvg = mockSvg;
+// Default export for Jest moduleNameMapper (SVG files are imported as default)
+exports.default = exports.mockSvg;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL3Rlc3RpbmcvbW9ja3MvYXNzZXRzL2NvbXBvbmVudHMvU3ZnLm1vY2sudHN4IiwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUEsZ0RBQTBCO0FBRzFCOzs7R0FHRztBQUNJLElBQU0sT0FBTyxHQUFvQyxVQUFDLEVBQW1CO0lBQWpCLElBQUEsS0FBSyxXQUFBLEVBQUssS0FBSyxjQUFqQixTQUFtQixDQUFGO0lBQ3hFLE9BQU8sQ0FDTCx5REFBaUIsVUFBVSxJQUFLLEtBQUssZUFDbEMsS0FBSyxJQUFJLDRDQUFRLEtBQUssR0FBUyxFQUNoQyxpQ0FBTSxLQUFLLEVBQUMsSUFBSSxFQUFDLE1BQU0sRUFBQyxJQUFJLEVBQUMsSUFBSSxFQUFDLGNBQWMsR0FBRyxLQUMvQyxDQUNQLENBQUM7QUFDSixDQUFDLENBQUM7QUFQVyxRQUFBLE9BQU8sV0FPbEI7QUFFRiwrRUFBK0U7QUFDL0Usa0JBQWUsZUFBTyxDQUFDIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIi9Vc2Vycy9nYW16YXJhbWF6YW5vdi9EZXNrdG9wL2Z1bW8vc3JjL3NoYXJlZC90ZXN0aW5nL21vY2tzL2Fzc2V0cy9jb21wb25lbnRzL1N2Zy5tb2NrLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnO1xuaW1wb3J0IHsgbW9ja1N2Z1Byb3BzSW50ZXJmYWNlIH0gZnJvbSAnLi4vdHlwZXMvdHlwZXMnO1xuXG4vKipcbiAqIE1vY2sgU1ZHIGNvbXBvbmVudCBmb3IgdGVzdGluZ1xuICogUmVwbGFjZXMgU1ZHIGltcG9ydHMgaW4gdGVzdHNcbiAqL1xuZXhwb3J0IGNvbnN0IG1vY2tTdmc6IFJlYWN0LkZDPG1vY2tTdmdQcm9wc0ludGVyZmFjZT4gPSAoeyB0aXRsZSwgLi4ucHJvcHMgfSkgPT4ge1xuICByZXR1cm4gKFxuICAgIDxzdmcgZGF0YS10ZXN0aWQ9XCJzdmctbW9ja1wiIHsuLi5wcm9wc30+XG4gICAgICB7dGl0bGUgJiYgPHRpdGxlPnt0aXRsZX08L3RpdGxlPn1cbiAgICAgIDxyZWN0IHdpZHRoPVwiMjRcIiBoZWlnaHQ9XCIyNFwiIGZpbGw9XCJjdXJyZW50Q29sb3JcIiAvPlxuICAgIDwvc3ZnPlxuICApO1xufTtcblxuLy8gRGVmYXVsdCBleHBvcnQgZm9yIEplc3QgbW9kdWxlTmFtZU1hcHBlciAoU1ZHIGZpbGVzIGFyZSBpbXBvcnRlZCBhcyBkZWZhdWx0KVxuZXhwb3J0IGRlZmF1bHQgbW9ja1N2ZztcbiJdLCJ2ZXJzaW9uIjozfQ==

@@ -1,0 +1,32 @@
+b675e438e6e2da703bf1169594085737
+"use strict";
+/**
+ * App Loading Infrastructure Exports
+ *
+ * Clean exports for the initial app loading system.
+ * Exports what external consumers need for basic usage + extensibility.
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.DEFAULT_TIMEOUT = exports.MINIMUM_DISPLAY_TIME = exports.TIMEOUTS = exports.AppLoadingPriority = exports.AppLoadingConditionName = exports.AppLoadingConditionId = exports.useAppLoadingContext = exports.AppLoadingProvider = void 0;
+// ============================================================================
+// CORE PUBLIC API
+// ============================================================================
+// Provider & Hook
+var AppLoadingProvider_1 = require("./ui/AppLoadingProvider");
+Object.defineProperty(exports, "AppLoadingProvider", { enumerable: true, get: function () { return AppLoadingProvider_1.AppLoadingProvider; } });
+var useAppLoadingContext_1 = require("./hooks/useAppLoadingContext/useAppLoadingContext");
+Object.defineProperty(exports, "useAppLoadingContext", { enumerable: true, get: function () { return useAppLoadingContext_1.useAppLoadingContext; } });
+// ============================================================================
+// EXTENSIBILITY API (for advanced usage)
+// ============================================================================
+// Enums - for creating custom conditions and error handling
+var enums_1 = require("./model/enums/enums");
+Object.defineProperty(exports, "AppLoadingConditionId", { enumerable: true, get: function () { return enums_1.AppLoadingConditionId; } });
+Object.defineProperty(exports, "AppLoadingConditionName", { enumerable: true, get: function () { return enums_1.AppLoadingConditionName; } });
+Object.defineProperty(exports, "AppLoadingPriority", { enumerable: true, get: function () { return enums_1.AppLoadingPriority; } });
+// Key Constants - for timeout configuration and debugging
+var constants_1 = require("./model/constants/constants");
+Object.defineProperty(exports, "TIMEOUTS", { enumerable: true, get: function () { return constants_1.TIMEOUTS; } });
+Object.defineProperty(exports, "MINIMUM_DISPLAY_TIME", { enumerable: true, get: function () { return constants_1.MINIMUM_DISPLAY_TIME; } });
+Object.defineProperty(exports, "DEFAULT_TIMEOUT", { enumerable: true, get: function () { return constants_1.DEFAULT_TIMEOUT; } });
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvaW5mcmFzdHJ1Y3R1cmUvcHJvdmlkZXJzL2FwcC1sb2FkaW5nL2luZGV4LnRzIiwibWFwcGluZ3MiOiI7QUFBQTs7Ozs7R0FLRzs7O0FBRUgsK0VBQStFO0FBQy9FLGtCQUFrQjtBQUNsQiwrRUFBK0U7QUFFL0Usa0JBQWtCO0FBQ2xCLDhEQUE2RDtBQUFwRCx3SEFBQSxrQkFBa0IsT0FBQTtBQUMzQiwwRkFBeUY7QUFBaEYsNEhBQUEsb0JBQW9CLE9BQUE7QUFLN0IsK0VBQStFO0FBQy9FLHlDQUF5QztBQUN6QywrRUFBK0U7QUFFL0UsNERBQTREO0FBQzVELDZDQUk2QjtBQUgzQiw4R0FBQSxxQkFBcUIsT0FBQTtBQUNyQixnSEFBQSx1QkFBdUIsT0FBQTtBQUN2QiwyR0FBQSxrQkFBa0IsT0FBQTtBQUdwQiwwREFBMEQ7QUFDMUQseURBSXFDO0FBSG5DLHFHQUFBLFFBQVEsT0FBQTtBQUNSLGlIQUFBLG9CQUFvQixPQUFBO0FBQ3BCLDRHQUFBLGVBQWUsT0FBQSIsIm5hbWVzIjpbXSwic291cmNlcyI6WyIvVXNlcnMvZ2FtemFyYW1hemFub3YvRGVza3RvcC9mdW1vL3NyYy9pbmZyYXN0cnVjdHVyZS9wcm92aWRlcnMvYXBwLWxvYWRpbmcvaW5kZXgudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBBcHAgTG9hZGluZyBJbmZyYXN0cnVjdHVyZSBFeHBvcnRzXG4gKlxuICogQ2xlYW4gZXhwb3J0cyBmb3IgdGhlIGluaXRpYWwgYXBwIGxvYWRpbmcgc3lzdGVtLlxuICogRXhwb3J0cyB3aGF0IGV4dGVybmFsIGNvbnN1bWVycyBuZWVkIGZvciBiYXNpYyB1c2FnZSArIGV4dGVuc2liaWxpdHkuXG4gKi9cblxuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuLy8gQ09SRSBQVUJMSUMgQVBJXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG5cbi8vIFByb3ZpZGVyICYgSG9va1xuZXhwb3J0IHsgQXBwTG9hZGluZ1Byb3ZpZGVyIH0gZnJvbSBcIi4vdWkvQXBwTG9hZGluZ1Byb3ZpZGVyXCI7XG5leHBvcnQgeyB1c2VBcHBMb2FkaW5nQ29udGV4dCB9IGZyb20gXCIuL2hvb2tzL3VzZUFwcExvYWRpbmdDb250ZXh0L3VzZUFwcExvYWRpbmdDb250ZXh0XCI7XG5cbi8vIEVzc2VudGlhbCBUeXBlc1xuZXhwb3J0IHR5cGUgeyBBcHBMb2FkaW5nQ29udGV4dFR5cGUsIExvYWRpbmdTdGVwIH0gZnJvbSBcIi4vbW9kZWwvdHlwZXMvdHlwZXNcIjtcblxuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuLy8gRVhURU5TSUJJTElUWSBBUEkgKGZvciBhZHZhbmNlZCB1c2FnZSlcbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cblxuLy8gRW51bXMgLSBmb3IgY3JlYXRpbmcgY3VzdG9tIGNvbmRpdGlvbnMgYW5kIGVycm9yIGhhbmRsaW5nXG5leHBvcnQge1xuICBBcHBMb2FkaW5nQ29uZGl0aW9uSWQsXG4gIEFwcExvYWRpbmdDb25kaXRpb25OYW1lLFxuICBBcHBMb2FkaW5nUHJpb3JpdHksXG59IGZyb20gXCIuL21vZGVsL2VudW1zL2VudW1zXCI7XG5cbi8vIEtleSBDb25zdGFudHMgLSBmb3IgdGltZW91dCBjb25maWd1cmF0aW9uIGFuZCBkZWJ1Z2dpbmdcbmV4cG9ydCB7XG4gIFRJTUVPVVRTLFxuICBNSU5JTVVNX0RJU1BMQVlfVElNRSxcbiAgREVGQVVMVF9USU1FT1VULFxufSBmcm9tIFwiLi9tb2RlbC9jb25zdGFudHMvY29uc3RhbnRzXCI7XG4iXSwidmVyc2lvbiI6M30=

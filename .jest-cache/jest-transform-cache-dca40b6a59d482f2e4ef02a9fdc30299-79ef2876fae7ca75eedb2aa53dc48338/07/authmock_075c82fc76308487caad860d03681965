@@ -1,0 +1,82 @@
+f4504533ee41ac3f0f63e15c1429289a
+"use strict";
+/**
+ * Auth Service Mock for Testing
+ *
+ * Provides mock implementations for authentication service testing.
+ * Simulates user registration, login, and token verification.
+ */
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.defaultCredentialsMock = exports.defaultUserMock = exports.defaultAuthServiceMock = exports.mockLoginCredentials = exports.mockUser = exports.mockAuthService = void 0;
+// Default mock user data
+var defaultMockUser = {
+    id: '1',
+    email: 'test@example.com',
+    username: 'testuser',
+    role: 'USER',
+    isActive: true,
+    permissions: [],
+    createdAt: new Date('2023-01-01'),
+    updatedAt: new Date('2023-01-01'),
+};
+// Default mock credentials
+var defaultMockCredentials = {
+    email: 'test@example.com',
+    password: 'password123',
+};
+/**
+ * Creates a mock auth service for testing
+ *
+ * @param customData - Optional custom mock data to override defaults
+ * @returns A mock auth service object
+ */
+var mockAuthService = function (customData) {
+    if (customData === void 0) { customData = {}; }
+    var mockService = __assign({ register: jest.fn().mockResolvedValue({
+            user: defaultMockUser,
+            token: 'mock-jwt-token',
+        }), login: jest.fn().mockResolvedValue({
+            user: defaultMockUser,
+            token: 'mock-jwt-token',
+        }), verifyToken: jest.fn().mockResolvedValue(defaultMockUser), getSecurityEvents: jest.fn().mockReturnValue([]) }, customData);
+    return mockService;
+};
+exports.mockAuthService = mockAuthService;
+/**
+ * Creates a mock user for testing
+ *
+ * @param customData - Optional custom user data to override defaults
+ * @returns A mock user object
+ */
+var mockUser = function (customData) {
+    if (customData === void 0) { customData = {}; }
+    return __assign(__assign({}, defaultMockUser), customData);
+};
+exports.mockUser = mockUser;
+/**
+ * Creates mock login credentials for testing
+ *
+ * @param customData - Optional custom credentials to override defaults
+ * @returns Mock login credentials
+ */
+var mockLoginCredentials = function (customData) {
+    if (customData === void 0) { customData = {}; }
+    return __assign(__assign({}, defaultMockCredentials), customData);
+};
+exports.mockLoginCredentials = mockLoginCredentials;
+// Default mock instances
+exports.defaultAuthServiceMock = (0, exports.mockAuthService)();
+exports.defaultUserMock = (0, exports.mockUser)();
+exports.defaultCredentialsMock = (0, exports.mockLoginCredentials)();
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL3Rlc3RpbmcvbW9ja3MvaW5mcmFzdHJ1Y3R1cmUvbGliL3NlY3VyaXR5L2F1dGgubW9jay50cyIsIm1hcHBpbmdzIjoiO0FBQUE7Ozs7O0dBS0c7Ozs7Ozs7Ozs7Ozs7O0FBUUgseUJBQXlCO0FBQ3pCLElBQU0sZUFBZSxHQUFzQjtJQUN6QyxFQUFFLEVBQUUsR0FBRztJQUNQLEtBQUssRUFBRSxrQkFBa0I7SUFDekIsUUFBUSxFQUFFLFVBQVU7SUFDcEIsSUFBSSxFQUFFLE1BQU07SUFDWixRQUFRLEVBQUUsSUFBSTtJQUNkLFdBQVcsRUFBRSxFQUFFO0lBQ2YsU0FBUyxFQUFFLElBQUksSUFBSSxDQUFDLFlBQVksQ0FBQztJQUNqQyxTQUFTLEVBQUUsSUFBSSxJQUFJLENBQUMsWUFBWSxDQUFDO0NBQ2xDLENBQUM7QUFFRiwyQkFBMkI7QUFDM0IsSUFBTSxzQkFBc0IsR0FBa0M7SUFDNUQsS0FBSyxFQUFFLGtCQUFrQjtJQUN6QixRQUFRLEVBQUUsYUFBYTtDQUN4QixDQUFDO0FBRUY7Ozs7O0dBS0c7QUFDSSxJQUFNLGVBQWUsR0FBRyxVQUM3QixVQUFrRDtJQUFsRCwyQkFBQSxFQUFBLGVBQWtEO0lBRWxELElBQU0sV0FBVyxjQUNmLFFBQVEsRUFBRSxJQUFJLENBQUMsRUFBRSxFQUFFLENBQUMsaUJBQWlCLENBQUM7WUFDcEMsSUFBSSxFQUFFLGVBQWU7WUFDckIsS0FBSyxFQUFFLGdCQUFnQjtTQUN4QixDQUFDLEVBQ0YsS0FBSyxFQUFFLElBQUksQ0FBQyxFQUFFLEVBQUUsQ0FBQyxpQkFBaUIsQ0FBQztZQUNqQyxJQUFJLEVBQUUsZUFBZTtZQUNyQixLQUFLLEVBQUUsZ0JBQWdCO1NBQ3hCLENBQUMsRUFDRixXQUFXLEVBQUUsSUFBSSxDQUFDLEVBQUUsRUFBRSxDQUFDLGlCQUFpQixDQUFDLGVBQWUsQ0FBQyxFQUN6RCxpQkFBaUIsRUFBRSxJQUFJLENBQUMsRUFBRSxFQUFFLENBQUMsZUFBZSxDQUFDLEVBQUUsQ0FBQyxJQUM3QyxVQUFVLENBQ2QsQ0FBQztJQUVGLE9BQU8sV0FBVyxDQUFDO0FBQ3JCLENBQUMsQ0FBQztBQWxCVyxRQUFBLGVBQWUsbUJBa0IxQjtBQUVGOzs7OztHQUtHO0FBQ0ksSUFBTSxRQUFRLEdBQUcsVUFBQyxVQUEyQztJQUEzQywyQkFBQSxFQUFBLGVBQTJDO0lBQ2xFLDZCQUNLLGVBQWUsR0FDZixVQUFVLEVBQ2I7QUFDSixDQUFDLENBQUM7QUFMVyxRQUFBLFFBQVEsWUFLbkI7QUFFRjs7Ozs7R0FLRztBQUNJLElBQU0sb0JBQW9CLEdBQUcsVUFDbEMsVUFBdUQ7SUFBdkQsMkJBQUEsRUFBQSxlQUF1RDtJQUV2RCw2QkFDSyxzQkFBc0IsR0FDdEIsVUFBVSxFQUNiO0FBQ0osQ0FBQyxDQUFDO0FBUFcsUUFBQSxvQkFBb0Isd0JBTy9CO0FBRUYseUJBQXlCO0FBQ1osUUFBQSxzQkFBc0IsR0FBRyxJQUFBLHVCQUFlLEdBQUUsQ0FBQztBQUMzQyxRQUFBLGVBQWUsR0FBRyxJQUFBLGdCQUFRLEdBQUUsQ0FBQztBQUM3QixRQUFBLHNCQUFzQixHQUFHLElBQUEsNEJBQW9CLEdBQUUsQ0FBQyIsIm5hbWVzIjpbXSwic291cmNlcyI6WyIvVXNlcnMvZ2FtemFyYW1hemFub3YvRGVza3RvcC9mdW1vL3NyYy9zaGFyZWQvdGVzdGluZy9tb2Nrcy9pbmZyYXN0cnVjdHVyZS9saWIvc2VjdXJpdHkvYXV0aC5tb2NrLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogQXV0aCBTZXJ2aWNlIE1vY2sgZm9yIFRlc3RpbmdcbiAqXG4gKiBQcm92aWRlcyBtb2NrIGltcGxlbWVudGF0aW9ucyBmb3IgYXV0aGVudGljYXRpb24gc2VydmljZSB0ZXN0aW5nLlxuICogU2ltdWxhdGVzIHVzZXIgcmVnaXN0cmF0aW9uLCBsb2dpbiwgYW5kIHRva2VuIHZlcmlmaWNhdGlvbi5cbiAqL1xuXG5pbXBvcnQge1xuICBtb2NrQXV0aFNlcnZpY2VJbnRlcmZhY2UsXG4gIG1vY2tMb2dpbkNyZWRlbnRpYWxzSW50ZXJmYWNlLFxuICBtb2NrVXNlckludGVyZmFjZSxcbn0gZnJvbSAnLi4vLi4vdHlwZXMvdHlwZXMnO1xuXG4vLyBEZWZhdWx0IG1vY2sgdXNlciBkYXRhXG5jb25zdCBkZWZhdWx0TW9ja1VzZXI6IG1vY2tVc2VySW50ZXJmYWNlID0ge1xuICBpZDogJzEnLFxuICBlbWFpbDogJ3Rlc3RAZXhhbXBsZS5jb20nLFxuICB1c2VybmFtZTogJ3Rlc3R1c2VyJyxcbiAgcm9sZTogJ1VTRVInLFxuICBpc0FjdGl2ZTogdHJ1ZSxcbiAgcGVybWlzc2lvbnM6IFtdLFxuICBjcmVhdGVkQXQ6IG5ldyBEYXRlKCcyMDIzLTAxLTAxJyksXG4gIHVwZGF0ZWRBdDogbmV3IERhdGUoJzIwMjMtMDEtMDEnKSxcbn07XG5cbi8vIERlZmF1bHQgbW9jayBjcmVkZW50aWFsc1xuY29uc3QgZGVmYXVsdE1vY2tDcmVkZW50aWFsczogbW9ja0xvZ2luQ3JlZGVudGlhbHNJbnRlcmZhY2UgPSB7XG4gIGVtYWlsOiAndGVzdEBleGFtcGxlLmNvbScsXG4gIHBhc3N3b3JkOiAncGFzc3dvcmQxMjMnLFxufTtcblxuLyoqXG4gKiBDcmVhdGVzIGEgbW9jayBhdXRoIHNlcnZpY2UgZm9yIHRlc3RpbmdcbiAqXG4gKiBAcGFyYW0gY3VzdG9tRGF0YSAtIE9wdGlvbmFsIGN1c3RvbSBtb2NrIGRhdGEgdG8gb3ZlcnJpZGUgZGVmYXVsdHNcbiAqIEByZXR1cm5zIEEgbW9jayBhdXRoIHNlcnZpY2Ugb2JqZWN0XG4gKi9cbmV4cG9ydCBjb25zdCBtb2NrQXV0aFNlcnZpY2UgPSAoXG4gIGN1c3RvbURhdGE6IFBhcnRpYWw8bW9ja0F1dGhTZXJ2aWNlSW50ZXJmYWNlPiA9IHt9XG4pOiBtb2NrQXV0aFNlcnZpY2VJbnRlcmZhY2UgPT4ge1xuICBjb25zdCBtb2NrU2VydmljZTogbW9ja0F1dGhTZXJ2aWNlSW50ZXJmYWNlID0ge1xuICAgIHJlZ2lzdGVyOiBqZXN0LmZuKCkubW9ja1Jlc29sdmVkVmFsdWUoe1xuICAgICAgdXNlcjogZGVmYXVsdE1vY2tVc2VyLFxuICAgICAgdG9rZW46ICdtb2NrLWp3dC10b2tlbicsXG4gICAgfSksXG4gICAgbG9naW46IGplc3QuZm4oKS5tb2NrUmVzb2x2ZWRWYWx1ZSh7XG4gICAgICB1c2VyOiBkZWZhdWx0TW9ja1VzZXIsXG4gICAgICB0b2tlbjogJ21vY2stand0LXRva2VuJyxcbiAgICB9KSxcbiAgICB2ZXJpZnlUb2tlbjogamVzdC5mbigpLm1vY2tSZXNvbHZlZFZhbHVlKGRlZmF1bHRNb2NrVXNlciksXG4gICAgZ2V0U2VjdXJpdHlFdmVudHM6IGplc3QuZm4oKS5tb2NrUmV0dXJuVmFsdWUoW10pLFxuICAgIC4uLmN1c3RvbURhdGEsXG4gIH07XG5cbiAgcmV0dXJuIG1vY2tTZXJ2aWNlO1xufTtcblxuLyoqXG4gKiBDcmVhdGVzIGEgbW9jayB1c2VyIGZvciB0ZXN0aW5nXG4gKlxuICogQHBhcmFtIGN1c3RvbURhdGEgLSBPcHRpb25hbCBjdXN0b20gdXNlciBkYXRhIHRvIG92ZXJyaWRlIGRlZmF1bHRzXG4gKiBAcmV0dXJucyBBIG1vY2sgdXNlciBvYmplY3RcbiAqL1xuZXhwb3J0IGNvbnN0IG1vY2tVc2VyID0gKGN1c3RvbURhdGE6IFBhcnRpYWw8bW9ja1VzZXJJbnRlcmZhY2U+ID0ge30pOiBtb2NrVXNlckludGVyZmFjZSA9PiB7XG4gIHJldHVybiB7XG4gICAgLi4uZGVmYXVsdE1vY2tVc2VyLFxuICAgIC4uLmN1c3RvbURhdGEsXG4gIH07XG59O1xuXG4vKipcbiAqIENyZWF0ZXMgbW9jayBsb2dpbiBjcmVkZW50aWFscyBmb3IgdGVzdGluZ1xuICpcbiAqIEBwYXJhbSBjdXN0b21EYXRhIC0gT3B0aW9uYWwgY3VzdG9tIGNyZWRlbnRpYWxzIHRvIG92ZXJyaWRlIGRlZmF1bHRzXG4gKiBAcmV0dXJucyBNb2NrIGxvZ2luIGNyZWRlbnRpYWxzXG4gKi9cbmV4cG9ydCBjb25zdCBtb2NrTG9naW5DcmVkZW50aWFscyA9IChcbiAgY3VzdG9tRGF0YTogUGFydGlhbDxtb2NrTG9naW5DcmVkZW50aWFsc0ludGVyZmFjZT4gPSB7fVxuKTogbW9ja0xvZ2luQ3JlZGVudGlhbHNJbnRlcmZhY2UgPT4ge1xuICByZXR1cm4ge1xuICAgIC4uLmRlZmF1bHRNb2NrQ3JlZGVudGlhbHMsXG4gICAgLi4uY3VzdG9tRGF0YSxcbiAgfTtcbn07XG5cbi8vIERlZmF1bHQgbW9jayBpbnN0YW5jZXNcbmV4cG9ydCBjb25zdCBkZWZhdWx0QXV0aFNlcnZpY2VNb2NrID0gbW9ja0F1dGhTZXJ2aWNlKCk7XG5leHBvcnQgY29uc3QgZGVmYXVsdFVzZXJNb2NrID0gbW9ja1VzZXIoKTtcbmV4cG9ydCBjb25zdCBkZWZhdWx0Q3JlZGVudGlhbHNNb2NrID0gbW9ja0xvZ2luQ3JlZGVudGlhbHMoKTtcbiJdLCJ2ZXJzaW9uIjozfQ==

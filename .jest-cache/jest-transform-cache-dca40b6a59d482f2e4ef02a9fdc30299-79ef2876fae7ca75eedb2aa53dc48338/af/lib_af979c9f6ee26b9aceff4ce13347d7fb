@@ -1,0 +1,220 @@
+40c3089a2efff3d3ca016d9d31725c10
+"use strict";
+
+/* istanbul ignore next */
+function cov_1pman5c4s7() {
+  var path = "/Users/gamzaramazanov/Desktop/fumo/src/widgets/ProgressBar/lib/lib.ts";
+  var hash = "a92cb91a42b66a4ec1e002085d2bd202b990e631";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/gamzaramazanov/Desktop/fumo/src/widgets/ProgressBar/lib/lib.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 62
+        }
+      },
+      "2": {
+        start: {
+          line: 7,
+          column: 21
+        },
+        end: {
+          line: 9,
+          column: 1
+        }
+      },
+      "3": {
+        start: {
+          line: 8,
+          column: 4
+        },
+        end: {
+          line: 8,
+          column: 48
+        }
+      },
+      "4": {
+        start: {
+          line: 10,
+          column: 0
+        },
+        end: {
+          line: 10,
+          column: 40
+        }
+      },
+      "5": {
+        start: {
+          line: 14,
+          column: 26
+        },
+        end: {
+          line: 16,
+          column: 1
+        }
+      },
+      "6": {
+        start: {
+          line: 15,
+          column: 4
+        },
+        end: {
+          line: 15,
+          column: 64
+        }
+      },
+      "7": {
+        start: {
+          line: 17,
+          column: 0
+        },
+        end: {
+          line: 17,
+          column: 50
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 7,
+            column: 21
+          },
+          end: {
+            line: 7,
+            column: 22
+          }
+        },
+        loc: {
+          start: {
+            line: 7,
+            column: 41
+          },
+          end: {
+            line: 9,
+            column: 1
+          }
+        },
+        line: 7
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 14,
+            column: 26
+          },
+          end: {
+            line: 14,
+            column: 27
+          }
+        },
+        loc: {
+          start: {
+            line: 14,
+            column: 46
+          },
+          end: {
+            line: 16,
+            column: 1
+          }
+        },
+        line: 14
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0
+    },
+    b: {},
+    inputSourceMap: {
+      file: "/Users/gamzaramazanov/Desktop/fumo/src/widgets/ProgressBar/lib/lib.ts",
+      mappings: ";;;AAAA;;GAEG;AACI,IAAM,cAAc,GAAG,UAAC,QAAgB;IAC7C,OAAO,UAAG,IAAI,CAAC,KAAK,CAAC,QAAQ,CAAC,MAAG,CAAC;AACpC,CAAC,CAAC;AAFW,QAAA,cAAc,kBAEzB;AAEF;;GAEG;AACI,IAAM,mBAAmB,GAAG,UAAC,QAAgB;IAClD,OAAO,UAAG,IAAI,CAAC,GAAG,CAAC,GAAG,EAAE,IAAI,CAAC,GAAG,CAAC,CAAC,EAAE,QAAQ,CAAC,CAAC,MAAG,CAAC;AACpD,CAAC,CAAC;AAFW,QAAA,mBAAmB,uBAE9B",
+      names: [],
+      sources: ["/Users/gamzaramazanov/Desktop/fumo/src/widgets/ProgressBar/lib/lib.ts"],
+      sourcesContent: ["/**\n * Format progress percentage for display\n */\nexport const formatProgress = (progress: number): string => {\n  return `${Math.round(progress)}%`;\n};\n\n/**\n * Get progress bar width based on progress\n */\nexport const getProgressBarWidth = (progress: number): string => {\n  return `${Math.min(100, Math.max(0, progress))}%`;\n};\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "a92cb91a42b66a4ec1e002085d2bd202b990e631"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_1pman5c4s7 = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_1pman5c4s7();
+cov_1pman5c4s7().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_1pman5c4s7().s[1]++;
+exports.getProgressBarWidth = exports.formatProgress = void 0;
+/**
+ * Format progress percentage for display
+ */
+/* istanbul ignore next */
+cov_1pman5c4s7().s[2]++;
+var formatProgress = function (progress) {
+  /* istanbul ignore next */
+  cov_1pman5c4s7().f[0]++;
+  cov_1pman5c4s7().s[3]++;
+  return "".concat(Math.round(progress), "%");
+};
+/* istanbul ignore next */
+cov_1pman5c4s7().s[4]++;
+exports.formatProgress = formatProgress;
+/**
+ * Get progress bar width based on progress
+ */
+/* istanbul ignore next */
+cov_1pman5c4s7().s[5]++;
+var getProgressBarWidth = function (progress) {
+  /* istanbul ignore next */
+  cov_1pman5c4s7().f[1]++;
+  cov_1pman5c4s7().s[6]++;
+  return "".concat(Math.min(100, Math.max(0, progress)), "%");
+};
+/* istanbul ignore next */
+cov_1pman5c4s7().s[7]++;
+exports.getProgressBarWidth = getProgressBarWidth;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMXBtYW41YzRzNyIsImFjdHVhbENvdmVyYWdlIiwicyIsImZvcm1hdFByb2dyZXNzIiwicHJvZ3Jlc3MiLCJmIiwiY29uY2F0IiwiTWF0aCIsInJvdW5kIiwiZXhwb3J0cyIsImdldFByb2dyZXNzQmFyV2lkdGgiLCJtaW4iLCJtYXgiXSwic291cmNlcyI6WyIvVXNlcnMvZ2FtemFyYW1hemFub3YvRGVza3RvcC9mdW1vL3NyYy93aWRnZXRzL1Byb2dyZXNzQmFyL2xpYi9saWIudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBGb3JtYXQgcHJvZ3Jlc3MgcGVyY2VudGFnZSBmb3IgZGlzcGxheVxuICovXG5leHBvcnQgY29uc3QgZm9ybWF0UHJvZ3Jlc3MgPSAocHJvZ3Jlc3M6IG51bWJlcik6IHN0cmluZyA9PiB7XG4gIHJldHVybiBgJHtNYXRoLnJvdW5kKHByb2dyZXNzKX0lYDtcbn07XG5cbi8qKlxuICogR2V0IHByb2dyZXNzIGJhciB3aWR0aCBiYXNlZCBvbiBwcm9ncmVzc1xuICovXG5leHBvcnQgY29uc3QgZ2V0UHJvZ3Jlc3NCYXJXaWR0aCA9IChwcm9ncmVzczogbnVtYmVyKTogc3RyaW5nID0+IHtcbiAgcmV0dXJuIGAke01hdGgubWluKDEwMCwgTWF0aC5tYXgoMCwgcHJvZ3Jlc3MpKX0lYDtcbn07XG4iXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7SUFZRTtJQUFBQSxjQUFBLFlBQUFBLENBQUE7TUFBQSxPQUFBQyxjQUFBO0lBQUE7RUFBQTtFQUFBLE9BQUFBLGNBQUE7QUFBQTtBQUFBRCxjQUFBO0FBQUFBLGNBQUEsR0FBQUUsQ0FBQTs7Ozs7OztBQVpGOzs7QUFBQTtBQUFBRixjQUFBLEdBQUFFLENBQUE7QUFHTyxJQUFNQyxjQUFjLEdBQUcsU0FBQUEsQ0FBQ0MsUUFBZ0I7RUFBQTtFQUFBSixjQUFBLEdBQUFLLENBQUE7RUFBQUwsY0FBQSxHQUFBRSxDQUFBO0VBQzdDLE9BQU8sR0FBQUksTUFBQSxDQUFHQyxJQUFJLENBQUNDLEtBQUssQ0FBQ0osUUFBUSxDQUFDLE1BQUc7QUFDbkMsQ0FBQztBQUFDO0FBQUFKLGNBQUEsR0FBQUUsQ0FBQTtBQUZXTyxPQUFBLENBQUFOLGNBQWMsR0FBQUEsY0FBQTtBQUkzQjs7O0FBQUE7QUFBQUgsY0FBQSxHQUFBRSxDQUFBO0FBR08sSUFBTVEsbUJBQW1CLEdBQUcsU0FBQUEsQ0FBQ04sUUFBZ0I7RUFBQTtFQUFBSixjQUFBLEdBQUFLLENBQUE7RUFBQUwsY0FBQSxHQUFBRSxDQUFBO0VBQ2xELE9BQU8sR0FBQUksTUFBQSxDQUFHQyxJQUFJLENBQUNJLEdBQUcsQ0FBQyxHQUFHLEVBQUVKLElBQUksQ0FBQ0ssR0FBRyxDQUFDLENBQUMsRUFBRVIsUUFBUSxDQUFDLENBQUMsTUFBRztBQUNuRCxDQUFDO0FBQUM7QUFBQUosY0FBQSxHQUFBRSxDQUFBO0FBRldPLE9BQUEsQ0FBQUMsbUJBQW1CLEdBQUFBLG1CQUFBIiwiaWdub3JlTGlzdCI6W119

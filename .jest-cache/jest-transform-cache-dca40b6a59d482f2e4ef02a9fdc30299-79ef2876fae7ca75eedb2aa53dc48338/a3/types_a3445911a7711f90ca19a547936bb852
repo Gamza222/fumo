@@ -1,0 +1,66 @@
+c96fd795924310cb4749ee7fbfd6951e
+"use strict";
+
+/**
+ * App Loading Types
+ *
+ * Types for initial app loading system.
+ * Handles loading conditions and progress tracking.
+ */
+/* istanbul ignore next */
+function cov_20d9yazq9f() {
+  var path = "/Users/gamzaramazanov/Desktop/fumo/src/infrastructure/providers/app-loading/model/types/types.ts";
+  var hash = "d1e6edf3ea40780a4692ef475d13814eb0b3fced";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/gamzaramazanov/Desktop/fumo/src/infrastructure/providers/app-loading/model/types/types.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 8,
+          column: 0
+        },
+        end: {
+          line: 8,
+          column: 62
+        }
+      }
+    },
+    fnMap: {},
+    branchMap: {},
+    s: {
+      "0": 0
+    },
+    f: {},
+    b: {},
+    inputSourceMap: {
+      file: "/Users/gamzaramazanov/Desktop/fumo/src/infrastructure/providers/app-loading/model/types/types.ts",
+      mappings: ";AAAA;;;;;GAKG",
+      names: [],
+      sources: ["/Users/gamzaramazanov/Desktop/fumo/src/infrastructure/providers/app-loading/model/types/types.ts"],
+      sourcesContent: ["/**\n * App Loading Types\n *\n * Types for initial app loading system.\n * Handles loading conditions and progress tracking.\n */\n\nimport { ReactNode } from 'react';\n\n// ============================================================================\n// LOADING CONDITIONS\n// ============================================================================\n\nexport interface LoadingCondition {\n  id: string;\n  name: string;\n  check: () => Promise<boolean> | boolean;\n  timeout?: number; // ms\n  priority?: number; // 1 = highest, 5 = lowest\n}\n\nexport interface LoadingStep {\n  id: string;\n  name: string;\n  completed: boolean;\n  priority: number;\n}\n\n// ============================================================================\n// APP LOADING STATE\n// ============================================================================\n\nexport interface AppLoadingState {\n  isInitialLoading: boolean;\n  isOverallLoading: boolean;\n  isSuspenseLoading: boolean;\n  progress: number;\n  currentStep: string;\n  steps: LoadingStep[];\n}\n\n// ============================================================================\n// PROVIDER PROPS\n// ============================================================================\n\nexport interface AppLoadingProviderProps {\n  children: ReactNode;\n}\n\n// ============================================================================\n// HOOK RETURN TYPE\n// ============================================================================\n\nexport interface UseAppLoadingReturn extends AppLoadingState {\n  forceComplete: () => void;\n  restart: () => void;\n  setSuspenseLoading: (loading: boolean) => void;\n}\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "d1e6edf3ea40780a4692ef475d13814eb0b3fced"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_20d9yazq9f = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_20d9yazq9f();
+cov_20d9yazq9f().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMjBkOXlhenE5ZiIsInBhdGgiLCJoYXNoIiwiZ2xvYmFsIiwiRnVuY3Rpb24iLCJnY3YiLCJjb3ZlcmFnZURhdGEiLCJzdGF0ZW1lbnRNYXAiLCJzdGFydCIsImxpbmUiLCJjb2x1bW4iLCJlbmQiLCJmbk1hcCIsImJyYW5jaE1hcCIsInMiLCJmIiwiYiIsImlucHV0U291cmNlTWFwIiwiZmlsZSIsIm1hcHBpbmdzIiwibmFtZXMiLCJzb3VyY2VzIiwic291cmNlc0NvbnRlbnQiLCJ2ZXJzaW9uIiwiX2NvdmVyYWdlU2NoZW1hIiwiY292ZXJhZ2UiLCJhY3R1YWxDb3ZlcmFnZSJdLCJzb3VyY2VzIjpbIi9Vc2Vycy9nYW16YXJhbWF6YW5vdi9EZXNrdG9wL2Z1bW8vc3JjL2luZnJhc3RydWN0dXJlL3Byb3ZpZGVycy9hcHAtbG9hZGluZy9tb2RlbC90eXBlcy90eXBlcy50cyJdLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIEFwcCBMb2FkaW5nIFR5cGVzXG4gKlxuICogVHlwZXMgZm9yIGluaXRpYWwgYXBwIGxvYWRpbmcgc3lzdGVtLlxuICogSGFuZGxlcyBsb2FkaW5nIGNvbmRpdGlvbnMgYW5kIHByb2dyZXNzIHRyYWNraW5nLlxuICovXG5cbmltcG9ydCB7IFJlYWN0Tm9kZSB9IGZyb20gJ3JlYWN0JztcblxuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuLy8gTE9BRElORyBDT05ESVRJT05TXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG5cbmV4cG9ydCBpbnRlcmZhY2UgTG9hZGluZ0NvbmRpdGlvbiB7XG4gIGlkOiBzdHJpbmc7XG4gIG5hbWU6IHN0cmluZztcbiAgY2hlY2s6ICgpID0+IFByb21pc2U8Ym9vbGVhbj4gfCBib29sZWFuO1xuICB0aW1lb3V0PzogbnVtYmVyOyAvLyBtc1xuICBwcmlvcml0eT86IG51bWJlcjsgLy8gMSA9IGhpZ2hlc3QsIDUgPSBsb3dlc3Rcbn1cblxuZXhwb3J0IGludGVyZmFjZSBMb2FkaW5nU3RlcCB7XG4gIGlkOiBzdHJpbmc7XG4gIG5hbWU6IHN0cmluZztcbiAgY29tcGxldGVkOiBib29sZWFuO1xuICBwcmlvcml0eTogbnVtYmVyO1xufVxuXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4vLyBBUFAgTE9BRElORyBTVEFURVxuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuXG5leHBvcnQgaW50ZXJmYWNlIEFwcExvYWRpbmdTdGF0ZSB7XG4gIGlzSW5pdGlhbExvYWRpbmc6IGJvb2xlYW47XG4gIGlzT3ZlcmFsbExvYWRpbmc6IGJvb2xlYW47XG4gIGlzU3VzcGVuc2VMb2FkaW5nOiBib29sZWFuO1xuICBwcm9ncmVzczogbnVtYmVyO1xuICBjdXJyZW50U3RlcDogc3RyaW5nO1xuICBzdGVwczogTG9hZGluZ1N0ZXBbXTtcbn1cblxuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuLy8gUFJPVklERVIgUFJPUFNcbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cblxuZXhwb3J0IGludGVyZmFjZSBBcHBMb2FkaW5nUHJvdmlkZXJQcm9wcyB7XG4gIGNoaWxkcmVuOiBSZWFjdE5vZGU7XG59XG5cbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbi8vIEhPT0sgUkVUVVJOIFRZUEVcbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cblxuZXhwb3J0IGludGVyZmFjZSBVc2VBcHBMb2FkaW5nUmV0dXJuIGV4dGVuZHMgQXBwTG9hZGluZ1N0YXRlIHtcbiAgZm9yY2VDb21wbGV0ZTogKCkgPT4gdm9pZDtcbiAgcmVzdGFydDogKCkgPT4gdm9pZDtcbiAgc2V0U3VzcGVuc2VMb2FkaW5nOiAobG9hZGluZzogYm9vbGVhbikgPT4gdm9pZDtcbn1cbiJdLCJtYXBwaW5ncyI6Ijs7QUFBQTs7Ozs7O0FBQUE7QUFBQSxTQUFBQSxlQUFBO0VBQUEsSUFBQUMsSUFBQTtFQUFBLElBQUFDLElBQUE7RUFBQSxJQUFBQyxNQUFBLE9BQUFDLFFBQUE7RUFBQSxJQUFBQyxHQUFBO0VBQUEsSUFBQUMsWUFBQTtJQUFBTCxJQUFBO0lBQUFNLFlBQUE7TUFBQTtRQUFBQyxLQUFBO1VBQUFDLElBQUE7VUFBQUMsTUFBQTtRQUFBO1FBQUFDLEdBQUE7VUFBQUYsSUFBQTtVQUFBQyxNQUFBO1FBQUE7TUFBQTtJQUFBO0lBQUFFLEtBQUE7SUFBQUMsU0FBQTtJQUFBQyxDQUFBO01BQUE7SUFBQTtJQUFBQyxDQUFBO0lBQUFDLENBQUE7SUFBQUMsY0FBQTtNQUFBQyxJQUFBO01BQUFDLFFBQUE7TUFBQUMsS0FBQTtNQUFBQyxPQUFBO01BQUFDLGNBQUE7TUFBQUMsT0FBQTtJQUFBO0lBQUFDLGVBQUE7SUFBQXRCLElBQUE7RUFBQTtFQUFBLElBQUF1QixRQUFBLEdBQUF0QixNQUFBLENBQUFFLEdBQUEsTUFBQUYsTUFBQSxDQUFBRSxHQUFBO0VBQUEsS0FBQW9CLFFBQUEsQ0FBQXhCLElBQUEsS0FBQXdCLFFBQUEsQ0FBQXhCLElBQUEsRUFBQUMsSUFBQSxLQUFBQSxJQUFBO0lBQUF1QixRQUFBLENBQUF4QixJQUFBLElBQUFLLFlBQUE7RUFBQTtFQUFBLElBQUFvQixjQUFBLEdBQUFELFFBQUEsQ0FBQXhCLElBQUE7RUFBQSIsImlnbm9yZUxpc3QiOltdfQ==

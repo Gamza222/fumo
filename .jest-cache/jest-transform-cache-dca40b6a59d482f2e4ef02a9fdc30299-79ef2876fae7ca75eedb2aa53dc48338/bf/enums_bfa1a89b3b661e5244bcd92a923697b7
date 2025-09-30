@@ -1,0 +1,44 @@
+a8b167d786331549ab3fb417eb0a5457
+"use strict";
+/**
+ * App Loading Enums
+ *
+ * Minimal enums for initial app loading system.
+ * No duplicates - only what we actually need.
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.AppLoadingPriority = exports.AppLoadingConditionName = exports.AppLoadingConditionId = void 0;
+// ============================================================================
+// LOADING CONDITION IDS
+// ============================================================================
+var AppLoadingConditionId;
+(function (AppLoadingConditionId) {
+    AppLoadingConditionId["DOM_READY"] = "dom-ready";
+    AppLoadingConditionId["CRITICAL_CSS"] = "critical-css";
+    AppLoadingConditionId["THEME_INITIALIZED"] = "theme-initialized";
+    AppLoadingConditionId["CORE_JAVASCRIPT"] = "core-javascript";
+    AppLoadingConditionId["MINIMUM_DISPLAY_TIME"] = "minimum-display-time";
+})(AppLoadingConditionId || (exports.AppLoadingConditionId = AppLoadingConditionId = {}));
+// ============================================================================
+// LOADING CONDITION NAMES
+// ============================================================================
+var AppLoadingConditionName;
+(function (AppLoadingConditionName) {
+    AppLoadingConditionName["PREPARING_APPLICATION"] = "Preparing Application";
+    AppLoadingConditionName["LOADING_STYLES"] = "Loading Styles";
+    AppLoadingConditionName["APPLYING_THEME"] = "Applying Theme";
+    AppLoadingConditionName["LOADING_CORE_FEATURES"] = "Loading Core Features";
+    AppLoadingConditionName["FINALIZING_SETUP"] = "Finalizing Setup";
+})(AppLoadingConditionName || (exports.AppLoadingConditionName = AppLoadingConditionName = {}));
+// ============================================================================
+// LOADING PRIORITIES
+// ============================================================================
+var AppLoadingPriority;
+(function (AppLoadingPriority) {
+    AppLoadingPriority[AppLoadingPriority["HIGHEST"] = 1] = "HIGHEST";
+    AppLoadingPriority[AppLoadingPriority["HIGH"] = 2] = "HIGH";
+    AppLoadingPriority[AppLoadingPriority["MEDIUM"] = 3] = "MEDIUM";
+    AppLoadingPriority[AppLoadingPriority["LOW"] = 4] = "LOW";
+    AppLoadingPriority[AppLoadingPriority["LOWEST"] = 5] = "LOWEST";
+})(AppLoadingPriority || (exports.AppLoadingPriority = AppLoadingPriority = {}));
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvaW5mcmFzdHJ1Y3R1cmUvcHJvdmlkZXJzL2FwcC1sb2FkaW5nL21vZGVsL2VudW1zL2VudW1zLnRzIiwibWFwcGluZ3MiOiI7QUFBQTs7Ozs7R0FLRzs7O0FBRUgsK0VBQStFO0FBQy9FLHdCQUF3QjtBQUN4QiwrRUFBK0U7QUFFL0UsSUFBWSxxQkFNWDtBQU5ELFdBQVkscUJBQXFCO0lBQy9CLGdEQUF1QixDQUFBO0lBQ3ZCLHNEQUE2QixDQUFBO0lBQzdCLGdFQUF1QyxDQUFBO0lBQ3ZDLDREQUFtQyxDQUFBO0lBQ25DLHNFQUE2QyxDQUFBO0FBQy9DLENBQUMsRUFOVyxxQkFBcUIscUNBQXJCLHFCQUFxQixRQU1oQztBQUVELCtFQUErRTtBQUMvRSwwQkFBMEI7QUFDMUIsK0VBQStFO0FBRS9FLElBQVksdUJBTVg7QUFORCxXQUFZLHVCQUF1QjtJQUNqQywwRUFBK0MsQ0FBQTtJQUMvQyw0REFBaUMsQ0FBQTtJQUNqQyw0REFBaUMsQ0FBQTtJQUNqQywwRUFBK0MsQ0FBQTtJQUMvQyxnRUFBcUMsQ0FBQTtBQUN2QyxDQUFDLEVBTlcsdUJBQXVCLHVDQUF2Qix1QkFBdUIsUUFNbEM7QUFFRCwrRUFBK0U7QUFDL0UscUJBQXFCO0FBQ3JCLCtFQUErRTtBQUUvRSxJQUFZLGtCQU1YO0FBTkQsV0FBWSxrQkFBa0I7SUFDNUIsaUVBQVcsQ0FBQTtJQUNYLDJEQUFRLENBQUE7SUFDUiwrREFBVSxDQUFBO0lBQ1YseURBQU8sQ0FBQTtJQUNQLCtEQUFVLENBQUE7QUFDWixDQUFDLEVBTlcsa0JBQWtCLGtDQUFsQixrQkFBa0IsUUFNN0IiLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvaW5mcmFzdHJ1Y3R1cmUvcHJvdmlkZXJzL2FwcC1sb2FkaW5nL21vZGVsL2VudW1zL2VudW1zLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogQXBwIExvYWRpbmcgRW51bXNcbiAqXG4gKiBNaW5pbWFsIGVudW1zIGZvciBpbml0aWFsIGFwcCBsb2FkaW5nIHN5c3RlbS5cbiAqIE5vIGR1cGxpY2F0ZXMgLSBvbmx5IHdoYXQgd2UgYWN0dWFsbHkgbmVlZC5cbiAqL1xuXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4vLyBMT0FESU5HIENPTkRJVElPTiBJRFNcbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cblxuZXhwb3J0IGVudW0gQXBwTG9hZGluZ0NvbmRpdGlvbklkIHtcbiAgRE9NX1JFQURZID0gJ2RvbS1yZWFkeScsXG4gIENSSVRJQ0FMX0NTUyA9ICdjcml0aWNhbC1jc3MnLFxuICBUSEVNRV9JTklUSUFMSVpFRCA9ICd0aGVtZS1pbml0aWFsaXplZCcsXG4gIENPUkVfSkFWQVNDUklQVCA9ICdjb3JlLWphdmFzY3JpcHQnLFxuICBNSU5JTVVNX0RJU1BMQVlfVElNRSA9ICdtaW5pbXVtLWRpc3BsYXktdGltZScsXG59XG5cbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbi8vIExPQURJTkcgQ09ORElUSU9OIE5BTUVTXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG5cbmV4cG9ydCBlbnVtIEFwcExvYWRpbmdDb25kaXRpb25OYW1lIHtcbiAgUFJFUEFSSU5HX0FQUExJQ0FUSU9OID0gJ1ByZXBhcmluZyBBcHBsaWNhdGlvbicsXG4gIExPQURJTkdfU1RZTEVTID0gJ0xvYWRpbmcgU3R5bGVzJyxcbiAgQVBQTFlJTkdfVEhFTUUgPSAnQXBwbHlpbmcgVGhlbWUnLFxuICBMT0FESU5HX0NPUkVfRkVBVFVSRVMgPSAnTG9hZGluZyBDb3JlIEZlYXR1cmVzJyxcbiAgRklOQUxJWklOR19TRVRVUCA9ICdGaW5hbGl6aW5nIFNldHVwJyxcbn1cblxuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuLy8gTE9BRElORyBQUklPUklUSUVTXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG5cbmV4cG9ydCBlbnVtIEFwcExvYWRpbmdQcmlvcml0eSB7XG4gIEhJR0hFU1QgPSAxLFxuICBISUdIID0gMixcbiAgTUVESVVNID0gMyxcbiAgTE9XID0gNCxcbiAgTE9XRVNUID0gNSxcbn1cbiJdLCJ2ZXJzaW9uIjozfQ==

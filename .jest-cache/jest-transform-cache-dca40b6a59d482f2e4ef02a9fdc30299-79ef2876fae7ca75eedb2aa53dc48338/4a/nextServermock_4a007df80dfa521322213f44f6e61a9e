@@ -1,0 +1,20 @@
+c32cde590ca9fae69b617ac3617c0aa6
+"use strict";
+/**
+ * Next.js Server Mock Setup
+ *
+ * Provides Jest mock setup for Next.js server components.
+ * This file should be imported in test files that need Next.js server mocks.
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.MockNextResponse = exports.MockNextRequest = void 0;
+// Jest mock for next/server module
+jest.mock('next/server', function () { return ({
+    NextRequest: nextRequest_mock_1.MockNextRequest,
+    NextResponse: nextResponse_mock_1.MockNextResponse,
+}); });
+var nextRequest_mock_1 = require("./nextRequest.mock");
+Object.defineProperty(exports, "MockNextRequest", { enumerable: true, get: function () { return nextRequest_mock_1.MockNextRequest; } });
+var nextResponse_mock_1 = require("./nextResponse.mock");
+Object.defineProperty(exports, "MockNextResponse", { enumerable: true, get: function () { return nextResponse_mock_1.MockNextResponse; } });
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL3Rlc3RpbmcvbW9ja3MvbmV4dGpzL2xpYi9zZXJ2ZXIvbmV4dFNlcnZlci5tb2NrLnRzIiwibWFwcGluZ3MiOiI7QUFBQTs7Ozs7R0FLRzs7O0FBS0gsbUNBQW1DO0FBQ25DLElBQUksQ0FBQyxJQUFJLENBQUMsYUFBYSxFQUFFLGNBQU0sT0FBQSxDQUFDO0lBQzlCLFdBQVcsRUFBRSxrQ0FBZTtJQUM1QixZQUFZLEVBQUUsb0NBQWdCO0NBQy9CLENBQUMsRUFINkIsQ0FHN0IsQ0FBQyxDQUFDO0FBUEosdURBQXFEO0FBVTVDLGdHQVZBLGtDQUFlLE9BVUE7QUFUeEIseURBQXVEO0FBUzdCLGlHQVRqQixvQ0FBZ0IsT0FTaUIiLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL3Rlc3RpbmcvbW9ja3MvbmV4dGpzL2xpYi9zZXJ2ZXIvbmV4dFNlcnZlci5tb2NrLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogTmV4dC5qcyBTZXJ2ZXIgTW9jayBTZXR1cFxuICpcbiAqIFByb3ZpZGVzIEplc3QgbW9jayBzZXR1cCBmb3IgTmV4dC5qcyBzZXJ2ZXIgY29tcG9uZW50cy5cbiAqIFRoaXMgZmlsZSBzaG91bGQgYmUgaW1wb3J0ZWQgaW4gdGVzdCBmaWxlcyB0aGF0IG5lZWQgTmV4dC5qcyBzZXJ2ZXIgbW9ja3MuXG4gKi9cblxuaW1wb3J0IHsgTW9ja05leHRSZXF1ZXN0IH0gZnJvbSAnLi9uZXh0UmVxdWVzdC5tb2NrJztcbmltcG9ydCB7IE1vY2tOZXh0UmVzcG9uc2UgfSBmcm9tICcuL25leHRSZXNwb25zZS5tb2NrJztcblxuLy8gSmVzdCBtb2NrIGZvciBuZXh0L3NlcnZlciBtb2R1bGVcbmplc3QubW9jaygnbmV4dC9zZXJ2ZXInLCAoKSA9PiAoe1xuICBOZXh0UmVxdWVzdDogTW9ja05leHRSZXF1ZXN0LFxuICBOZXh0UmVzcG9uc2U6IE1vY2tOZXh0UmVzcG9uc2UsXG59KSk7XG5cbi8vIEV4cG9ydCB0aGUgbW9jayBjbGFzc2VzIGZvciBkaXJlY3QgdXNlIGluIHRlc3RzXG5leHBvcnQgeyBNb2NrTmV4dFJlcXVlc3QsIE1vY2tOZXh0UmVzcG9uc2UgfTtcbiJdLCJ2ZXJzaW9uIjozfQ==

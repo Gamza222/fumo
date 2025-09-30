@@ -1,0 +1,26 @@
+127d02ef1346364f077b09750bf4daa0
+"use strict";
+/**
+ * External Mocks Auto-Setup
+ *
+ * Automatically applies external library mocks globally for all tests.
+ * This file is imported by the Jest setup to ensure consistent mocking.
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+// ============================================================================
+// AUTOMATIC MOCK SETUP
+// ============================================================================
+/**
+ * Auto-mock @sentry/react with our centralized mock
+ * This ensures all test files get the same Sentry mock without manual setup
+ */
+jest.mock('@sentry/react', function () { return sentry_mock_1.mockSentry; });
+var sentry_mock_1 = require("./sentry.mock");
+// ============================================================================
+// FUTURE AUTO-MOCKS
+// ============================================================================
+// NOTE: Add other global mocks here as needed:
+// jest.mock('google-analytics', () => mockGoogleAnalytics);
+// jest.mock('@stripe/stripe-js', () => mockStripe);
+// etc.
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL3Rlc3RpbmcvbW9ja3MvZXh0ZXJuYWwvbGliL3NldHVwLnRzIiwibWFwcGluZ3MiOiI7QUFBQTs7Ozs7R0FLRzs7QUFJSCwrRUFBK0U7QUFDL0UsdUJBQXVCO0FBQ3ZCLCtFQUErRTtBQUUvRTs7O0dBR0c7QUFDSCxJQUFJLENBQUMsSUFBSSxDQUFDLGVBQWUsRUFBRSxjQUF5QixPQUFBLHdCQUFVLEVBQVYsQ0FBVSxDQUFDLENBQUM7QUFWaEUsNkNBQTJDO0FBWTNDLCtFQUErRTtBQUMvRSxvQkFBb0I7QUFDcEIsK0VBQStFO0FBRS9FLCtDQUErQztBQUMvQyw0REFBNEQ7QUFDNUQsb0RBQW9EO0FBQ3BELE9BQU8iLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL3Rlc3RpbmcvbW9ja3MvZXh0ZXJuYWwvbGliL3NldHVwLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogRXh0ZXJuYWwgTW9ja3MgQXV0by1TZXR1cFxuICpcbiAqIEF1dG9tYXRpY2FsbHkgYXBwbGllcyBleHRlcm5hbCBsaWJyYXJ5IG1vY2tzIGdsb2JhbGx5IGZvciBhbGwgdGVzdHMuXG4gKiBUaGlzIGZpbGUgaXMgaW1wb3J0ZWQgYnkgdGhlIEplc3Qgc2V0dXAgdG8gZW5zdXJlIGNvbnNpc3RlbnQgbW9ja2luZy5cbiAqL1xuXG5pbXBvcnQgeyBtb2NrU2VudHJ5IH0gZnJvbSAnLi9zZW50cnkubW9jayc7XG5cbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbi8vIEFVVE9NQVRJQyBNT0NLIFNFVFVQXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG5cbi8qKlxuICogQXV0by1tb2NrIEBzZW50cnkvcmVhY3Qgd2l0aCBvdXIgY2VudHJhbGl6ZWQgbW9ja1xuICogVGhpcyBlbnN1cmVzIGFsbCB0ZXN0IGZpbGVzIGdldCB0aGUgc2FtZSBTZW50cnkgbW9jayB3aXRob3V0IG1hbnVhbCBzZXR1cFxuICovXG5qZXN0Lm1vY2soJ0BzZW50cnkvcmVhY3QnLCAoKTogdHlwZW9mIG1vY2tTZW50cnkgPT4gbW9ja1NlbnRyeSk7XG5cbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbi8vIEZVVFVSRSBBVVRPLU1PQ0tTXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG5cbi8vIE5PVEU6IEFkZCBvdGhlciBnbG9iYWwgbW9ja3MgaGVyZSBhcyBuZWVkZWQ6XG4vLyBqZXN0Lm1vY2soJ2dvb2dsZS1hbmFseXRpY3MnLCAoKSA9PiBtb2NrR29vZ2xlQW5hbHl0aWNzKTtcbi8vIGplc3QubW9jaygnQHN0cmlwZS9zdHJpcGUtanMnLCAoKSA9PiBtb2NrU3RyaXBlKTtcbi8vIGV0Yy5cbiJdLCJ2ZXJzaW9uIjozfQ==

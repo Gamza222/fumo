@@ -1,0 +1,140 @@
+660fc59a64127afa79f7f3e2239df381
+"use strict";
+/**
+ * Performance Monitor Mock for Testing
+ *
+ * Provides mock implementations of the PerformanceMonitor class and related functions
+ * for testing performance monitoring functionality.
+ */
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g = Object.create((typeof Iterator === "function" ? Iterator : Object).prototype);
+    return g.next = verb(0), g["throw"] = verb(1), g["return"] = verb(2), typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.mockPerformanceMonitorWithError = exports.mockPerformanceMonitorWithMetrics = exports.createMockPerformanceMonitorInstance = exports.mockGetNavigationTiming = exports.mockGetPerformanceTiming = exports.mockMeasureAsyncPerformance = exports.mockMeasurePerformance = exports.MockPerformanceMonitor = exports.mockPerformanceMonitor = void 0;
+// Mock performance monitor instance
+exports.mockPerformanceMonitor = {
+    addMetric: jest.fn(),
+    getMetricsByName: jest.fn().mockReturnValue([]),
+    getMetrics: jest.fn().mockReturnValue([]),
+    clear: jest.fn(),
+    subscribe: jest.fn(),
+    unsubscribe: jest.fn(),
+};
+// Mock performance monitor class
+exports.MockPerformanceMonitor = jest.fn().mockImplementation(function () { return exports.mockPerformanceMonitor; });
+// Mock performance measurement functions
+exports.mockMeasurePerformance = jest
+    .fn()
+    .mockImplementation(function (name, fn) {
+    var startTime = performance.now();
+    var result = fn();
+    var endTime = performance.now();
+    exports.mockPerformanceMonitor.addMetric({
+        name: name,
+        value: endTime - startTime,
+        timestamp: Date.now(),
+        rating: 'good',
+    });
+    return result;
+});
+exports.mockMeasureAsyncPerformance = jest
+    .fn()
+    .mockImplementation(function (name, fn) { return __awaiter(void 0, void 0, void 0, function () {
+    var startTime, result, endTime;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                startTime = performance.now();
+                return [4 /*yield*/, fn()];
+            case 1:
+                result = _a.sent();
+                endTime = performance.now();
+                exports.mockPerformanceMonitor.addMetric({
+                    name: name,
+                    value: endTime - startTime,
+                    timestamp: Date.now(),
+                    rating: 'good',
+                });
+                return [2 /*return*/, result];
+        }
+    });
+}); });
+// Mock performance timing functions
+exports.mockGetPerformanceTiming = jest.fn().mockReturnValue({
+    navigationStart: 0,
+    loadEventEnd: 1000,
+    domContentLoadedEventEnd: 500,
+    loadEventStart: 800,
+});
+exports.mockGetNavigationTiming = jest.fn().mockReturnValue({
+    name: 'navigation',
+    startTime: 0,
+    duration: 1000,
+    type: 'navigate',
+});
+// Create mock performance monitor instance
+var createMockPerformanceMonitorInstance = function (customMethods) {
+    if (customMethods === void 0) { customMethods = {}; }
+    return __assign(__assign({}, exports.mockPerformanceMonitor), customMethods);
+};
+exports.createMockPerformanceMonitorInstance = createMockPerformanceMonitorInstance;
+// Mock performance monitor with metrics
+var mockPerformanceMonitorWithMetrics = function (metrics) {
+    if (metrics === void 0) { metrics = []; }
+    return __assign(__assign({}, exports.mockPerformanceMonitor), { getMetrics: jest.fn().mockReturnValue(metrics), getMetricsByName: jest
+            .fn()
+            .mockImplementation(function (name) { return metrics.filter(function (metric) { return metric.name === name; }); }) });
+};
+exports.mockPerformanceMonitorWithMetrics = mockPerformanceMonitorWithMetrics;
+// Mock performance monitor with error
+var mockPerformanceMonitorWithError = function (error) {
+    return __assign(__assign({}, exports.mockPerformanceMonitor), { addMetric: jest.fn().mockImplementation(function () {
+            throw error;
+        }) });
+};
+exports.mockPerformanceMonitorWithError = mockPerformanceMonitorWithError;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL3Rlc3RpbmcvbW9ja3MvaW5mcmFzdHJ1Y3R1cmUvbGliL3BlcmZvcm1hbmNlL3BlcmZvcm1hbmNlTW9uaXRvci5tb2NrLnRzIiwibWFwcGluZ3MiOiI7QUFBQTs7Ozs7R0FLRzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFJSCxvQ0FBb0M7QUFDdkIsUUFBQSxzQkFBc0IsR0FBRztJQUNwQyxTQUFTLEVBQUUsSUFBSSxDQUFDLEVBQUUsRUFBRTtJQUNwQixnQkFBZ0IsRUFBRSxJQUFJLENBQUMsRUFBRSxFQUFFLENBQUMsZUFBZSxDQUFDLEVBQUUsQ0FBQztJQUMvQyxVQUFVLEVBQUUsSUFBSSxDQUFDLEVBQUUsRUFBRSxDQUFDLGVBQWUsQ0FBQyxFQUFFLENBQUM7SUFDekMsS0FBSyxFQUFFLElBQUksQ0FBQyxFQUFFLEVBQUU7SUFDaEIsU0FBUyxFQUFFLElBQUksQ0FBQyxFQUFFLEVBQUU7SUFDcEIsV0FBVyxFQUFFLElBQUksQ0FBQyxFQUFFLEVBQUU7Q0FDdkIsQ0FBQztBQUVGLGlDQUFpQztBQUNwQixRQUFBLHNCQUFzQixHQUFHLElBQUksQ0FBQyxFQUFFLEVBQUUsQ0FBQyxrQkFBa0IsQ0FBQyxjQUFNLE9BQUEsOEJBQXNCLEVBQXRCLENBQXNCLENBQUMsQ0FBQztBQUVqRyx5Q0FBeUM7QUFDNUIsUUFBQSxzQkFBc0IsR0FBRyxJQUFJO0tBQ3ZDLEVBQUUsRUFBRTtLQUNKLGtCQUFrQixDQUFDLFVBQUMsSUFBWSxFQUFFLEVBQWlCO0lBQ2xELElBQU0sU0FBUyxHQUFHLFdBQVcsQ0FBQyxHQUFHLEVBQUUsQ0FBQztJQUNwQyxJQUFNLE1BQU0sR0FBRyxFQUFFLEVBQUUsQ0FBQztJQUNwQixJQUFNLE9BQU8sR0FBRyxXQUFXLENBQUMsR0FBRyxFQUFFLENBQUM7SUFFbEMsOEJBQXNCLENBQUMsU0FBUyxDQUFDO1FBQy9CLElBQUksTUFBQTtRQUNKLEtBQUssRUFBRSxPQUFPLEdBQUcsU0FBUztRQUMxQixTQUFTLEVBQUUsSUFBSSxDQUFDLEdBQUcsRUFBRTtRQUNyQixNQUFNLEVBQUUsTUFBTTtLQUNmLENBQUMsQ0FBQztJQUVILE9BQU8sTUFBTSxDQUFDO0FBQ2hCLENBQUMsQ0FBQyxDQUFDO0FBRVEsUUFBQSwyQkFBMkIsR0FBRyxJQUFJO0tBQzVDLEVBQUUsRUFBRTtLQUNKLGtCQUFrQixDQUFDLFVBQU8sSUFBWSxFQUFFLEVBQTBCOzs7OztnQkFDM0QsU0FBUyxHQUFHLFdBQVcsQ0FBQyxHQUFHLEVBQUUsQ0FBQztnQkFDckIscUJBQU0sRUFBRSxFQUFFLEVBQUE7O2dCQUFuQixNQUFNLEdBQUcsU0FBVTtnQkFDbkIsT0FBTyxHQUFHLFdBQVcsQ0FBQyxHQUFHLEVBQUUsQ0FBQztnQkFFbEMsOEJBQXNCLENBQUMsU0FBUyxDQUFDO29CQUMvQixJQUFJLE1BQUE7b0JBQ0osS0FBSyxFQUFFLE9BQU8sR0FBRyxTQUFTO29CQUMxQixTQUFTLEVBQUUsSUFBSSxDQUFDLEdBQUcsRUFBRTtvQkFDckIsTUFBTSxFQUFFLE1BQU07aUJBQ2YsQ0FBQyxDQUFDO2dCQUVILHNCQUFPLE1BQU0sRUFBQzs7O0tBQ2YsQ0FBQyxDQUFDO0FBRUwsb0NBQW9DO0FBQ3ZCLFFBQUEsd0JBQXdCLEdBQUcsSUFBSSxDQUFDLEVBQUUsRUFBRSxDQUFDLGVBQWUsQ0FBQztJQUNoRSxlQUFlLEVBQUUsQ0FBQztJQUNsQixZQUFZLEVBQUUsSUFBSTtJQUNsQix3QkFBd0IsRUFBRSxHQUFHO0lBQzdCLGNBQWMsRUFBRSxHQUFHO0NBQ3BCLENBQUMsQ0FBQztBQUVVLFFBQUEsdUJBQXVCLEdBQUcsSUFBSSxDQUFDLEVBQUUsRUFBRSxDQUFDLGVBQWUsQ0FBQztJQUMvRCxJQUFJLEVBQUUsWUFBWTtJQUNsQixTQUFTLEVBQUUsQ0FBQztJQUNaLFFBQVEsRUFBRSxJQUFJO0lBQ2QsSUFBSSxFQUFFLFVBQVU7Q0FDakIsQ0FBQyxDQUFDO0FBRUgsMkNBQTJDO0FBQ3BDLElBQU0sb0NBQW9DLEdBQUcsVUFDbEQsYUFBMEQ7SUFBMUQsOEJBQUEsRUFBQSxrQkFBMEQ7SUFFMUQsNkJBQ0ssOEJBQXNCLEdBQ3RCLGFBQWEsRUFDaEI7QUFDSixDQUFDLENBQUM7QUFQVyxRQUFBLG9DQUFvQyx3Q0FPL0M7QUFFRix3Q0FBd0M7QUFDakMsSUFBTSxpQ0FBaUMsR0FBRyxVQUFDLE9BQWlDO0lBQWpDLHdCQUFBLEVBQUEsWUFBaUM7SUFDakYsNkJBQ0ssOEJBQXNCLEtBQ3pCLFVBQVUsRUFBRSxJQUFJLENBQUMsRUFBRSxFQUFFLENBQUMsZUFBZSxDQUFDLE9BQU8sQ0FBQyxFQUM5QyxnQkFBZ0IsRUFBRSxJQUFJO2FBQ25CLEVBQUUsRUFBRTthQUNKLGtCQUFrQixDQUFDLFVBQUMsSUFBWSxJQUFLLE9BQUEsT0FBTyxDQUFDLE1BQU0sQ0FBQyxVQUFDLE1BQU0sSUFBSyxPQUFBLE1BQU0sQ0FBQyxJQUFJLEtBQUssSUFBSSxFQUFwQixDQUFvQixDQUFDLEVBQWhELENBQWdELENBQUMsSUFDekY7QUFDSixDQUFDLENBQUM7QUFSVyxRQUFBLGlDQUFpQyxxQ0FRNUM7QUFFRixzQ0FBc0M7QUFDL0IsSUFBTSwrQkFBK0IsR0FBRyxVQUFDLEtBQVk7SUFDMUQsNkJBQ0ssOEJBQXNCLEtBQ3pCLFNBQVMsRUFBRSxJQUFJLENBQUMsRUFBRSxFQUFFLENBQUMsa0JBQWtCLENBQUM7WUFDdEMsTUFBTSxLQUFLLENBQUM7UUFDZCxDQUFDLENBQUMsSUFDRjtBQUNKLENBQUMsQ0FBQztBQVBXLFFBQUEsK0JBQStCLG1DQU8xQyIsIm5hbWVzIjpbXSwic291cmNlcyI6WyIvVXNlcnMvZ2FtemFyYW1hemFub3YvRGVza3RvcC9mdW1vL3NyYy9zaGFyZWQvdGVzdGluZy9tb2Nrcy9pbmZyYXN0cnVjdHVyZS9saWIvcGVyZm9ybWFuY2UvcGVyZm9ybWFuY2VNb25pdG9yLm1vY2sudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBQZXJmb3JtYW5jZSBNb25pdG9yIE1vY2sgZm9yIFRlc3RpbmdcbiAqXG4gKiBQcm92aWRlcyBtb2NrIGltcGxlbWVudGF0aW9ucyBvZiB0aGUgUGVyZm9ybWFuY2VNb25pdG9yIGNsYXNzIGFuZCByZWxhdGVkIGZ1bmN0aW9uc1xuICogZm9yIHRlc3RpbmcgcGVyZm9ybWFuY2UgbW9uaXRvcmluZyBmdW5jdGlvbmFsaXR5LlxuICovXG5cbmltcG9ydCB0eXBlIHsgUGVyZm9ybWFuY2VNZXRyaWMgfSBmcm9tICdAL2luZnJhc3RydWN0dXJlL3BlcmZvcm1hbmNlL3R5cGVzL3BlcmZvcm1hbmNlLnR5cGVzJztcblxuLy8gTW9jayBwZXJmb3JtYW5jZSBtb25pdG9yIGluc3RhbmNlXG5leHBvcnQgY29uc3QgbW9ja1BlcmZvcm1hbmNlTW9uaXRvciA9IHtcbiAgYWRkTWV0cmljOiBqZXN0LmZuKCksXG4gIGdldE1ldHJpY3NCeU5hbWU6IGplc3QuZm4oKS5tb2NrUmV0dXJuVmFsdWUoW10pLFxuICBnZXRNZXRyaWNzOiBqZXN0LmZuKCkubW9ja1JldHVyblZhbHVlKFtdKSxcbiAgY2xlYXI6IGplc3QuZm4oKSxcbiAgc3Vic2NyaWJlOiBqZXN0LmZuKCksXG4gIHVuc3Vic2NyaWJlOiBqZXN0LmZuKCksXG59O1xuXG4vLyBNb2NrIHBlcmZvcm1hbmNlIG1vbml0b3IgY2xhc3NcbmV4cG9ydCBjb25zdCBNb2NrUGVyZm9ybWFuY2VNb25pdG9yID0gamVzdC5mbigpLm1vY2tJbXBsZW1lbnRhdGlvbigoKSA9PiBtb2NrUGVyZm9ybWFuY2VNb25pdG9yKTtcblxuLy8gTW9jayBwZXJmb3JtYW5jZSBtZWFzdXJlbWVudCBmdW5jdGlvbnNcbmV4cG9ydCBjb25zdCBtb2NrTWVhc3VyZVBlcmZvcm1hbmNlID0gamVzdFxuICAuZm4oKVxuICAubW9ja0ltcGxlbWVudGF0aW9uKChuYW1lOiBzdHJpbmcsIGZuOiAoKSA9PiB1bmtub3duKSA9PiB7XG4gICAgY29uc3Qgc3RhcnRUaW1lID0gcGVyZm9ybWFuY2Uubm93KCk7XG4gICAgY29uc3QgcmVzdWx0ID0gZm4oKTtcbiAgICBjb25zdCBlbmRUaW1lID0gcGVyZm9ybWFuY2Uubm93KCk7XG5cbiAgICBtb2NrUGVyZm9ybWFuY2VNb25pdG9yLmFkZE1ldHJpYyh7XG4gICAgICBuYW1lLFxuICAgICAgdmFsdWU6IGVuZFRpbWUgLSBzdGFydFRpbWUsXG4gICAgICB0aW1lc3RhbXA6IERhdGUubm93KCksXG4gICAgICByYXRpbmc6ICdnb29kJyxcbiAgICB9KTtcblxuICAgIHJldHVybiByZXN1bHQ7XG4gIH0pO1xuXG5leHBvcnQgY29uc3QgbW9ja01lYXN1cmVBc3luY1BlcmZvcm1hbmNlID0gamVzdFxuICAuZm4oKVxuICAubW9ja0ltcGxlbWVudGF0aW9uKGFzeW5jIChuYW1lOiBzdHJpbmcsIGZuOiAoKSA9PiBQcm9taXNlPHVua25vd24+KSA9PiB7XG4gICAgY29uc3Qgc3RhcnRUaW1lID0gcGVyZm9ybWFuY2Uubm93KCk7XG4gICAgY29uc3QgcmVzdWx0ID0gYXdhaXQgZm4oKTtcbiAgICBjb25zdCBlbmRUaW1lID0gcGVyZm9ybWFuY2Uubm93KCk7XG5cbiAgICBtb2NrUGVyZm9ybWFuY2VNb25pdG9yLmFkZE1ldHJpYyh7XG4gICAgICBuYW1lLFxuICAgICAgdmFsdWU6IGVuZFRpbWUgLSBzdGFydFRpbWUsXG4gICAgICB0aW1lc3RhbXA6IERhdGUubm93KCksXG4gICAgICByYXRpbmc6ICdnb29kJyxcbiAgICB9KTtcblxuICAgIHJldHVybiByZXN1bHQ7XG4gIH0pO1xuXG4vLyBNb2NrIHBlcmZvcm1hbmNlIHRpbWluZyBmdW5jdGlvbnNcbmV4cG9ydCBjb25zdCBtb2NrR2V0UGVyZm9ybWFuY2VUaW1pbmcgPSBqZXN0LmZuKCkubW9ja1JldHVyblZhbHVlKHtcbiAgbmF2aWdhdGlvblN0YXJ0OiAwLFxuICBsb2FkRXZlbnRFbmQ6IDEwMDAsXG4gIGRvbUNvbnRlbnRMb2FkZWRFdmVudEVuZDogNTAwLFxuICBsb2FkRXZlbnRTdGFydDogODAwLFxufSk7XG5cbmV4cG9ydCBjb25zdCBtb2NrR2V0TmF2aWdhdGlvblRpbWluZyA9IGplc3QuZm4oKS5tb2NrUmV0dXJuVmFsdWUoe1xuICBuYW1lOiAnbmF2aWdhdGlvbicsXG4gIHN0YXJ0VGltZTogMCxcbiAgZHVyYXRpb246IDEwMDAsXG4gIHR5cGU6ICduYXZpZ2F0ZScsXG59KTtcblxuLy8gQ3JlYXRlIG1vY2sgcGVyZm9ybWFuY2UgbW9uaXRvciBpbnN0YW5jZVxuZXhwb3J0IGNvbnN0IGNyZWF0ZU1vY2tQZXJmb3JtYW5jZU1vbml0b3JJbnN0YW5jZSA9IChcbiAgY3VzdG9tTWV0aG9kczogUGFydGlhbDx0eXBlb2YgbW9ja1BlcmZvcm1hbmNlTW9uaXRvcj4gPSB7fVxuKSA9PiB7XG4gIHJldHVybiB7XG4gICAgLi4ubW9ja1BlcmZvcm1hbmNlTW9uaXRvcixcbiAgICAuLi5jdXN0b21NZXRob2RzLFxuICB9O1xufTtcblxuLy8gTW9jayBwZXJmb3JtYW5jZSBtb25pdG9yIHdpdGggbWV0cmljc1xuZXhwb3J0IGNvbnN0IG1vY2tQZXJmb3JtYW5jZU1vbml0b3JXaXRoTWV0cmljcyA9IChtZXRyaWNzOiBQZXJmb3JtYW5jZU1ldHJpY1tdID0gW10pID0+IHtcbiAgcmV0dXJuIHtcbiAgICAuLi5tb2NrUGVyZm9ybWFuY2VNb25pdG9yLFxuICAgIGdldE1ldHJpY3M6IGplc3QuZm4oKS5tb2NrUmV0dXJuVmFsdWUobWV0cmljcyksXG4gICAgZ2V0TWV0cmljc0J5TmFtZTogamVzdFxuICAgICAgLmZuKClcbiAgICAgIC5tb2NrSW1wbGVtZW50YXRpb24oKG5hbWU6IHN0cmluZykgPT4gbWV0cmljcy5maWx0ZXIoKG1ldHJpYykgPT4gbWV0cmljLm5hbWUgPT09IG5hbWUpKSxcbiAgfTtcbn07XG5cbi8vIE1vY2sgcGVyZm9ybWFuY2UgbW9uaXRvciB3aXRoIGVycm9yXG5leHBvcnQgY29uc3QgbW9ja1BlcmZvcm1hbmNlTW9uaXRvcldpdGhFcnJvciA9IChlcnJvcjogRXJyb3IpID0+IHtcbiAgcmV0dXJuIHtcbiAgICAuLi5tb2NrUGVyZm9ybWFuY2VNb25pdG9yLFxuICAgIGFkZE1ldHJpYzogamVzdC5mbigpLm1vY2tJbXBsZW1lbnRhdGlvbigoKSA9PiB7XG4gICAgICB0aHJvdyBlcnJvcjtcbiAgICB9KSxcbiAgfTtcbn07XG4iXSwidmVyc2lvbiI6M30=

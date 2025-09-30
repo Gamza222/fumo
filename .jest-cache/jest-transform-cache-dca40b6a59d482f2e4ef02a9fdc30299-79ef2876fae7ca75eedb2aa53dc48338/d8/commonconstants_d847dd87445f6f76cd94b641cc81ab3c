@@ -1,0 +1,231 @@
+5c8dcb267711734ffd50f5cca638b3b1
+"use strict";
+
+/* istanbul ignore next */
+function cov_2deqiqs27c() {
+  var path = "/Users/gamzaramazanov/Desktop/fumo/src/shared/config/common/common.constants.ts";
+  var hash = "330a3d3263490394026744a01b70598151772c52";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/gamzaramazanov/Desktop/fumo/src/shared/config/common/common.constants.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 122
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 0
+        },
+        end: {
+          line: 4,
+          column: 30
+        }
+      },
+      "3": {
+        start: {
+          line: 5,
+          column: 0
+        },
+        end: {
+          line: 5,
+          column: 55
+        }
+      },
+      "4": {
+        start: {
+          line: 6,
+          column: 0
+        },
+        end: {
+          line: 6,
+          column: 53
+        }
+      },
+      "5": {
+        start: {
+          line: 7,
+          column: 0
+        },
+        end: {
+          line: 11,
+          column: 2
+        }
+      },
+      "6": {
+        start: {
+          line: 12,
+          column: 0
+        },
+        end: {
+          line: 16,
+          column: 2
+        }
+      }
+    },
+    fnMap: {},
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 5,
+            column: 23
+          },
+          end: {
+            line: 5,
+            column: 54
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 5,
+            column: 23
+          },
+          end: {
+            line: 5,
+            column: 47
+          }
+        }, {
+          start: {
+            line: 5,
+            column: 51
+          },
+          end: {
+            line: 5,
+            column: 54
+          }
+        }],
+        line: 5
+      },
+      "1": {
+        loc: {
+          start: {
+            line: 6,
+            column: 21
+          },
+          end: {
+            line: 6,
+            column: 52
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 6,
+            column: 21
+          },
+          end: {
+            line: 6,
+            column: 43
+          }
+        }, {
+          start: {
+            line: 6,
+            column: 47
+          },
+          end: {
+            line: 6,
+            column: 52
+          }
+        }],
+        line: 6
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0
+    },
+    f: {},
+    b: {
+      "0": [0, 0],
+      "1": [0, 0]
+    },
+    inputSourceMap: {
+      file: "/Users/gamzaramazanov/Desktop/fumo/src/shared/config/common/common.constants.ts",
+      mappings: ";;;AAAa,QAAA,WAAW,GAAG,OAAO,CAAC;AACtB,QAAA,YAAY,GAAG,OAAO,CAAC,GAAG,CAAC,YAAY,IAAI,GAAG,CAAC;AAC/C,QAAA,UAAU,GAAG,OAAO,CAAC,GAAG,CAAC,UAAU,IAAI,KAAK,CAAC;AAE7C,QAAA,WAAW,GAAG;IACzB,IAAI,EAAE,OAAO,CAAC,GAAG,EAAE;IACnB,GAAG,EAAE,KAAK;IACV,MAAM,EAAE,QAAQ;CACR,CAAC;AAEE,QAAA,gBAAgB,GAAG;IAC9B,WAAW,EAAE,KAAK,EAAE,aAAa;IACjC,cAAc,EAAE,CAAC;IACjB,SAAS,EAAE,EAAE,GAAG,CAAC,EAAE,YAAY;CACvB,CAAC",
+      names: [],
+      sources: ["/Users/gamzaramazanov/Desktop/fumo/src/shared/config/common/common.constants.ts"],
+      sourcesContent: ["export const APP_VERSION = '0.1.0';\nexport const BUILD_NUMBER = process.env.BUILD_NUMBER || '0';\nexport const GIT_COMMIT = process.env.GIT_COMMIT || 'dev';\n\nexport const BUILD_PATHS = {\n  root: process.cwd(),\n  src: 'src',\n  public: 'public',\n} as const;\n\nexport const DEFAULT_SETTINGS = {\n  API_TIMEOUT: 30000, // 30 seconds\n  RETRY_ATTEMPTS: 3,\n  CACHE_TTL: 60 * 5, // 5 minutes\n} as const;\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "330a3d3263490394026744a01b70598151772c52"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_2deqiqs27c = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_2deqiqs27c();
+cov_2deqiqs27c().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_2deqiqs27c().s[1]++;
+exports.DEFAULT_SETTINGS = exports.BUILD_PATHS = exports.GIT_COMMIT = exports.BUILD_NUMBER = exports.APP_VERSION = void 0;
+/* istanbul ignore next */
+cov_2deqiqs27c().s[2]++;
+exports.APP_VERSION = '0.1.0';
+/* istanbul ignore next */
+cov_2deqiqs27c().s[3]++;
+exports.BUILD_NUMBER =
+/* istanbul ignore next */
+(cov_2deqiqs27c().b[0][0]++, process.env.BUILD_NUMBER) ||
+/* istanbul ignore next */
+(cov_2deqiqs27c().b[0][1]++, '0');
+/* istanbul ignore next */
+cov_2deqiqs27c().s[4]++;
+exports.GIT_COMMIT =
+/* istanbul ignore next */
+(cov_2deqiqs27c().b[1][0]++, process.env.GIT_COMMIT) ||
+/* istanbul ignore next */
+(cov_2deqiqs27c().b[1][1]++, 'dev');
+/* istanbul ignore next */
+cov_2deqiqs27c().s[5]++;
+exports.BUILD_PATHS = {
+  root: process.cwd(),
+  src: 'src',
+  public: 'public'
+};
+/* istanbul ignore next */
+cov_2deqiqs27c().s[6]++;
+exports.DEFAULT_SETTINGS = {
+  API_TIMEOUT: 30000,
+  // 30 seconds
+  RETRY_ATTEMPTS: 3,
+  CACHE_TTL: 60 * 5 // 5 minutes
+};
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMmRlcWlxczI3YyIsImFjdHVhbENvdmVyYWdlIiwicyIsImV4cG9ydHMiLCJBUFBfVkVSU0lPTiIsIkJVSUxEX05VTUJFUiIsImIiLCJwcm9jZXNzIiwiZW52IiwiR0lUX0NPTU1JVCIsIkJVSUxEX1BBVEhTIiwicm9vdCIsImN3ZCIsInNyYyIsInB1YmxpYyIsIkRFRkFVTFRfU0VUVElOR1MiLCJBUElfVElNRU9VVCIsIlJFVFJZX0FUVEVNUFRTIiwiQ0FDSEVfVFRMIl0sInNvdXJjZXMiOlsiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL2NvbmZpZy9jb21tb24vY29tbW9uLmNvbnN0YW50cy50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgY29uc3QgQVBQX1ZFUlNJT04gPSAnMC4xLjAnO1xuZXhwb3J0IGNvbnN0IEJVSUxEX05VTUJFUiA9IHByb2Nlc3MuZW52LkJVSUxEX05VTUJFUiB8fCAnMCc7XG5leHBvcnQgY29uc3QgR0lUX0NPTU1JVCA9IHByb2Nlc3MuZW52LkdJVF9DT01NSVQgfHwgJ2Rldic7XG5cbmV4cG9ydCBjb25zdCBCVUlMRF9QQVRIUyA9IHtcbiAgcm9vdDogcHJvY2Vzcy5jd2QoKSxcbiAgc3JjOiAnc3JjJyxcbiAgcHVibGljOiAncHVibGljJyxcbn0gYXMgY29uc3Q7XG5cbmV4cG9ydCBjb25zdCBERUZBVUxUX1NFVFRJTkdTID0ge1xuICBBUElfVElNRU9VVDogMzAwMDAsIC8vIDMwIHNlY29uZHNcbiAgUkVUUllfQVRURU1QVFM6IDMsXG4gIENBQ0hFX1RUTDogNjAgKiA1LCAvLyA1IG1pbnV0ZXNcbn0gYXMgY29uc3Q7XG4iXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0lBY1c7SUFBQUEsY0FBQSxZQUFBQSxDQUFBO01BQUEsT0FBQUMsY0FBQTtJQUFBO0VBQUE7RUFBQSxPQUFBQSxjQUFBO0FBQUE7QUFBQUQsY0FBQTtBQUFBQSxjQUFBLEdBQUFFLENBQUE7Ozs7Ozs7OztBQWRFQyxPQUFBLENBQUFDLFdBQVcsR0FBRyxPQUFPO0FBQUM7QUFBQUosY0FBQSxHQUFBRSxDQUFBO0FBQ3RCQyxPQUFBLENBQUFFLFlBQVk7QUFBRztBQUFBLENBQUFMLGNBQUEsR0FBQU0sQ0FBQSxVQUFBQyxPQUFPLENBQUNDLEdBQUcsQ0FBQ0gsWUFBWTtBQUFBO0FBQUEsQ0FBQUwsY0FBQSxHQUFBTSxDQUFBLFVBQUksR0FBRztBQUFDO0FBQUFOLGNBQUEsR0FBQUUsQ0FBQTtBQUMvQ0MsT0FBQSxDQUFBTSxVQUFVO0FBQUc7QUFBQSxDQUFBVCxjQUFBLEdBQUFNLENBQUEsVUFBQUMsT0FBTyxDQUFDQyxHQUFHLENBQUNDLFVBQVU7QUFBQTtBQUFBLENBQUFULGNBQUEsR0FBQU0sQ0FBQSxVQUFJLEtBQUs7QUFBQztBQUFBTixjQUFBLEdBQUFFLENBQUE7QUFFN0NDLE9BQUEsQ0FBQU8sV0FBVyxHQUFHO0VBQ3pCQyxJQUFJLEVBQUVKLE9BQU8sQ0FBQ0ssR0FBRyxFQUFFO0VBQ25CQyxHQUFHLEVBQUUsS0FBSztFQUNWQyxNQUFNLEVBQUU7Q0FDQTtBQUFDO0FBQUFkLGNBQUEsR0FBQUUsQ0FBQTtBQUVFQyxPQUFBLENBQUFZLGdCQUFnQixHQUFHO0VBQzlCQyxXQUFXLEVBQUUsS0FBSztFQUFFO0VBQ3BCQyxjQUFjLEVBQUUsQ0FBQztFQUNqQkMsU0FBUyxFQUFFLEVBQUUsR0FBRyxDQUFDLENBQUU7Q0FDWCIsImlnbm9yZUxpc3QiOltdfQ==

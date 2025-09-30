@@ -1,0 +1,20 @@
+7c1e19fd5fbfeee9dc4d8e69af82edc7
+"use strict";
+/**
+ * Node.js Mocks
+ *
+ * Mock implementations for Node.js modules and APIs used in testing.
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.setupMockFileSystem = exports.fileSystemScenarios = exports.createMockFileSystem = exports.defaultFsMock = exports.resetFsMock = exports.setupFsMock = exports.mockFs = void 0;
+// File System
+var fs_mock_1 = require("./lib/fs/fs.mock");
+Object.defineProperty(exports, "mockFs", { enumerable: true, get: function () { return fs_mock_1.mockFs; } });
+Object.defineProperty(exports, "setupFsMock", { enumerable: true, get: function () { return fs_mock_1.setupFsMock; } });
+Object.defineProperty(exports, "resetFsMock", { enumerable: true, get: function () { return fs_mock_1.resetFsMock; } });
+Object.defineProperty(exports, "defaultFsMock", { enumerable: true, get: function () { return fs_mock_1.defaultFsMock; } });
+var fs_test_utils_mock_1 = require("./lib/fs/fs-test-utils.mock");
+Object.defineProperty(exports, "createMockFileSystem", { enumerable: true, get: function () { return fs_test_utils_mock_1.createMockFileSystem; } });
+Object.defineProperty(exports, "fileSystemScenarios", { enumerable: true, get: function () { return fs_test_utils_mock_1.fileSystemScenarios; } });
+Object.defineProperty(exports, "setupMockFileSystem", { enumerable: true, get: function () { return fs_test_utils_mock_1.setupMockFileSystem; } });
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL3Rlc3RpbmcvbW9ja3Mvbm9kZS9pbmRleC50cyIsIm1hcHBpbmdzIjoiO0FBQUE7Ozs7R0FJRzs7O0FBRUgsY0FBYztBQUNkLDRDQUFtRjtBQUExRSxpR0FBQSxNQUFNLE9BQUE7QUFBRSxzR0FBQSxXQUFXLE9BQUE7QUFBRSxzR0FBQSxXQUFXLE9BQUE7QUFBRSx3R0FBQSxhQUFhLE9BQUE7QUFDeEQsa0VBSXFDO0FBSG5DLDBIQUFBLG9CQUFvQixPQUFBO0FBQ3BCLHlIQUFBLG1CQUFtQixPQUFBO0FBQ25CLHlIQUFBLG1CQUFtQixPQUFBIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIi9Vc2Vycy9nYW16YXJhbWF6YW5vdi9EZXNrdG9wL2Z1bW8vc3JjL3NoYXJlZC90ZXN0aW5nL21vY2tzL25vZGUvaW5kZXgudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBOb2RlLmpzIE1vY2tzXG4gKlxuICogTW9jayBpbXBsZW1lbnRhdGlvbnMgZm9yIE5vZGUuanMgbW9kdWxlcyBhbmQgQVBJcyB1c2VkIGluIHRlc3RpbmcuXG4gKi9cblxuLy8gRmlsZSBTeXN0ZW1cbmV4cG9ydCB7IG1vY2tGcywgc2V0dXBGc01vY2ssIHJlc2V0RnNNb2NrLCBkZWZhdWx0RnNNb2NrIH0gZnJvbSAnLi9saWIvZnMvZnMubW9jayc7XG5leHBvcnQge1xuICBjcmVhdGVNb2NrRmlsZVN5c3RlbSxcbiAgZmlsZVN5c3RlbVNjZW5hcmlvcyxcbiAgc2V0dXBNb2NrRmlsZVN5c3RlbSxcbn0gZnJvbSAnLi9saWIvZnMvZnMtdGVzdC11dGlscy5tb2NrJztcbiJdLCJ2ZXJzaW9uIjozfQ==

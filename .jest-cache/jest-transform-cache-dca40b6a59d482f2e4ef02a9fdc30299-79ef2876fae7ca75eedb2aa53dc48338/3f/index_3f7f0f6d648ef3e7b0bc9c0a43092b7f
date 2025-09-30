@@ -1,0 +1,21 @@
+93f5d55b262cdffa5884c79174117875
+"use strict";
+/**
+ * Route Configuration Exports
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.MIN_DISPLAY_TIMES = exports.CACHE_TIMES = exports.CacheStrategy = exports.LoaderType = exports.AppRoute = exports.getRouteConfig = exports.getCurrentRouteConfig = void 0;
+// Main configuration functions
+var route_config_1 = require("./route.config");
+Object.defineProperty(exports, "getCurrentRouteConfig", { enumerable: true, get: function () { return route_config_1.getCurrentRouteConfig; } });
+Object.defineProperty(exports, "getRouteConfig", { enumerable: true, get: function () { return route_config_1.getRouteConfig; } });
+// Route enums (needed for route identification)
+var route_enums_1 = require("./route.enums");
+Object.defineProperty(exports, "AppRoute", { enumerable: true, get: function () { return route_enums_1.AppRoute; } });
+Object.defineProperty(exports, "LoaderType", { enumerable: true, get: function () { return route_enums_1.LoaderType; } });
+Object.defineProperty(exports, "CacheStrategy", { enumerable: true, get: function () { return route_enums_1.CacheStrategy; } });
+// Constants (needed for cache management)
+var route_constants_1 = require("./route.constants");
+Object.defineProperty(exports, "CACHE_TIMES", { enumerable: true, get: function () { return route_constants_1.CACHE_TIMES; } });
+Object.defineProperty(exports, "MIN_DISPLAY_TIMES", { enumerable: true, get: function () { return route_constants_1.MIN_DISPLAY_TIMES; } });
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL2NvbmZpZy9yb3V0ZS9pbmRleC50cyIsIm1hcHBpbmdzIjoiO0FBQUE7O0dBRUc7OztBQUVILCtCQUErQjtBQUMvQiwrQ0FBdUU7QUFBOUQscUhBQUEscUJBQXFCLE9BQUE7QUFBRSw4R0FBQSxjQUFjLE9BQUE7QUFFOUMsZ0RBQWdEO0FBQ2hELDZDQUFvRTtBQUEzRCx1R0FBQSxRQUFRLE9BQUE7QUFBRSx5R0FBQSxVQUFVLE9BQUE7QUFBRSw0R0FBQSxhQUFhLE9BQUE7QUFLNUMsMENBQTBDO0FBQzFDLHFEQUFtRTtBQUExRCw4R0FBQSxXQUFXLE9BQUE7QUFBRSxvSEFBQSxpQkFBaUIsT0FBQSIsIm5hbWVzIjpbXSwic291cmNlcyI6WyIvVXNlcnMvZ2FtemFyYW1hemFub3YvRGVza3RvcC9mdW1vL3NyYy9zaGFyZWQvY29uZmlnL3JvdXRlL2luZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogUm91dGUgQ29uZmlndXJhdGlvbiBFeHBvcnRzXG4gKi9cblxuLy8gTWFpbiBjb25maWd1cmF0aW9uIGZ1bmN0aW9uc1xuZXhwb3J0IHsgZ2V0Q3VycmVudFJvdXRlQ29uZmlnLCBnZXRSb3V0ZUNvbmZpZyB9IGZyb20gJy4vcm91dGUuY29uZmlnJztcblxuLy8gUm91dGUgZW51bXMgKG5lZWRlZCBmb3Igcm91dGUgaWRlbnRpZmljYXRpb24pXG5leHBvcnQgeyBBcHBSb3V0ZSwgTG9hZGVyVHlwZSwgQ2FjaGVTdHJhdGVneSB9IGZyb20gJy4vcm91dGUuZW51bXMnO1xuXG4vLyBFc3NlbnRpYWwgdHlwZXMgKG5lZWRlZCBmb3IgVHlwZVNjcmlwdClcbmV4cG9ydCB0eXBlIHsgUm91dGVDb25maWcsIEN1cnJlbnRSb3V0ZUluZm8gfSBmcm9tICcuL3JvdXRlLnR5cGVzJztcblxuLy8gQ29uc3RhbnRzIChuZWVkZWQgZm9yIGNhY2hlIG1hbmFnZW1lbnQpXG5leHBvcnQgeyBDQUNIRV9USU1FUywgTUlOX0RJU1BMQVlfVElNRVMgfSBmcm9tICcuL3JvdXRlLmNvbnN0YW50cyc7XG4iXSwidmVyc2lvbiI6M30=

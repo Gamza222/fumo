@@ -1,0 +1,48 @@
+463abd4e9257d4e2ed9c413ed9aa88cf
+"use strict";
+/**
+ * InitialLoader Widget Logic
+ *
+ * Widget-specific logic and utilities.
+ * Keeps the UI component clean and focused.
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.formatStepName = exports.getLoadingMessage = exports.isProgressComplete = void 0;
+// ============================================================================
+// ANIMATION UTILITIES
+// ============================================================================
+/**
+ * Check if progress has reached completion threshold
+ */
+var isProgressComplete = function (progress) {
+    return progress >= 100;
+};
+exports.isProgressComplete = isProgressComplete;
+/**
+ * Get loading message based on progress
+ */
+var getLoadingMessage = function (currentStep, progress) {
+    if (progress >= 100)
+        return 'Ready!';
+    if (currentStep)
+        return "Loading ".concat(currentStep, "...");
+    return 'Loading...';
+};
+exports.getLoadingMessage = getLoadingMessage;
+// ============================================================================
+// STEP UTILITIES
+// ============================================================================
+/**
+ * Format step name for display
+ */
+var formatStepName = function (stepName) {
+    if (!stepName)
+        return '';
+    // Convert camelCase to Title Case
+    return stepName
+        .replace(/([A-Z])/g, ' $1')
+        .replace(/^./, function (str) { return str.toUpperCase(); })
+        .trim();
+};
+exports.formatStepName = formatStepName;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvd2lkZ2V0cy9Jbml0aWFsTG9hZGVyL2xpYi9saWIudHMiLCJtYXBwaW5ncyI6IjtBQUFBOzs7OztHQUtHOzs7QUFFSCwrRUFBK0U7QUFDL0Usc0JBQXNCO0FBQ3RCLCtFQUErRTtBQUUvRTs7R0FFRztBQUNJLElBQU0sa0JBQWtCLEdBQUcsVUFBQyxRQUFnQjtJQUNqRCxPQUFPLFFBQVEsSUFBSSxHQUFHLENBQUM7QUFDekIsQ0FBQyxDQUFDO0FBRlcsUUFBQSxrQkFBa0Isc0JBRTdCO0FBRUY7O0dBRUc7QUFDSSxJQUFNLGlCQUFpQixHQUFHLFVBQUMsV0FBbUIsRUFBRSxRQUFnQjtJQUNyRSxJQUFJLFFBQVEsSUFBSSxHQUFHO1FBQUUsT0FBTyxRQUFRLENBQUM7SUFDckMsSUFBSSxXQUFXO1FBQUUsT0FBTyxrQkFBVyxXQUFXLFFBQUssQ0FBQztJQUNwRCxPQUFPLFlBQVksQ0FBQztBQUN0QixDQUFDLENBQUM7QUFKVyxRQUFBLGlCQUFpQixxQkFJNUI7QUFFRiwrRUFBK0U7QUFDL0UsaUJBQWlCO0FBQ2pCLCtFQUErRTtBQUUvRTs7R0FFRztBQUNJLElBQU0sY0FBYyxHQUFHLFVBQUMsUUFBZ0I7SUFDN0MsSUFBSSxDQUFDLFFBQVE7UUFBRSxPQUFPLEVBQUUsQ0FBQztJQUV6QixrQ0FBa0M7SUFDbEMsT0FBTyxRQUFRO1NBQ1osT0FBTyxDQUFDLFVBQVUsRUFBRSxLQUFLLENBQUM7U0FDMUIsT0FBTyxDQUFDLElBQUksRUFBRSxVQUFDLEdBQUcsSUFBSyxPQUFBLEdBQUcsQ0FBQyxXQUFXLEVBQUUsRUFBakIsQ0FBaUIsQ0FBQztTQUN6QyxJQUFJLEVBQUUsQ0FBQztBQUNaLENBQUMsQ0FBQztBQVJXLFFBQUEsY0FBYyxrQkFRekIiLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvd2lkZ2V0cy9Jbml0aWFsTG9hZGVyL2xpYi9saWIudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBJbml0aWFsTG9hZGVyIFdpZGdldCBMb2dpY1xuICpcbiAqIFdpZGdldC1zcGVjaWZpYyBsb2dpYyBhbmQgdXRpbGl0aWVzLlxuICogS2VlcHMgdGhlIFVJIGNvbXBvbmVudCBjbGVhbiBhbmQgZm9jdXNlZC5cbiAqL1xuXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4vLyBBTklNQVRJT04gVVRJTElUSUVTXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG5cbi8qKlxuICogQ2hlY2sgaWYgcHJvZ3Jlc3MgaGFzIHJlYWNoZWQgY29tcGxldGlvbiB0aHJlc2hvbGRcbiAqL1xuZXhwb3J0IGNvbnN0IGlzUHJvZ3Jlc3NDb21wbGV0ZSA9IChwcm9ncmVzczogbnVtYmVyKTogYm9vbGVhbiA9PiB7XG4gIHJldHVybiBwcm9ncmVzcyA+PSAxMDA7XG59O1xuXG4vKipcbiAqIEdldCBsb2FkaW5nIG1lc3NhZ2UgYmFzZWQgb24gcHJvZ3Jlc3NcbiAqL1xuZXhwb3J0IGNvbnN0IGdldExvYWRpbmdNZXNzYWdlID0gKGN1cnJlbnRTdGVwOiBzdHJpbmcsIHByb2dyZXNzOiBudW1iZXIpOiBzdHJpbmcgPT4ge1xuICBpZiAocHJvZ3Jlc3MgPj0gMTAwKSByZXR1cm4gJ1JlYWR5ISc7XG4gIGlmIChjdXJyZW50U3RlcCkgcmV0dXJuIGBMb2FkaW5nICR7Y3VycmVudFN0ZXB9Li4uYDtcbiAgcmV0dXJuICdMb2FkaW5nLi4uJztcbn07XG5cbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbi8vIFNURVAgVVRJTElUSUVTXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG5cbi8qKlxuICogRm9ybWF0IHN0ZXAgbmFtZSBmb3IgZGlzcGxheVxuICovXG5leHBvcnQgY29uc3QgZm9ybWF0U3RlcE5hbWUgPSAoc3RlcE5hbWU6IHN0cmluZyk6IHN0cmluZyA9PiB7XG4gIGlmICghc3RlcE5hbWUpIHJldHVybiAnJztcblxuICAvLyBDb252ZXJ0IGNhbWVsQ2FzZSB0byBUaXRsZSBDYXNlXG4gIHJldHVybiBzdGVwTmFtZVxuICAgIC5yZXBsYWNlKC8oW0EtWl0pL2csICcgJDEnKVxuICAgIC5yZXBsYWNlKC9eLi8sIChzdHIpID0+IHN0ci50b1VwcGVyQ2FzZSgpKVxuICAgIC50cmltKCk7XG59O1xuIl0sInZlcnNpb24iOjN9

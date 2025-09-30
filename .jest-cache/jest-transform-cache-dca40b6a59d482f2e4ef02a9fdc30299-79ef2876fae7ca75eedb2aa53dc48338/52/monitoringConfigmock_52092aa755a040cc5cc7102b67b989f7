@@ -1,0 +1,277 @@
+5968ecc912f431a0bea895ad3c2586ac
+"use strict";
+/**
+ * Monitoring Configuration Mock
+ *
+ * Mock configuration factory for monitoring-related configurations.
+ * Provides consistent test configurations across all monitoring tests.
+ */
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.mergeConfigs = exports.createConfigForScenario = exports.mockDisabledConfig = exports.mockMinimalConfig = exports.mockProductionConfig = exports.mockDevelopmentConfig = exports.mockDashboardConfig = exports.mockAlertsConfig = exports.mockAnalyticsConfig = exports.mockHealthCheckConfig = exports.mockMonitoringConfig = exports.createMonitoringConfig = void 0;
+// ============================================================================
+// BASE CONFIGURATION GENERATORS
+// ============================================================================
+/**
+ * Create a monitoring configuration with customizable options
+ */
+var createMonitoringConfig = function (overrides) {
+    if (overrides === void 0) { overrides = {}; }
+    return __assign({ healthCheck: {
+            enabled: true,
+            interval: 30000,
+            timeout: 5000,
+            services: ['database', 'api', 'cache', 'storage'],
+        }, analytics: {
+            enabled: true,
+            respectDoNotTrack: true,
+            anonymizeIp: true,
+            sampleRate: 1.0,
+            debug: false,
+        }, alerts: {
+            enabled: true,
+        }, dashboard: {
+            refreshInterval: 10000,
+            maxAlerts: 100,
+            maxMetrics: 1000,
+        } }, overrides);
+};
+exports.createMonitoringConfig = createMonitoringConfig;
+// ============================================================================
+// DEFAULT CONFIGURATIONS
+// ============================================================================
+/**
+ * Default monitoring configuration for testing
+ */
+exports.mockMonitoringConfig = (0, exports.createMonitoringConfig)();
+/**
+ * Health check specific configuration
+ */
+exports.mockHealthCheckConfig = (0, exports.createMonitoringConfig)({
+    healthCheck: {
+        enabled: true,
+        interval: 15000,
+        timeout: 3000,
+        services: ['database', 'api'],
+    },
+    analytics: {
+        enabled: false,
+        respectDoNotTrack: true,
+        anonymizeIp: true,
+        sampleRate: 1.0,
+        debug: false,
+    },
+    alerts: {
+        enabled: false,
+    },
+});
+/**
+ * Analytics specific configuration
+ */
+exports.mockAnalyticsConfig = (0, exports.createMonitoringConfig)({
+    analytics: {
+        enabled: true,
+        respectDoNotTrack: true,
+        anonymizeIp: true,
+        sampleRate: 0.5,
+        debug: true,
+    },
+    healthCheck: {
+        enabled: false,
+        interval: 30000,
+        timeout: 5000,
+        services: [],
+    },
+    alerts: {
+        enabled: false,
+    },
+});
+/**
+ * Alerts specific configuration
+ */
+exports.mockAlertsConfig = (0, exports.createMonitoringConfig)({
+    alerts: {
+        enabled: true,
+        webhook: 'https://hooks.slack.com/services/test',
+        email: 'alerts@company.com',
+    },
+    healthCheck: {
+        enabled: true,
+        interval: 10000,
+        timeout: 2000,
+        services: ['database', 'api', 'cache'],
+    },
+});
+/**
+ * Dashboard specific configuration
+ */
+exports.mockDashboardConfig = (0, exports.createMonitoringConfig)({
+    dashboard: {
+        refreshInterval: 5000,
+        maxAlerts: 50,
+        maxMetrics: 500,
+    },
+});
+// ============================================================================
+// SPECIALIZED CONFIGURATIONS
+// ============================================================================
+/**
+ * Development environment configuration
+ */
+exports.mockDevelopmentConfig = (0, exports.createMonitoringConfig)({
+    analytics: {
+        enabled: true,
+        respectDoNotTrack: false,
+        anonymizeIp: false,
+        sampleRate: 1.0,
+        debug: true,
+    },
+    healthCheck: {
+        enabled: true,
+        interval: 10000,
+        timeout: 2000,
+        services: ['database', 'api', 'cache', 'storage'],
+    },
+    alerts: {
+        enabled: true,
+        webhook: 'https://dev-hooks.slack.com/services/test',
+    },
+});
+/**
+ * Production environment configuration
+ */
+exports.mockProductionConfig = (0, exports.createMonitoringConfig)({
+    analytics: {
+        enabled: true,
+        respectDoNotTrack: true,
+        anonymizeIp: true,
+        sampleRate: 0.1,
+        debug: false,
+    },
+    healthCheck: {
+        enabled: true,
+        interval: 60000,
+        timeout: 10000,
+        services: ['database', 'api', 'cache', 'storage'],
+    },
+    alerts: {
+        enabled: true,
+        webhook: 'https://prod-hooks.slack.com/services/prod',
+        email: 'prod-alerts@company.com',
+    },
+});
+/**
+ * Minimal configuration for basic testing
+ */
+exports.mockMinimalConfig = (0, exports.createMonitoringConfig)({
+    healthCheck: {
+        enabled: true,
+        interval: 30000,
+        timeout: 5000,
+        services: ['database'],
+    },
+    analytics: {
+        enabled: false,
+        respectDoNotTrack: true,
+        anonymizeIp: true,
+        sampleRate: 1.0,
+        debug: false,
+    },
+    alerts: {
+        enabled: false,
+    },
+    dashboard: {
+        refreshInterval: 10000,
+        maxAlerts: 10,
+        maxMetrics: 100,
+    },
+});
+/**
+ * Disabled configuration
+ */
+exports.mockDisabledConfig = (0, exports.createMonitoringConfig)({
+    healthCheck: {
+        enabled: false,
+        interval: 30000,
+        timeout: 5000,
+        services: [],
+    },
+    analytics: {
+        enabled: false,
+        respectDoNotTrack: true,
+        anonymizeIp: true,
+        sampleRate: 1.0,
+        debug: false,
+    },
+    alerts: {
+        enabled: false,
+    },
+});
+// ============================================================================
+// CONFIGURATION UTILITIES
+// ============================================================================
+/**
+ * Create configuration for specific test scenario
+ */
+var createConfigForScenario = function (scenario) {
+    switch (scenario) {
+        case 'healthy':
+            return exports.mockMonitoringConfig;
+        case 'unhealthy':
+            return (0, exports.createMonitoringConfig)({
+                healthCheck: {
+                    enabled: true,
+                    interval: 5000,
+                    timeout: 1000,
+                    services: ['database', 'api', 'cache', 'storage'],
+                },
+                alerts: {
+                    enabled: true,
+                    webhook: 'https://alerts.company.com/webhook',
+                },
+            });
+        case 'degraded':
+            return (0, exports.createMonitoringConfig)({
+                healthCheck: {
+                    enabled: true,
+                    interval: 10000,
+                    timeout: 3000,
+                    services: ['database', 'api'],
+                },
+            });
+        case 'minimal':
+            return exports.mockMinimalConfig;
+        case 'disabled':
+            return exports.mockDisabledConfig;
+        default:
+            return exports.mockMonitoringConfig;
+    }
+};
+exports.createConfigForScenario = createConfigForScenario;
+/**
+ * Merge configurations for complex test scenarios
+ */
+var mergeConfigs = function () {
+    var configs = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        configs[_i] = arguments[_i];
+    }
+    var result = __assign({}, exports.mockMonitoringConfig);
+    for (var _a = 0, configs_1 = configs; _a < configs_1.length; _a++) {
+        var config = configs_1[_a];
+        result = __assign(__assign(__assign({}, result), config), { healthCheck: __assign(__assign({}, result.healthCheck), config.healthCheck), analytics: __assign(__assign({}, result.analytics), config.analytics), alerts: __assign(__assign({}, result.alerts), config.alerts), dashboard: __assign(__assign({}, result.dashboard), config.dashboard) });
+    }
+    return result;
+};
+exports.mergeConfigs = mergeConfigs;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL3Rlc3RpbmcvbW9ja3MvaW5mcmFzdHJ1Y3R1cmUvbGliL21vbml0b3JpbmcvbW9uaXRvcmluZ0NvbmZpZy5tb2NrLnRzIiwibWFwcGluZ3MiOiI7QUFBQTs7Ozs7R0FLRzs7Ozs7Ozs7Ozs7Ozs7QUFJSCwrRUFBK0U7QUFDL0UsZ0NBQWdDO0FBQ2hDLCtFQUErRTtBQUUvRTs7R0FFRztBQUNJLElBQU0sc0JBQXNCLEdBQUcsVUFDcEMsU0FBeUM7SUFBekMsMEJBQUEsRUFBQSxjQUF5QztJQUV6QyxrQkFDRSxXQUFXLEVBQUU7WUFDWCxPQUFPLEVBQUUsSUFBSTtZQUNiLFFBQVEsRUFBRSxLQUFLO1lBQ2YsT0FBTyxFQUFFLElBQUk7WUFDYixRQUFRLEVBQUUsQ0FBQyxVQUFVLEVBQUUsS0FBSyxFQUFFLE9BQU8sRUFBRSxTQUFTLENBQUM7U0FDbEQsRUFDRCxTQUFTLEVBQUU7WUFDVCxPQUFPLEVBQUUsSUFBSTtZQUNiLGlCQUFpQixFQUFFLElBQUk7WUFDdkIsV0FBVyxFQUFFLElBQUk7WUFDakIsVUFBVSxFQUFFLEdBQUc7WUFDZixLQUFLLEVBQUUsS0FBSztTQUNiLEVBQ0QsTUFBTSxFQUFFO1lBQ04sT0FBTyxFQUFFLElBQUk7U0FDZCxFQUNELFNBQVMsRUFBRTtZQUNULGVBQWUsRUFBRSxLQUFLO1lBQ3RCLFNBQVMsRUFBRSxHQUFHO1lBQ2QsVUFBVSxFQUFFLElBQUk7U0FDakIsSUFDRSxTQUFTLEVBQ1o7QUFDSixDQUFDLENBQUM7QUEzQlcsUUFBQSxzQkFBc0IsMEJBMkJqQztBQUVGLCtFQUErRTtBQUMvRSx5QkFBeUI7QUFDekIsK0VBQStFO0FBRS9FOztHQUVHO0FBQ1UsUUFBQSxvQkFBb0IsR0FBcUIsSUFBQSw4QkFBc0IsR0FBRSxDQUFDO0FBRS9FOztHQUVHO0FBQ1UsUUFBQSxxQkFBcUIsR0FBcUIsSUFBQSw4QkFBc0IsRUFBQztJQUM1RSxXQUFXLEVBQUU7UUFDWCxPQUFPLEVBQUUs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SUFBTSxNQUFNLGdCQUFBO1FBQ2YsTUFBTSxrQ0FDRCxNQUFNLEdBQ04sTUFBTSxLQUNULFdBQVcsd0JBQU8sTUFBTSxDQUFDLFdBQVcsR0FBSyxNQUFNLENBQUMsV0FBVyxHQUMzRCxTQUFTLHdCQUFPLE1BQU0sQ0FBQyxTQUFTLEdBQUssTUFBTSxDQUFDLFNBQVMsR0FDckQsTUFBTSx3QkFBTyxNQUFNLENBQUMsTUFBTSxHQUFLLE1BQU0sQ0FBQyxNQUFNLEdBQzVDLFNBQVMsd0JBQU8sTUFBTSxDQUFDLFNBQVMsR0FBSyxNQUFNLENBQUMsU0FBUyxJQUN0RCxDQUFDO0lBQ0osQ0FBQztJQUVELE9BQU8sTUFBTSxDQUFDO0FBQ2hCLENBQUMsQ0FBQztBQWZXLFFBQUEsWUFBWSxnQkFldkIiLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL3Rlc3RpbmcvbW9ja3MvaW5mcmFzdHJ1Y3R1cmUvbGliL21vbml0b3JpbmcvbW9uaXRvcmluZ0NvbmZpZy5tb2NrLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogTW9uaXRvcmluZyBDb25maWd1cmF0aW9uIE1vY2tcbiAqXG4gKiBNb2NrIGNvbmZpZ3VyYXRpb24gZmFjdG9yeSBmb3IgbW9uaXRvcmluZy1yZWxhdGVkIGNvbmZpZ3VyYXRpb25zLlxuICogUHJvdmlkZXMgY29uc2lzdGVudCB0ZXN0IGNvbmZpZ3VyYXRpb25zIGFjcm9zcyBhbGwgbW9uaXRvcmluZyB0ZXN0cy5cbiAqL1xuXG5pbXBvcnQgeyBNb25pdG9yaW5nQ29uZmlnIH0gZnJvbSAnQC9pbmZyYXN0cnVjdHVyZS9tb25pdG9yaW5nL3R5cGVzL21vbml0b3JpbmcudHlwZXMnO1xuXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4vLyBCQVNFIENPTkZJR1VSQVRJT04gR0VORVJBVE9SU1xuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuXG4vKipcbiAqIENyZWF0ZSBhIG1vbml0b3JpbmcgY29uZmlndXJhdGlvbiB3aXRoIGN1c3RvbWl6YWJsZSBvcHRpb25zXG4gKi9cbmV4cG9ydCBjb25zdCBjcmVhdGVNb25pdG9yaW5nQ29uZmlnID0gKFxuICBvdmVycmlkZXM6IFBhcnRpYWw8TW9uaXRvcmluZ0NvbmZpZz4gPSB7fVxuKTogTW9uaXRvcmluZ0NvbmZpZyA9PiB7XG4gIHJldHVybiB7XG4gICAgaGVhbHRoQ2hlY2s6IHtcbiAgICAgIGVuYWJsZWQ6IHRydWUsXG4gICAgICBpbnRlcnZhbDogMzAwMDAsXG4gICAgICB0aW1lb3V0OiA1MDAwLFxuICAgICAgc2VydmljZXM6IFsnZGF0YWJhc2UnLCAnYXBpJywgJ2NhY2hlJywgJ3N0b3JhZ2UnXSxcbiAgICB9LFxuICAgIGFuYWx5dGljczoge1xuICAgICAgZW5hYmxlZDogdHJ1ZSxcbiAgICAgIHJlc3BlY3REb05vdFRyYWNrOiB0cnVlLFxuICAgICAgYW5vbnltaXplSXA6IHRydWUsXG4gICAgICBzYW1wbGVSYXRlOiAxLjAsXG4gICAgICBkZWJ1ZzogZmFsc2UsXG4gICAgfSxcbiAgICBhbGVydHM6IHtcbiAgICAgIGVuYWJsZWQ6IHRydWUsXG4gICAgfSxcbiAgICBkYXNoYm9hcmQ6IHtcbiAgICAgIHJlZnJlc2hJbnRlcnZhbDogMTAwMDAsXG4gICAgICBtYXhBbGVydHM6IDEwMCxcbiAgICAgIG1heE1ldHJpY3M6IDEwMDAsXG4gICAgfSxcbiAgICAuLi5vdmVycmlkZXMsXG4gIH07XG59O1xuXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4vLyBERUZBVUxUIENPTkZJR1VSQVRJT05TXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG5cbi8qKlxuICogRGVmYXVsdCBtb25pdG9yaW5nIGNvbmZpZ3VyYXRpb24gZm9yIHRlc3RpbmdcbiAqL1xuZXhwb3J0IGNvbnN0IG1vY2tNb25pdG9yaW5nQ29uZmlnOiBNb25pdG9yaW5nQ29uZmlnID0gY3JlYXRlTW9uaXRvcmluZ0NvbmZpZygpO1xuXG4vKipcbiAqIEhlYWx0aCBjaGVjayBzcGVjaWZpYyBjb25maWd1cmF0aW9uXG4gKi9cbmV4cG9ydCBjb25zdCBtb2NrSGVhbHRoQ2hlY2tDb25maWc6IE1vbml0b3JpbmdDb25maWcgPSBjcmVhdGVNb25pdG9yaW5nQ29uZmlnKHtcbiAgaGVhbHRoQ2hlY2s6IHtcbiAgICBlbmFibGVkOiB0cnVlLFxuICAgIGludGVydmFsOiAxNTAwMCxcbiAgICB0aW1lb3V0OiAzMDAwLFxuICAgIHNlcnZpY2VzOiBbJ2RhdGFiYXNlJywgJ2FwaSddLFxuICB9LFxuICBhbmFseXRpY3M6IHtcbiAgICBlbmFibGVkOiBmYWxzZSxcbiAgICByZXNwZWN0RG9Ob3RUcmFjazogdHJ1ZSxcbiAgICBhbm9ueW1pemVJcDogdHJ1ZSxcbiAgICBzYW1wbGVSYXRlOiAxLjAsXG4gICAgZGVidWc6IGZhbHNlLFxuICB9LFxuICBhbGVydHM6IHtcbiAgICBlbmFibGVkOiBmYWxzZSxcbiAgfSxcbn0pO1xuXG4vKipcbiAqIEFuYWx5dGljcyBzcGVjaWZpYyBjb25maWd1cmF0aW9uXG4gKi9cbmV4cG9ydCBjb25zdCBtb2NrQW5hbHl0aWNzQ29uZmlnOiBNb25pdG9yaW5nQ29uZmlnID0gY3JlYXRlTW9uaXRvcmluZ0NvbmZpZyh7XG4gIGFuYWx5dGljczoge1xuICAgIGVuYWJsZWQ6IHRydWUsXG4gICAgcmVzcGVjdERvTm90VHJhY2s6IHRydWUsXG4gICAgYW5vbnltaXplSXA6IHRydWUsXG4gICAgc2FtcGxlUmF0ZTogMC41LFxuICAgIGRlYnVnOiB0cnVlLFxuICB9LFxuICBoZWFsdGhDaGVjazoge1xuICAgIGVuYWJsZWQ6IGZhbHNlLFxuICAgIGludGVydmFsOiAzMDAwMCxcbiAgICB0aW1lb3V0OiA1MDAwLFxuICAgIHNlcnZpY2VzOiBbXSxcbiAgfSxcbiAgYWxlcnRzOiB7XG4gICAgZW5hYmxlZDogZmFsc2UsXG4gIH0sXG59KTtcblxuLyoqXG4gKiBBbGVydHMgc3BlY2lmaWMgY29uZmlndXJhdGlvblxuICovXG5leHBvcnQgY29uc3QgbW9ja0FsZXJ0c0NvbmZpZzogTW9uaXRvcmluZ0NvbmZpZyA9IGNyZWF0ZU1vbml0b3JpbmdDb25maWcoe1xuICBhbGVydHM6IHtcbiAgICBlbmFibGVkOiB0cnVlLFxuICAgIHdlYmhvb2s6ICdodHRwczovL2hvb2tzLnNsYWNrLmNvbS9zZXJ2aWNlcy90ZXN0JyxcbiAgICBlbWFpbDogJ2FsZXJ0c0Bjb21wYW55LmNvbScsXG4gIH0sXG4gIGhlYWx0aENoZWNrOiB7XG4gICAgZW5hYmxlZDogdHJ1ZSxcbiAgICBpbnRlcnZhbDogMTAwMDAsXG4gICAgdGltZW91dDogMjAwMCxcbiAgICBzZXJ2aWNlczogWydkYXRhYmFzZScsICdhcGknLCAnY2FjaGUnXSxcbiAgfSxcbn0pO1xuXG4vKipcbiAqIERhc2hib2FyZCBzcGVjaWZpYyBjb25maWd1cmF0aW9uXG4gKi9cbmV4cG9ydCBjb25zdCBtb2NrRGFzaGJvYXJkQ29uZmlnOiBNb25pdG9yaW5nQ29uZmlnID0gY3JlYXRlTW9uaXRvcmluZ0NvbmZpZyh7XG4gIGRhc2hib2FyZDoge1xuICAgIHJlZnJlc2hJbnRlcnZhbDogNTAwMCxcbiAgICBtYXhBbGVydHM6IDUwLFxuICAgIG1heE1ldHJpY3M6IDUwMCxcbiAgfSxcbn0pO1xuXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4vLyBTUEVDSUFMSVpFRCBDT05GSUdVUkFUSU9OU1xuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuXG4vKipcbiAqIERldmVsb3BtZW50IGVudmlyb25tZW50IGNvbmZpZ3VyYXRpb25cbiAqL1xuZXhwb3J0IGNvbnN0IG1vY2tEZXZlbG9wbWVudENvbmZpZzogTW9uaXRvcmluZ0NvbmZpZyA9IGNyZWF0ZU1vbml0b3JpbmdDb25maWcoe1xuICBhbmFseXRpY3M6IHtcbiAgICBlbmFibGVkOiB0cnVlLFxuICAgIHJlc3BlY3REb05vdFRyYWNrOiBmYWxzZSxcbiAgICBhbm9ueW1pemVJcDogZmFsc2UsXG4gICAgc2FtcGxlUmF0ZTogMS4wLFxuICAgIGRlYnVnOiB0cnVlLFxuICB9LFxuICBoZWFsdGhDaGVjazoge1xuICAgIGVuYWJsZWQ6IHRydWUsXG4gICAgaW50ZXJ2YWw6IDEwMDAwLFxuICAgIHRpbWVvdXQ6IDIwMDAsXG4gICAgc2VydmljZXM6IFsnZGF0YWJhc2UnLCAnYXBpJywgJ2NhY2hlJywgJ3N0b3JhZ2UnXSxcbiAgfSxcbiAgYWxlcnRzOiB7XG4gICAgZW5hYmxlZDogdHJ1ZSxcbiAgICB3ZWJob29rOiAnaHR0cHM6Ly9kZXYtaG9va3Muc2xhY2suY29tL3NlcnZpY2VzL3Rlc3QnLFxuICB9LFxufSk7XG5cbi8qKlxuICogUHJvZHVjdGlvbiBlbnZpcm9ubWVudCBjb25maWd1cmF0aW9uXG4gKi9cbmV4cG9ydCBjb25zdCBtb2NrUHJvZHVjdGlvbkNvbmZpZzogTW9uaXRvcmluZ0NvbmZpZyA9IGNyZWF0ZU1vbml0b3JpbmdDb25maWcoe1xuICBhbmFseXRpY3M6IHtcbiAgICBlbmFibGVkOiB0cnVlLFxuICAgIHJlc3BlY3REb05vdFRyYWNrOiB0cnVlLFxuICAgIGFub255bWl6ZUlwOiB0cnVlLFxuICAgIHNhbXBsZVJhdGU6IDAuMSxcbiAgICBkZWJ1ZzogZmFsc2UsXG4gIH0sXG4gIGhlYWx0aENoZWNrOiB7XG4gICAgZW5hYmxlZDogdHJ1ZSxcbiAgICBpbnRlcnZhbDogNjAwMDAsXG4gICAgdGltZW91dDogMTAwMDAsXG4gICAgc2VydmljZXM6IFsnZGF0YWJhc2UnLCAnYXBpJywgJ2NhY2hlJywgJ3N0b3JhZ2UnXSxcbiAgfSxcbiAgYWxlcnRzOiB7XG4gICAgZW5hYmxlZDogdHJ1ZSxcbiAgICB3ZWJob29rOiAnaHR0cHM6Ly9wcm9kLWhvb2tzLnNsYWNrLmNvbS9zZXJ2aWNlcy9wcm9kJyxcbiAgICBlbWFpbDogJ3Byb2QtYWxlcnRzQGNvbXBhbnkuY29tJyxcbiAgfSxcbn0pO1xuXG4vKipcbiAqIE1pbmltYWwgY29uZmlndXJhdGlvbiBmb3IgYmFzaWMgdGVzdGluZ1xuICovXG5leHBvcnQgY29uc3QgbW9ja01pbmltYWxDb25maWc6IE1vbml0b3JpbmdDb25maWcgPSBjcmVhdGVNb25pdG9yaW5nQ29uZmlnKHtcbiAgaGVhbHRoQ2hlY2s6IHtcbiAgICBlbmFibGVkOiB0cnVlLFxuICAgIGludGVydmFsOiAzMDAwMCxcbiAgICB0aW1lb3V0OiA1MDAwLFxuICAgIHNlcnZpY2VzOiBbJ2RhdGFiYXNlJ10sXG4gIH0sXG4gIGFuYWx5dGljczoge1xuICAgIGVuYWJsZWQ6IGZhbHNlLFxuICAgIHJlc3BlY3REb05vdFRyYWNrOiB0cnVlLFxuICAgIGFub255bWl6ZUlwOiB0cnVlLFxuICAgIHNhbXBsZVJhdGU6IDEuMCxcbiAgICBkZWJ1ZzogZmFsc2UsXG4gIH0sXG4gIGFsZXJ0czoge1xuICAgIGVuYWJsZWQ6IGZhbHNlLFxuICB9LFxuICBkYXNoYm9hcmQ6IHtcbiAgICByZWZyZXNoSW50ZXJ2YWw6IDEwMDAwLFxuICAgIG1heEFsZXJ0czogMTAsXG4gICAgbWF4TWV0cmljczogMTAwLFxuICB9LFxufSk7XG5cbi8qKlxuICogRGlzYWJsZWQgY29uZmlndXJhdGlvblxuICovXG5leHBvcnQgY29uc3QgbW9ja0Rpc2FibGVkQ29uZmlnOiBNb25pdG9yaW5nQ29uZmlnID0gY3JlYXRlTW9uaXRvcmluZ0NvbmZpZyh7XG4gIGhlYWx0aENoZWNrOiB7XG4gICAgZW5hYmxlZDogZmFsc2UsXG4gICAgaW50ZXJ2YWw6IDMwMDAwLFxuICAgIHRpbWVvdXQ6IDUwMDAsXG4gICAgc2VydmljZXM6IFtdLFxuICB9LFxuICBhbmFseXRpY3M6IHtcbiAgICBlbmFibGVkOiBmYWxzZSxcbiAgICByZXNwZWN0RG9Ob3RUcmFjazogdHJ1ZSxcbiAgICBhbm9ueW1pemVJcDogdHJ1ZSxcbiAgICBzYW1wbGVSYXRlOiAxLjAsXG4gICAgZGVidWc6IGZhbHNlLFxuICB9LFxuICBhbGVydHM6IHtcbiAgICBlbmFibGVkOiBmYWxzZSxcbiAgfSxcbn0pO1xuXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4vLyBDT05GSUdVUkFUSU9OIFVUSUxJVElFU1xuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuXG4vKipcbiAqIENyZWF0ZSBjb25maWd1cmF0aW9uIGZvciBzcGVjaWZpYyB0ZXN0IHNjZW5hcmlvXG4gKi9cbmV4cG9ydCBjb25zdCBjcmVhdGVDb25maWdGb3JTY2VuYXJpbyA9IChcbiAgc2NlbmFyaW86ICdoZWFsdGh5JyB8ICd1bmhlYWx0aHknIHwgJ2RlZ3JhZGVkJyB8ICdtaW5pbWFsJyB8ICdkaXNhYmxlZCdcbik6IE1vbml0b3JpbmdDb25maWcgPT4ge1xuICBzd2l0Y2ggKHNjZW5hcmlvKSB7XG4gICAgY2FzZSAnaGVhbHRoeSc6XG4gICAgICByZXR1cm4gbW9ja01vbml0b3JpbmdDb25maWc7XG4gICAgY2FzZSAndW5oZWFsdGh5JzpcbiAgICAgIHJldHVybiBjcmVhdGVNb25pdG9yaW5nQ29uZmlnKHtcbiAgICAgICAgaGVhbHRoQ2hlY2s6IHtcbiAgICAgICAgICBlbmFibGVkOiB0cnVlLFxuICAgICAgICAgIGludGVydmFsOiA1MDAwLFxuICAgICAgICAgIHRpbWVvdXQ6IDEwMDAsXG4gICAgICAgICAgc2VydmljZXM6IFsnZGF0YWJhc2UnLCAnYXBpJywgJ2NhY2hlJywgJ3N0b3JhZ2UnXSxcbiAgICAgICAgfSxcbiAgICAgICAgYWxlcnRzOiB7XG4gICAgICAgICAgZW5hYmxlZDogdHJ1ZSxcbiAgICAgICAgICB3ZWJob29rOiAnaHR0cHM6Ly9hbGVydHMuY29tcGFueS5jb20vd2ViaG9vaycsXG4gICAgICAgIH0sXG4gICAgICB9KTtcbiAgICBjYXNlICdkZWdyYWRlZCc6XG4gICAgICByZXR1cm4gY3JlYXRlTW9uaXRvcmluZ0NvbmZpZyh7XG4gICAgICAgIGhlYWx0aENoZWNrOiB7XG4gICAgICAgICAgZW5hYmxlZDogdHJ1ZSxcbiAgICAgICAgICBpbnRlcnZhbDogMTAwMDAsXG4gICAgICAgICAgdGltZW91dDogMzAwMCxcbiAgICAgICAgICBzZXJ2aWNlczogWydkYXRhYmFzZScsICdhcGknXSxcbiAgICAgICAgfSxcbiAgICAgIH0pO1xuICAgIGNhc2UgJ21pbmltYWwnOlxuICAgICAgcmV0dXJuIG1vY2tNaW5pbWFsQ29uZmlnO1xuICAgIGNhc2UgJ2Rpc2FibGVkJzpcbiAgICAgIHJldHVybiBtb2NrRGlzYWJsZWRDb25maWc7XG4gICAgZGVmYXVsdDpcbiAgICAgIHJldHVybiBtb2NrTW9uaXRvcmluZ0NvbmZpZztcbiAgfVxufTtcblxuLyoqXG4gKiBNZXJnZSBjb25maWd1cmF0aW9ucyBmb3IgY29tcGxleCB0ZXN0IHNjZW5hcmlvc1xuICovXG5leHBvcnQgY29uc3QgbWVyZ2VDb25maWdzID0gKC4uLmNvbmZpZ3M6IFBhcnRpYWw8TW9uaXRvcmluZ0NvbmZpZz5bXSk6IE1vbml0b3JpbmdDb25maWcgPT4ge1xuICBsZXQgcmVzdWx0ID0geyAuLi5tb2NrTW9uaXRvcmluZ0NvbmZpZyB9O1xuXG4gIGZvciAoY29uc3QgY29uZmlnIG9mIGNvbmZpZ3MpIHtcbiAgICByZXN1bHQgPSB7XG4gICAgICAuLi5yZXN1bHQsXG4gICAgICAuLi5jb25maWcsXG4gICAgICBoZWFsdGhDaGVjazogeyAuLi5yZXN1bHQuaGVhbHRoQ2hlY2ssIC4uLmNvbmZpZy5oZWFsdGhDaGVjayB9LFxuICAgICAgYW5hbHl0aWNzOiB7IC4uLnJlc3VsdC5hbmFseXRpY3MsIC4uLmNvbmZpZy5hbmFseXRpY3MgfSxcbiAgICAgIGFsZXJ0czogeyAuLi5yZXN1bHQuYWxlcnRzLCAuLi5jb25maWcuYWxlcnRzIH0sXG4gICAgICBkYXNoYm9hcmQ6IHsgLi4ucmVzdWx0LmRhc2hib2FyZCwgLi4uY29uZmlnLmRhc2hib2FyZCB9LFxuICAgIH07XG4gIH1cblxuICByZXR1cm4gcmVzdWx0O1xufTtcbiJdLCJ2ZXJzaW9uIjozfQ==

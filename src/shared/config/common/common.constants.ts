@@ -2,10 +2,6 @@ export const APP_VERSION = '0.1.0';
 export const BUILD_NUMBER = process.env.BUILD_NUMBER || '0';
 export const GIT_COMMIT = process.env.GIT_COMMIT || 'dev';
 
-export const ROUTES = {
-  HOME: '/',
-} as const;
-
 export const BUILD_PATHS = {
   root: process.cwd(),
   src: 'src',

@@ -1,0 +1,74 @@
+51665efb3e5ddb5a7fe1cc327cbb282f
+"use strict";
+/**
+ * Monitoring Mocks
+ *
+ * Centralized exports for all monitoring-related mocks.
+ * Follows the established mock factory pattern for enterprise testing.
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.mergeConfigs = exports.createConfigForScenario = exports.mockDisabledConfig = exports.mockMinimalConfig = exports.mockProductionConfig = exports.mockDevelopmentConfig = exports.mockDashboardConfig = exports.mockAlertsConfig = exports.mockAnalyticsConfig = exports.mockHealthCheckConfig = exports.mockMonitoringConfig = exports.createMonitoringConfig = exports.createCustomDashboardData = exports.generateAlertsArray = exports.generateServiceHealthArray = exports.mockMetrics = exports.mockAlerts = exports.mockAnalyticsEvent = exports.mockAnalyticsSession = exports.mockDashboardDataNoAlerts = exports.mockDashboardDataWithAlerts = exports.mockDashboardData = exports.mockDegradedSystemHealth = exports.mockUnhealthySystemHealth = exports.mockHealthySystemHealth = exports.createMonitoringAlert = exports.createServiceHealth = exports.setupMonitoringServiceMock = exports.resetMonitoringServiceMocks = exports.createServiceErrorMock = exports.createDegradedSystemMock = exports.createUnhealthySystemMock = exports.mockMonitoringService = exports.defaultMonitoringServiceMock = exports.createMockMonitoringServiceClass = exports.createMockMonitoringServiceInstance = void 0;
+// ============================================================================
+// SERVICE MOCKS
+// ============================================================================
+var monitoringService_mock_1 = require("./monitoringService.mock");
+// Service mock factory functions
+Object.defineProperty(exports, "createMockMonitoringServiceInstance", { enumerable: true, get: function () { return monitoringService_mock_1.createMockMonitoringServiceInstance; } });
+Object.defineProperty(exports, "createMockMonitoringServiceClass", { enumerable: true, get: function () { return monitoringService_mock_1.createMockMonitoringServiceClass; } });
+// Default service mocks
+Object.defineProperty(exports, "defaultMonitoringServiceMock", { enumerable: true, get: function () { return monitoringService_mock_1.defaultMonitoringServiceMock; } });
+Object.defineProperty(exports, "mockMonitoringService", { enumerable: true, get: function () { return monitoringService_mock_1.mockMonitoringService; } });
+// Specialized service mocks
+Object.defineProperty(exports, "createUnhealthySystemMock", { enumerable: true, get: function () { return monitoringService_mock_1.createUnhealthySystemMock; } });
+Object.defineProperty(exports, "createDegradedSystemMock", { enumerable: true, get: function () { return monitoringService_mock_1.createDegradedSystemMock; } });
+Object.defineProperty(exports, "createServiceErrorMock", { enumerable: true, get: function () { return monitoringService_mock_1.createServiceErrorMock; } });
+// Mock utilities
+Object.defineProperty(exports, "resetMonitoringServiceMocks", { enumerable: true, get: function () { return monitoringService_mock_1.resetMonitoringServiceMocks; } });
+Object.defineProperty(exports, "setupMonitoringServiceMock", { enumerable: true, get: function () { return monitoringService_mock_1.setupMonitoringServiceMock; } });
+// ============================================================================
+// DATA MOCKS
+// ============================================================================
+var monitoringData_mock_1 = require("./monitoringData.mock");
+// Base data generators
+Object.defineProperty(exports, "createServiceHealth", { enumerable: true, get: function () { return monitoringData_mock_1.createServiceHealth; } });
+Object.defineProperty(exports, "createMonitoringAlert", { enumerable: true, get: function () { return monitoringData_mock_1.createMonitoringAlert; } });
+// System health mocks
+Object.defineProperty(exports, "mockHealthySystemHealth", { enumerable: true, get: function () { return monitoringData_mock_1.mockHealthySystemHealth; } });
+Object.defineProperty(exports, "mockUnhealthySystemHealth", { enumerable: true, get: function () { return monitoringData_mock_1.mockUnhealthySystemHealth; } });
+Object.defineProperty(exports, "mockDegradedSystemHealth", { enumerable: true, get: function () { return monitoringData_mock_1.mockDegradedSystemHealth; } });
+// Dashboard data mocks
+Object.defineProperty(exports, "mockDashboardData", { enumerable: true, get: function () { return monitoringData_mock_1.mockDashboardData; } });
+Object.defineProperty(exports, "mockDashboardDataWithAlerts", { enumerable: true, get: function () { return monitoringData_mock_1.mockDashboardDataWithAlerts; } });
+Object.defineProperty(exports, "mockDashboardDataNoAlerts", { enumerable: true, get: function () { return monitoringData_mock_1.mockDashboardDataNoAlerts; } });
+// Analytics data mocks
+Object.defineProperty(exports, "mockAnalyticsSession", { enumerable: true, get: function () { return monitoringData_mock_1.mockAnalyticsSession; } });
+Object.defineProperty(exports, "mockAnalyticsEvent", { enumerable: true, get: function () { return monitoringData_mock_1.mockAnalyticsEvent; } });
+// Alert data mocks
+Object.defineProperty(exports, "mockAlerts", { enumerable: true, get: function () { return monitoringData_mock_1.mockAlerts; } });
+// Metric data mocks
+Object.defineProperty(exports, "mockMetrics", { enumerable: true, get: function () { return monitoringData_mock_1.mockMetrics; } });
+// Data generators
+Object.defineProperty(exports, "generateServiceHealthArray", { enumerable: true, get: function () { return monitoringData_mock_1.generateServiceHealthArray; } });
+Object.defineProperty(exports, "generateAlertsArray", { enumerable: true, get: function () { return monitoringData_mock_1.generateAlertsArray; } });
+Object.defineProperty(exports, "createCustomDashboardData", { enumerable: true, get: function () { return monitoringData_mock_1.createCustomDashboardData; } });
+// ============================================================================
+// CONFIGURATION MOCKS
+// ============================================================================
+var monitoringConfig_mock_1 = require("./monitoringConfig.mock");
+// Configuration factory
+Object.defineProperty(exports, "createMonitoringConfig", { enumerable: true, get: function () { return monitoringConfig_mock_1.createMonitoringConfig; } });
+// Default configurations
+Object.defineProperty(exports, "mockMonitoringConfig", { enumerable: true, get: function () { return monitoringConfig_mock_1.mockMonitoringConfig; } });
+Object.defineProperty(exports, "mockHealthCheckConfig", { enumerable: true, get: function () { return monitoringConfig_mock_1.mockHealthCheckConfig; } });
+Object.defineProperty(exports, "mockAnalyticsConfig", { enumerable: true, get: function () { return monitoringConfig_mock_1.mockAnalyticsConfig; } });
+Object.defineProperty(exports, "mockAlertsConfig", { enumerable: true, get: function () { return monitoringConfig_mock_1.mockAlertsConfig; } });
+Object.defineProperty(exports, "mockDashboardConfig", { enumerable: true, get: function () { return monitoringConfig_mock_1.mockDashboardConfig; } });
+// Environment-specific configurations
+Object.defineProperty(exports, "mockDevelopmentConfig", { enumerable: true, get: function () { return monitoringConfig_mock_1.mockDevelopmentConfig; } });
+Object.defineProperty(exports, "mockProductionConfig", { enumerable: true, get: function () { return monitoringConfig_mock_1.mockProductionConfig; } });
+Object.defineProperty(exports, "mockMinimalConfig", { enumerable: true, get: function () { return monitoringConfig_mock_1.mockMinimalConfig; } });
+Object.defineProperty(exports, "mockDisabledConfig", { enumerable: true, get: function () { return monitoringConfig_mock_1.mockDisabledConfig; } });
+// Configuration utilities
+Object.defineProperty(exports, "createConfigForScenario", { enumerable: true, get: function () { return monitoringConfig_mock_1.createConfigForScenario; } });
+Object.defineProperty(exports, "mergeConfigs", { enumerable: true, get: function () { return monitoringConfig_mock_1.mergeConfigs; } });
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL3Rlc3RpbmcvbW9ja3MvaW5mcmFzdHJ1Y3R1cmUvbGliL21vbml0b3JpbmcvaW5kZXgudHMiLCJtYXBwaW5ncyI6IjtBQUFBOzs7OztHQUtHOzs7QUFFSCwrRUFBK0U7QUFDL0UsZ0JBQWdCO0FBQ2hCLCtFQUErRTtBQUUvRSxtRUFpQmtDO0FBaEJoQyxpQ0FBaUM7QUFDakMsNklBQUEsbUNBQW1DLE9BQUE7QUFDbkMsMElBQUEsZ0NBQWdDLE9BQUE7QUFFaEMsd0JBQXdCO0FBQ3hCLHNJQUFBLDRCQUE0QixPQUFBO0FBQzVCLCtIQUFBLHFCQUFxQixPQUFBO0FBRXJCLDRCQUE0QjtBQUM1QixtSUFBQSx5QkFBeUIsT0FBQTtBQUN6QixrSUFBQSx3QkFBd0IsT0FBQTtBQUN4QixnSUFBQSxzQkFBc0IsT0FBQTtBQUV0QixpQkFBaUI7QUFDakIscUlBQUEsMkJBQTJCLE9BQUE7QUFDM0Isb0lBQUEsMEJBQTBCLE9BQUE7QUFHNUIsK0VBQStFO0FBQy9FLGFBQWE7QUFDYiwrRUFBK0U7QUFFL0UsNkRBNkIrQjtBQTVCN0IsdUJBQXVCO0FBQ3ZCLDBIQUFBLG1CQUFtQixPQUFBO0FBQ25CLDRIQUFBLHFCQUFxQixPQUFBO0FBRXJCLHNCQUFzQjtBQUN0Qiw4SEFBQSx1QkFBdUIsT0FBQTtBQUN2QixnSUFBQSx5QkFBeUIsT0FBQTtBQUN6QiwrSEFBQSx3QkFBd0IsT0FBQTtBQUV4Qix1QkFBdUI7QUFDdkIsd0hBQUEsaUJBQWlCLE9BQUE7QUFDakIsa0lBQUEsMkJBQTJCLE9BQUE7QUFDM0IsZ0lBQUEseUJBQXlCLE9BQUE7QUFFekIsdUJBQXVCO0FBQ3ZCLDJIQUFBLG9CQUFvQixPQUFBO0FBQ3BCLHlIQUFBLGtCQUFrQixPQUFBO0FBRWxCLG1CQUFtQjtBQUNuQixpSEFBQSxVQUFVLE9BQUE7QUFFVixvQkFBb0I7QUFDcEIsa0hBQUEsV0FBVyxPQUFBO0FBRVgsa0JBQWtCO0FBQ2xCLGlJQUFBLDBCQUEwQixPQUFBO0FBQzFCLDBIQUFBLG1CQUFtQixPQUFBO0FBQ25CLGdJQUFBLHlCQUF5QixPQUFBO0FBRzNCLCtFQUErRTtBQUMvRSxzQkFBc0I7QUFDdEIsK0VBQStFO0FBRS9FLGlFQW9CaUM7QUFuQi9CLHdCQUF3QjtBQUN4QiwrSEFBQSxzQkFBc0IsT0FBQTtBQUV0Qix5QkFBeUI7QUFDekIsNkhBQUEsb0JBQW9CLE9BQUE7QUFDcEIsOEhBQUEscUJBQXFCLE9BQUE7QUFDckIsNEhBQUEsbUJBQW1CLE9BQUE7QUFDbkIseUhBQUEsZ0JBQWdCLE9BQUE7QUFDaEIsNEhBQUEsbUJBQW1CLE9BQUE7QUFFbkIsc0NBQXNDO0FBQ3RDLDhIQUFBLHFCQUFxQixPQUFBO0FBQ3JCLDZIQUFBLG9CQUFvQixPQUFBO0FBQ3BCLDBIQUFBLGlCQUFpQixPQUFBO0FBQ2pCLDJIQUFBLGtCQUFrQixPQUFBO0FBRWxCLDBCQUEwQjtBQUMxQixnSUFBQSx1QkFBdUIsT0FBQTtBQUN2QixxSEFBQSxZQUFZLE9BQUEiLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL3Rlc3RpbmcvbW9ja3MvaW5mcmFzdHJ1Y3R1cmUvbGliL21vbml0b3JpbmcvaW5kZXgudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBNb25pdG9yaW5nIE1vY2tzXG4gKlxuICogQ2VudHJhbGl6ZWQgZXhwb3J0cyBmb3IgYWxsIG1vbml0b3JpbmctcmVsYXRlZCBtb2Nrcy5cbiAqIEZvbGxvd3MgdGhlIGVzdGFibGlzaGVkIG1vY2sgZmFjdG9yeSBwYXR0ZXJuIGZvciBlbnRlcnByaXNlIHRlc3RpbmcuXG4gKi9cblxuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuLy8gU0VSVklDRSBNT0NLU1xuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuXG5leHBvcnQge1xuICAvLyBTZXJ2aWNlIG1vY2sgZmFjdG9yeSBmdW5jdGlvbnNcbiAgY3JlYXRlTW9ja01vbml0b3JpbmdTZXJ2aWNlSW5zdGFuY2UsXG4gIGNyZWF0ZU1vY2tNb25pdG9yaW5nU2VydmljZUNsYXNzLFxuXG4gIC8vIERlZmF1bHQgc2VydmljZSBtb2Nrc1xuICBkZWZhdWx0TW9uaXRvcmluZ1NlcnZpY2VNb2NrLFxuICBtb2NrTW9uaXRvcmluZ1NlcnZpY2UsXG5cbiAgLy8gU3BlY2lhbGl6ZWQgc2VydmljZSBtb2Nrc1xuICBjcmVhdGVVbmhlYWx0aHlTeXN0ZW1Nb2NrLFxuICBjcmVhdGVEZWdyYWRlZFN5c3RlbU1vY2ssXG4gIGNyZWF0ZVNlcnZpY2VFcnJvck1vY2ssXG5cbiAgLy8gTW9jayB1dGlsaXRpZXNcbiAgcmVzZXRNb25pdG9yaW5nU2VydmljZU1vY2tzLFxuICBzZXR1cE1vbml0b3JpbmdTZXJ2aWNlTW9jayxcbn0gZnJvbSAnLi9tb25pdG9yaW5nU2VydmljZS5tb2NrJztcblxuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuLy8gREFUQSBNT0NLU1xuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuXG5leHBvcnQge1xuICAvLyBCYXNlIGRhdGEgZ2VuZXJhdG9yc1xuICBjcmVhdGVTZXJ2aWNlSGVhbHRoLFxuICBjcmVhdGVNb25pdG9yaW5nQWxlcnQsXG5cbiAgLy8gU3lzdGVtIGhlYWx0aCBtb2Nrc1xuICBtb2NrSGVhbHRoeVN5c3RlbUhlYWx0aCxcbiAgbW9ja1VuaGVhbHRoeVN5c3RlbUhlYWx0aCxcbiAgbW9ja0RlZ3JhZGVkU3lzdGVtSGVhbHRoLFxuXG4gIC8vIERhc2hib2FyZCBkYXRhIG1vY2tzXG4gIG1vY2tEYXNoYm9hcmREYXRhLFxuICBtb2NrRGFzaGJvYXJkRGF0YVdpdGhBbGVydHMsXG4gIG1vY2tEYXNoYm9hcmREYXRhTm9BbGVydHMsXG5cbiAgLy8gQW5hbHl0aWNzIGRhdGEgbW9ja3NcbiAgbW9ja0FuYWx5dGljc1Nlc3Npb24sXG4gIG1vY2tBbmFseXRpY3NFdmVudCxcblxuICAvLyBBbGVydCBkYXRhIG1vY2tzXG4gIG1vY2tBbGVydHMsXG5cbiAgLy8gTWV0cmljIGRhdGEgbW9ja3NcbiAgbW9ja01ldHJpY3MsXG5cbiAgLy8gRGF0YSBnZW5lcmF0b3JzXG4gIGdlbmVyYXRlU2VydmljZUhlYWx0aEFycmF5LFxuICBnZW5lcmF0ZUFsZXJ0c0FycmF5LFxuICBjcmVhdGVDdXN0b21EYXNoYm9hcmREYXRhLFxufSBmcm9tICcuL21vbml0b3JpbmdEYXRhLm1vY2snO1xuXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4vLyBDT05GSUdVUkFUSU9OIE1PQ0tTXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG5cbmV4cG9ydCB7XG4gIC8vIENvbmZpZ3VyYXRpb24gZmFjdG9yeVxuICBjcmVhdGVNb25pdG9yaW5nQ29uZmlnLFxuXG4gIC8vIERlZmF1bHQgY29uZmlndXJhdGlvbnNcbiAgbW9ja01vbml0b3JpbmdDb25maWcsXG4gIG1vY2tIZWFsdGhDaGVja0NvbmZpZyxcbiAgbW9ja0FuYWx5dGljc0NvbmZpZyxcbiAgbW9ja0FsZXJ0c0NvbmZpZyxcbiAgbW9ja0Rhc2hib2FyZENvbmZpZyxcblxuICAvLyBFbnZpcm9ubWVudC1zcGVjaWZpYyBjb25maWd1cmF0aW9uc1xuICBtb2NrRGV2ZWxvcG1lbnRDb25maWcsXG4gIG1vY2tQcm9kdWN0aW9uQ29uZmlnLFxuICBtb2NrTWluaW1hbENvbmZpZyxcbiAgbW9ja0Rpc2FibGVkQ29uZmlnLFxuXG4gIC8vIENvbmZpZ3VyYXRpb24gdXRpbGl0aWVzXG4gIGNyZWF0ZUNvbmZpZ0ZvclNjZW5hcmlvLFxuICBtZXJnZUNvbmZpZ3MsXG59IGZyb20gJy4vbW9uaXRvcmluZ0NvbmZpZy5tb2NrJztcbiJdLCJ2ZXJzaW9uIjozfQ==

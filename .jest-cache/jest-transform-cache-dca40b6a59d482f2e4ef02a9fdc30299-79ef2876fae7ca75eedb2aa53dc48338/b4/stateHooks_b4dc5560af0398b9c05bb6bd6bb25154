@@ -1,0 +1,57 @@
+57d82217e77b670aaefe5bc850e347a1
+"use strict";
+/**
+ * State Management Hooks
+ *
+ * Universal React hooks for Zustand stores that work with any application.
+ * Foundation-level only - no overengineering.
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.useStoreActions = exports.useStoreHydrated = exports.useStoreState = exports.useShallowStore = exports.useStore = void 0;
+var react_1 = require("react");
+// ============================================================================
+// CORE HOOKS
+// ============================================================================
+/**
+ * Subscribe to store with selector
+ */
+var useStore = function (store, selector) {
+    return (0, react_1.useSyncExternalStore)(store.subscribe, function () { return selector(store.getState()); }, function () { return selector(store.getState()); });
+};
+exports.useStore = useStore;
+/**
+ * Subscribe to store with shallow comparison
+ */
+var useShallowStore = function (store, selector) {
+    return (0, exports.useStore)(store, selector);
+};
+exports.useShallowStore = useShallowStore;
+/**
+ * Subscribe to complete store state
+ */
+var useStoreState = function (store) {
+    return (0, exports.useStore)(store, function (state) { return state; });
+};
+exports.useStoreState = useStoreState;
+/**
+ * Subscribe to hydration status
+ */
+var useStoreHydrated = function (store) {
+    return (0, exports.useStore)(store, function (state) { var _a; return (_a = state._hydrated) !== null && _a !== void 0 ? _a : false; });
+};
+exports.useStoreHydrated = useStoreHydrated;
+/**
+ * Get store actions (setState, reset, clearStorage)
+ */
+var useStoreActions = function (store) {
+    return {
+        setState: store.setState,
+        reset: store.reset,
+        clearStorage: store.clearStorage,
+    };
+};
+exports.useStoreActions = useStoreActions;
+// ============================================================================
+// UTILITIES
+// ============================================================================
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvaW5mcmFzdHJ1Y3R1cmUvc3RhdGUvc3RhdGVIb29rcy9zdGF0ZUhvb2tzLnRzIiwibWFwcGluZ3MiOiI7QUFBQTs7Ozs7R0FLRzs7O0FBRUgsK0JBQTZDO0FBRzdDLCtFQUErRTtBQUMvRSxhQUFhO0FBQ2IsK0VBQStFO0FBRS9FOztHQUVHO0FBQ0ksSUFBTSxRQUFRLEdBQUcsVUFDdEIsS0FBNEIsRUFDNUIsUUFBb0M7SUFFcEMsT0FBTyxJQUFBLDRCQUFvQixFQUN6QixLQUFLLENBQUMsU0FBUyxFQUNmLGNBQU0sT0FBQSxRQUFRLENBQUMsS0FBSyxDQUFDLFFBQVEsRUFBRSxDQUFDLEVBQTFCLENBQTBCLEVBQ2hDLGNBQU0sT0FBQSxRQUFRLENBQUMsS0FBSyxDQUFDLFFBQVEsRUFBRSxDQUFDLEVBQTFCLENBQTBCLENBQ2pDLENBQUM7QUFDSixDQUFDLENBQUM7QUFUVyxRQUFBLFFBQVEsWUFTbkI7QUFFRjs7R0FFRztBQUNJLElBQU0sZUFBZSxHQUFHLFVBQzdCLEtBQTRCLEVBQzVCLFFBQW9DO0lBRXBDLE9BQU8sSUFBQSxnQkFBUSxFQUFDLEtBQUssRUFBRSxRQUFRLENBQUMsQ0FBQztBQUNuQyxDQUFDLENBQUM7QUFMVyxRQUFBLGVBQWUsbUJBSzFCO0FBRUY7O0dBRUc7QUFDSSxJQUFNLGFBQWEsR0FBRyxVQUFTLEtBQTRCO0lBQ2hFLE9BQU8sSUFBQSxnQkFBUSxFQUFDLEtBQUssRUFBRSxVQUFDLEtBQUssSUFBSyxPQUFBLEtBQUssRUFBTCxDQUFLLENBQUMsQ0FBQztBQUMzQyxDQUFDLENBQUM7QUFGVyxRQUFBLGFBQWEsaUJBRXhCO0FBRUY7O0dBRUc7QUFDSSxJQUFNLGdCQUFnQixHQUFHLFVBQzlCLEtBQTRCO0lBRTVCLE9BQU8sSUFBQSxnQkFBUSxFQUFDLEtBQUssRUFBRSxVQUFDLEtBQUssWUFBSyxPQUFBLE1BQUMsS0FBaUMsQ0FBQyxTQUFTLG1DQUFJLEtBQUssQ0FBQSxFQUFBLENBQUMsQ0FBQztBQUMzRixDQUFDLENBQUM7QUFKVyxRQUFBLGdCQUFnQixvQkFJM0I7QUFFRjs7R0FFRztBQUNJLElBQU0sZUFBZSxHQUFHLFVBQVMsS0FBNEI7SUFDbEUsT0FBTztRQUNMLFFBQVEsRUFBRSxLQUFLLENBQUMsUUFBUTtRQUN4QixLQUFLLEVBQUUsS0FBSyxDQUFDLEtBQUs7UUFDbEIsWUFBWSxFQUFFLEtBQUssQ0FBQyxZQUFZO0tBQ2pDLENBQUM7QUFDSixDQUFDLENBQUM7QUFOVyxRQUFBLGVBQWUsbUJBTTFCO0FBRUYsK0VBQStFO0FBQy9FLFlBQVk7QUFDWiwrRUFBK0UiLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvaW5mcmFzdHJ1Y3R1cmUvc3RhdGUvc3RhdGVIb29rcy9zdGF0ZUhvb2tzLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogU3RhdGUgTWFuYWdlbWVudCBIb29rc1xuICpcbiAqIFVuaXZlcnNhbCBSZWFjdCBob29rcyBmb3IgWnVzdGFuZCBzdG9yZXMgdGhhdCB3b3JrIHdpdGggYW55IGFwcGxpY2F0aW9uLlxuICogRm91bmRhdGlvbi1sZXZlbCBvbmx5IC0gbm8gb3ZlcmVuZ2luZWVyaW5nLlxuICovXG5cbmltcG9ydCB7IHVzZVN5bmNFeHRlcm5hbFN0b3JlIH0gZnJvbSAncmVhY3QnO1xuaW1wb3J0IHR5cGUgeyBCYXNlU3RhdGUsIEVuaGFuY2VkU3RvcmUgfSBmcm9tICcuLi90eXBlcy90eXBlcyc7XG5cbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbi8vIENPUkUgSE9PS1Ncbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cblxuLyoqXG4gKiBTdWJzY3JpYmUgdG8gc3RvcmUgd2l0aCBzZWxlY3RvclxuICovXG5leHBvcnQgY29uc3QgdXNlU3RvcmUgPSA8VFN0b3JlLCBUUmVzdWx0PihcbiAgc3RvcmU6IEVuaGFuY2VkU3RvcmU8VFN0b3JlPixcbiAgc2VsZWN0b3I6IChzdGF0ZTogVFN0b3JlKSA9PiBUUmVzdWx0XG4pOiBUUmVzdWx0ID0+IHtcbiAgcmV0dXJuIHVzZVN5bmNFeHRlcm5hbFN0b3JlKFxuICAgIHN0b3JlLnN1YnNjcmliZSxcbiAgICAoKSA9PiBzZWxlY3RvcihzdG9yZS5nZXRTdGF0ZSgpKSxcbiAgICAoKSA9PiBzZWxlY3RvcihzdG9yZS5nZXRTdGF0ZSgpKVxuICApO1xufTtcblxuLyoqXG4gKiBTdWJzY3JpYmUgdG8gc3RvcmUgd2l0aCBzaGFsbG93IGNvbXBhcmlzb25cbiAqL1xuZXhwb3J0IGNvbnN0IHVzZVNoYWxsb3dTdG9yZSA9IDxUU3RvcmUsIFRSZXN1bHQ+KFxuICBzdG9yZTogRW5oYW5jZWRTdG9yZTxUU3RvcmU+LFxuICBzZWxlY3RvcjogKHN0YXRlOiBUU3RvcmUpID0+IFRSZXN1bHRcbik6IFRSZXN1bHQgPT4ge1xuICByZXR1cm4gdXNlU3RvcmUoc3RvcmUsIHNlbGVjdG9yKTtcbn07XG5cbi8qKlxuICogU3Vic2NyaWJlIHRvIGNvbXBsZXRlIHN0b3JlIHN0YXRlXG4gKi9cbmV4cG9ydCBjb25zdCB1c2VTdG9yZVN0YXRlID0gPFRTdG9yZT4oc3RvcmU6IEVuaGFuY2VkU3RvcmU8VFN0b3JlPik6IFRTdG9yZSA9PiB7XG4gIHJldHVybiB1c2VTdG9yZShzdG9yZSwgKHN0YXRlKSA9PiBzdGF0ZSk7XG59O1xuXG4vKipcbiAqIFN1YnNjcmliZSB0byBoeWRyYXRpb24gc3RhdHVzXG4gKi9cbmV4cG9ydCBjb25zdCB1c2VTdG9yZUh5ZHJhdGVkID0gPFRTdG9yZSBleHRlbmRzIEJhc2VTdGF0ZT4oXG4gIHN0b3JlOiBFbmhhbmNlZFN0b3JlPFRTdG9yZT5cbik6IGJvb2xlYW4gPT4ge1xuICByZXR1cm4gdXNlU3RvcmUoc3RvcmUsIChzdGF0ZSkgPT4gKHN0YXRlIGFzIHsgX2h5ZHJhdGVkPzogYm9vbGVhbiB9KS5faHlkcmF0ZWQgPz8gZmFsc2UpO1xufTtcblxuLyoqXG4gKiBHZXQgc3RvcmUgYWN0aW9ucyAoc2V0U3RhdGUsIHJlc2V0LCBjbGVhclN0b3JhZ2UpXG4gKi9cbmV4cG9ydCBjb25zdCB1c2VTdG9yZUFjdGlvbnMgPSA8VFN0b3JlPihzdG9yZTogRW5oYW5jZWRTdG9yZTxUU3RvcmU+KSA9PiB7XG4gIHJldHVybiB7XG4gICAgc2V0U3RhdGU6IHN0b3JlLnNldFN0YXRlLFxuICAgIHJlc2V0OiBzdG9yZS5yZXNldCxcbiAgICBjbGVhclN0b3JhZ2U6IHN0b3JlLmNsZWFyU3RvcmFnZSxcbiAgfTtcbn07XG5cbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbi8vIFVUSUxJVElFU1xuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuIl0sInZlcnNpb24iOjN9

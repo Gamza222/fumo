@@ -1,0 +1,85 @@
+254676d14ae678025e8a6b31185c1a23
+"use strict";
+'use client';
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || (function () {
+    var ownKeys = function(o) {
+        ownKeys = Object.getOwnPropertyNames || function (o) {
+            var ar = [];
+            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
+            return ar;
+        };
+        return ownKeys(o);
+    };
+    return function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
+        __setModuleDefault(result, mod);
+        return result;
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var jsx_runtime_1 = require("react/jsx-runtime");
+var react_1 = __importStar(require("react"));
+var suspense_1 = require("@/infrastructure/suspense");
+var PageError_1 = require("@/widgets/PageError");
+var lib_1 = require("../lib/lib");
+var ErrorBoundary = /** @class */ (function (_super) {
+    __extends(ErrorBoundary, _super);
+    function ErrorBoundary(props) {
+        var _this = _super.call(this, props) || this;
+        _this.state = { hasError: false };
+        return _this;
+    }
+    ErrorBoundary.getDerivedStateFromError = function (_error) {
+        // Update state so the next render will show the fallback UI
+        return { hasError: true };
+    };
+    ErrorBoundary.prototype.componentDidCatch = function (error, errorInfo) {
+        // Log the error to console and Sentry
+        (0, lib_1.logError)(error, errorInfo);
+    };
+    ErrorBoundary.prototype.render = function () {
+        var hasError = this.state.hasError;
+        var children = this.props.children;
+        if (hasError) {
+            // Wrap PageError in Suspense in case it has any lazy dependencies
+            return ((0, jsx_runtime_1.jsx)(react_1.Suspense, { fallback: (0, jsx_runtime_1.jsx)(suspense_1.DefaultSuspenseFallback, {}), children: (0, jsx_runtime_1.jsx)(PageError_1.PageError, {}) }));
+        }
+        return children;
+    };
+    return ErrorBoundary;
+}(react_1.default.Component));
+exports.default = ErrorBoundary;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvaW5mcmFzdHJ1Y3R1cmUvZXJyb3ItaGFuZGxpbmcvdWkvRXJyb3JCb3VuZGFyeS50c3giLCJtYXBwaW5ncyI6IjtBQUFBLFlBQVksQ0FBQzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBRWIsNkNBQXdFO0FBQ3hFLHNEQUFvRTtBQUNwRSxpREFBZ0Q7QUFDaEQsa0NBQXNDO0FBR3RDO0lBQTRCLGlDQUF1RDtJQUNqRix1QkFBWSxLQUF5QjtRQUNuQyxZQUFBLE1BQUssWUFBQyxLQUFLLENBQUMsU0FBQztRQUNiLEtBQUksQ0FBQyxLQUFLLEdBQUcsRUFBRSxRQUFRLEVBQUUsS0FBSyxFQUFFLENBQUM7O0lBQ25DLENBQUM7SUFFTSxzQ0FBd0IsR0FBL0IsVUFBZ0MsTUFBYTtRQUMzQyw0REFBNEQ7UUFDNUQsT0FBTyxFQUFFLFFBQVEsRUFBRSxJQUFJLEVBQUUsQ0FBQztJQUM1QixDQUFDO0lBRVEseUNBQWlCLEdBQTFCLFVBQTJCLEtBQVksRUFBRSxTQUFvQjtRQUMzRCxzQ0FBc0M7UUFDdEMsSUFBQSxjQUFRLEVBQUMsS0FBSyxFQUFFLFNBQVMsQ0FBQyxDQUFDO0lBQzdCLENBQUM7SUFFUSw4QkFBTSxHQUFmO1FBQ1UsSUFBQSxRQUFRLEdBQUssSUFBSSxDQUFDLEtBQUssU0FBZixDQUFnQjtRQUN4QixJQUFBLFFBQVEsR0FBSyxJQUFJLENBQUMsS0FBSyxTQUFmLENBQWdCO1FBRWhDLElBQUksUUFBUSxFQUFFLENBQUM7WUFDYixrRUFBa0U7WUFDbEUsT0FBTyxDQUNMLHVCQUFDLGdCQUFRLElBQUMsUUFBUSxFQUFFLHVCQUFDLGtDQUF1QixLQUFHLFlBQzdDLHVCQUFDLHFCQUFTLEtBQUcsR0FDSixDQUNaLENBQUM7UUFDSixDQUFDO1FBRUQsT0FBTyxRQUFRLENBQUM7SUFDbEIsQ0FBQztJQUNILG9CQUFDO0FBQUQsQ0FBQyxBQS9CRCxDQUE0QixlQUFLLENBQUMsU0FBUyxHQStCMUM7QUFFRCxrQkFBZSxhQUFhLENBQUMiLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvaW5mcmFzdHJ1Y3R1cmUvZXJyb3ItaGFuZGxpbmcvdWkvRXJyb3JCb3VuZGFyeS50c3giXSwic291cmNlc0NvbnRlbnQiOlsiJ3VzZSBjbGllbnQnO1xuXG5pbXBvcnQgUmVhY3QsIHsgU3VzcGVuc2UsIHR5cGUgRXJyb3JJbmZvLCB0eXBlIFJlYWN0Tm9kZSB9IGZyb20gJ3JlYWN0JztcbmltcG9ydCB7IERlZmF1bHRTdXNwZW5zZUZhbGxiYWNrIH0gZnJvbSAnQC9pbmZyYXN0cnVjdHVyZS9zdXNwZW5zZSc7XG5pbXBvcnQgeyBQYWdlRXJyb3IgfSBmcm9tICdAL3dpZGdldHMvUGFnZUVycm9yJztcbmltcG9ydCB7IGxvZ0Vycm9yIH0gZnJvbSAnLi4vbGliL2xpYic7XG5pbXBvcnQgdHlwZSB7IEVycm9yQm91bmRhcnlQcm9wcywgRXJyb3JCb3VuZGFyeVN0YXRlIH0gZnJvbSAnLi4vdHlwZXMvdHlwZXMnO1xuXG5jbGFzcyBFcnJvckJvdW5kYXJ5IGV4dGVuZHMgUmVhY3QuQ29tcG9uZW50PEVycm9yQm91bmRhcnlQcm9wcywgRXJyb3JCb3VuZGFyeVN0YXRlPiB7XG4gIGNvbnN0cnVjdG9yKHByb3BzOiBFcnJvckJvdW5kYXJ5UHJvcHMpIHtcbiAgICBzdXBlcihwcm9wcyk7XG4gICAgdGhpcy5zdGF0ZSA9IHsgaGFzRXJyb3I6IGZhbHNlIH07XG4gIH1cblxuICBzdGF0aWMgZ2V0RGVyaXZlZFN0YXRlRnJvbUVycm9yKF9lcnJvcjogRXJyb3IpOiBFcnJvckJvdW5kYXJ5U3RhdGUge1xuICAgIC8vIFVwZGF0ZSBzdGF0ZSBzbyB0aGUgbmV4dCByZW5kZXIgd2lsbCBzaG93IHRoZSBmYWxsYmFjayBVSVxuICAgIHJldHVybiB7IGhhc0Vycm9yOiB0cnVlIH07XG4gIH1cblxuICBvdmVycmlkZSBjb21wb25lbnREaWRDYXRjaChlcnJvcjogRXJyb3IsIGVycm9ySW5mbzogRXJyb3JJbmZvKTogdm9pZCB7XG4gICAgLy8gTG9nIHRoZSBlcnJvciB0byBjb25zb2xlIGFuZCBTZW50cnlcbiAgICBsb2dFcnJvcihlcnJvciwgZXJyb3JJbmZvKTtcbiAgfVxuXG4gIG92ZXJyaWRlIHJlbmRlcigpOiBSZWFjdE5vZGUge1xuICAgIGNvbnN0IHsgaGFzRXJyb3IgfSA9IHRoaXMuc3RhdGU7XG4gICAgY29uc3QgeyBjaGlsZHJlbiB9ID0gdGhpcy5wcm9wcztcblxuICAgIGlmIChoYXNFcnJvcikge1xuICAgICAgLy8gV3JhcCBQYWdlRXJyb3IgaW4gU3VzcGVuc2UgaW4gY2FzZSBpdCBoYXMgYW55IGxhenkgZGVwZW5kZW5jaWVzXG4gICAgICByZXR1cm4gKFxuICAgICAgICA8U3VzcGVuc2UgZmFsbGJhY2s9ezxEZWZhdWx0U3VzcGVuc2VGYWxsYmFjayAvPn0+XG4gICAgICAgICAgPFBhZ2VFcnJvciAvPlxuICAgICAgICA8L1N1c3BlbnNlPlxuICAgICAgKTtcbiAgICB9XG5cbiAgICByZXR1cm4gY2hpbGRyZW47XG4gIH1cbn1cblxuZXhwb3J0IGRlZmF1bHQgRXJyb3JCb3VuZGFyeTtcbiJdLCJ2ZXJzaW9uIjozfQ==

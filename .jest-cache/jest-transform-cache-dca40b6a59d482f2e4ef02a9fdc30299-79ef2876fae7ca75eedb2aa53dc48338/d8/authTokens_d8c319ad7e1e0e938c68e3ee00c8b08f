@@ -1,0 +1,41 @@
+c50e96b4b85ca08e57d909ba8fbfc7ca
+"use strict";
+/**
+ * Authentication Token Constants
+ *
+ * Centralized auth token keys for consistent usage.
+ * Foundation-level only - no overengineering.
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.AuthTokenKey = void 0;
+exports.getAllAuthTokenKeys = getAllAuthTokenKeys;
+exports.getPrimaryAuthTokenKey = getPrimaryAuthTokenKey;
+// ============================================================================
+// AUTH TOKEN KEYS
+// ============================================================================
+/**
+ * Authentication token storage keys
+ */
+var AuthTokenKey;
+(function (AuthTokenKey) {
+    AuthTokenKey["AUTH_TOKEN"] = "auth_token";
+    AuthTokenKey["ACCESS_TOKEN"] = "access_token";
+    AuthTokenKey["REFRESH_TOKEN"] = "refresh_token";
+    AuthTokenKey["ID_TOKEN"] = "id_token";
+})(AuthTokenKey || (exports.AuthTokenKey = AuthTokenKey = {}));
+// ============================================================================
+// AUTH TOKEN UTILITIES
+// ============================================================================
+/**
+ * Get all possible auth token keys
+ */
+function getAllAuthTokenKeys() {
+    return Object.values(AuthTokenKey);
+}
+/**
+ * Get primary auth token key (most commonly used)
+ */
+function getPrimaryAuthTokenKey() {
+    return AuthTokenKey.ACCESS_TOKEN;
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvaW5mcmFzdHJ1Y3R1cmUvZGF0YS90eXBlcy9hdXRoVG9rZW5zLnRzIiwibWFwcGluZ3MiOiI7QUFBQTs7Ozs7R0FLRzs7O0FBdUJILGtEQUVDO0FBS0Qsd0RBRUM7QUE5QkQsK0VBQStFO0FBQy9FLGtCQUFrQjtBQUNsQiwrRUFBK0U7QUFFL0U7O0dBRUc7QUFDSCxJQUFZLFlBS1g7QUFMRCxXQUFZLFlBQVk7SUFDdEIseUNBQXlCLENBQUE7SUFDekIsNkNBQTZCLENBQUE7SUFDN0IsK0NBQStCLENBQUE7SUFDL0IscUNBQXFCLENBQUE7QUFDdkIsQ0FBQyxFQUxXLFlBQVksNEJBQVosWUFBWSxRQUt2QjtBQUVELCtFQUErRTtBQUMvRSx1QkFBdUI7QUFDdkIsK0VBQStFO0FBRS9FOztHQUVHO0FBQ0gsU0FBZ0IsbUJBQW1CO0lBQ2pDLE9BQU8sTUFBTSxDQUFDLE1BQU0sQ0FBQyxZQUFZLENBQUMsQ0FBQztBQUNyQyxDQUFDO0FBRUQ7O0dBRUc7QUFDSCxTQUFnQixzQkFBc0I7SUFDcEMsT0FBTyxZQUFZLENBQUMsWUFBWSxDQUFDO0FBQ25DLENBQUMiLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvaW5mcmFzdHJ1Y3R1cmUvZGF0YS90eXBlcy9hdXRoVG9rZW5zLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogQXV0aGVudGljYXRpb24gVG9rZW4gQ29uc3RhbnRzXG4gKlxuICogQ2VudHJhbGl6ZWQgYXV0aCB0b2tlbiBrZXlzIGZvciBjb25zaXN0ZW50IHVzYWdlLlxuICogRm91bmRhdGlvbi1sZXZlbCBvbmx5IC0gbm8gb3ZlcmVuZ2luZWVyaW5nLlxuICovXG5cbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbi8vIEFVVEggVE9LRU4gS0VZU1xuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuXG4vKipcbiAqIEF1dGhlbnRpY2F0aW9uIHRva2VuIHN0b3JhZ2Uga2V5c1xuICovXG5leHBvcnQgZW51bSBBdXRoVG9rZW5LZXkge1xuICBBVVRIX1RPS0VOID0gJ2F1dGhfdG9rZW4nLFxuICBBQ0NFU1NfVE9LRU4gPSAnYWNjZXNzX3Rva2VuJyxcbiAgUkVGUkVTSF9UT0tFTiA9ICdyZWZyZXNoX3Rva2VuJyxcbiAgSURfVE9LRU4gPSAnaWRfdG9rZW4nLFxufVxuXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4vLyBBVVRIIFRPS0VOIFVUSUxJVElFU1xuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuXG4vKipcbiAqIEdldCBhbGwgcG9zc2libGUgYXV0aCB0b2tlbiBrZXlzXG4gKi9cbmV4cG9ydCBmdW5jdGlvbiBnZXRBbGxBdXRoVG9rZW5LZXlzKCk6IHN0cmluZ1tdIHtcbiAgcmV0dXJuIE9iamVjdC52YWx1ZXMoQXV0aFRva2VuS2V5KTtcbn1cblxuLyoqXG4gKiBHZXQgcHJpbWFyeSBhdXRoIHRva2VuIGtleSAobW9zdCBjb21tb25seSB1c2VkKVxuICovXG5leHBvcnQgZnVuY3Rpb24gZ2V0UHJpbWFyeUF1dGhUb2tlbktleSgpOiBzdHJpbmcge1xuICByZXR1cm4gQXV0aFRva2VuS2V5LkFDQ0VTU19UT0tFTjtcbn1cbiJdLCJ2ZXJzaW9uIjozfQ==

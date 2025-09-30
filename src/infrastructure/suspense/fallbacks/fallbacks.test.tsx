@@ -369,7 +369,13 @@ describe('Suspense Fallbacks Integration', () => {
         </div>
 
         <main style={{ marginTop: 100 }}>
-          <div style={{ display: 'grid', gap: 16, gridTemplateColumns: 'repeat(2, 1fr)' }}>
+          <div
+            style={{
+              display: 'grid',
+              gap: 16,
+              gridTemplateColumns: 'repeat(2, 1fr)',
+            }}
+          >
             <ComponentLoadingFallback text="Loading dashboard..." />
             <ComponentLoadingFallback text="Loading notifications..." />
           </div>

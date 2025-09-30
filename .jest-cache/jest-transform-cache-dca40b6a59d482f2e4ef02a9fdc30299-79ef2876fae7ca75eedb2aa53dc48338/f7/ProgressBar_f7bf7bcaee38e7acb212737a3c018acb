@@ -1,0 +1,60 @@
+0bb457f57d208a62e90dbb880ecdd218
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || (function () {
+    var ownKeys = function(o) {
+        ownKeys = Object.getOwnPropertyNames || function (o) {
+            var ar = [];
+            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
+            return ar;
+        };
+        return ownKeys(o);
+    };
+    return function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
+        __setModuleDefault(result, mod);
+        return result;
+    };
+})();
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ProgressBar = void 0;
+var jsx_runtime_1 = require("react/jsx-runtime");
+/**
+ * ProgressBar Component
+ *
+ * Reusable progress bar component with smooth animations.
+ * Can be moved to shared/ui later if needed elsewhere.
+ */
+var react_1 = __importStar(require("react"));
+var ProgressBar_module_scss_1 = __importDefault(require("./ProgressBar.module.scss"));
+var lib_1 = require("../lib/lib");
+var Text_1 = require("@/shared/ui/Text");
+var classNames_1 = require("@/shared/lib/utils/classNames");
+exports.ProgressBar = (0, react_1.memo)(function (props) {
+    var progress = props.progress, _a = props.showPercentage, showPercentage = _a === void 0 ? true : _a, className = props.className, _b = props.message, message = _b === void 0 ? "" : _b;
+    var progressBarWidth = (0, lib_1.getProgressBarWidth)(progress);
+    var displayProgress = (0, lib_1.formatProgress)(progress);
+    return ((0, jsx_runtime_1.jsxs)("div", { className: (0, classNames_1.classNames)(ProgressBar_module_scss_1.default.progressBar || "", {}, [className]), children: [(0, jsx_runtime_1.jsx)("div", { className: ProgressBar_module_scss_1.default.container, children: (0, jsx_runtime_1.jsx)("div", { className: ProgressBar_module_scss_1.default.bar, style: { width: progressBarWidth } }) }), showPercentage && ((0, jsx_runtime_1.jsx)(Text_1.Text, { className: ProgressBar_module_scss_1.default.percentage, children: displayProgress })), message && (0, jsx_runtime_1.jsx)(Text_1.Text, { className: ProgressBar_module_scss_1.default.message, children: message })] }));
+});
+exports.ProgressBar.displayName = "ProgressBar";
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvd2lkZ2V0cy9Qcm9ncmVzc0Jhci91aS9Qcm9ncmVzc0Jhci50c3giLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBOzs7OztHQUtHO0FBRUgsNkNBQW9DO0FBQ3BDLHNGQUErQztBQUUvQyxrQ0FBaUU7QUFFakUseUNBQXdDO0FBQ3hDLDREQUEyRDtBQVM5QyxRQUFBLFdBQVcsR0FBRyxJQUFBLFlBQUksRUFBbUIsVUFBQyxLQUFLO0lBQzlDLElBQUEsUUFBUSxHQUFxRCxLQUFLLFNBQTFELEVBQUUsS0FBbUQsS0FBSyxlQUFuQyxFQUFyQixjQUFjLG1CQUFHLElBQUksS0FBQSxFQUFFLFNBQVMsR0FBbUIsS0FBSyxVQUF4QixFQUFFLEtBQWlCLEtBQUssUUFBVixFQUFaLE9BQU8sbUJBQUcsRUFBRSxLQUFBLENBQVc7SUFDM0UsSUFBTSxnQkFBZ0IsR0FBRyxJQUFBLHlCQUFtQixFQUFDLFFBQVEsQ0FBQyxDQUFDO0lBQ3ZELElBQU0sZUFBZSxHQUFHLElBQUEsb0JBQWMsRUFBQyxRQUFRLENBQUMsQ0FBQztJQUVqRCxPQUFPLENBQ0wsaUNBQUssU0FBUyxFQUFFLElBQUEsdUJBQVUsRUFBQyxpQ0FBTSxDQUFDLFdBQVcsSUFBSSxFQUFFLEVBQUUsRUFBRSxFQUFFLENBQUMsU0FBUyxDQUFDLENBQUMsYUFDbkUsZ0NBQUssU0FBUyxFQUFFLGlDQUFNLENBQUMsU0FBUyxZQUM5QixnQ0FBSyxTQUFTLEVBQUUsaUNBQU0sQ0FBQyxHQUFHLEVBQUUsS0FBSyxFQUFFLEVBQUUsS0FBSyxFQUFFLGdCQUFnQixFQUFFLEdBQUksR0FDOUQsRUFDTCxjQUFjLElBQUksQ0FDakIsdUJBQUMsV0FBSSxJQUFDLFNBQVMsRUFBRSxpQ0FBTSxDQUFDLFVBQVUsWUFBRyxlQUFlLEdBQVEsQ0FDN0QsRUFDQSxPQUFPLElBQUksdUJBQUMsV0FBSSxJQUFDLFNBQVMsRUFBRSxpQ0FBTSxDQUFDLE9BQU8sWUFBRyxPQUFPLEdBQVEsSUFDekQsQ0FDUCxDQUFDO0FBQ0osQ0FBQyxDQUFDLENBQUM7QUFFSCxtQkFBVyxDQUFDLFdBQVcsR0FBRyxhQUFhLENBQUMiLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvd2lkZ2V0cy9Qcm9ncmVzc0Jhci91aS9Qcm9ncmVzc0Jhci50c3giXSwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBQcm9ncmVzc0JhciBDb21wb25lbnRcbiAqXG4gKiBSZXVzYWJsZSBwcm9ncmVzcyBiYXIgY29tcG9uZW50IHdpdGggc21vb3RoIGFuaW1hdGlvbnMuXG4gKiBDYW4gYmUgbW92ZWQgdG8gc2hhcmVkL3VpIGxhdGVyIGlmIG5lZWRlZCBlbHNld2hlcmUuXG4gKi9cblxuaW1wb3J0IFJlYWN0LCB7IG1lbW8gfSBmcm9tIFwicmVhY3RcIjtcbmltcG9ydCBzdHlsZXMgZnJvbSBcIi4vUHJvZ3Jlc3NCYXIubW9kdWxlLnNjc3NcIjtcblxuaW1wb3J0IHsgZm9ybWF0UHJvZ3Jlc3MsIGdldFByb2dyZXNzQmFyV2lkdGggfSBmcm9tIFwiLi4vbGliL2xpYlwiO1xuXG5pbXBvcnQgeyBUZXh0IH0gZnJvbSBcIkAvc2hhcmVkL3VpL1RleHRcIjtcbmltcG9ydCB7IGNsYXNzTmFtZXMgfSBmcm9tIFwiQC9zaGFyZWQvbGliL3V0aWxzL2NsYXNzTmFtZXNcIjtcblxuZXhwb3J0IGludGVyZmFjZSBQcm9ncmVzc0JhclByb3BzIHtcbiAgcHJvZ3Jlc3M6IG51bWJlcjtcbiAgc2hvd1BlcmNlbnRhZ2U/OiBib29sZWFuO1xuICBjbGFzc05hbWU/OiBzdHJpbmc7XG4gIG1lc3NhZ2U/OiBzdHJpbmc7XG59XG5cbmV4cG9ydCBjb25zdCBQcm9ncmVzc0JhciA9IG1lbW88UHJvZ3Jlc3NCYXJQcm9wcz4oKHByb3BzKSA9PiB7XG4gIGNvbnN0IHsgcHJvZ3Jlc3MsIHNob3dQZXJjZW50YWdlID0gdHJ1ZSwgY2xhc3NOYW1lLCBtZXNzYWdlID0gXCJcIiB9ID0gcHJvcHM7XG4gIGNvbnN0IHByb2dyZXNzQmFyV2lkdGggPSBnZXRQcm9ncmVzc0JhcldpZHRoKHByb2dyZXNzKTtcbiAgY29uc3QgZGlzcGxheVByb2dyZXNzID0gZm9ybWF0UHJvZ3Jlc3MocHJvZ3Jlc3MpO1xuXG4gIHJldHVybiAoXG4gICAgPGRpdiBjbGFzc05hbWU9e2NsYXNzTmFtZXMoc3R5bGVzLnByb2dyZXNzQmFyIHx8IFwiXCIsIHt9LCBbY2xhc3NOYW1lXSl9PlxuICAgICAgPGRpdiBjbGFzc05hbWU9e3N0eWxlcy5jb250YWluZXJ9PlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT17c3R5bGVzLmJhcn0gc3R5bGU9e3sgd2lkdGg6IHByb2dyZXNzQmFyV2lkdGggfX0gLz5cbiAgICAgIDwvZGl2PlxuICAgICAge3Nob3dQZXJjZW50YWdlICYmIChcbiAgICAgICAgPFRleHQgY2xhc3NOYW1lPXtzdHlsZXMucGVyY2VudGFnZX0+e2Rpc3BsYXlQcm9ncmVzc308L1RleHQ+XG4gICAgICApfVxuICAgICAge21lc3NhZ2UgJiYgPFRleHQgY2xhc3NOYW1lPXtzdHlsZXMubWVzc2FnZX0+e21lc3NhZ2V9PC9UZXh0Pn1cbiAgICA8L2Rpdj5cbiAgKTtcbn0pO1xuXG5Qcm9ncmVzc0Jhci5kaXNwbGF5TmFtZSA9IFwiUHJvZ3Jlc3NCYXJcIjtcbiJdLCJ2ZXJzaW9uIjozfQ==

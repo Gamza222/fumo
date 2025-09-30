@@ -1,7 +1,9 @@
-import React from 'react';
-import type { LoadingFallbackProps } from '../types/types';
-import { ComponentHeight, LoadingSize } from '../types/suspenseEnums';
-import styles from './fallbacks.module.scss';
+"use client";
+
+import React from "react";
+import type { LoadingFallbackProps } from "../types/types";
+import { ComponentHeight, LoadingSize } from "../types/suspenseEnums";
+import styles from "./fallbacks.module.scss";
 
 const LoadingSpinner: React.FC<{ size: LoadingSize }> = ({ size }) => {
   const spinnerClass = {
@@ -16,7 +18,7 @@ const LoadingSpinner: React.FC<{ size: LoadingSize }> = ({ size }) => {
 export const ComponentLoadingFallback: React.FC<LoadingFallbackProps> = ({
   size = LoadingSize.MEDIUM,
   height,
-  text = 'Loading...',
+  text = "Loading...",
   className,
 }) => {
   const heightClass = {
@@ -28,7 +30,7 @@ export const ComponentLoadingFallback: React.FC<LoadingFallbackProps> = ({
 
   return (
     <div
-      className={`${styles.componentFallback} ${heightClass[height || ComponentHeight.MEDIUM]} ${className || ''}`}
+      className={`${styles.componentFallback} ${heightClass[height || ComponentHeight.MEDIUM]} ${className || ""}`}
     >
       <div className={styles.componentContent}>
         <LoadingSpinner size={size as LoadingSize} />
@@ -40,11 +42,11 @@ export const ComponentLoadingFallback: React.FC<LoadingFallbackProps> = ({
 
 export const PageLoadingFallback: React.FC<LoadingFallbackProps> = ({
   size = LoadingSize.LARGE,
-  text = 'Loading page...',
+  text = "Loading page...",
   className,
 }) => {
   return (
-    <div className={`${styles.pageFallback} ${className || ''}`}>
+    <div className={`${styles.pageFallback} ${className || ""}`}>
       <div className={styles.pageContent}>
         <LoadingSpinner size={size as LoadingSize} />
         <span className={styles.pageText}>{text}</span>
@@ -55,11 +57,11 @@ export const PageLoadingFallback: React.FC<LoadingFallbackProps> = ({
 
 export const DefaultSuspenseFallback: React.FC<LoadingFallbackProps> = ({
   size = LoadingSize.MEDIUM,
-  text = 'Loading...',
+  text = "Loading...",
   className,
 }) => {
   return (
-    <div className={`${styles.defaultFallback} ${className || ''}`}>
+    <div className={`${styles.defaultFallback} ${className || ""}`}>
       <div className={styles.defaultContent}>
         <LoadingSpinner size={size as LoadingSize} />
         <span className={styles.defaultText}>{text}</span>
@@ -68,15 +70,19 @@ export const DefaultSuspenseFallback: React.FC<LoadingFallbackProps> = ({
   );
 };
 
-export const InlineLoadingFallback: React.FC<{ text?: string }> = ({ text = 'Loading...' }) => (
+export const InlineLoadingFallback: React.FC<{ text?: string }> = ({
+  text = "Loading...",
+}) => (
   <span className={styles.inlineFallback}>
     <LoadingSpinner size={LoadingSize.SMALL} />
     <span>{text}</span>
   </span>
 );
 
-export const CardLoadingFallback: React.FC<{ className?: string }> = ({ className }) => (
-  <div className={`${styles.cardFallback} ${className || ''}`}>
+export const CardLoadingFallback: React.FC<{ className?: string }> = ({
+  className,
+}) => (
+  <div className={`${styles.cardFallback} ${className || ""}`}>
     <div className={`${styles.cardLine} ${styles.cardLine1}`}></div>
     <div className={`${styles.cardLine} ${styles.cardLine2}`}></div>
     <div className={`${styles.cardLine} ${styles.cardLine3}`}></div>

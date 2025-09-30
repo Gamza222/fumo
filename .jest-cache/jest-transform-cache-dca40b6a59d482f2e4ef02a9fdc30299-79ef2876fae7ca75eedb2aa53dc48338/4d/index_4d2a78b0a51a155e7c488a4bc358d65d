@@ -1,0 +1,22 @@
+3b008e48365304a91bcaa58efead8608
+"use strict";
+/**
+ * Error Mocks
+ *
+ * Type: 📦 MANUAL
+ *
+ * This file exports only the actively used mocks for error-related testing utilities.
+ * These are MANUAL mocks - they use named exports for functions that need to be imported
+ * and controlled in tests.
+ *
+ * Organization follows SOLID principles:
+ * - errorBoundary.mock.ts: Reset function factory for ErrorBoundary testing (SRP: reset functions)
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.createMockResetFunction = void 0;
+// ============================================================================
+// ERROR BOUNDARY MOCKING
+// ============================================================================
+var errorBoundary_mock_1 = require("./lib/errorBoundary.mock");
+Object.defineProperty(exports, "createMockResetFunction", { enumerable: true, get: function () { return errorBoundary_mock_1.createMockResetFunction; } });
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL3Rlc3RpbmcvbW9ja3MvZXJyb3JzL2luZGV4LnRzIiwibWFwcGluZ3MiOiI7QUFBQTs7Ozs7Ozs7Ozs7R0FXRzs7O0FBRUgsK0VBQStFO0FBQy9FLHlCQUF5QjtBQUN6QiwrRUFBK0U7QUFFL0UsK0RBQW1FO0FBQTFELDZIQUFBLHVCQUF1QixPQUFBIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIi9Vc2Vycy9nYW16YXJhbWF6YW5vdi9EZXNrdG9wL2Z1bW8vc3JjL3NoYXJlZC90ZXN0aW5nL21vY2tzL2Vycm9ycy9pbmRleC50cyJdLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIEVycm9yIE1vY2tzXG4gKlxuICogVHlwZTog8J+TpiBNQU5VQUxcbiAqXG4gKiBUaGlzIGZpbGUgZXhwb3J0cyBvbmx5IHRoZSBhY3RpdmVseSB1c2VkIG1vY2tzIGZvciBlcnJvci1yZWxhdGVkIHRlc3RpbmcgdXRpbGl0aWVzLlxuICogVGhlc2UgYXJlIE1BTlVBTCBtb2NrcyAtIHRoZXkgdXNlIG5hbWVkIGV4cG9ydHMgZm9yIGZ1bmN0aW9ucyB0aGF0IG5lZWQgdG8gYmUgaW1wb3J0ZWRcbiAqIGFuZCBjb250cm9sbGVkIGluIHRlc3RzLlxuICpcbiAqIE9yZ2FuaXphdGlvbiBmb2xsb3dzIFNPTElEIHByaW5jaXBsZXM6XG4gKiAtIGVycm9yQm91bmRhcnkubW9jay50czogUmVzZXQgZnVuY3Rpb24gZmFjdG9yeSBmb3IgRXJyb3JCb3VuZGFyeSB0ZXN0aW5nIChTUlA6IHJlc2V0IGZ1bmN0aW9ucylcbiAqL1xuXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4vLyBFUlJPUiBCT1VOREFSWSBNT0NLSU5HXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG5cbmV4cG9ydCB7IGNyZWF0ZU1vY2tSZXNldEZ1bmN0aW9uIH0gZnJvbSAnLi9saWIvZXJyb3JCb3VuZGFyeS5tb2NrJztcbiJdLCJ2ZXJzaW9uIjozfQ==

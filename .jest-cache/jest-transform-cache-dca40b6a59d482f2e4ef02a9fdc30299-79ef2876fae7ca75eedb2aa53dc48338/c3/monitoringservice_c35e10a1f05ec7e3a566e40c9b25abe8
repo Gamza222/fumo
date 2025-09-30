@@ -1,0 +1,493 @@
+d32d894722654548d43deff07a67e875
+"use strict";
+/**
+ * Monitoring Service
+ *
+ * Centralized service for health checks, analytics, and monitoring functionality.
+ * Provides enterprise-level monitoring capabilities with privacy compliance.
+ */
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g = Object.create((typeof Iterator === "function" ? Iterator : Object).prototype);
+    return g.next = verb(0), g["throw"] = verb(1), g["return"] = verb(2), typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.MonitoringService = void 0;
+var monitoring_types_1 = require("../types/monitoring.types");
+var env_1 = require("../../../../config/env");
+// Version info is only available on server side
+// import { getVersionDisplay, getVersionInfo } from '../../../../config/version';
+/**
+ * Monitoring Service Class
+ *
+ * Handles health checks, analytics tracking, and monitoring data collection.
+ * Follows singleton pattern for consistent state across the application.
+ */
+var MonitoringService = /** @class */ (function () {
+    function MonitoringService(config) {
+        this.analyticsSession = null;
+        this.metrics = [];
+        this.alerts = [];
+        this.config = config;
+        this.startTime = new Date();
+        this.initializeAnalytics();
+    }
+    /**
+     * Get singleton instance of MonitoringService
+     */
+    MonitoringService.getInstance = function (config) {
+        if (!MonitoringService.instance) {
+            if (!config) {
+                throw new Error('MonitoringService requires configuration on first initialization');
+            }
+            MonitoringService.instance = new MonitoringService(config);
+        }
+        return MonitoringService.instance;
+    };
+    /**
+     * Initialize analytics session
+     */
+    MonitoringService.prototype.initializeAnalytics = function () {
+        if (this.config.analytics.enabled) {
+            this.analyticsSession = {
+                id: this.generateSessionId(),
+                startTime: new Date(),
+                lastActivity: new Date(),
+                pageViews: 0,
+                events: 0,
+            };
+        }
+    };
+    /**
+     * Generate unique session ID
+     */
+    MonitoringService.prototype.generateSessionId = function () {
+        return "session_".concat(Date.now(), "_").concat(Math.random().toString(36).substr(2, 9));
+    };
+    /**
+     * Get system health status
+     */
+    MonitoringService.prototype.getSystemHealth = function () {
+        return __awaiter(this, void 0, Promise, function () {
+            var services, summary, overallStatus, versionInfo;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.checkServicesHealth()];
+                    case 1:
+                        services = _a.sent();
+                        summary = this.calculateHealthSummary(services);
+                        overallStatus = this.determineOverallStatus(summary);
+                        versionInfo = {
+                            major: 1,
+                            minor: 0,
+                            patch: 0,
+                            prerelease: '',
+                            versionCode: 1,
+                            commitHash: 'unknown',
+                            branch: 'unknown',
+                        };
+                        return [2 /*return*/, {
+                                status: overallStatus,
+                                timestamp: new Date(),
+                                uptime: Date.now() - this.startTime.getTime(),
+                                version: env_1.envConfig.appVersion,
+                                versionDisplay: '1.0.0',
+                                versionInfo: {
+                                    major: versionInfo.major,
+                                    minor: versionInfo.minor,
+                                    patch: versionInfo.patch,
+                                    prerelease: versionInfo.prerelease,
+                                    versionCode: versionInfo.versionCode,
+                                    commitHash: versionInfo.commitHash,
+                                    branch: versionInfo.branch,
+                                },
+                                environment: env_1.envConfig.appEnv,
+                                services: services,
+                                summary: summary,
+                            }];
+                }
+            });
+        });
+    };
+    /**
+     * Check health of individual services
+     */
+    MonitoringService.prototype.checkServicesHealth = function () {
+        return __awaiter(this, void 0, Promise, function () {
+            var services, _i, _a, serviceName, startTime, health, responseTime, error_1;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        services = [];
+                        _i = 0, _a = this.config.healthCheck.services;
+                        _b.label = 1;
+                    case 1:
+                        if (!(_i < _a.length)) return [3 /*break*/, 6];
+                        serviceName = _a[_i];
+                        _b.label = 2;
+                    case 2:
+                        _b.trys.push([2, 4, , 5]);
+                        startTime = Date.now();
+                        return [4 /*yield*/, this.checkServiceHealth(serviceName)];
+                    case 3:
+                        health = _b.sent();
+                        responseTime = Date.now() - startTime;
+                        services.push({
+                            name: serviceName,
+                            status: health.status,
+                            responseTime: responseTime,
+                            lastCheck: new Date(),
+                            error: health.error,
+                            metadata: health.metadata,
+                        });
+                        return [3 /*break*/, 5];
+                    case 4:
+                        error_1 = _b.sent();
+                        services.push({
+                            name: serviceName,
+                            status: monitoring_types_1.HealthStatus.UNHEALTHY,
+                            lastCheck: new Date(),
+                            error: error_1 instanceof Error ? error_1.message : 'Unknown error',
+                        });
+                        return [3 /*break*/, 5];
+                    case 5:
+                        _i++;
+                        return [3 /*break*/, 1];
+                    case 6: return [2 /*return*/, services];
+                }
+            });
+        });
+    };
+    /**
+     * Check health of a specific service
+     */
+    MonitoringService.prototype.checkServiceHealth = function (serviceName) {
+        return __awaiter(this, void 0, Promise, function () {
+            return __generator(this, function (_a) {
+                switch (serviceName) {
+                    case 'database':
+                        return [2 /*return*/, this.checkDatabaseHealth()];
+                    case 'api':
+                        return [2 /*return*/, this.checkApiHealth()];
+                    case 'cache':
+                        return [2 /*return*/, this.checkCacheHealth()];
+                    case 'storage':
+                        return [2 /*return*/, this.checkStorageHealth()];
+                    default:
+                        return [2 /*return*/, { status: monitoring_types_1.HealthStatus.UNKNOWN }];
+                }
+                return [2 /*return*/];
+            });
+        });
+    };
+    /**
+     * Check database health
+     */
+    MonitoringService.prototype.checkDatabaseHealth = function () {
+        return __awaiter(this, void 0, Promise, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: 
+                    // In a real implementation, this would check actual database connectivity
+                    return [4 /*yield*/, Promise.resolve()];
+                    case 1:
+                        // In a real implementation, this would check actual database connectivity
+                        _a.sent(); // Simulate async operation
+                        // For now, we'll simulate a healthy database
+                        return [2 /*return*/, {
+                                status: monitoring_types_1.HealthStatus.HEALTHY,
+                                metadata: {
+                                    connectionPool: 'active',
+                                    queryTime: '< 10ms',
+                                },
+                            }];
+                }
+            });
+        });
+    };
+    /**
+     * Check API health
+     */
+    MonitoringService.prototype.checkApiHealth = function () {
+        return __awaiter(this, void 0, Promise, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: 
+                    // In a real implementation, this would check API endpoints
+                    return [4 /*yield*/, Promise.resolve()];
+                    case 1:
+                        // In a real implementation, this would check API endpoints
+                        _a.sent(); // Simulate async operation
+                        return [2 /*return*/, {
+                                status: monitoring_types_1.HealthStatus.HEALTHY,
+                                metadata: {
+                                    responseTime: '< 100ms',
+                                    endpoints: 'all_operational',
+                                },
+                            }];
+                }
+            });
+        });
+    };
+    /**
+     * Check cache health
+     */
+    MonitoringService.prototype.checkCacheHealth = function () {
+        return __awaiter(this, void 0, Promise, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: 
+                    // In a real implementation, this would check cache connectivity
+                    return [4 /*yield*/, Promise.resolve()];
+                    case 1:
+                        // In a real implementation, this would check cache connectivity
+                        _a.sent(); // Simulate async operation
+                        return [2 /*return*/, {
+                                status: monitoring_types_1.HealthStatus.HEALTHY,
+                                metadata: {
+                                    hitRate: '95%',
+                                    memoryUsage: '60%',
+                                },
+                            }];
+                }
+            });
+        });
+    };
+    /**
+     * Check storage health
+     */
+    MonitoringService.prototype.checkStorageHealth = function () {
+        return __awaiter(this, void 0, Promise, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: 
+                    // In a real implementation, this would check storage connectivity
+                    return [4 /*yield*/, Promise.resolve()];
+                    case 1:
+                        // In a real implementation, this would check storage connectivity
+                        _a.sent(); // Simulate async operation
+                        return [2 /*return*/, {
+                                status: monitoring_types_1.HealthStatus.HEALTHY,
+                                metadata: {
+                                    availableSpace: '80%',
+                                    readWrite: 'operational',
+                                },
+                            }];
+                }
+            });
+        });
+    };
+    /**
+     * Calculate health summary from services
+     */
+    MonitoringService.prototype.calculateHealthSummary = function (services) {
+        var summary = {
+            total: services.length,
+            healthy: 0,
+            degraded: 0,
+            unhealthy: 0,
+        };
+        services.forEach(function (service) {
+            switch (service.status) {
+                case monitoring_types_1.HealthStatus.HEALTHY:
+                    summary.healthy++;
+                    break;
+                case monitoring_types_1.HealthStatus.DEGRADED:
+                    summary.degraded++;
+                    break;
+                case monitoring_types_1.HealthStatus.UNHEALTHY:
+                    summary.unhealthy++;
+                    break;
+            }
+        });
+        return summary;
+    };
+    /**
+     * Determine overall system status
+     */
+    MonitoringService.prototype.determineOverallStatus = function (summary) {
+        if (summary.unhealthy > 0) {
+            return monitoring_types_1.HealthStatus.UNHEALTHY;
+        }
+        if (summary.degraded > 0) {
+            return monitoring_types_1.HealthStatus.DEGRADED;
+        }
+        if (summary.healthy === summary.total) {
+            return monitoring_types_1.HealthStatus.HEALTHY;
+        }
+        return monitoring_types_1.HealthStatus.UNKNOWN;
+    };
+    /**
+     * Track analytics event
+     */
+    MonitoringService.prototype.trackEvent = function (type, name, properties, userId) {
+        if (!this.config.analytics.enabled || !this.analyticsSession) {
+            return;
+        }
+        var event = {
+            id: "event_".concat(Date.now(), "_").concat(Math.random().toString(36).substr(2, 9)),
+            type: type,
+            name: name,
+            timestamp: new Date(),
+            userId: userId,
+            sessionId: this.analyticsSession.id,
+            properties: properties,
+        };
+        // Update session
+        this.analyticsSession.events++;
+        this.analyticsSession.lastActivity = new Date();
+        // In a real implementation, this would send to analytics service
+        if (this.config.analytics.debug) {
+            // eslint-disable-next-line no-console
+            console.log('Analytics Event:', event);
+        }
+    };
+    /**
+     * Track page view
+     */
+    MonitoringService.prototype.trackPageView = function (path, userId) {
+        if (!this.analyticsSession) {
+            return;
+        }
+        this.analyticsSession.pageViews++;
+        this.trackEvent(monitoring_types_1.AnalyticsEventType.PAGE_VIEW, 'page_view', { path: path }, userId);
+    };
+    /**
+     * Add monitoring metric
+     */
+    MonitoringService.prototype.addMetric = function (name, value, unit, tags) {
+        var metric = {
+            name: name,
+            value: value,
+            unit: unit,
+            timestamp: new Date(),
+            tags: tags,
+        };
+        this.metrics.push(metric);
+        // Keep only recent metrics
+        var maxMetrics = this.config.dashboard.maxMetrics;
+        if (this.metrics.length > maxMetrics) {
+            this.metrics = this.metrics.slice(-maxMetrics);
+        }
+    };
+    /**
+     * Add monitoring alert
+     */
+    MonitoringService.prototype.addAlert = function (level, message, metadata) {
+        var alert = {
+            id: "alert_".concat(Date.now(), "_").concat(Math.random().toString(36).substr(2, 9)),
+            level: level,
+            message: message,
+            timestamp: new Date(),
+            resolved: false,
+            metadata: metadata,
+        };
+        this.alerts.push(alert);
+        // Keep only recent alerts
+        var maxAlerts = this.config.dashboard.maxAlerts;
+        if (this.alerts.length > maxAlerts) {
+            this.alerts = this.alerts.slice(-maxAlerts);
+        }
+        // In a real implementation, this would send alerts via webhook/email
+        if (this.config.alerts.enabled) {
+            // eslint-disable-next-line no-console
+            console.log('Monitoring Alert:', alert);
+        }
+    };
+    /**
+     * Get monitoring dashboard data
+     */
+    MonitoringService.prototype.getDashboardData = function () {
+        return __awaiter(this, void 0, Promise, function () {
+            var systemHealth, recentAlerts, recentMetrics;
+            var _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0: return [4 /*yield*/, this.getSystemHealth()];
+                    case 1:
+                        systemHealth = _b.sent();
+                        recentAlerts = this.alerts.slice(-10);
+                        recentMetrics = this.metrics.slice(-20);
+                        return [2 /*return*/, {
+                                systemHealth: systemHealth,
+                                recentAlerts: recentAlerts,
+                                metrics: recentMetrics,
+                                analytics: {
+                                    totalEvents: ((_a = this.analyticsSession) === null || _a === void 0 ? void 0 : _a.events) || 0,
+                                    activeSessions: this.analyticsSession ? 1 : 0,
+                                    topPages: this.getTopPages(),
+                                },
+                            }];
+                }
+            });
+        });
+    };
+    /**
+     * Get top pages (simplified implementation)
+     */
+    MonitoringService.prototype.getTopPages = function () {
+        // In a real implementation, this would aggregate page view data
+        return [
+            { path: '/', views: 100 },
+            { path: '/dashboard', views: 50 },
+            { path: '/settings', views: 25 },
+        ];
+    };
+    /**
+     * Get current analytics session
+     */
+    MonitoringService.prototype.getAnalyticsSession = function () {
+        return this.analyticsSession;
+    };
+    /**
+     * Update configuration
+     */
+    MonitoringService.prototype.updateConfig = function (newConfig) {
+        this.config = __assign(__assign({}, this.config), newConfig);
+    };
+    return MonitoringService;
+}());
+exports.MonitoringService = MonitoringService;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvaW5mcmFzdHJ1Y3R1cmUvbW9uaXRvcmluZy9saWIvbW9uaXRvcmluZy5zZXJ2aWNlLnRzIiwibWFwcGluZ3MiOiI7QUFBQTs7Ozs7R0FLRzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFFSCw4REFZbUM7QUFDbkMsOENBQW1EO0FBQ25ELGdEQUFnRDtBQUNoRCxrRkFBa0Y7QUFFbEY7Ozs7O0dBS0c7QUFDSDtJQVFFLDJCQUFvQixNQUF3QjtRQUxwQyxxQkFBZ0IsR0FBNEIsSUFBSSxDQUFDO1FBQ2pELFlBQU8sR0FBdUIsRUFBRSxDQUFDO1FBQ2pDLFdBQU0sR0FBc0IsRUFBRSxDQUFDO1FBSXJDLElBQUksQ0FBQyxNQUFNLEdBQUcsTUFBTSxDQUFDO1FBQ3JCLElBQUksQ0FBQyxTQUFTLEdBQUcsSUFBSSxJQUFJLEVBQUUsQ0FBQztRQUM1QixJQUFJLENBQUMsbUJBQW1CLEVBQUUsQ0FBQztJQUM3QixDQUFDO0lBRUQ7O09BRUc7SUFDVyw2QkFBVyxHQUF6QixVQUEwQixNQUF5QjtRQUNqRCxJQUFJLENBQUMsaUJBQWlCLENBQUMsUUFBUSxFQUFFLENBQUM7WUFDaEMsSUFBSSxDQUFDLE1BQU0sRUFBRSxDQUFDO2dCQUNaLE1BQU0sSUFBSSxLQUFLLENBQUMsa0VBQWtFLENBQUMsQ0FBQztZQUN0RixDQUFDO1lBQ0QsaUJBQWlCLENBQUMsUUFBUSxHQUFHLElBQUksaUJBQWlCLENBQUMsTUFBTSxDQUFDLENBQUM7UUFDN0QsQ0FBQztRQUNELE9BQU8saUJBQWlCLENBQUMsUUFBUSxDQUFDO0lBQ3BDLENBQUM7SUFFRDs7T0FFRztJQUNLLCtDQUFtQixHQUEzQjtRQUNFLElBQUksSUFBSSxDQUFDLE1BQU0sQ0FBQyxTQUFTLENBQUMsT0FBTyxFQUFFLENBQUM7WUFDbEMsSUFBSSxDQUFDLGdCQUFnQixHQUFHO2dCQUN0QixFQUFFLEVBQUUsSUFBSSxDQUFDLGlCQUFp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SUFBSSxFQUFFLEdBQUcsRUFBRSxLQUFLLEVBQUUsR0FBRyxFQUFFO1lBQ3pCLEVBQUUsSUFBSSxFQUFFLFlBQVksRUFBRSxLQUFLLEVBQUUsRUFBRSxFQUFFO1lBQ2pDLEVBQUUsSUFBSSxFQUFFLFdBQVcsRUFBRSxLQUFLLEVBQUUsRUFBRSxFQUFFO1NBQ2pDLENBQUM7SUFDSixDQUFDO0lBRUQ7O09BRUc7SUFDSSwrQ0FBbUIsR0FBMUI7UUFDRSxPQUFPLElBQUksQ0FBQyxnQkFBZ0IsQ0FBQztJQUMvQixDQUFDO0lBRUQ7O09BRUc7SUFDSSx3Q0FBWSxHQUFuQixVQUFvQixTQUFvQztRQUN0RCxJQUFJLENBQUMsTUFBTSx5QkFBUSxJQUFJLENBQUMsTUFBTSxHQUFLLFNBQVMsQ0FBRSxDQUFDO0lBQ2pELENBQUM7SUFDSCx3QkFBQztBQUFELENBQUMsQUEvWkQsSUErWkM7QUEvWlksOENBQWlCIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIi9Vc2Vycy9nYW16YXJhbWF6YW5vdi9EZXNrdG9wL2Z1bW8vc3JjL2luZnJhc3RydWN0dXJlL21vbml0b3JpbmcvbGliL21vbml0b3Jpbmcuc2VydmljZS50cyJdLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIE1vbml0b3JpbmcgU2VydmljZVxuICpcbiAqIENlbnRyYWxpemVkIHNlcnZpY2UgZm9yIGhlYWx0aCBjaGVja3MsIGFuYWx5dGljcywgYW5kIG1vbml0b3JpbmcgZnVuY3Rpb25hbGl0eS5cbiAqIFByb3ZpZGVzIGVudGVycHJpc2UtbGV2ZWwgbW9uaXRvcmluZyBjYXBhYmlsaXRpZXMgd2l0aCBwcml2YWN5IGNvbXBsaWFuY2UuXG4gKi9cblxuaW1wb3J0IHtcbiAgQWxlcnRMZXZlbCxcbiAgQW5hbHl0aWNzRXZlbnQsXG4gIEFuYWx5dGljc0V2ZW50VHlwZSxcbiAgQW5hbHl0aWNzU2Vzc2lvbixcbiAgSGVhbHRoU3RhdHVzLFxuICBNb25pdG9yaW5nQWxlcnQsXG4gIE1vbml0b3JpbmdDb25maWcsXG4gIE1vbml0b3JpbmdEYXNoYm9hcmREYXRhLFxuICBNb25pdG9yaW5nTWV0cmljLFxuICBTZXJ2aWNlSGVhbHRoLFxuICBTeXN0ZW1IZWFsdGgsXG59IGZyb20gJy4uL3R5cGVzL21vbml0b3JpbmcudHlwZXMnO1xuaW1wb3J0IHsgZW52Q29uZmlnIH0gZnJvbSAnLi4vLi4vLi4vLi4vY29uZmlnL2Vudic7XG4vLyBWZXJzaW9uIGluZm8gaXMgb25seSBhdmFpbGFibGUgb24gc2VydmVyIHNpZGVcbi8vIGltcG9ydCB7IGdldFZlcnNpb25EaXNwbGF5LCBnZXRWZXJzaW9uSW5mbyB9IGZyb20gJy4uLy4uLy4uLy4uL2NvbmZpZy92ZXJzaW9uJztcblxuLyoqXG4gKiBNb25pdG9yaW5nIFNlcnZpY2UgQ2xhc3NcbiAqXG4gKiBIYW5kbGVzIGhlYWx0aCBjaGVja3MsIGFuYWx5dGljcyB0cmFja2luZywgYW5kIG1vbml0b3JpbmcgZGF0YSBjb2xsZWN0aW9uLlxuICogRm9sbG93cyBzaW5nbGV0b24gcGF0dGVybiBmb3IgY29uc2lzdGVudCBzdGF0ZSBhY3Jvc3MgdGhlIGFwcGxpY2F0aW9uLlxuICovXG5leHBvcnQgY2xhc3MgTW9uaXRvcmluZ1NlcnZpY2Uge1xuICBwcml2YXRlIHN0YXRpYyBpbnN0YW5jZTogTW9uaXRvcmluZ1NlcnZpY2U7XG4gIHByaXZhdGUgY29uZmlnOiBNb25pdG9yaW5nQ29uZmlnO1xuICBwcml2YXRlIGFuYWx5dGljc1Nlc3Npb246IEFuYWx5dGljc1Nlc3Npb24gfCBudWxsID0gbnVsbDtcbiAgcHJpdmF0ZSBtZXRyaWNzOiBNb25pdG9yaW5nTWV0cmljW10gPSBbXTtcbiAgcHJpdmF0ZSBhbGVydHM6IE1vbml0b3JpbmdBbGVydFtdID0gW107XG4gIHByaXZhdGUgc3RhcnRUaW1lOiBEYXRlO1xuXG4gIHByaXZhdGUgY29uc3RydWN0b3IoY29uZmlnOiBNb25pdG9yaW5nQ29uZmlnKSB7XG4gICAgdGhpcy5jb25maWcgPSBjb25maWc7XG4gICAgdGhpcy5zdGFydFRpbWUgPSBuZXcgRGF0ZSgpO1xuICAgIHRoaXMuaW5pdGlhbGl6ZUFuYWx5dGljcygpO1xuICB9XG5cbiAgLyoqXG4gICAqIEdldCBzaW5nbGV0b24gaW5zdGFuY2Ugb2YgTW9uaXRvcmluZ1NlcnZpY2VcbiAgICovXG4gIHB1YmxpYyBzdGF0aWMgZ2V0SW5zdGFuY2UoY29uZmlnPzogTW9uaXRvcmluZ0NvbmZpZyk6IE1vbml0b3JpbmdTZXJ2aWNlIHtcbiAgICBpZiAoIU1vbml0b3JpbmdTZXJ2aWNlLmluc3RhbmNlKSB7XG4gICAgICBpZiAoIWNvbmZpZykge1xuICAgICAgICB0aHJvdyBuZXcgRXJyb3IoJ01vbml0b3JpbmdTZXJ2aWNlIHJlcXVpcmVzIGNvbmZpZ3VyYXRpb24gb24gZmlyc3QgaW5pdGlhbGl6YXRpb24nKTtcbiAgICAgIH1cbiAgICAgIE1vbml0b3JpbmdTZXJ2aWNlLmluc3RhbmNlID0gbmV3IE1vbml0b3JpbmdTZXJ2aWNlKGNvbmZpZyk7XG4gICAgfVxuICAgIHJldHVybiBNb25pdG9yaW5nU2VydmljZS5pbnN0YW5jZTtcbiAgfVxuXG4gIC8qKlxuICAgKiBJbml0aWFsaXplIGFuYWx5dGljcyBzZXNzaW9uXG4gICAqL1xuICBwcml2YXRlIGluaXRpYWxpemVBbmFseXRpY3MoKTogdm9pZCB7XG4gICAgaWYgKHRoaXMuY29uZmlnLmFuYWx5dGljcy5lbmFibGVkKSB7XG4gICAgICB0aGlzLmFuYWx5dGljc1Nlc3Npb24gPSB7XG4gICAgICAgIGlkOiB0aGlzLmdlbmVyYXRlU2Vzc2lvbklkKCksXG4gICAgICAgIHN0YXJ0VGltZTogbmV3IERhdGUoKSxcbiAgICAgICAgbGFzdEFjdGl2aXR5OiBuZXcgRGF0ZSgpLFxuICAgICAgICBwYWdlVmlld3M6IDAsXG4gICAgICAgIGV2ZW50czogMCxcbiAgICAgIH07XG4gICAgfVxuICB9XG5cbiAgLyoqXG4gICAqIEdlbmVyYXRlIHVuaXF1ZSBzZXNzaW9uIElEXG4gICAqL1xuICBwcml2YXRlIGdlbmVyYXRlU2Vzc2lvbklkKCk6IHN0cmluZyB7XG4gICAgcmV0dXJuIGBzZXNzaW9uXyR7RGF0ZS5ub3coKX1fJHtNYXRoLnJhbmRvbSgpLnRvU3RyaW5nKDM2KS5zdWJzdHIoMiwgOSl9YDtcbiAgfVxuXG4gIC8qKlxuICAgKiBHZXQgc3lzdGVtIGhlYWx0aCBzdGF0dXNcbiAgICovXG4gIHB1YmxpYyBhc3luYyBnZXRTeXN0ZW1IZWFsdGgoKTogUHJvbWlzZTxTeXN0ZW1IZWFsdGg+IHtcbiAgICBjb25zdCBzZXJ2aWNlcyA9IGF3YWl0IHRoaXMuY2hlY2tTZXJ2aWNlc0hlYWx0aCgpO1xuICAgIGNvbnN0IHN1bW1hcnkgPSB0aGlzLmNhbGN1bGF0ZUhlYWx0aFN1bW1hcnkoc2VydmljZXMpO1xuICAgIGNvbnN0IG92ZXJhbGxTdGF0dXMgPSB0aGlzLmRldGVybWluZU92ZXJhbGxTdGF0dXMoc3VtbWFyeSk7XG5cbiAgICAvLyBWZXJzaW9uIGluZm8gbm90IGF2YWlsYWJsZSBvbiBjbGllbnQgc2lkZVxuICAgIGNvbnN0IHZlcnNpb25JbmZvID0ge1xuICAgICAgbWFqb3I6IDEsXG4gICAgICBtaW5vcjogMCxcbiAgICAgIHBhdGNoOiAwLFxuICAgICAgcHJlcmVsZWFzZTogJycsXG4gICAgICB2ZXJzaW9uQ29kZTogMSxcbiAgICAgIGNvbW1pdEhhc2g6ICd1bmtub3duJyxcbiAgICAgIGJyYW5jaDogJ3Vua25vd24nLFxuICAgIH07XG5cbiAgICByZXR1cm4ge1xuICAgICAgc3RhdHVzOiBvdmVyYWxsU3RhdHVzLFxuICAgICAgdGltZXN0YW1wOiBuZXcgRGF0ZSgpLFxuICAgICAgdXB0aW1lOiBEYXRlLm5vdygpIC0gdGhpcy5zdGFydFRpbWUuZ2V0VGltZSgpLFxuICAgICAgdmVyc2lvbjogZW52Q29uZmlnLmFwcFZlcnNpb24sXG4gICAgICB2ZXJzaW9uRGlzcGxheTogJzEuMC4wJyxcbiAgICAgIHZlcnNpb25JbmZvOiB7XG4gICAgICAgIG1ham9yOiB2ZXJzaW9uSW5mby5tYWpvcixcbiAgICAgICAgbWlub3I6IHZlcnNpb25JbmZvLm1pbm9yLFxuICAgICAgICBwYXRjaDogdmVyc2lvbkluZm8ucGF0Y2gsXG4gICAgICAgIHByZXJlbGVhc2U6IHZlcnNpb25JbmZvLnByZXJlbGVhc2UsXG4gICAgICAgIHZlcnNpb25Db2RlOiB2ZXJzaW9uSW5mby52ZXJzaW9uQ29kZSxcbiAgICAgICAgY29tbWl0SGFzaDogdmVyc2lvbkluZm8uY29tbWl0SGFzaCxcbiAgICAgICAgYnJhbmNoOiB2ZXJzaW9uSW5mby5icmFuY2gsXG4gICAgICB9LFxuICAgICAgZW52aXJvbm1lbnQ6IGVudkNvbmZpZy5hcHBFbnYsXG4gICAgICBzZXJ2aWNlcyxcbiAgICAgIHN1bW1hcnksXG4gICAgfTtcbiAgfVxuXG4gIC8qKlxuICAgKiBDaGVjayBoZWFsdGggb2YgaW5kaXZpZHVhbCBzZXJ2aWNlc1xuICAgKi9cbiAgcHJpdmF0ZSBhc3luYyBjaGVja1NlcnZpY2VzSGVhbHRoKCk6IFByb21pc2U8U2VydmljZUhlYWx0aFtdPiB7XG4gICAgY29uc3Qgc2VydmljZXM6IFNlcnZpY2VIZWFsdGhbXSA9IFtdO1xuXG4gICAgZm9yIChjb25zdCBzZXJ2aWNlTmFtZSBvZiB0aGlzLmNvbmZpZy5oZWFsdGhDaGVjay5zZXJ2aWNlcykge1xuICAgICAgdHJ5IHtcbiAgICAgICAgY29uc3Qgc3RhcnRUaW1lID0gRGF0ZS5ub3coKTtcbiAgICAgICAgY29uc3QgaGVhbHRoID0gYXdhaXQgdGhpcy5jaGVja1NlcnZpY2VIZWFsdGgoc2VydmljZU5hbWUpO1xuICAgICAgICBjb25zdCByZXNwb25zZVRpbWUgPSBEYXRlLm5vdygpIC0gc3RhcnRUaW1lO1xuXG4gICAgICAgIHNlcnZpY2VzLnB1c2goe1xuICAgICAgICAgIG5hbWU6IHNlcnZpY2VOYW1lLFxuICAgICAgICAgIHN0YXR1czogaGVhbHRoLnN0YXR1cyxcbiAgICAgICAgICByZXNwb25zZVRpbWUsXG4gICAgICAgICAgbGFzdENoZWNrOiBuZXcgRGF0ZSgpLFxuICAgICAgICAgIGVycm9yOiBoZWFsdGguZXJyb3IsXG4gICAgICAgICAgbWV0YWRhdGE6IGhlYWx0aC5tZXRhZGF0YSxcbiAgICAgICAgfSk7XG4gICAgICB9IGNhdGNoIChlcnJvcikge1xuICAgICAgICBzZXJ2aWNlcy5wdXNoKHtcbiAgICAgICAgICBuYW1lOiBzZXJ2aWNlTmFtZSxcbiAgICAgICAgICBzdGF0dXM6IEhlYWx0aFN0YXR1cy5VTkhFQUxUSFksXG4gICAgICAgICAgbGFzdENoZWNrOiBuZXcgRGF0ZSgpLFxuICAgICAgICAgIGVycm9yOiBlcnJvciBpbnN0YW5jZW9mIEVycm9yID8gZXJyb3IubWVzc2FnZSA6ICdVbmtub3duIGVycm9yJyxcbiAgICAgICAgfSk7XG4gICAgICB9XG4gICAgfVxuXG4gICAgcmV0dXJuIHNlcnZpY2VzO1xuICB9XG5cbiAgLyoqXG4gICAqIENoZWNrIGhlYWx0aCBvZiBhIHNwZWNpZmljIHNlcnZpY2VcbiAgICovXG4gIHByaXZhdGUgYXN5bmMgY2hlY2tTZXJ2aWNlSGVhbHRoKHNlcnZpY2VOYW1lOiBzdHJpbmcpOiBQcm9taXNlPHtcbiAgICBzdGF0dXM6IEhlYWx0aFN0YXR1cztcbiAgICBlcnJvcj86IHN0cmluZztcbiAgICBtZXRhZGF0YT86IFJlY29yZDxzdHJpbmcsIHVua25vd24+O1xuICB9PiB7XG4gICAgc3dpdGNoIChzZXJ2aWNlTmFtZSkge1xuICAgICAgY2FzZSAnZGF0YWJhc2UnOlxuICAgICAgICByZXR1cm4gdGhpcy5jaGVja0RhdGFiYXNlSGVhbHRoKCk7XG4gICAgICBjYXNlICdhcGknOlxuICAgICAgICByZXR1cm4gdGhpcy5jaGVja0FwaUhlYWx0aCgpO1xuICAgICAgY2FzZSAnY2FjaGUnOlxuICAgICAgICByZXR1cm4gdGhpcy5jaGVja0NhY2hlSGVhbHRoKCk7XG4gICAgICBjYXNlICdzdG9yYWdlJzpcbiAgICAgICAgcmV0dXJuIHRoaXMuY2hlY2tTdG9yYWdlSGVhbHRoKCk7XG4gICAgICBkZWZhdWx0OlxuICAgICAgICByZXR1cm4geyBzdGF0dXM6IEhlYWx0aFN0YXR1cy5VTktOT1dOIH07XG4gICAgfVxuICB9XG5cbiAgLyoqXG4gICAqIENoZWNrIGRhdGFiYXNlIGhlYWx0aFxuICAgKi9cbiAgcHJpdmF0ZSBhc3luYyBjaGVja0RhdGFiYXNlSGVhbHRoKCk6IFByb21pc2U8e1xuICAgIHN0YXR1czogSGVhbHRoU3RhdHVzO1xuICAgIGVycm9yPzogc3RyaW5nO1xuICAgIG1ldGFkYXRhPzogUmVjb3JkPHN0cmluZywgdW5rbm93bj47XG4gIH0+IHtcbiAgICAvLyBJbiBhIHJlYWwgaW1wbGVtZW50YXRpb24sIHRoaXMgd291bGQgY2hlY2sgYWN0dWFsIGRhdGFiYXNlIGNvbm5lY3Rpdml0eVxuICAgIGF3YWl0IFByb21pc2UucmVzb2x2ZSgpOyAvLyBTaW11bGF0ZSBhc3luYyBvcGVyYXRpb25cbiAgICAvLyBGb3Igbm93LCB3ZSdsbCBzaW11bGF0ZSBhIGhlYWx0aHkgZGF0YWJhc2VcbiAgICByZXR1cm4ge1xuICAgICAgc3RhdHVzOiBIZWFsdGhTdGF0dXMuSEVBTFRIWSxcbiAgICAgIG1ldGFkYXRhOiB7XG4gICAgICAgIGNvbm5lY3Rpb25Qb29sOiAnYWN0aXZlJyxcbiAgICAgICAgcXVlcnlUaW1lOiAnPCAxMG1zJyxcbiAgICAgIH0sXG4gICAgfTtcbiAgfVxuXG4gIC8qKlxuICAgKiBDaGVjayBBUEkgaGVhbHRoXG4gICAqL1xuICBwcml2YXRlIGFzeW5jIGNoZWNrQXBpSGVhbHRoKCk6IFByb21pc2U8e1xuICAgIHN0YXR1czogSGVhbHRoU3RhdHVzO1xuICAgIGVycm9yPzogc3RyaW5nO1xuICAgIG1ldGFkYXRhPzogUmVjb3JkPHN0cmluZywgdW5rbm93bj47XG4gIH0+IHtcbiAgICAvLyBJbiBhIHJlYWwgaW1wbGVtZW50YXRpb24sIHRoaXMgd291bGQgY2hlY2sgQVBJIGVuZHBvaW50c1xuICAgIGF3YWl0IFByb21pc2UucmVzb2x2ZSgpOyAvLyBTaW11bGF0ZSBhc3luYyBvcGVyYXRpb25cbiAgICByZXR1cm4ge1xuICAgICAgc3RhdHVzOiBIZWFsdGhTdGF0dXMuSEVBTFRIWSxcbiAgICAgIG1ldGFkYXRhOiB7XG4gICAgICAgIHJlc3BvbnNlVGltZTogJzwgMTAwbXMnLFxuICAgICAgICBlbmRwb2ludHM6ICdhbGxfb3BlcmF0aW9uYWwnLFxuICAgICAgfSxcbiAgICB9O1xuICB9XG5cbiAgLyoqXG4gICAqIENoZWNrIGNhY2hlIGhlYWx0aFxuICAgKi9cbiAgcHJpdmF0ZSBhc3luYyBjaGVja0NhY2hlSGVhbHRoKCk6IFByb21pc2U8e1xuICAgIHN0YXR1czogSGVhbHRoU3RhdHVzO1xuICAgIGVycm9yPzogc3RyaW5nO1xuICAgIG1ldGFkYXRhPzogUmVjb3JkPHN0cmluZywgdW5rbm93bj47XG4gIH0+IHtcbiAgICAvLyBJbiBhIHJlYWwgaW1wbGVtZW50YXRpb24sIHRoaXMgd291bGQgY2hlY2sgY2FjaGUgY29ubmVjdGl2aXR5XG4gICAgYXdhaXQgUHJvbWlzZS5yZXNvbHZlKCk7IC8vIFNpbXVsYXRlIGFzeW5jIG9wZXJhdGlvblxuICAgIHJldHVybiB7XG4gICAgICBzdGF0dXM6IEhlYWx0aFN0YXR1cy5IRUFMVEhZLFxuICAgICAgbWV0YWRhdGE6IHtcbiAgICAgICAgaGl0UmF0ZTogJzk1JScsXG4gICAgICAgIG1lbW9yeVVzYWdlOiAnNjAlJyxcbiAgICAgIH0sXG4gICAgfTtcbiAgfVxuXG4gIC8qKlxuICAgKiBDaGVjayBzdG9yYWdlIGhlYWx0aFxuICAgKi9cbiAgcHJpdmF0ZSBhc3luYyBjaGVja1N0b3JhZ2VIZWFsdGgoKTogUHJvbWlzZTx7XG4gICAgc3RhdHVzOiBIZWFsdGhTdGF0dXM7XG4gICAgZXJyb3I/OiBzdHJpbmc7XG4gICAgbWV0YWRhdGE/OiBSZWNvcmQ8c3RyaW5nLCB1bmtub3duPjtcbiAgfT4ge1xuICAgIC8vIEluIGEgcmVhbCBpbXBsZW1lbnRhdGlvbiwgdGhpcyB3b3VsZCBjaGVjayBzdG9yYWdlIGNvbm5lY3Rpdml0eVxuICAgIGF3YWl0IFByb21pc2UucmVzb2x2ZSgpOyAvLyBTaW11bGF0ZSBhc3luYyBvcGVyYXRpb25cbiAgICByZXR1cm4ge1xuICAgICAgc3RhdHVzOiBIZWFsdGhTdGF0dXMuSEVBTFRIWSxcbiAgICAgIG1ldGFkYXRhOiB7XG4gICAgICAgIGF2YWlsYWJsZVNwYWNlOiAnODAlJyxcbiAgICAgICAgcmVhZFdyaXRlOiAnb3BlcmF0aW9uYWwnLFxuICAgICAgfSxcbiAgICB9O1xuICB9XG5cbiAgLyoqXG4gICAqIENhbGN1bGF0ZSBoZWFsdGggc3VtbWFyeSBmcm9tIHNlcnZpY2VzXG4gICAqL1xuICBwcml2YXRlIGNhbGN1bGF0ZUhlYWx0aFN1bW1hcnkoc2VydmljZXM6IFNlcnZpY2VIZWFsdGhbXSk6IHtcbiAgICB0b3RhbDogbnVtYmVyO1xuICAgIGhlYWx0aHk6IG51bWJlcjtcbiAgICBkZWdyYWRlZDogbnVtYmVyO1xuICAgIHVuaGVhbHRoeTogbnVtYmVyO1xuICB9IHtcbiAgICBjb25zdCBzdW1tYXJ5ID0ge1xuICAgICAgdG90YWw6IHNlcnZpY2VzLmxlbmd0aCxcbiAgICAgIGhlYWx0aHk6IDAsXG4gICAgICBkZWdyYWRlZDogMCxcbiAgICAgIHVuaGVhbHRoeTogMCxcbiAgICB9O1xuXG4gICAgc2VydmljZXMuZm9yRWFjaCgoc2VydmljZSkgPT4ge1xuICAgICAgc3dpdGNoIChzZXJ2aWNlLnN0YXR1cykge1xuICAgICAgICBjYXNlIEhlYWx0aFN0YXR1cy5IRUFMVEhZOlxuICAgICAgICAgIHN1bW1hcnkuaGVhbHRoeSsrO1xuICAgICAgICAgIGJyZWFrO1xuICAgICAgICBjYXNlIEhlYWx0aFN0YXR1cy5ERUdSQURFRDpcbiAgICAgICAgICBzdW1tYXJ5LmRlZ3JhZGVkKys7XG4gICAgICAgICAgYnJlYWs7XG4gICAgICAgIGNhc2UgSGVhbHRoU3RhdHVzLlVOSEVBTFRIWTpcbiAgICAgICAgICBzdW1tYXJ5LnVuaGVhbHRoeSsrO1xuICAgICAgICAgIGJyZWFrO1xuICAgICAgfVxuICAgIH0pO1xuXG4gICAgcmV0dXJuIHN1bW1hcnk7XG4gIH1cblxuICAvKipcbiAgICogRGV0ZXJtaW5lIG92ZXJhbGwgc3lzdGVtIHN0YXR1c1xuICAgKi9cbiAgcHJpdmF0ZSBkZXRlcm1pbmVPdmVyYWxsU3RhdHVzKHN1bW1hcnk6IHtcbiAgICB0b3RhbDogbnVtYmVyO1xuICAgIGhlYWx0aHk6IG51bWJlcjtcbiAgICBkZWdyYWRlZDogbnVtYmVyO1xuICAgIHVuaGVhbHRoeTogbnVtYmVyO1xuICB9KTogSGVhbHRoU3RhdHVzIHtcbiAgICBpZiAoc3VtbWFyeS51bmhlYWx0aHkgPiAwKSB7XG4gICAgICByZXR1cm4gSGVhbHRoU3RhdHVzLlVOSEVBTFRIWTtcbiAgICB9XG4gICAgaWYgKHN1bW1hcnkuZGVncmFkZWQgPiAwKSB7XG4gICAgICByZXR1cm4gSGVhbHRoU3RhdHVzLkRFR1JBREVEO1xuICAgIH1cbiAgICBpZiAoc3VtbWFyeS5oZWFsdGh5ID09PSBzdW1tYXJ5LnRvdGFsKSB7XG4gICAgICByZXR1cm4gSGVhbHRoU3RhdHVzLkhFQUxUSFk7XG4gICAgfVxuICAgIHJldHVybiBIZWFsdGhTdGF0dXMuVU5LTk9XTjtcbiAgfVxuXG4gIC8qKlxuICAgKiBUcmFjayBhbmFseXRpY3MgZXZlbnRcbiAgICovXG4gIHB1YmxpYyB0cmFja0V2ZW50KFxuICAgIHR5cGU6IEFuYWx5dGljc0V2ZW50VHlwZSxcbiAgICBuYW1lOiBzdHJpbmcsXG4gICAgcHJvcGVydGllcz86IFJlY29yZDxzdHJpbmcsIHVua25vd24+LFxuICAgIHVzZXJJZD86IHN0cmluZ1xuICApOiB2b2lkIHtcbiAgICBpZiAoIXRoaXMuY29uZmlnLmFuYWx5dGljcy5lbmFibGVkIHx8ICF0aGlzLmFuYWx5dGljc1Nlc3Npb24pIHtcbiAgICAgIHJldHVybjtcbiAgICB9XG5cbiAgICBjb25zdCBldmVudDogQW5hbHl0aWNzRXZlbnQgPSB7XG4gICAgICBpZDogYGV2ZW50XyR7RGF0ZS5ub3coKX1fJHtNYXRoLnJhbmRvbSgpLnRvU3RyaW5nKDM2KS5zdWJzdHIoMiwgOSl9YCxcbiAgICAgIHR5cGUsXG4gICAgICBuYW1lLFxuICAgICAgdGltZXN0YW1wOiBuZXcgRGF0ZSgpLFxuICAgICAgdXNlcklkLFxuICAgICAgc2Vzc2lvbklkOiB0aGlzLmFuYWx5dGljc1Nlc3Npb24uaWQsXG4gICAgICBwcm9wZXJ0aWVzLFxuICAgIH07XG5cbiAgICAvLyBVcGRhdGUgc2Vzc2lvblxuICAgIHRoaXMuYW5hbHl0aWNzU2Vzc2lvbi5ldmVudHMrKztcbiAgICB0aGlzLmFuYWx5dGljc1Nlc3Npb24ubGFzdEFjdGl2aXR5ID0gbmV3IERhdGUoKTtcblxuICAgIC8vIEluIGEgcmVhbCBpbXBsZW1lbnRhdGlvbiwgdGhpcyB3b3VsZCBzZW5kIHRvIGFuYWx5dGljcyBzZXJ2aWNlXG4gICAgaWYgKHRoaXMuY29uZmlnLmFuYWx5dGljcy5kZWJ1Zykge1xuICAgICAgLy8gZXNsaW50LWRpc2FibGUtbmV4dC1saW5lIG5vLWNvbnNvbGVcbiAgICAgIGNvbnNvbGUubG9nKCdBbmFseXRpY3MgRXZlbnQ6JywgZXZlbnQpO1xuICAgIH1cbiAgfVxuXG4gIC8qKlxuICAgKiBUcmFjayBwYWdlIHZpZXdcbiAgICovXG4gIHB1YmxpYyB0cmFja1BhZ2VWaWV3KHBhdGg6IHN0cmluZywgdXNlcklkPzogc3RyaW5nKTogdm9pZCB7XG4gICAgaWYgKCF0aGlzLmFuYWx5dGljc1Nlc3Npb24pIHtcbiAgICAgIHJldHVybjtcbiAgICB9XG5cbiAgICB0aGlzLmFuYWx5dGljc1Nlc3Npb24ucGFnZVZpZXdzKys7XG4gICAgdGhpcy50cmFja0V2ZW50KEFuYWx5dGljc0V2ZW50VHlwZS5QQUdFX1ZJRVcsICdwYWdlX3ZpZXcnLCB7IHBhdGggfSwgdXNlcklkKTtcbiAgfVxuXG4gIC8qKlxuICAgKiBBZGQgbW9uaXRvcmluZyBtZXRyaWNcbiAgICovXG4gIHB1YmxpYyBhZGRNZXRyaWMobmFtZTogc3RyaW5nLCB2YWx1ZTogbnVtYmVyLCB1bml0OiBzdHJpbmcsIHRhZ3M/OiBSZWNvcmQ8c3RyaW5nLCBzdHJpbmc+KTogdm9pZCB7XG4gICAgY29uc3QgbWV0cmljOiBNb25pdG9yaW5nTWV0cmljID0ge1xuICAgICAgbmFtZSxcbiAgICAgIHZhbHVlLFxuICAgICAgdW5pdCxcbiAgICAgIHRpbWVzdGFtcDogbmV3IERhdGUoKSxcbiAgICAgIHRhZ3MsXG4gICAgfTtcblxuICAgIHRoaXMubWV0cmljcy5wdXNoKG1ldHJpYyk7XG5cbiAgICAvLyBLZWVwIG9ubHkgcmVjZW50IG1ldHJpY3NcbiAgICBjb25zdCBtYXhNZXRyaWNzID0gdGhpcy5jb25maWcuZGFzaGJvYXJkLm1heE1ldHJpY3M7XG4gICAgaWYgKHRoaXMubWV0cmljcy5sZW5ndGggPiBtYXhNZXRyaWNzKSB7XG4gICAgICB0aGlzLm1ldHJpY3MgPSB0aGlzLm1ldHJpY3Muc2xpY2UoLW1heE1ldHJpY3MpO1xuICAgIH1cbiAgfVxuXG4gIC8qKlxuICAgKiBBZGQgbW9uaXRvcmluZyBhbGVydFxuICAgKi9cbiAgcHVibGljIGFkZEFsZXJ0KGxldmVsOiBBbGVydExldmVsLCBtZXNzYWdlOiBzdHJpbmcsIG1ldGFkYXRhPzogUmVjb3JkPHN0cmluZywgdW5rbm93bj4pOiB2b2lkIHtcbiAgICBjb25zdCBhbGVydDogTW9uaXRvcmluZ0FsZXJ0ID0ge1xuICAgICAgaWQ6IGBhbGVydF8ke0RhdGUubm93KCl9XyR7TWF0aC5yYW5kb20oKS50b1N0cmluZygzNikuc3Vic3RyKDIsIDkpfWAsXG4gICAgICBsZXZlbCxcbiAgICAgIG1lc3NhZ2UsXG4gICAgICB0aW1lc3RhbXA6IG5ldyBEYXRlKCksXG4gICAgICByZXNvbHZlZDogZmFsc2UsXG4gICAgICBtZXRhZGF0YSxcbiAgICB9O1xuXG4gICAgdGhpcy5hbGVydHMucHVzaChhbGVydCk7XG5cbiAgICAvLyBLZWVwIG9ubHkgcmVjZW50IGFsZXJ0c1xuICAgIGNvbnN0IG1heEFsZXJ0cyA9IHRoaXMuY29uZmlnLmRhc2hib2FyZC5tYXhBbGVydHM7XG4gICAgaWYgKHRoaXMuYWxlcnRzLmxlbmd0aCA+IG1heEFsZXJ0cykge1xuICAgICAgdGhpcy5hbGVydHMgPSB0aGlzLmFsZXJ0cy5zbGljZSgtbWF4QWxlcnRzKTtcbiAgICB9XG5cbiAgICAvLyBJbiBhIHJlYWwgaW1wbGVtZW50YXRpb24sIHRoaXMgd291bGQgc2VuZCBhbGVydHMgdmlhIHdlYmhvb2svZW1haWxcbiAgICBpZiAodGhpcy5jb25maWcuYWxlcnRzLmVuYWJsZWQpIHtcbiAgICAgIC8vIGVzbGludC1kaXNhYmxlLW5leHQtbGluZSBuby1jb25zb2xlXG4gICAgICBjb25zb2xlLmxvZygnTW9uaXRvcmluZyBBbGVydDonLCBhbGVydCk7XG4gICAgfVxuICB9XG5cbiAgLyoqXG4gICAqIEdldCBtb25pdG9yaW5nIGRhc2hib2FyZCBkYXRhXG4gICAqL1xuICBwdWJsaWMgYXN5bmMgZ2V0RGFzaGJvYXJkRGF0YSgpOiBQcm9taXNlPE1vbml0b3JpbmdEYXNoYm9hcmREYXRhPiB7XG4gICAgY29uc3Qgc3lzdGVtSGVhbHRoID0gYXdhaXQgdGhpcy5nZXRTeXN0ZW1IZWFsdGgoKTtcbiAgICBjb25zdCByZWNlbnRBbGVydHMgPSB0aGlzLmFsZXJ0cy5zbGljZSgtMTApO1xuICAgIGNvbnN0IHJlY2VudE1ldHJpY3MgPSB0aGlzLm1ldHJpY3Muc2xpY2UoLTIwKTtcblxuICAgIHJldHVybiB7XG4gICAgICBzeXN0ZW1IZWFsdGgsXG4gICAgICByZWNlbnRBbGVydHMsXG4gICAgICBtZXRyaWNzOiByZWNlbnRNZXRyaWNzLFxuICAgICAgYW5hbHl0aWNzOiB7XG4gICAgICAgIHRvdGFsRXZlbnRzOiB0aGlzLmFuYWx5dGljc1Nlc3Npb24/LmV2ZW50cyB8fCAwLFxuICAgICAgICBhY3RpdmVTZXNzaW9uczogdGhpcy5hbmFseXRpY3NTZXNzaW9uID8gMSA6IDAsXG4gICAgICAgIHRvcFBhZ2VzOiB0aGlzLmdldFRvcFBhZ2VzKCksXG4gICAgICB9LFxuICAgIH07XG4gIH1cblxuICAvKipcbiAgICogR2V0IHRvcCBwYWdlcyAoc2ltcGxpZmllZCBpbXBsZW1lbnRhdGlvbilcbiAgICovXG4gIHByaXZhdGUgZ2V0VG9wUGFnZXMoKTogQXJyYXk8eyBwYXRoOiBzdHJpbmc7IHZpZXdzOiBudW1iZXIgfT4ge1xuICAgIC8vIEluIGEgcmVhbCBpbXBsZW1lbnRhdGlvbiwgdGhpcyB3b3VsZCBhZ2dyZWdhdGUgcGFnZSB2aWV3IGRhdGFcbiAgICByZXR1cm4gW1xuICAgICAgeyBwYXRoOiAnLycsIHZpZXdzOiAxMDAgfSxcbiAgICAgIHsgcGF0aDogJy9kYXNoYm9hcmQnLCB2aWV3czogNTAgfSxcbiAgICAgIHsgcGF0aDogJy9zZXR0aW5ncycsIHZpZXdzOiAyNSB9LFxuICAgIF07XG4gIH1cblxuICAvKipcbiAgICogR2V0IGN1cnJlbnQgYW5hbHl0aWNzIHNlc3Npb25cbiAgICovXG4gIHB1YmxpYyBnZXRBbmFseXRpY3NTZXNzaW9uKCk6IEFuYWx5dGljc1Nlc3Npb24gfCBudWxsIHtcbiAgICByZXR1cm4gdGhpcy5hbmFseXRpY3NTZXNzaW9uO1xuICB9XG5cbiAgLyoqXG4gICAqIFVwZGF0ZSBjb25maWd1cmF0aW9uXG4gICAqL1xuICBwdWJsaWMgdXBkYXRlQ29uZmlnKG5ld0NvbmZpZzogUGFydGlhbDxNb25pdG9yaW5nQ29uZmlnPik6IHZvaWQge1xuICAgIHRoaXMuY29uZmlnID0geyAuLi50aGlzLmNvbmZpZywgLi4ubmV3Q29uZmlnIH07XG4gIH1cbn1cbiJdLCJ2ZXJzaW9uIjozfQ==

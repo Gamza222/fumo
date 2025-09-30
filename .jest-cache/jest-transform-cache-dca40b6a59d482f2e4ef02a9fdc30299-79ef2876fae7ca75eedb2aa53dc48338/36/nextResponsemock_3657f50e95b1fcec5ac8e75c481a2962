@@ -1,0 +1,32 @@
+e6204d8b5d5ef6e67661ada6d1bb198f
+"use strict";
+/**
+ * NextResponse Mock for Testing
+ *
+ * Provides a mock implementation of Next.js NextResponse for testing environments.
+ * Simulates response objects with status, headers, and static methods.
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.createMockNextResponse = exports.MockNextResponse = void 0;
+var MockNextResponse = /** @class */ (function () {
+    function MockNextResponse(_body, options) {
+        if (options === void 0) { options = {}; }
+        this.status = options.status || 200;
+        this.headers = {
+            set: jest.fn(),
+            get: jest.fn(),
+        };
+    }
+    MockNextResponse.next = function () {
+        return new MockNextResponse();
+    };
+    return MockNextResponse;
+}());
+exports.MockNextResponse = MockNextResponse;
+// Factory function for creating mock responses
+var createMockNextResponse = function (body, options) {
+    if (options === void 0) { options = {}; }
+    return new MockNextResponse(body, options);
+};
+exports.createMockNextResponse = createMockNextResponse;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL3Rlc3RpbmcvbW9ja3MvbmV4dGpzL2xpYi9zZXJ2ZXIvbmV4dFJlc3BvbnNlLm1vY2sudHMiLCJtYXBwaW5ncyI6IjtBQUFBOzs7OztHQUtHOzs7QUFJSDtJQU9FLDBCQUFZLEtBQWUsRUFBRSxPQUE4QztRQUE5Qyx3QkFBQSxFQUFBLFlBQThDO1FBQ3pFLElBQUksQ0FBQyxNQUFNLEdBQUcsT0FBTyxDQUFDLE1BQU0sSUFBSSxHQUFHLENBQUM7UUFDcEMsSUFBSSxDQUFDLE9BQU8sR0FBRztZQUNiLEdBQUcsRUFBRSxJQUFJLENBQUMsRUFBRSxFQUFFO1lBQ2QsR0FBRyxFQUFFLElBQUksQ0FBQyxFQUFFLEVBQUU7U0FDZixDQUFDO0lBQ0osQ0FBQztJQUVNLHFCQUFJLEdBQVg7UUFDRSxPQUFPLElBQUksZ0JBQWdCLEVBQUUsQ0FBQztJQUNoQyxDQUFDO0lBQ0gsdUJBQUM7QUFBRCxDQUFDLEFBbEJELElBa0JDO0FBbEJZLDRDQUFnQjtBQW9CN0IsK0NBQStDO0FBQ3hDLElBQU0sc0JBQXNCLEdBQUcsVUFDcEMsSUFBYyxFQUNkLE9BQThDO0lBQTlDLHdCQUFBLEVBQUEsWUFBOEM7SUFDaEIsT0FBQSxJQUFJLGdCQUFnQixDQUFDLElBQUksRUFBRSxPQUFPLENBQUM7QUFBbkMsQ0FBbUMsQ0FBQztBQUh2RCxRQUFBLHNCQUFzQiwwQkFHaUMiLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL3Rlc3RpbmcvbW9ja3MvbmV4dGpzL2xpYi9zZXJ2ZXIvbmV4dFJlc3BvbnNlLm1vY2sudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBOZXh0UmVzcG9uc2UgTW9jayBmb3IgVGVzdGluZ1xuICpcbiAqIFByb3ZpZGVzIGEgbW9jayBpbXBsZW1lbnRhdGlvbiBvZiBOZXh0LmpzIE5leHRSZXNwb25zZSBmb3IgdGVzdGluZyBlbnZpcm9ubWVudHMuXG4gKiBTaW11bGF0ZXMgcmVzcG9uc2Ugb2JqZWN0cyB3aXRoIHN0YXR1cywgaGVhZGVycywgYW5kIHN0YXRpYyBtZXRob2RzLlxuICovXG5cbmltcG9ydCB7IG1vY2tOZXh0UmVzcG9uc2VJbnRlcmZhY2UsIG1vY2tOZXh0UmVzcG9uc2VPcHRpb25zSW50ZXJmYWNlIH0gZnJvbSAnLi4vLi4vdHlwZXMvdHlwZXMnO1xuXG5leHBvcnQgY2xhc3MgTW9ja05leHRSZXNwb25zZSBpbXBsZW1lbnRzIG1vY2tOZXh0UmVzcG9uc2VJbnRlcmZhY2Uge1xuICBzdGF0dXM6IG51bWJlcjtcbiAgaGVhZGVyczoge1xuICAgIHNldDogamVzdC5Nb2NrO1xuICAgIGdldDogamVzdC5Nb2NrO1xuICB9O1xuXG4gIGNvbnN0cnVjdG9yKF9ib2R5PzogdW5rbm93biwgb3B0aW9uczogbW9ja05leHRSZXNwb25zZU9wdGlvbnNJbnRlcmZhY2UgPSB7fSkge1xuICAgIHRoaXMuc3RhdHVzID0gb3B0aW9ucy5zdGF0dXMgfHwgMjAwO1xuICAgIHRoaXMuaGVhZGVycyA9IHtcbiAgICAgIHNldDogamVzdC5mbigpLFxuICAgICAgZ2V0OiBqZXN0LmZuKCksXG4gICAgfTtcbiAgfVxuXG4gIHN0YXRpYyBuZXh0KCk6IG1vY2tOZXh0UmVzcG9uc2VJbnRlcmZhY2Uge1xuICAgIHJldHVybiBuZXcgTW9ja05leHRSZXNwb25zZSgpO1xuICB9XG59XG5cbi8vIEZhY3RvcnkgZnVuY3Rpb24gZm9yIGNyZWF0aW5nIG1vY2sgcmVzcG9uc2VzXG5leHBvcnQgY29uc3QgY3JlYXRlTW9ja05leHRSZXNwb25zZSA9IChcbiAgYm9keT86IHVua25vd24sXG4gIG9wdGlvbnM6IG1vY2tOZXh0UmVzcG9uc2VPcHRpb25zSW50ZXJmYWNlID0ge31cbik6IG1vY2tOZXh0UmVzcG9uc2VJbnRlcmZhY2UgPT4gbmV3IE1vY2tOZXh0UmVzcG9uc2UoYm9keSwgb3B0aW9ucyk7XG4iXSwidmVyc2lvbiI6M30=

@@ -1,0 +1,74 @@
+45cbf973290a3112f0aac2123bf8d0e6
+"use strict";
+/**
+ * AppLoadingProvider
+ *
+ * UI Provider component that provides loading context to children.
+ */
+"use client";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || (function () {
+    var ownKeys = function(o) {
+        ownKeys = Object.getOwnPropertyNames || function (o) {
+            var ar = [];
+            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
+            return ar;
+        };
+        return ownKeys(o);
+    };
+    return function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
+        __setModuleDefault(result, mod);
+        return result;
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.AppLoadingContext = void 0;
+exports.AppLoadingProvider = AppLoadingProvider;
+var jsx_runtime_1 = require("react/jsx-runtime");
+var react_1 = __importStar(require("react"));
+var useAppLoading_1 = require("../hooks/useAppLoading/useAppLoading");
+// ============================================================================
+// CONTEXT CREATION
+// ============================================================================
+// Create context with null default (will be provided by provider)
+var AppLoadingContext = (0, react_1.createContext)(null);
+exports.AppLoadingContext = AppLoadingContext;
+// ============================================================================
+// PROVIDER COMPONENT (UI Layer Only)
+// ============================================================================
+/**
+ * AppLoadingProvider - Provides loading state to all child components
+ *
+ * This is a PURE UI component - no logic, just context provision.
+ * All logic is handled by useAppLoading hook.
+ *
+ * Usage:
+ * <AppLoadingProvider>
+ *   <YourApp />
+ * </AppLoadingProvider>
+ */
+function AppLoadingProvider(_a) {
+    var children = _a.children;
+    // Get loading state from our hook (logic layer)
+    var appLoadingState = (0, useAppLoading_1.useAppLoading)();
+    return ((0, jsx_runtime_1.jsx)(AppLoadingContext.Provider, { value: appLoadingState, children: children }));
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvaW5mcmFzdHJ1Y3R1cmUvcHJvdmlkZXJzL2FwcC1sb2FkaW5nL3VpL0FwcExvYWRpbmdQcm92aWRlci50c3giLCJtYXBwaW5ncyI6IjtBQUFBOzs7O0dBSUc7QUFFSCxZQUFZLENBQUM7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQStCYixnREFTQzs7QUF0Q0QsNkNBQTZDO0FBQzdDLHNFQUFxRTtBQU1yRSwrRUFBK0U7QUFDL0UsbUJBQW1CO0FBQ25CLCtFQUErRTtBQUUvRSxrRUFBa0U7QUFDbEUsSUFBTSxpQkFBaUIsR0FBRyxJQUFBLHFCQUFhLEVBQTZCLElBQUksQ0FBQyxDQUFDO0FBZ0NqRSw4Q0FBaUI7QUE5QjFCLCtFQUErRTtBQUMvRSxxQ0FBcUM7QUFDckMsK0VBQStFO0FBRS9FOzs7Ozs7Ozs7O0dBVUc7QUFDSCxTQUFnQixrQkFBa0IsQ0FBQyxFQUFxQztRQUFuQyxRQUFRLGNBQUE7SUFDM0MsZ0RBQWdEO0lBQ2hELElBQU0sZUFBZSxHQUFHLElBQUEsNkJBQWEsR0FBRSxDQUFDO0lBRXhDLE9BQU8sQ0FDTCx1QkFBQyxpQkFBaUIsQ0FBQyxRQUFRLElBQUMsS0FBSyxFQUFFLGVBQWUsWUFDL0MsUUFBUSxHQUNrQixDQUM5QixDQUFDO0FBQ0osQ0FBQyIsIm5hbWVzIjpbXSwic291cmNlcyI6WyIvVXNlcnMvZ2FtemFyYW1hemFub3YvRGVza3RvcC9mdW1vL3NyYy9pbmZyYXN0cnVjdHVyZS9wcm92aWRlcnMvYXBwLWxvYWRpbmcvdWkvQXBwTG9hZGluZ1Byb3ZpZGVyLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIEFwcExvYWRpbmdQcm92aWRlclxuICpcbiAqIFVJIFByb3ZpZGVyIGNvbXBvbmVudCB0aGF0IHByb3ZpZGVzIGxvYWRpbmcgY29udGV4dCB0byBjaGlsZHJlbi5cbiAqL1xuXG5cInVzZSBjbGllbnRcIjtcblxuaW1wb3J0IFJlYWN0LCB7IGNyZWF0ZUNvbnRleHQgfSBmcm9tIFwicmVhY3RcIjtcbmltcG9ydCB7IHVzZUFwcExvYWRpbmcgfSBmcm9tIFwiLi4vaG9va3MvdXNlQXBwTG9hZGluZy91c2VBcHBMb2FkaW5nXCI7XG5pbXBvcnQge1xuICBBcHBMb2FkaW5nUHJvdmlkZXJQcm9wcyxcbiAgVXNlQXBwTG9hZGluZ1JldHVybixcbn0gZnJvbSBcIi4uL21vZGVsL3R5cGVzL3R5cGVzXCI7XG5cbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbi8vIENPTlRFWFQgQ1JFQVRJT05cbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cblxuLy8gQ3JlYXRlIGNvbnRleHQgd2l0aCBudWxsIGRlZmF1bHQgKHdpbGwgYmUgcHJvdmlkZWQgYnkgcHJvdmlkZXIpXG5jb25zdCBBcHBMb2FkaW5nQ29udGV4dCA9IGNyZWF0ZUNvbnRleHQ8VXNlQXBwTG9hZGluZ1JldHVybiB8IG51bGw+KG51bGwpO1xuXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4vLyBQUk9WSURFUiBDT01QT05FTlQgKFVJIExheWVyIE9ubHkpXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG5cbi8qKlxuICogQXBwTG9hZGluZ1Byb3ZpZGVyIC0gUHJvdmlkZXMgbG9hZGluZyBzdGF0ZSB0byBhbGwgY2hpbGQgY29tcG9uZW50c1xuICpcbiAqIFRoaXMgaXMgYSBQVVJFIFVJIGNvbXBvbmVudCAtIG5vIGxvZ2ljLCBqdXN0IGNvbnRleHQgcHJvdmlzaW9uLlxuICogQWxsIGxvZ2ljIGlzIGhhbmRsZWQgYnkgdXNlQXBwTG9hZGluZyBob29rLlxuICpcbiAqIFVzYWdlOlxuICogPEFwcExvYWRpbmdQcm92aWRlcj5cbiAqICAgPFlvdXJBcHAgLz5cbiAqIDwvQXBwTG9hZGluZ1Byb3ZpZGVyPlxuICovXG5leHBvcnQgZnVuY3Rpb24gQXBwTG9hZGluZ1Byb3ZpZGVyKHsgY2hpbGRyZW4gfTogQXBwTG9hZGluZ1Byb3ZpZGVyUHJvcHMpIHtcbiAgLy8gR2V0IGxvYWRpbmcgc3RhdGUgZnJvbSBvdXIgaG9vayAobG9naWMgbGF5ZXIpXG4gIGNvbnN0IGFwcExvYWRpbmdTdGF0ZSA9IHVzZUFwcExvYWRpbmcoKTtcblxuICByZXR1cm4gKFxuICAgIDxBcHBMb2FkaW5nQ29udGV4dC5Qcm92aWRlciB2YWx1ZT17YXBwTG9hZGluZ1N0YXRlfT5cbiAgICAgIHtjaGlsZHJlbn1cbiAgICA8L0FwcExvYWRpbmdDb250ZXh0LlByb3ZpZGVyPlxuICApO1xufVxuXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4vLyBFWFBPUlRTXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG5cbmV4cG9ydCB7IEFwcExvYWRpbmdDb250ZXh0IH07XG4iXSwidmVyc2lvbiI6M30=

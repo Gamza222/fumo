@@ -1,0 +1,44 @@
+662c4a4d9e99455c65f152b269e45613
+"use strict";
+/**
+ * Route Configuration Enums
+ * Centralized route identifiers and types
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CacheStrategy = exports.LoaderType = exports.RouteType = exports.AppRoute = void 0;
+/**
+ * Application routes - all available routes in the app
+ */
+var AppRoute;
+(function (AppRoute) {
+    AppRoute["HOME"] = "/";
+    AppRoute["ABOUT"] = "/about";
+})(AppRoute || (exports.AppRoute = AppRoute = {}));
+/**
+ * Route types - categories for different route behaviors
+ */
+var RouteType;
+(function (RouteType) {
+    RouteType["PUBLIC"] = "public";
+    RouteType["PROTECTED"] = "protected";
+    RouteType["ADMIN_ONLY"] = "admin-only";
+    RouteType["AUTH"] = "auth";
+})(RouteType || (exports.RouteType = RouteType = {}));
+/**
+ * Loader types - different loading behaviors
+ */
+var LoaderType;
+(function (LoaderType) {
+    LoaderType["NONE"] = "none";
+    LoaderType["FULL"] = "full";
+    LoaderType["CUSTOM"] = "custom";
+})(LoaderType || (exports.LoaderType = LoaderType = {}));
+/**
+ * Cache strategies for routes
+ */
+var CacheStrategy;
+(function (CacheStrategy) {
+    CacheStrategy["NO_CACHE"] = "no-cache";
+    CacheStrategy["CACHE"] = "long-cache";
+})(CacheStrategy || (exports.CacheStrategy = CacheStrategy = {}));
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvc2hhcmVkL2NvbmZpZy9yb3V0ZS9yb3V0ZS5lbnVtcy50cyIsIm1hcHBpbmdzIjoiO0FBQUE7OztHQUdHOzs7QUFFSDs7R0FFRztBQUNILElBQVksUUFHWDtBQUhELFdBQVksUUFBUTtJQUNsQixzQkFBVSxDQUFBO0lBQ1YsNEJBQWdCLENBQUE7QUFDbEIsQ0FBQyxFQUhXLFFBQVEsd0JBQVIsUUFBUSxRQUduQjtBQUVEOztHQUVHO0FBQ0gsSUFBWSxTQUtYO0FBTEQsV0FBWSxTQUFTO0lBQ25CLDhCQUFpQixDQUFBO0lBQ2pCLG9DQUF1QixDQUFBO0lBQ3ZCLHNDQUF5QixDQUFBO0lBQ3pCLDBCQUFhLENBQUE7QUFDZixDQUFDLEVBTFcsU0FBUyx5QkFBVCxTQUFTLFFBS3BCO0FBRUQ7O0dBRUc7QUFDSCxJQUFZLFVBSVg7QUFKRCxXQUFZLFVBQVU7SUFDcEIsMkJBQWEsQ0FBQTtJQUNiLDJCQUFhLENBQUE7SUFDYiwrQkFBaUIsQ0FBQTtBQUNuQixDQUFDLEVBSlcsVUFBVSwwQkFBVixVQUFVLFFBSXJCO0FBRUQ7O0dBRUc7QUFDSCxJQUFZLGFBR1g7QUFIRCxXQUFZLGFBQWE7SUFDdkIsc0NBQXFCLENBQUE7SUFDckIscUNBQW9CLENBQUE7QUFDdEIsQ0FBQyxFQUhXLGFBQWEsNkJBQWIsYUFBYSxRQUd4QiIsIm5hbWVzIjpbXSwic291cmNlcyI6WyIvVXNlcnMvZ2FtemFyYW1hemFub3YvRGVza3RvcC9mdW1vL3NyYy9zaGFyZWQvY29uZmlnL3JvdXRlL3JvdXRlLmVudW1zLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogUm91dGUgQ29uZmlndXJhdGlvbiBFbnVtc1xuICogQ2VudHJhbGl6ZWQgcm91dGUgaWRlbnRpZmllcnMgYW5kIHR5cGVzXG4gKi9cblxuLyoqXG4gKiBBcHBsaWNhdGlvbiByb3V0ZXMgLSBhbGwgYXZhaWxhYmxlIHJvdXRlcyBpbiB0aGUgYXBwXG4gKi9cbmV4cG9ydCBlbnVtIEFwcFJvdXRlIHtcbiAgSE9NRSA9ICcvJyxcbiAgQUJPVVQgPSAnL2Fib3V0Jyxcbn1cblxuLyoqXG4gKiBSb3V0ZSB0eXBlcyAtIGNhdGVnb3JpZXMgZm9yIGRpZmZlcmVudCByb3V0ZSBiZWhhdmlvcnNcbiAqL1xuZXhwb3J0IGVudW0gUm91dGVUeXBlIHtcbiAgUFVCTElDID0gJ3B1YmxpYycsXG4gIFBST1RFQ1RFRCA9ICdwcm90ZWN0ZWQnLFxuICBBRE1JTl9PTkxZID0gJ2FkbWluLW9ubHknLFxuICBBVVRIID0gJ2F1dGgnLFxufVxuXG4vKipcbiAqIExvYWRlciB0eXBlcyAtIGRpZmZlcmVudCBsb2FkaW5nIGJlaGF2aW9yc1xuICovXG5leHBvcnQgZW51bSBMb2FkZXJUeXBlIHtcbiAgTk9ORSA9ICdub25lJyxcbiAgRlVMTCA9ICdmdWxsJyxcbiAgQ1VTVE9NID0gJ2N1c3RvbScsXG59XG5cbi8qKlxuICogQ2FjaGUgc3RyYXRlZ2llcyBmb3Igcm91dGVzXG4gKi9cbmV4cG9ydCBlbnVtIENhY2hlU3RyYXRlZ3kge1xuICBOT19DQUNIRSA9ICduby1jYWNoZScsXG4gIENBQ0hFID0gJ2xvbmctY2FjaGUnLFxufVxuIl0sInZlcnNpb24iOjN9

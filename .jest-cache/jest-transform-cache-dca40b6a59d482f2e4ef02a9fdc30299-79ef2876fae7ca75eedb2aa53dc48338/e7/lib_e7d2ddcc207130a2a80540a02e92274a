@@ -1,0 +1,65 @@
+a212ed35abd939fc5ed51dfedf068b40
+"use strict";
+/**
+ * InitialLoader Widget Logic
+ *
+ * Widget-specific logic and utilities.
+ * Keeps the UI component clean and focused.
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.formatStepName = exports.getLoadingMessage = exports.isProgressComplete = exports.getProgressBarWidth = exports.formatProgress = void 0;
+// ============================================================================
+// PROGRESS UTILITIES
+// ============================================================================
+/**
+ * Format progress percentage for display
+ */
+var formatProgress = function (progress) {
+    return "".concat(Math.round(progress), "%");
+};
+exports.formatProgress = formatProgress;
+/**
+ * Get progress bar width based on progress
+ */
+var getProgressBarWidth = function (progress) {
+    return "".concat(Math.min(100, Math.max(0, progress)), "%");
+};
+exports.getProgressBarWidth = getProgressBarWidth;
+// ============================================================================
+// ANIMATION UTILITIES
+// ============================================================================
+/**
+ * Check if progress has reached completion threshold
+ */
+var isProgressComplete = function (progress) {
+    return progress >= 100;
+};
+exports.isProgressComplete = isProgressComplete;
+/**
+ * Get loading message based on progress
+ */
+var getLoadingMessage = function (currentStep, progress) {
+    if (progress >= 100)
+        return "Ready!";
+    if (currentStep)
+        return "Loading ".concat(currentStep, "...");
+    return "Loading...";
+};
+exports.getLoadingMessage = getLoadingMessage;
+// ============================================================================
+// STEP UTILITIES
+// ============================================================================
+/**
+ * Format step name for display
+ */
+var formatStepName = function (stepName) {
+    if (!stepName)
+        return "";
+    // Convert camelCase to Title Case
+    return stepName
+        .replace(/([A-Z])/g, " $1")
+        .replace(/^./, function (str) { return str.toUpperCase(); })
+        .trim();
+};
+exports.formatStepName = formatStepName;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2dhbXphcmFtYXphbm92L0Rlc2t0b3AvZnVtby9zcmMvd2lkZ2V0cy9Jbml0aWFsTG9hZGVyL2xpYi9saWIudHMiLCJtYXBwaW5ncyI6IjtBQUFBOzs7OztHQUtHOzs7QUFFSCwrRUFBK0U7QUFDL0UscUJBQXFCO0FBQ3JCLCtFQUErRTtBQUUvRTs7R0FFRztBQUNJLElBQU0sY0FBYyxHQUFHLFVBQUMsUUFBZ0I7SUFDN0MsT0FBTyxVQUFHLElBQUksQ0FBQyxLQUFLLENBQUMsUUFBUSxDQUFDLE1BQUcsQ0FBQztBQUNwQyxDQUFDLENBQUM7QUFGVyxRQUFBLGNBQWMsa0JBRXpCO0FBRUY7O0dBRUc7QUFDSSxJQUFNLG1CQUFtQixHQUFHLFVBQUMsUUFBZ0I7SUFDbEQsT0FBTyxVQUFHLElBQUksQ0FBQyxHQUFHLENBQUMsR0FBRyxFQUFFLElBQUksQ0FBQyxHQUFHLENBQUMsQ0FBQyxFQUFFLFFBQVEsQ0FBQyxDQUFDLE1BQUcsQ0FBQztBQUNwRCxDQUFDLENBQUM7QUFGVyxRQUFBLG1CQUFtQix1QkFFOUI7QUFFRiwrRUFBK0U7QUFDL0Usc0JBQXNCO0FBQ3RCLCtFQUErRTtBQUUvRTs7R0FFRztBQUNJLElBQU0sa0JBQWtCLEdBQUcsVUFBQyxRQUFnQjtJQUNqRCxPQUFPLFFBQVEsSUFBSSxHQUFHLENBQUM7QUFDekIsQ0FBQyxDQUFDO0FBRlcsUUFBQSxrQkFBa0Isc0JBRTdCO0FBRUY7O0dBRUc7QUFDSSxJQUFNLGlCQUFpQixHQUFHLFVBQy9CLFdBQW1CLEVBQ25CLFFBQWdCO0lBRWhCLElBQUksUUFBUSxJQUFJLEdBQUc7UUFBRSxPQUFPLFFBQVEsQ0FBQztJQUNyQyxJQUFJLFdBQVc7UUFBRSxPQUFPLGtCQUFXLFdBQVcsUUFBSyxDQUFDO0lBQ3BELE9BQU8sWUFBWSxDQUFDO0FBQ3RCLENBQUMsQ0FBQztBQVBXLFFBQUEsaUJBQWlCLHFCQU81QjtBQUVGLCtFQUErRTtBQUMvRSxpQkFBaUI7QUFDakIsK0VBQStFO0FBRS9FOztHQUVHO0FBQ0ksSUFBTSxjQUFjLEdBQUcsVUFBQyxRQUFnQjtJQUM3QyxJQUFJLENBQUMsUUFBUTtRQUFFLE9BQU8sRUFBRSxDQUFDO0lBRXpCLGtDQUFrQztJQUNsQyxPQUFPLFFBQVE7U0FDWixPQUFPLENBQUMsVUFBVSxFQUFFLEtBQUssQ0FBQztTQUMxQixPQUFPLENBQUMsSUFBSSxFQUFFLFVBQUMsR0FBRyxJQUFLLE9BQUEsR0FBRyxDQUFDLFdBQVcsRUFBRSxFQUFqQixDQUFpQixDQUFDO1NBQ3pDLElBQUksRUFBRSxDQUFDO0FBQ1osQ0FBQyxDQUFDO0FBUlcsUUFBQSxjQUFjLGtCQVF6QiIsIm5hbWVzIjpbXSwic291cmNlcyI6WyIvVXNlcnMvZ2FtemFyYW1hemFub3YvRGVza3RvcC9mdW1vL3NyYy93aWRnZXRzL0luaXRpYWxMb2FkZXIvbGliL2xpYi50cyJdLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIEluaXRpYWxMb2FkZXIgV2lkZ2V0IExvZ2ljXG4gKlxuICogV2lkZ2V0LXNwZWNpZmljIGxvZ2ljIGFuZCB1dGlsaXRpZXMuXG4gKiBLZWVwcyB0aGUgVUkgY29tcG9uZW50IGNsZWFuIGFuZCBmb2N1c2VkLlxuICovXG5cbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbi8vIFBST0dSRVNTIFVUSUxJVElFU1xuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuXG4vKipcbiAqIEZvcm1hdCBwcm9ncmVzcyBwZXJjZW50YWdlIGZvciBkaXNwbGF5XG4gKi9cbmV4cG9ydCBjb25zdCBmb3JtYXRQcm9ncmVzcyA9IChwcm9ncmVzczogbnVtYmVyKTogc3RyaW5nID0+IHtcbiAgcmV0dXJuIGAke01hdGgucm91bmQocHJvZ3Jlc3MpfSVgO1xufTtcblxuLyoqXG4gKiBHZXQgcHJvZ3Jlc3MgYmFyIHdpZHRoIGJhc2VkIG9uIHByb2dyZXNzXG4gKi9cbmV4cG9ydCBjb25zdCBnZXRQcm9ncmVzc0JhcldpZHRoID0gKHByb2dyZXNzOiBudW1iZXIpOiBzdHJpbmcgPT4ge1xuICByZXR1cm4gYCR7TWF0aC5taW4oMTAwLCBNYXRoLm1heCgwLCBwcm9ncmVzcykpfSVgO1xufTtcblxuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuLy8gQU5JTUFUSU9OIFVUSUxJVElFU1xuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuXG4vKipcbiAqIENoZWNrIGlmIHByb2dyZXNzIGhhcyByZWFjaGVkIGNvbXBsZXRpb24gdGhyZXNob2xkXG4gKi9cbmV4cG9ydCBjb25zdCBpc1Byb2dyZXNzQ29tcGxldGUgPSAocHJvZ3Jlc3M6IG51bWJlcik6IGJvb2xlYW4gPT4ge1xuICByZXR1cm4gcHJvZ3Jlc3MgPj0gMTAwO1xufTtcblxuLyoqXG4gKiBHZXQgbG9hZGluZyBtZXNzYWdlIGJhc2VkIG9uIHByb2dyZXNzXG4gKi9cbmV4cG9ydCBjb25zdCBnZXRMb2FkaW5nTWVzc2FnZSA9IChcbiAgY3VycmVudFN0ZXA6IHN0cmluZyxcbiAgcHJvZ3Jlc3M6IG51bWJlclxuKTogc3RyaW5nID0+IHtcbiAgaWYgKHByb2dyZXNzID49IDEwMCkgcmV0dXJuIFwiUmVhZHkhXCI7XG4gIGlmIChjdXJyZW50U3RlcCkgcmV0dXJuIGBMb2FkaW5nICR7Y3VycmVudFN0ZXB9Li4uYDtcbiAgcmV0dXJuIFwiTG9hZGluZy4uLlwiO1xufTtcblxuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuLy8gU1RFUCBVVElMSVRJRVNcbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cblxuLyoqXG4gKiBGb3JtYXQgc3RlcCBuYW1lIGZvciBkaXNwbGF5XG4gKi9cbmV4cG9ydCBjb25zdCBmb3JtYXRTdGVwTmFtZSA9IChzdGVwTmFtZTogc3RyaW5nKTogc3RyaW5nID0+IHtcbiAgaWYgKCFzdGVwTmFtZSkgcmV0dXJuIFwiXCI7XG5cbiAgLy8gQ29udmVydCBjYW1lbENhc2UgdG8gVGl0bGUgQ2FzZVxuICByZXR1cm4gc3RlcE5hbWVcbiAgICAucmVwbGFjZSgvKFtBLVpdKS9nLCBcIiAkMVwiKVxuICAgIC5yZXBsYWNlKC9eLi8sIChzdHIpID0+IHN0ci50b1VwcGVyQ2FzZSgpKVxuICAgIC50cmltKCk7XG59O1xuIl0sInZlcnNpb24iOjN9
