@@ -1,0 +1,225 @@
+@use "sass:map";
+@use "./media-breakpoints" as breakpoints;
+
+// ===== BASE SIZE SCALE =====
+$size-scale: (
+  "none": 0,
+  "sm": 8px,
+  "md": 16px,
+  "lg": 24px,
+  "xl": 32px,
+  "2xl": 48px,
+  "3xl": 64px,
+  "window-width": 320px,
+  "window-height": 140px,
+);
+
+// ===== RESPONSIVE SCALING FACTORS =====
+$size-scaling: (
+  "mobile": 1,
+  "tablet": 1.125,
+  "desktop": 1.25,
+  "xl": 1.5,
+);
+
+// ===== SEMANTIC SIZE TOKENS =====
+$size-semantic: (
+  "sm-button": (
+    width: "sm",
+    height: "sm",
+  ),
+  "progress-bar": (
+    height: "lg",
+  ),
+  "window": (
+    width: "window-width",
+    height: "window-height",
+  ),
+  "md-button": (
+    width: "md",
+    height: "md",
+  ),
+  "lg-button": (
+    width: "lg",
+    height: "lg",
+  ),
+  "close-button": (
+    width: "sm",
+    height: "sm",
+  ),
+  "navbar-desktop": (
+    height: "2xl",
+  ),
+  "navbar-mobile": (
+    height: "xl",
+  ),
+);
+
+// ===== FUNCTIONS =====
+@function size($size: "md", $breakpoint: "mobile") {
+  $base-value: map.get($size-scale, $size);
+
+  @if not $base-value {
+    @error "Size scale '#{$size}' not found in $size-scale map.";
+  }
+
+  $scaling-factor: map.get($size-scaling, $breakpoint);
+
+  @if not $scaling-factor {
+    @error "Breakpoint '#{$breakpoint}' not found in $size-scaling map.";
+  }
+
+  @return calc(#{$base-value} * #{$scaling-factor});
+}
+
+@function size-semantic($type: "sm-button") {
+  $size-map: map.get($size-semantic, $type);
+
+  @if not $size-map {
+    @error "Size type '#{$type}' not found in $size-semantic map.";
+  }
+
+  @return $size-map;
+}
+
+// ===== RESPONSIVE MIXINS =====
+@mixin responsive-size($width: "md", $height: "md") {
+  & {
+    width: size($width, "mobile");
+    height: size($height, "mobile");
+  }
+
+  @media (min-width: breakpoints.breakpoint("tablet")) {
+    width: size($width, "tablet");
+    height: size($height, "tablet");
+  }
+
+  @media (min-width: breakpoints.breakpoint("desktop")) {
+    width: size($width, "desktop");
+    height: size($height, "desktop");
+  }
+
+  @media (min-width: breakpoints.breakpoint("xl")) {
+    width: size($width, "xl");
+    height: size($height, "xl");
+  }
+}
+
+@mixin size-semantic($type: "sm-button") {
+  $size-map: size-semantic($type);
+  $width-scale: map.get($size-map, "width");
+  $height-scale: map.get($size-map, "height");
+  & {
+    width: size($width-scale, "mobile");
+    height: size($height-scale, "mobile");
+  }
+
+  @media (min-width: breakpoints.breakpoint("tablet")) {
+    width: size($width-scale, "tablet");
+    height: size($height-scale, "tablet");
+  }
+
+  @media (min-width: breakpoints.breakpoint("desktop")) {
+    width: size($width-scale, "desktop");
+    height: size($height-scale, "desktop");
+  }
+
+  @media (min-width: breakpoints.breakpoint("xl")) {
+    width: size($width-scale, "xl");
+    height: size($height-scale, "xl");
+  }
+}
+@mixin max-size-semantic($type: "sm-button") {
+  $size-map: size-semantic($type);
+  $width-scale: map.get($size-map, "width");
+  $height-scale: map.get($size-map, "height");
+  & {
+    max-width: size($width-scale, "mobile");
+    max-height: size($height-scale, "mobile");
+  }
+
+  @media (min-width: breakpoints.breakpoint("tablet")) {
+    max-width: size($width-scale, "tablet");
+    max-height: size($height-scale, "tablet");
+  }
+
+  @media (min-width: breakpoints.breakpoint("desktop")) {
+    max-width: size($width-scale, "desktop");
+    max-height: size($height-scale, "desktop");
+  }
+
+  @media (min-width: breakpoints.breakpoint("xl")) {
+    max-width: size($width-scale, "xl");
+    max-height: size($height-scale, "xl");
+  }
+}
+
+@mixin progress-bar-height() {
+  $size-map: size-semantic("progress-bar");
+  $height-scale: map.get($size-map, "height");
+
+  & {
+    height: size($height-scale, "mobile");
+  }
+
+  @media (min-width: breakpoints.breakpoint("tablet")) {
+    height: size($height-scale, "tablet");
+  }
+
+  @media (min-width: breakpoints.breakpoint("desktop")) {
+    height: size($height-scale, "desktop");
+  }
+
+  @media (min-width: breakpoints.breakpoint("xl")) {
+    height: size($height-scale, "xl");
+  }
+}
+
+@mixin navbar-desktop-height() {
+  $size-map: size-semantic("navbar-desktop");
+  $height-scale: map.get($size-map, "height");
+
+  & {
+    height: size($height-scale, "mobile");
+  }
+
+  @media (min-width: breakpoints.breakpoint("tablet")) {
+    height: size($height-scale, "tablet");
+  }
+
+  @media (min-width: breakpoints.breakpoint("desktop")) {
+    height: size($height-scale, "desktop");
+  }
+
+  @media (min-width: breakpoints.breakpoint("xl")) {
+    height: size($height-scale, "xl");
+  }
+}
+
+@mixin navbar-mobile-height() {
+  $size-map: size-semantic("navbar-mobile");
+  $height-scale: map.get($size-map, "height");
+
+  & {
+    height: size($height-scale, "mobile");
+  }
+
+  @media (min-width: breakpoints.breakpoint("tablet")) {
+    height: size($height-scale, "tablet");
+  }
+
+  @media (min-width: breakpoints.breakpoint("desktop")) {
+    height: size($height-scale, "desktop");
+  }
+
+  @media (min-width: breakpoints.breakpoint("xl")) {
+    height: size($height-scale, "xl");
+  }
+}
+
+// Helper function to get semantic size value for a specific breakpoint
+@function size-from-semantic($semantic-key, $breakpoint: "mobile") {
+  $size-map: size-semantic($semantic-key);
+  $size-scale: map.get($size-map, "height");
+  @return size($size-scale, $breakpoint);
+}

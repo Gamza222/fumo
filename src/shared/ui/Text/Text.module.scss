@@ -1,4 +1,4 @@
-// Clean Text SCSS Module - NO Tailwind
+@use "../../styles/design-tokens/typography" as typography;
 
 .text {
   margin: 0;
@@ -6,20 +6,12 @@
   line-height: 1.5;
 }
 
-// Variants
+// ===== VARIANTS =====
 .primary {
-  color: #1f2937;
+  font-family: #{typography.font-family("primary")};
 }
 
-.secondary {
-  color: #6b7280;
-}
-
-.error {
-  color: #ef4444;
-}
-
-// Alignments
+// ===== ALIGNMENTS =====
 .left {
   text-align: left;
 }
@@ -32,15 +24,37 @@
   text-align: right;
 }
 
-// Sizes
+// ===== SIZES =====
 .sm {
-  font-size: 14px;
+  @include typography.text-props("sm");
 }
 
 .md {
-  font-size: 16px;
+  @include typography.text-props("md");
 }
 
 .lg {
-  font-size: 18px;
+  @include typography.text-props("lg");
+}
+
+.thin {
+  font-weight: 400;
+}
+.medium {
+  font-weight: 400;
+}
+.bold {
+  font-weight: 600;
+}
+
+.white {
+  color: var(--color-window-header-text);
+}
+
+.black {
+  color: var(--color-window-body-text);
+}
+
+.red {
+  color: var(--color-error);
 }

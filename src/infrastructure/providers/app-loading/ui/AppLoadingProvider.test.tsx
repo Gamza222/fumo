@@ -6,51 +6,59 @@
  * Note: useAppLoadingContext will be tested separately.
  */
 
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { AppLoadingProvider } from './AppLoadingProvider';
-import { UseAppLoadingReturn } from '../model/types/types';
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import { AppLoadingProvider } from "./AppLoadingProvider";
+import { UseAppLoadingReturn } from "../model/types/types";
 
 // ============================================================================
 // MOCK SETUP
 // ============================================================================
 
 // Mock the useAppLoading hook (from hooks/useAppLoading/useAppLoading.ts)
-jest.mock('../hooks/useAppLoading/useAppLoading', () => ({
+jest.mock("../hooks/useAppLoading/useAppLoading", () => ({
   useAppLoading: jest.fn(),
 }));
 
-import { useAppLoading } from '../hooks/useAppLoading/useAppLoading';
+import { useAppLoading } from "../hooks/useAppLoading/useAppLoading";
 
-const mockUseAppLoading = useAppLoading as jest.MockedFunction<typeof useAppLoading>;
+const mockUseAppLoading = useAppLoading as jest.MockedFunction<
+  typeof useAppLoading
+>;
 
 // ============================================================================
 // TEST COMPONENT
 // ============================================================================
 
 // Simple test component that renders children
-const TestChild = ({ testId, children }: { testId: string; children?: React.ReactNode }) => (
-  <div data-testid={testId}>{children}</div>
-);
+const TestChild = ({
+  testId,
+  children,
+}: {
+  testId: string;
+  children?: React.ReactNode;
+}) => <div data-testid={testId}>{children}</div>;
 
 // ============================================================================
 // TESTS
 // ============================================================================
 
-describe('AppLoadingProvider', () => {
+describe("AppLoadingProvider", () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  describe('Provider Rendering', () => {
-    it('should render single child without crashing', () => {
+  describe("Provider Rendering", () => {
+    it("should render single child without crashing", () => {
       const mockLoadingState: UseAppLoadingReturn = {
         isInitialLoading: true,
         isOverallLoading: true,
         progress: 50,
-        currentStep: 'Loading Styles',
+        currentStep: "Loading Styles",
         steps: [],
         isSuspenseLoading: false,
+        hasError: false,
+        errorMessage: undefined,
         forceComplete: jest.fn(),
         restart: jest.fn(),
         setSuspenseLoading: jest.fn(),
@@ -64,18 +72,20 @@ describe('AppLoadingProvider', () => {
         </AppLoadingProvider>
       );
 
-      expect(screen.getByTestId('single-child')).toBeInTheDocument();
-      expect(screen.getByText('Single Child Content')).toBeInTheDocument();
+      expect(screen.getByTestId("single-child")).toBeInTheDocument();
+      expect(screen.getByText("Single Child Content")).toBeInTheDocument();
     });
 
-    it('should render multiple children', () => {
+    it("should render multiple children", () => {
       const mockLoadingState: UseAppLoadingReturn = {
         isInitialLoading: true,
         isOverallLoading: true,
         progress: 50,
-        currentStep: 'Loading Styles',
+        currentStep: "Loading Styles",
         steps: [],
         isSuspenseLoading: false,
+        hasError: false,
+        errorMessage: undefined,
         forceComplete: jest.fn(),
         restart: jest.fn(),
         setSuspenseLoading: jest.fn(),
@@ -90,21 +100,23 @@ describe('AppLoadingProvider', () => {
         </AppLoadingProvider>
       );
 
-      expect(screen.getByTestId('child-1')).toBeInTheDocument();
-      expect(screen.getByTestId('child-2')).toBeInTheDocument();
-      expect(screen.getByTestId('child-3')).toBeInTheDocument();
+      expect(screen.getByTestId("child-1")).toBeInTheDocument();
+      expect(screen.getByTestId("child-2")).toBeInTheDocument();
+      expect(screen.getByTestId("child-3")).toBeInTheDocument();
     });
   });
 
-  describe('Hook Integration', () => {
-    it('should call useAppLoading hook once', () => {
+  describe("Hook Integration", () => {
+    it("should call useAppLoading hook once", () => {
       const mockLoadingState: UseAppLoadingReturn = {
         isInitialLoading: true,
         isOverallLoading: true,
         progress: 50,
-        currentStep: 'Loading Styles',
+        currentStep: "Loading Styles",
         steps: [],
         isSuspenseLoading: false,
+        hasError: false,
+        errorMessage: undefined,
         forceComplete: jest.fn(),
         restart: jest.fn(),
         setSuspenseLoading: jest.fn(),
@@ -123,15 +135,17 @@ describe('AppLoadingProvider', () => {
     });
   });
 
-  describe('Edge Cases', () => {
-    it('should handle null children', () => {
+  describe("Edge Cases", () => {
+    it("should handle null children", () => {
       const mockLoadingState: UseAppLoadingReturn = {
         isInitialLoading: true,
         isOverallLoading: true,
         progress: 50,
-        currentStep: 'Loading Styles',
+        currentStep: "Loading Styles",
         steps: [],
         isSuspenseLoading: false,
+        hasError: false,
+        errorMessage: undefined,
         forceComplete: jest.fn(),
         restart: jest.fn(),
         setSuspenseLoading: jest.fn(),
@@ -144,14 +158,16 @@ describe('AppLoadingProvider', () => {
       }).not.toThrow();
     });
 
-    it('should handle undefined children', () => {
+    it("should handle undefined children", () => {
       const mockLoadingState: UseAppLoadingReturn = {
         isInitialLoading: true,
         isOverallLoading: true,
         progress: 50,
-        currentStep: 'Loading Styles',
+        currentStep: "Loading Styles",
         steps: [],
         isSuspenseLoading: false,
+        hasError: false,
+        errorMessage: undefined,
         forceComplete: jest.fn(),
         restart: jest.fn(),
         setSuspenseLoading: jest.fn(),
@@ -165,12 +181,14 @@ describe('AppLoadingProvider', () => {
     });
   });
 
-  describe('Error Handling', () => {
-    it('should handle hook throwing error', () => {
-      const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+  describe("Error Handling", () => {
+    it("should handle hook throwing error", () => {
+      const consoleSpy = jest
+        .spyOn(console, "error")
+        .mockImplementation(() => {});
 
       mockUseAppLoading.mockImplementation(() => {
-        throw new Error('Hook failed');
+        throw new Error("Hook failed");
       });
 
       expect(() => {
@@ -179,7 +197,7 @@ describe('AppLoadingProvider', () => {
             <TestChild testId="test-child">Test</TestChild>
           </AppLoadingProvider>
         );
-      }).toThrow('Hook failed');
+      }).toThrow("Hook failed");
 
       consoleSpy.mockRestore();
     });

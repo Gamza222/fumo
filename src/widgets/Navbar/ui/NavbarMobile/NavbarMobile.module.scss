@@ -1,0 +1,261 @@
+@use "../../../../shared/styles/design-tokens/media-breakpoints" as breakpoints;
+@use "../../../../shared/styles/design-tokens/visibility" as visibility;
+@use "../../../../shared/styles/design-tokens/spacing" as spacing;
+@use "../../../../shared/styles/design-tokens/sizes" as sizes;
+@use "../../../../shared/styles/design-tokens/borders" as borders;
+@use "../../../../shared/styles/design-tokens/transitions" as transitions;
+
+// ===== MAIN MOBILE NAVBAR CONTAINER =====
+.navbarMobile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  // Windows 95 style background (same as Window component)
+  background: var(--color-window-body-bg);
+
+  // Windows 95 3D border effect (same as Window component)
+  @include borders.navbar-border();
+
+  z-index: visibility.index("lg");
+
+  // Initial state for visibility animation
+  opacity: 0;
+  transform: translateY(-100%);
+
+  // Responsive height using semantic mixin
+  @include sizes.navbar-mobile-height();
+
+  // Responsive padding
+  padding-left: spacing.spacing("sm", "mobile");
+  padding-right: spacing.spacing("sm", "mobile");
+
+  @media (min-width: breakpoints.breakpoint("tablet")) {
+    padding-left: spacing.spacing("sm", "tablet");
+    padding-right: spacing.spacing("sm", "tablet");
+  }
+
+  @media (min-width: breakpoints.breakpoint("desktop")) {
+    padding-left: spacing.spacing("sm", "desktop");
+    padding-right: spacing.spacing("sm", "desktop");
+  }
+
+  @media (min-width: breakpoints.breakpoint("xl")) {
+    padding-left: spacing.spacing("sm", "xl");
+    padding-right: spacing.spacing("sm", "xl");
+  }
+
+  // Transition using semantic token
+  @include transitions.transition("navbar-visibility");
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  // Hide on desktop (>= 1024px)
+  @media (min-width: breakpoints.breakpoint("desktop")) {
+    display: none;
+  }
+}
+
+// ===== HAMBURGER BUTTON =====
+.hamburger {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: spacing.spacing("xs", "mobile");
+  z-index: visibility.index("xl");
+
+  // Responsive size
+  width: sizes.size("lg", "mobile");
+  height: sizes.size("lg", "mobile");
+
+  @media (min-width: breakpoints.breakpoint("tablet")) {
+    width: sizes.size("lg", "tablet");
+    height: sizes.size("lg", "tablet");
+    padding: spacing.spacing("xs", "tablet");
+  }
+
+  @media (min-width: breakpoints.breakpoint("desktop")) {
+    width: sizes.size("lg", "desktop");
+    height: sizes.size("lg", "desktop");
+    padding: spacing.spacing("xs", "desktop");
+  }
+
+  @media (min-width: breakpoints.breakpoint("xl")) {
+    width: sizes.size("lg", "xl");
+    height: sizes.size("lg", "xl");
+    padding: spacing.spacing("xs", "xl");
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:focus {
+    outline: 2px solid var(--color-window-border);
+    outline-offset: 2px;
+  }
+}
+
+// ===== HAMBURGER LINES =====
+.hamburgerLine {
+  width: 100%;
+  background: var(--color-window-text);
+  border-radius: borders.border-radius("sm");
+  transform-origin: center;
+
+  height: borders.border-width("sm");
+
+  @include transitions.custom-transition(
+    (transform, opacity),
+    "fast",
+    "ease-in-out"
+  );
+
+  // First line
+  &:first-child {
+    .hamburger.open & {
+      transform: translateY(6px) rotate(45deg);
+
+      @media (min-width: breakpoints.breakpoint("tablet")) {
+        transform: translateY(7px) rotate(45deg);
+      }
+
+      @media (min-width: breakpoints.breakpoint("desktop")) {
+        transform: translateY(8px) rotate(45deg);
+      }
+
+      @media (min-width: breakpoints.breakpoint("xl")) {
+        transform: translateY(9px) rotate(45deg);
+      }
+    }
+  }
+
+  // Middle line
+  &:nth-child(2) {
+    .hamburger.open & {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+  }
+
+  // Last line
+  &:last-child {
+    .hamburger.open & {
+      transform: translateY(-6px) rotate(-45deg);
+
+      @media (min-width: breakpoints.breakpoint("tablet")) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      @media (min-width: breakpoints.breakpoint("desktop")) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      @media (min-width: breakpoints.breakpoint("xl")) {
+        transform: translateY(-9px) rotate(-45deg);
+      }
+    }
+  }
+}
+
+// ===== MOBILE MENU OVERLAY =====
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: var(--color-window-body-bg);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // Hidden by default
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(100%);
+
+  z-index: visibility.index("md");
+
+  // Add padding for the navbar height (using semantic function)
+  padding-top: sizes.size-from-semantic("navbar-mobile", "mobile");
+
+  @include transitions.custom-transition(
+    (opacity, visibility, transform),
+    "normal",
+    "ease-out"
+  );
+
+  @media (min-width: breakpoints.breakpoint("tablet")) {
+    padding-top: sizes.size-from-semantic("navbar-mobile", "tablet");
+  }
+
+  @media (min-width: breakpoints.breakpoint("desktop")) {
+    padding-top: sizes.size-from-semantic("navbar-mobile", "desktop");
+  }
+
+  @media (min-width: breakpoints.breakpoint("xl")) {
+    padding-top: sizes.size-from-semantic("navbar-mobile", "xl");
+  }
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+  }
+}
+
+// ===== NAVIGATION LINKS =====
+.navLinks {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+
+  @include spacing.responsive-gap("lg");
+}
+
+// ===== NAVIGATION ITEM =====
+.navItem {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+  // Staggered animation for menu items
+  opacity: 0;
+  transform: translateY(20px);
+
+  @include transitions.custom-transition(
+    (opacity, transform),
+    "normal",
+    "ease-out"
+  );
+
+  .menu.open & {
+    opacity: 1;
+    transform: translateY(0);
+
+    // Staggered delays for each item
+    @for $i from 1 through 10 {
+      &:nth-child(#{$i}) {
+        transition-delay: #{$i * 50}ms;
+      }
+    }
+  }
+}

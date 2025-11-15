@@ -1,0 +1,20 @@
+/* pages/HomePage/ui/HomePage.module.scss */
+
+@use "@/shared/styles/design-tokens/layout" as layout;
+
+.homePage {
+  @include layout.page-content-offset("xl");
+  @include layout.layout-horizontal-padding();
+  height: 4000px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity var(--animation-duration, 500ms) var(--animation-easing, ease-out),
+    transform var(--animation-duration, 500ms) var(--animation-easing, ease-out);
+
+  color: var(--color-white);
+  &.homePageVisible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

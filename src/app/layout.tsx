@@ -1,26 +1,36 @@
-import type { Metadata } from 'next';
+import type { Metadata } from "next";
 // import { QueryProvider } from "@/infrastructure/providers/query";
-import { SentryProvider } from '@/infrastructure/providers/sentry';
-import { ThemeProvider } from '@/infrastructure/providers/theme';
-import { ErrorBoundary } from '@/infrastructure/error-handling';
-import './globals.css';
-import { AppLoadingProvider } from '@/infrastructure/providers/app-loading';
-import { InitialLoader } from '@/widgets/InitialLoader/ui/InitialLoader';
+import { SentryProvider } from "@/infrastructure/providers/sentry";
+import { ThemeProvider } from "@/infrastructure/providers/theme";
+import { ErrorBoundary } from "@/infrastructure/error-handling";
+import "./globals.scss";
+import { AppLoadingProvider } from "@/infrastructure/providers/app-loading";
+import { InitialLoader } from "@/widgets/InitialLoader";
+import { AnimatedBackground } from "@/widgets/AnimatedBackground";
+import { Navbar } from "@/widgets/Navbar";
 
 export const metadata: Metadata = {
-  title: 'Fumo',
-  description: 'Fumo ',
+  title: "Fumo",
+  description: "Fumo ",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body>
         <SentryProvider>
           <ThemeProvider>
             <AppLoadingProvider>
-              <InitialLoader />
-              <ErrorBoundary>{children}</ErrorBoundary>
+              <ErrorBoundary>
+                <Navbar />
+                <AnimatedBackground />
+                <InitialLoader />
+                {children}
+              </ErrorBoundary>
             </AppLoadingProvider>
           </ThemeProvider>
         </SentryProvider>

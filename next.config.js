@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
-const path = require('path');
+const path = require("path");
 
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
 });
 
 const nextConfig = {
@@ -11,7 +11,7 @@ const nextConfig = {
 
   // SCSS configuration for modules and shared styles
   sassOptions: {
-    includePaths: [path.join(__dirname, 'src/shared/styles')],
+    includePaths: [path.join(__dirname, "src/shared/styles")],
     // Removed prependData completely - @use statements must be at file level
     // Each SCSS file handles its own @use imports for proper module isolation
   },
@@ -26,12 +26,12 @@ const nextConfig = {
 
   // Image domains for next/image
   images: {
-    domains: ['example.com'],
+    domains: ["example.com"],
   },
 
   // Environment variables
   env: {
-    customKey: 'customValue',
+    customKey: "customValue",
   },
 
   // API routes configuration
@@ -46,7 +46,7 @@ const nextConfig = {
   },
 
   // Exclude test files from API routes
-  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
 
   poweredByHeader: false,
   typescript: {

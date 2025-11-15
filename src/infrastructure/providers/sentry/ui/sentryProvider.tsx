@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { type FC, type PropsWithChildren, useEffect } from 'react';
-import * as Sentry from '@sentry/nextjs';
-import { envConfig } from '../../../../../config/env';
+import { type FC, type PropsWithChildren, useEffect } from "react";
+import * as Sentry from "@sentry/nextjs";
+import { envConfig } from "../../../../../config/env";
 
 interface SentryProviderProps extends PropsWithChildren {
   dsn?: string;
@@ -37,7 +37,7 @@ const SentryProvider: FC<SentryProviderProps> = (props) => {
     } catch (error) {
       // Sentry initialization failed, continue without it
       if (debug) {
-        console.warn('Sentry initialization failed:', error);
+        console.warn("Sentry initialization failed:", error);
       }
     }
   }, [dsn, environment, tracesSampleRate, debug, enabled]);

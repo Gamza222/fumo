@@ -1,0 +1,115 @@
+@use "sass:map";
+@use "./media-breakpoints" as breakpoints;
+@use "./sizes" as sizes;
+@use "./spacing" as spacing;
+
+// ===== PAGE LAYOUT MIXINS =====
+// Mixins to handle page content spacing relative to navbar
+
+/**
+ * Add padding-top to page content accounting for navbar height + extra spacing
+ * 
+ * Uses navbar-mobile height for mobile/tablet (< 1024px)
+ * Uses navbar-desktop height for desktop/xl (>= 1024px)
+ * 
+ * @param {string} $extra-spacing - Spacing key for additional space (default: "md")
+ */
+@mixin page-content-offset($extra-spacing: "md") {
+  // Mobile: navbar-mobile is shown
+  padding-top: calc(
+    #{sizes.size-from-semantic("navbar-mobile", "mobile")} +
+      #{spacing.spacing($extra-spacing, "mobile")}
+  );
+
+  // Tablet: navbar-mobile is still shown
+  @media (min-width: breakpoints.breakpoint("tablet")) {
+    padding-top: calc(
+      #{sizes.size-from-semantic("navbar-mobile", "tablet")} +
+        #{spacing.spacing($extra-spacing, "tablet")}
+    );
+  }
+
+  // Desktop: navbar-desktop is shown (navbar-mobile hidden)
+  @media (min-width: breakpoints.breakpoint("desktop")) {
+    padding-top: calc(
+      #{sizes.size-from-semantic("navbar-desktop", "desktop")} +
+        #{spacing.spacing($extra-spacing, "desktop")}
+    );
+  }
+
+  // XL: navbar-desktop continues
+  @media (min-width: breakpoints.breakpoint("xl")) {
+    padding-top: calc(
+      #{sizes.size-from-semantic("navbar-desktop", "xl")} +
+        #{spacing.spacing($extra-spacing, "xl")}
+    );
+  }
+}
+
+/**
+ * Add margin-top to page content accounting for navbar height + extra spacing
+ * 
+ * Uses navbar-mobile height for mobile/tablet (< 1024px)
+ * Uses navbar-desktop height for desktop/xl (>= 1024px)
+ * 
+ * @param {string} $extra-spacing - Spacing key for additional space (default: "md")
+ */
+@mixin page-content-margin($extra-spacing: "md") {
+  // Mobile: navbar-mobile is shown
+  margin-top: calc(
+    #{sizes.size-from-semantic("navbar-mobile", "mobile")} +
+      #{spacing.spacing($extra-spacing, "mobile")}
+  );
+
+  // Tablet: navbar-mobile is still shown
+  @media (min-width: breakpoints.breakpoint("tablet")) {
+    margin-top: calc(
+      #{sizes.size-from-semantic("navbar-mobile", "tablet")} +
+        #{spacing.spacing($extra-spacing, "tablet")}
+    );
+  }
+
+  // Desktop: navbar-desktop is shown (navbar-mobile hidden)
+  @media (min-width: breakpoints.breakpoint("desktop")) {
+    margin-top: calc(
+      #{sizes.size-from-semantic("navbar-desktop", "desktop")} +
+        #{spacing.spacing($extra-spacing, "desktop")}
+    );
+  }
+
+  // XL: navbar-desktop continues
+  @media (min-width: breakpoints.breakpoint("xl")) {
+    margin-top: calc(
+      #{sizes.size-from-semantic("navbar-desktop", "xl")} +
+        #{spacing.spacing($extra-spacing, "xl")}
+    );
+  }
+}
+
+/**
+ * Get navbar height only (without extra spacing) using padding-top
+ * Useful when you want exact navbar height spacing
+ */
+@mixin navbar-offset-only() {
+  // Mobile: navbar-mobile
+  padding-top: sizes.size-from-semantic("navbar-mobile", "mobile");
+
+  // Tablet: navbar-mobile
+  @media (min-width: breakpoints.breakpoint("tablet")) {
+    padding-top: sizes.size-from-semantic("navbar-mobile", "tablet");
+  }
+
+  // Desktop: navbar-desktop
+  @media (min-width: breakpoints.breakpoint("desktop")) {
+    padding-top: sizes.size-from-semantic("navbar-desktop", "desktop");
+  }
+
+  // XL: navbar-desktop
+  @media (min-width: breakpoints.breakpoint("xl")) {
+    padding-top: sizes.size-from-semantic("navbar-desktop", "xl");
+  }
+}
+
+@mixin layout-horizontal-padding() {
+  @include spacing.responsive-horizontal-padding("xl");
+}

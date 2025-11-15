@@ -1,0 +1,144 @@
+@use "sass:map";
+@use "sass:list";
+@use "sass:meta";
+
+// ===== TRANSITION DURATIONS =====
+$transition-durations: (
+  "instant": 0ms,
+  "fast": 150ms,
+  "normal": 300ms,
+  "slow": 500ms,
+  "slower": 700ms,
+);
+
+// ===== TRANSITION EASINGS =====
+$transition-easings: (
+  "linear": linear,
+  "ease": ease,
+  "ease-in": ease-in,
+  "ease-out": ease-out,
+  "ease-in-out": ease-in-out,
+  "smooth": cubic-bezier(0.4, 0, 0.2, 1),
+  "bounce": cubic-bezier(0.68, -0.55, 0.265, 1.55),
+);
+
+// ===== SEMANTIC TRANSITION TOKENS =====
+$transition-semantic: (
+  "navbar-visibility": (
+    duration: "normal",
+    easing: "ease-out",
+    properties: (
+      opacity,
+      transform,
+    ),
+  ),
+  "menu-toggle": (
+    duration: "fast",
+    easing: "ease-in-out",
+    properties: (
+      all,
+    ),
+  ),
+  "progress": (
+    duration: "fast",
+    easing: "ease-in-out",
+    properties: (
+      width,
+    ),
+  ),
+  "fade": (
+    duration: "normal",
+    easing: "ease-out",
+    properties: (
+      opacity,
+    ),
+  ),
+);
+
+// ===== FUNCTIONS =====
+@function duration($key: "normal") {
+  $value: map.get($transition-durations, $key);
+
+  @if not $value {
+    @error "Duration '#{$key}' not found in $transition-durations map.";
+  }
+
+  @return $value;
+}
+
+@function easing($key: "ease") {
+  $value: map.get($transition-easings, $key);
+
+  @if not $value {
+    @error "Easing '#{$key}' not found in $transition-easings map.";
+  }
+
+  @return $value;
+}
+
+@function transition-config($type: "fade") {
+  $config: map.get($transition-semantic, $type);
+
+  @if not $config {
+    @error "Transition type '#{$type}' not found in $transition-semantic map.";
+  }
+
+  @return $config;
+}
+
+// ===== MIXINS =====
+@mixin transition($type: "fade") {
+  $config: transition-config($type);
+  $duration-key: map.get($config, "duration");
+  $easing-key: map.get($config, "easing");
+  $properties: map.get($config, "properties");
+
+  $duration-value: duration($duration-key);
+  $easing-value: easing($easing-key);
+
+  @if list.length($properties) == 1 {
+    & {
+      transition: nth($properties, 1) $duration-value $easing-value;
+    }
+  } @else {
+    $transitions: ();
+    @each $prop in $properties {
+      $transitions: list.append(
+        $transitions,
+        #{$prop} $duration-value $easing-value,
+        comma
+      );
+    }
+    & {
+      transition: $transitions;
+    }
+  }
+}
+
+// Quick utility for custom transitions
+@mixin custom-transition(
+  $properties,
+  $duration-key: "normal",
+  $easing-key: "ease"
+) {
+  $duration-value: duration($duration-key);
+  $easing-value: easing($easing-key);
+
+  @if meta.type-of($properties) == "list" {
+    $transitions: ();
+    @each $prop in $properties {
+      $transitions: list.append(
+        $transitions,
+        #{$prop} $duration-value $easing-value,
+        comma
+      );
+    }
+    & {
+      transition: $transitions;
+    }
+  } @else {
+    & {
+      transition: $properties $duration-value $easing-value;
+    }
+  }
+}

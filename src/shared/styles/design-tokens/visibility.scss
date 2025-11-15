@@ -1,0 +1,13 @@
+@use "sass:map";
+
+$indexes: (
+  xs: -1,
+  normal: 0,
+  md: 10,
+  lg: 100,
+  xl: 1000,
+);
+
+@function index($index: "normal") {
+  @return map.get($indexes, $index);
+}

@@ -1,0 +1,78 @@
+@use "../../styles/design-tokens/spacing" as spacing;
+@use "../../styles/design-tokens/typography" as typography;
+@use "../../styles/design-tokens/borders" as borders;
+@use "../../styles/design-tokens/sizes" as sizes;
+@use "../../styles/design-tokens/media-breakpoints" as breakpoints;
+
+.window {
+  background: var(--color-window-body-bg);
+  color: var(--color-window-body-text);
+  font-family: #{typography.font-family("retro")};
+  display: inline-block;
+  min-width: 200px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  max-width: 320px;
+  padding: 2px;
+
+  @media (min-width: #{breakpoints.breakpoint("tablet")}) {
+    max-width: 480px;
+  }
+
+  @media (min-width: #{breakpoints.breakpoint("desktop")}) {
+    max-width: 500px;
+  }
+
+  @media (min-width: #{breakpoints.breakpoint("xl")}) {
+    max-width: 600px;
+  }
+
+  @include borders.border-semantic("button-primary");
+}
+
+.titleBar {
+  background: linear-gradient(
+    to right,
+    var(--color-window-header-bg-start),
+    var(--color-window-header-bg-end)
+  );
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+  min-height: 18px;
+  @include spacing.responsive-padding("xs", "xs");
+  @include spacing.responsive-gap("xs");
+}
+
+.title {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.closeButton {
+  @include sizes.size-semantic("sm-button");
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  background: var(--color-window-body-bg);
+  height: 100%;
+  @include spacing.responsive-padding("md", "md");
+}
+
+// ===== UTILITY CLASSES =====
+.window.titleBarHidden .titleBar {
+  display: none;
+}
+
+.window.closeButtonHidden .closeButton {
+  display: none;
+}

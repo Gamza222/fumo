@@ -4,11 +4,14 @@
  * UI Provider component that provides loading context to children.
  */
 
-'use client';
+"use client";
 
-import { createContext } from 'react';
-import { useAppLoading } from '../hooks/useAppLoading/useAppLoading';
-import { AppLoadingProviderProps, UseAppLoadingReturn } from '../model/types/types';
+import { createContext, useMemo } from "react";
+import { useAppLoading } from "../hooks/useAppLoading/useAppLoading";
+import {
+  AppLoadingProviderProps,
+  UseAppLoadingReturn,
+} from "../model/types/types";
 
 // ============================================================================
 // CONTEXT CREATION
@@ -36,8 +39,28 @@ export function AppLoadingProvider({ children }: AppLoadingProviderProps) {
   // Get loading state from our hook (logic layer)
   const appLoadingState = useAppLoading();
 
+  const contextValue = useMemo(
+    () => appLoadingState,
+    [
+      appLoadingState.isInitialLoading,
+      appLoadingState.isOverallLoading,
+      appLoadingState.isSuspenseLoading,
+      appLoadingState.progress,
+      appLoadingState.currentStep,
+      appLoadingState.steps,
+      appLoadingState.hasError,
+      appLoadingState.errorMessage,
+      appLoadingState.shouldSkipLoader,
+      appLoadingState.forceComplete,
+      appLoadingState.restart,
+      appLoadingState.setSuspenseLoading,
+    ]
+  );
+
   return (
-    <AppLoadingContext.Provider value={appLoadingState}>{children}</AppLoadingContext.Provider>
+    <AppLoadingContext.Provider value={contextValue}>
+      {children}
+    </AppLoadingContext.Provider>
   );
 }
 

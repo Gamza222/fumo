@@ -1,118 +1,110 @@
-'use client';
+"use client";
 
-import { memo, useEffect, useMemo, useState } from 'react';
+import { memo, useMemo } from "react";
 
-//styles
-import styles from './InitialLoader.module.scss';
+// Widget-specific logic
+import { useFadeAnimation, formatStepName } from "../lib/lib";
 
-//lib
-import { formatStepName } from '../lib/lib';
+// Widget-specific loading adapter
+import { useInitialLoaderLoading } from "../lib/loadingAdapter";
 
-import { usePathname } from 'next/navigation';
+// Shared utilities
+import { classNames } from "@/shared/lib/utils/classNames";
+import { Mods } from "@/shared/lib/utils/classNames/classNames";
 
-//external
-import { useAppLoadingContext } from '@/infrastructure/providers/app-loading';
-import { getCurrentRouteConfig, AppRoute } from '@/shared/config/route';
-import { classNames } from '@/shared/lib/utils/classNames';
+// Styles
+import styles from "./InitialLoader.module.scss";
 
-//components
-import { ProgressBar } from '@/widgets/ProgressBar';
-import { Mods } from '@/shared/lib/utils/classNames/classNames';
+// Components
+import { Window } from "@/shared/ui/Window";
+import { ProgressBar } from "@/widgets/ProgressBar";
+import { LoadingError } from "./LoadingError/LoadingError";
 
 export interface InitialLoaderProps {
   className?: string;
   loadingMessage?: string;
   showProgress?: boolean;
+  animationTimeout?: number;
 }
 
 export const InitialLoader = memo<InitialLoaderProps>(
-  ({ className, loadingMessage, showProgress = true }) => {
-    const pathname = usePathname();
-    const { isOverallLoading, progress, currentStep } = useAppLoadingContext();
-    const [isVisible, setIsVisible] = useState(true);
-    const [isFadingOut, setIsFadingOut] = useState(false);
-    const [shouldShowLoader, setShouldShowLoader] = useState(false);
+  ({
+    className,
+    loadingMessage,
+    showProgress = true,
+    animationTimeout = 400,
+  }) => {
+    // Use loading adapter for minimal interface
+    const loadingState = useInitialLoaderLoading();
 
-    // Get route config
-    const routeConfig = useMemo(() => getCurrentRouteConfig(pathname).config, [pathname]);
+    const { isFadingOut, isVisible, handleAnimationEnd } = useFadeAnimation({
+      isOverallLoading: loadingState.isOverallLoading || false,
+      timeoutMs: animationTimeout,
+    });
 
-    // Simple cache check
-    const isCached = useMemo(() => {
-      if (!routeConfig.cache.enabled) return false;
-      if (typeof window === 'undefined') return false; // SSR check
-      const cacheKey = routeConfig.cache.key || `cache-${routeConfig.route}`;
-      const cached = localStorage.getItem(cacheKey);
-      if (!cached) return false;
-      try {
-        const parsed = JSON.parse(cached) as { timestamp: number; ttl: number };
-        const { timestamp, ttl } = parsed;
-        return Date.now() - timestamp < ttl;
-      } catch {
-        return false;
-      }
-    }, [routeConfig.cache.enabled, routeConfig.cache.key, routeConfig.route]);
+    // const isFadingOut = false;
+    // const isVisible = true;
+    // const handleAnimationEnd = () => {
+    //   return;
+    // };
 
-    useEffect(() => {
-      const shouldShow = routeConfig.route === AppRoute.HOME || !isCached;
-      setShouldShowLoader(shouldShow);
-    }, [pathname, routeConfig.route, isCached]);
+    // Simple business logic
+    const displayMessage = useMemo(
+      () =>
+        loadingMessage ||
+        (loadingState.progress >= 100
+          ? "Ready!"
+          : formatStepName(loadingState.currentStep)),
+      [loadingMessage, loadingState.progress, loadingState.currentStep]
+    );
 
-    // Save cache when done - with SSR safety
-    useEffect(() => {
-      if (
-        !isOverallLoading &&
-        shouldShowLoader &&
-        routeConfig.cache.enabled &&
-        typeof window !== 'undefined'
-      ) {
-        const cacheKey = routeConfig.cache.key || `cache-${routeConfig.route}`;
-        localStorage.setItem(
-          cacheKey,
-          JSON.stringify({
-            timestamp: Date.now(),
-            ttl: routeConfig.cache.ttl || 86400000, // 24 hours
-          })
-        );
-      }
-    }, [isOverallLoading, shouldShowLoader, routeConfig]);
+    if (loadingState.shouldSkipLoader) return null;
+    if (!isVisible) return null;
 
-    // Visibility logic
-    useEffect(() => {
-      if (isOverallLoading) {
-        setIsVisible(true);
-        setIsFadingOut(false);
-        return;
-      }
-
-      setIsFadingOut(true);
-      setTimeout(() => setIsVisible(false), routeConfig.loader.minDisplayTime || 2000);
-    }, [isOverallLoading, routeConfig.loader.minDisplayTime]);
-
-    if (!shouldShowLoader || !isVisible) return null;
-
-    const displayMessage =
-      loadingMessage || (progress >= 100 ? 'Ready!' : formatStepName(currentStep));
-
-    const mods: Mods = {
-      [styles.fadeOut || '']: isFadingOut,
+    // Your Mods logic preserved
+    const initialLoaderMods: Mods = {
+      [styles.fadeOut || ""]: isFadingOut,
     };
 
     return (
       <div
-        className={classNames(styles.initialLoader || '', { ...mods }, [className])}
+        className={classNames(
+          styles.initialLoader || "",
+          { ...initialLoaderMods },
+          [className]
+        )}
         role="progressbar"
-        aria-valuenow={progress}
+        aria-valuenow={loadingState.progress}
         aria-valuemin={0}
         aria-valuemax={100}
         aria-label="Loading application"
+        onAnimationEnd={handleAnimationEnd}
       >
         <div className={styles.overlay} />
         <div className={styles.content}>
-          <ProgressBar progress={progress} message={displayMessage} showPercentage={showProgress} />
+          <Window
+            className={styles.loadingWindow}
+            title="Fumo loading window"
+            showCloseButton
+          >
+            {loadingState.hasError ? (
+              <LoadingError
+                className={styles.loadingError}
+                errorMessage={loadingState.errorMessage || ""}
+                handleRetry={loadingState.restart}
+              />
+            ) : (
+              <ProgressBar
+                progress={loadingState.progress}
+                message={displayMessage}
+                showPercentage={showProgress}
+              />
+            )}
+          </Window>
         </div>
       </div>
     );
   }
 );
 
-InitialLoader.displayName = 'InitialLoader';
+InitialLoader.displayName = "InitialLoader";

@@ -1,343 +1,213 @@
-@use 'sass:map';
+@use "sass:map";
+@use "media-breakpoints" as breakpoints;
 
-// ===== TYPOGRAPHY SYSTEM =====
-// Complete typography scale for enterprise applications
+// ===== MINIMAL TYPOGRAPHY SYSTEM =====
+// Only fonts we actually use
 
 // ===== FONT FAMILIES =====
 $font-families: (
-  'primary': (
-    'Inter',
+  "primary": (
+    "Inter",
     -apple-system,
-    'BlinkMacSystemFont',
-    'Segoe UI',
-    'Roboto',
-    'Oxygen',
-    'Ubuntu',
-    'Cantarell',
+    "BlinkMacSystemFont",
+    "Segoe UI",
+    "Roboto",
     sans-serif,
   ),
-  'secondary': (
-    'Inter',
+  "retro": (
+    "IBM Plex Sans",
+    "MS Sans Serif",
+    "Tahoma",
     -apple-system,
-    'BlinkMacSystemFont',
-    'Segoe UI',
-    'Roboto',
-    'Oxygen',
-    'Ubuntu',
-    'Cantarell',
-    sans-serif,
-  ),
-  'mono': (
-    'JetBrains Mono',
-    'Fira Code',
-    'Monaco',
-    'Consolas',
-    'Liberation Mono',
-    'Courier New',
-    monospace,
-  ),
-  'display': (
-    'Inter',
-    -apple-system,
-    'BlinkMacSystemFont',
-    'Segoe UI',
-    'Roboto',
-    'Oxygen',
-    'Ubuntu',
-    'Cantarell',
+    "BlinkMacSystemFont",
     sans-serif,
   ),
 );
 
-// ===== FONT SIZES =====
 $font-sizes: (
-  // Micro text - disclaimers, captions
-  'xs': 0.75rem,
-  // 12px
-  'sm': 0.875rem,
-
-  // 14px
-  // Body text
-  'base': 1rem,
-  // 16px (base)
-  'md': 1rem,
-  // 16px (alias)
-  'lg': 1.125rem,
-
-  // 18px
-  // Headings
-  'xl': 1.25rem,
-  // 20px
-  '2xl': 1.5rem,
-  // 24px
-  '3xl': 1.875rem,
-  // 30px
-  '4xl': 2.25rem,
-  // 36px
-  '5xl': 3rem,
-  // 48px
-  '6xl': 3.75rem,
-  // 60px
-  '7xl': 4.5rem,
-  // 72px
-  '8xl': 6rem,
-  // 96px
-  '9xl': 8rem // 128px
+  // Small text (captions, labels, UI elements)
+  "sm": (
+      mobile: 12px,
+      tablet: 13px,
+      desktop: 14px,
+      xl: 15px,
+    ),
+  // Medium text (body, paragraphs)
+  "md": (
+      mobile: 14px,
+      tablet: 15px,
+      desktop: 16px,
+      xl: 18px,
+    ),
+  // Large text (headings, emphasis)
+  "lg": (
+      mobile: 16px,
+      tablet: 18px,
+      desktop: 20px,
+      xl: 24px,
+    )
 );
 
-// ===== FONT WEIGHTS =====
 $font-weights: (
-  'thin': 100,
-  'extralight': 200,
-  'light': 300,
-  'normal': 400,
-  'medium': 500,
-  'semibold': 600,
-  'bold': 700,
-  'extrabold': 800,
-  'black': 900,
+  "thin": 400,
+  "medium": 400,
+  "bold": 600,
 );
 
-// ===== LINE HEIGHTS =====
-$line-heights: (
-  'none': 1,
-  'tight': 1.25,
-  'snug': 1.375,
-  'normal': 1.5,
-  'relaxed': 1.625,
-  'loose': 2,
-
-  // Specific values for better control
-  '3': 0.75rem,
-  // 12px
-  '4': 1rem,
-  // 16px
-  '5': 1.25rem,
-  // 20px
-  '6': 1.5rem,
-  // 24px
-  '7': 1.75rem,
-  // 28px
-  '8': 2rem,
-  // 32px
-  '9': 2.25rem,
-  // 36px
-  '10': 2.5rem, // 40px
-);
-
-// ===== LETTER SPACING =====
-$letter-spacing: (
-  'tighter': -0.05em,
-  'tight': -0.025em,
-  'normal': 0,
-  'wide': 0.025em,
-  'wider': 0.05em,
-  'widest': 0.1em,
-);
-
-// ===== TEXT TRANSFORM =====
-$text-transform: (
-  'none': none,
-  'uppercase': uppercase,
-  'lowercase': lowercase,
-  'capitalize': capitalize,
-);
-
-// ===== TYPOGRAPHY SCALES =====
-// Predefined typography scales for common use cases
-
-$heading-scale: (
-  'h1': (
-    'font-size': map.get($font-sizes, '4xl'),
-    'line-height': map.get($line-heights, 'tight'),
-    'font-weight': map.get($font-weights, 'bold'),
-    'letter-spacing': map.get($letter-spacing, 'tight'),
+// ===== RESPONSIVE TYPOGRAPHY PROPS =====
+$typography-props: (
+  "sm": (
+    mobile: (
+      line-height: 1.4,
+      letter-spacing: 0.01em,
+      font-weight: 500,
+    ),
+    tablet: (
+      line-height: 1.35,
+      letter-spacing: 0.008em,
+      font-weight: 500,
+    ),
+    desktop: (
+      line-height: 1.3,
+      letter-spacing: 0.006em,
+      font-weight: 500,
+    ),
+    xl: (
+      line-height: 1.28,
+      letter-spacing: 0.004em,
+      font-weight: 500,
+    ),
   ),
-  'h2': (
-    'font-size': map.get($font-sizes, '3xl'),
-    'line-height': map.get($line-heights, 'tight'),
-    'font-weight': map.get($font-weights, 'bold'),
-    'letter-spacing': map.get($letter-spacing, 'tight'),
+  "md": (
+    mobile: (
+      line-height: 1.5,
+      letter-spacing: 0,
+      font-weight: 400,
+    ),
+    tablet: (
+      line-height: 1.45,
+      letter-spacing: -0.002em,
+      font-weight: 400,
+    ),
+    desktop: (
+      line-height: 1.4,
+      letter-spacing: -0.004em,
+      font-weight: 400,
+    ),
+    xl: (
+      line-height: 1.38,
+      letter-spacing: -0.006em,
+      font-weight: 400,
+    ),
   ),
-  'h3': (
-    'font-size': map.get($font-sizes, '2xl'),
-    'line-height': map.get($line-heights, 'snug'),
-    'font-weight': map.get($font-weights, 'semibold'),
-    'letter-spacing': map.get($letter-spacing, 'normal'),
+  "lg": (
+    mobile: (
+      line-height: 1.3,
+      letter-spacing: -0.01em,
+      font-weight: 600,
+    ),
+    tablet: (
+      line-height: 1.25,
+      letter-spacing: -0.012em,
+      font-weight: 600,
+    ),
+    desktop: (
+      line-height: 1.2,
+      letter-spacing: -0.014em,
+      font-weight: 600,
+    ),
+    xl: (
+      line-height: 1.18,
+      letter-spacing: -0.016em,
+      font-weight: 600,
+    ),
   ),
-  'h4': (
-    'font-size': map.get($font-sizes, 'xl'),
-    'line-height': map.get($line-heights, 'snug'),
-    'font-weight': map.get($font-weights, 'semibold'),
-    'letter-spacing': map.get($letter-spacing, 'normal'),
-  ),
-  'h5': (
-    'font-size': map.get($font-sizes, 'lg'),
-    'line-height': map.get($line-heights, 'normal'),
-    'font-weight': map.get($font-weights, 'medium'),
-    'letter-spacing': map.get($letter-spacing, 'normal'),
-  ),
-  'h6': (
-    'font-size': map.get($font-sizes, 'base'),
-    'line-height': map.get($line-heights, 'normal'),
-    'font-weight': map.get($font-weights, 'medium'),
-    'letter-spacing': map.get($letter-spacing, 'normal'),
-  ),
-);
-
-$body-scale: (
-  'large': (
-    'font-size': map.get($font-sizes, 'lg'),
-    'line-height': map.get($line-heights, 'relaxed'),
-    'font-weight': map.get($font-weights, 'normal'),
-  ),
-  'base': (
-    'font-size': map.get($font-sizes, 'base'),
-    'line-height': map.get($line-heights, 'normal'),
-    'font-weight': map.get($font-weights, 'normal'),
-  ),
-  'small': (
-    'font-size': map.get($font-sizes, 'sm'),
-    'line-height': map.get($line-heights, 'normal'),
-    'font-weight': map.get($font-weights, 'normal'),
-  ),
-  'caption': (
-    'font-size': map.get($font-sizes, 'xs'),
-    'line-height': map.get($line-heights, 'tight'),
-    'font-weight': map.get($font-weights, 'normal'),
-  ),
-);
-
-$display-scale: (
-  'large': (
-    'font-size': map.get($font-sizes, '6xl'),
-    'line-height': map.get($line-heights, 'none'),
-    'font-weight': map.get($font-weights, 'bold'),
-    'letter-spacing': map.get($letter-spacing, 'tight'),
-  ),
-  'medium': (
-    'font-size': map.get($font-sizes, '5xl'),
-    'line-height': map.get($line-heights, 'tight'),
-    'font-weight': map.get($font-weights, 'bold'),
-    'letter-spacing': map.get($letter-spacing, 'tight'),
-  ),
-  'small': (
-    'font-size': map.get($font-sizes, '4xl'),
-    'line-height': map.get($line-heights, 'tight'),
-    'font-weight': map.get($font-weights, 'bold'),
-    'letter-spacing': map.get($letter-spacing, 'normal'),
-  ),
-);
-
-// ===== TYPOGRAPHY MAPS =====
-$typography: (
-  'font-families': $font-families,
-  'font-sizes': $font-sizes,
-  'font-weights': $font-weights,
-  'line-heights': $line-heights,
-  'letter-spacing': $letter-spacing,
-  'text-transform': $text-transform,
-  'heading-scale': $heading-scale,
-  'body-scale': $body-scale,
-  'display-scale': $display-scale,
 );
 
 // ===== TYPOGRAPHY FUNCTIONS =====
-@function font-family($family: 'primary') {
-  $family-list: map.get($font-families, $family);
+@function font-family($family: "primary") {
+  $font-list: map.get($font-families, $family);
 
-  @if not $family-list {
+  @if not $font-list {
     @error "Font family '#{$family}' not found in $font-families map.";
   }
 
-  @return $family-list;
+  @return $font-list;
 }
 
-@function font-size($size: 'base') {
-  $size-value: map.get($font-sizes, $size);
+@function font-size($size: "md", $breakpoint: "mobile") {
+  $size-map: map.get($font-sizes, $size);
 
-  @if not $size-value {
+  @if not $size-map {
     @error "Font size '#{$size}' not found in $font-sizes map.";
   }
 
-  @return $size-value;
-}
+  $value: map.get($size-map, $breakpoint);
 
-@function font-weight($weight: 'normal') {
-  $weight-value: map.get($font-weights, $weight);
-
-  @if not $weight-value {
-    @error "Font weight '#{$weight}' not found in $font-weights map.";
+  @if not $value {
+    @error "Breakpoint '#{$breakpoint}' not found in font size '#{$size}'.";
   }
 
-  @return $weight-value;
+  @return $value;
 }
 
-@function line-height($height: 'normal') {
-  $height-value: map.get($line-heights, $height);
+@function typography-prop(
+  $size: "md",
+  $prop: "line-height",
+  $breakpoint: "mobile"
+) {
+  $size-map: map.get($typography-props, $size);
 
-  @if not $height-value {
-    @error "Line height '#{$height}' not found in $line-heights map.";
+  @if not $size-map {
+    @error "Size '#{$size}' not found in $typography-props map.";
   }
 
-  @return $height-value;
-}
+  $breakpoint-map: map.get($size-map, $breakpoint);
 
-@function letter-spacing($spacing: 'normal') {
-  $spacing-value: map.get($letter-spacing, $spacing);
-
-  @if not $spacing-value {
-    @error "Letter spacing '#{$spacing}' not found in $letter-spacing map.";
+  @if not $breakpoint-map {
+    @error "Breakpoint '#{$breakpoint}' not found for size '#{$size}'.";
   }
 
-  @return $spacing-value;
-}
+  $value: map.get($breakpoint-map, $prop);
 
-// ===== TYPOGRAPHY MIXINS =====
-@mixin typography-scale($scale-type, $scale-name) {
-  $scale-map: map.get($typography, $scale-type);
-
-  @if not $scale-map {
-    @error "Typography scale type '#{$scale-type}' not found.";
+  @if not $value {
+    @error "Property '#{$prop}' not found for size '#{$size}' at breakpoint '#{$breakpoint}'.";
   }
 
-  $scale-config: map.get($scale-map, $scale-name);
+  @return $value;
+}
 
-  @if not $scale-config {
-    @error "Typography scale '#{$scale-name}' not found in '#{$scale-type}'.";
+// ===== RESPONSIVE MIXINS WITH BUILT-IN MEDIA QUERIES =====
+@mixin text-props($size: "md") {
+  // Base mobile size
+  & {
+    font-size: font-size($size, "mobile");
+    line-height: typography-prop($size, "line-height", "mobile");
+    letter-spacing: typography-prop($size, "letter-spacing", "mobile");
+    font-weight: typography-prop($size, "font-weight", "mobile");
   }
 
-  @each $property, $value in $scale-config {
-    #{$property}: $value;
+  // Tablet
+  @media (min-width: #{breakpoints.breakpoint("tablet")}) {
+    font-size: font-size($size, "tablet");
+    line-height: typography-prop($size, "line-height", "tablet");
+    letter-spacing: typography-prop($size, "letter-spacing", "tablet");
+    font-weight: typography-prop($size, "font-weight", "tablet");
   }
-}
 
-@mixin heading($level: 'h1') {
-  @include typography-scale('heading-scale', $level);
-}
+  // Desktop
+  @media (min-width: #{breakpoints.breakpoint("desktop")}) {
+    font-size: font-size($size, "desktop");
+    line-height: typography-prop($size, "line-height", "desktop");
+    letter-spacing: typography-prop($size, "letter-spacing", "desktop");
+    font-weight: typography-prop($size, "font-weight", "desktop");
+  }
 
-@mixin body($size: 'base') {
-  @include typography-scale('body-scale', $size);
-}
-
-@mixin display($size: 'medium') {
-  @include typography-scale('display-scale', $size);
-}
-
-@mixin font-smoothing {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-@mixin text-truncate {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-@mixin text-truncate-lines($lines: 2) {
-  display: -webkit-box;
-  -webkit-line-clamp: $lines;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  // XL
+  @media (min-width: #{breakpoints.breakpoint("xl")}) {
+    font-size: font-size($size, "xl");
+    line-height: typography-prop($size, "line-height", "xl");
+    letter-spacing: typography-prop($size, "letter-spacing", "xl");
+    font-weight: typography-prop($size, "font-weight", "xl");
+  }
 }

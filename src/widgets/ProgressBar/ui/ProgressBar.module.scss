@@ -2,46 +2,79 @@
  * ProgressBar Component Styles
  */
 
-@use '@/shared/styles/design-tokens/index.scss' as *;
+@use "@/shared/styles/design-tokens/spacing" as spacing;
+@use "@/shared/styles/design-tokens/typography" as typography;
+@use "@/shared/styles/design-tokens/sizes" as sizes;
+@use "@/shared/styles/design-tokens/borders" as borders;
 
 .progressBar {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  display: grid;
+  grid-template-rows: auto 1fr;
   width: 100%;
+  @include spacing.responsive-gap("sm");
 }
 
-.container {
+.barContainer {
   width: 100%;
-  height: 6px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 3px;
+  background: var(--color-window-body-bg);
   overflow: hidden;
   position: relative;
+  @include sizes.progress-bar-height();
+  @include borders.border-semantic("progress-bar");
 }
 
 .bar {
   height: 100%;
-  background: linear-gradient(90deg, #00d4ff 0%, #00ff88 100%);
-  border-radius: 3px;
-  transition: width 0.3s ease;
-  position: relative;
+  width: 0%;
+  background: var(--color-progress-segment);
 
-  &::after {
-    content: '';
+  position: relative;
+  transition: width 0.1s ease-in-out;
+
+  // 3D highlight effect on top
+  &::before {
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255, 255, 255, 0.3) 50%,
-      transparent 100%
-    );
-    animation: shimmer 2s infinite;
+    height: 1px;
+    background: var(--color-highlight-light); // White highlight line
   }
+
+  // 3D shadow effect on bottom
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--color-highlight-dark); // Dark shadow line
+  }
+}
+
+.textContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @include spacing.responsive-gap("sm");
+}
+
+.message {
+  opacity: 0;
+}
+
+.percentage {
+  opacity: 0;
+}
+
+.progressBar.showMessage .message {
+  opacity: 1;
+}
+
+.progressBar.showPercentage .percentage {
+  opacity: 1;
 }
 
 @keyframes shimmer {
@@ -50,37 +83,5 @@
   }
   100% {
     transform: translateX(100%);
-  }
-}
-
-.percentage {
-  font-size: 1.125rem;
-  font-weight: 600;
-  text-align: center;
-  color: black;
-  margin-top: 0.25rem;
-}
-
-// Responsive design
-@media (max-width: 768px) {
-  .percentage {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    height: 5px;
-  }
-
-  .percentage {
-    font-size: 0.875rem;
-  }
-}
-
-// Dark theme support
-@media (prefers-color-scheme: dark) {
-  .bar {
-    background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
   }
 }

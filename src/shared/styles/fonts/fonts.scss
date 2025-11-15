@@ -1,63 +1,71 @@
 // ===== FONT LOADING =====
 // Local font declarations for self-hosted fonts
 
-// ===== INTER FONT FAMILY =====
+// ===== INTER FONT FAMILY (Modern/Helvetica Neue Alternative) =====
 @font-face {
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url('./inter/InterVariable.ttf') format('truetype');
+  src: url("./Inter/Inter-VariableFont_opsz,wght.ttf")
+    format("truetype-variations");
+  font-named-instance: "Regular";
 }
 
 @font-face {
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style: italic;
   font-weight: 100 900;
   font-display: swap;
-  src: url('./inter/InterVariable-Italic.ttf') format('truetype');
+  src: url("./Inter/Inter-Italic-VariableFont_opsz,wght.ttf")
+    format("truetype-variations");
+  font-named-instance: "Italic";
 }
 
-// ===== JETBRAINS MONO FONT FAMILY =====
+// ===== IBM PLEX SANS FONT FAMILY (Retro/Windows 95 Style) =====
 @font-face {
-  font-family: 'JetBrains Mono';
+  font-family: "IBM Plex Sans";
   font-style: normal;
-  font-weight: 100 800;
+  font-weight: 100 700;
   font-display: swap;
-  src: url('./jetbrains-mono/JetBrainsMono[wght].ttf') format('truetype');
+  src: url("./IBM_Plex_Sans/IBMPlexSans-VariableFont_wdth,wght.ttf")
+    format("truetype-variations");
+  font-named-instance: "Regular";
 }
 
 @font-face {
-  font-family: 'JetBrains Mono';
+  font-family: "IBM Plex Sans";
   font-style: italic;
-  font-weight: 100 800;
+  font-weight: 100 700;
   font-display: swap;
-  src: url('./jetbrains-mono/JetBrainsMono-Italic[wght].ttf') format('truetype');
+  src: url("./IBM_Plex_Sans/IBMPlexSans-Italic-VariableFont_wdth,wght.ttf")
+    format("truetype-variations");
+  font-named-instance: "Italic";
 }
 
-// ===== FONT LOADING OPTIMIZATIONS =====
 // Preload critical fonts
 :root {
-  // Force font loading for critical text
+  // Force font loading for Inter (modern)
   &::before {
-    content: '';
+    content: "";
     font-family:
-      'Inter',
+      "Inter",
       -apple-system,
       BlinkMacSystemFont,
-      'Segoe UI',
+      "Segoe UI",
       Roboto,
       sans-serif;
-    font-weight: 400 700;
+    font-weight: 500 700;
     position: absolute;
     left: -9999px;
     visibility: hidden;
   }
 
+  // Force font loading for IBM Plex Sans (retro)
   &::after {
-    content: '';
-    font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', monospace;
-    font-weight: 400 700;
+    content: "";
+    font-family: "IBM Plex Sans", "MS Sans Serif", "Tahoma", sans-serif;
+    font-weight: 500 700;
     position: absolute;
     left: -9999px;
     visibility: hidden;
@@ -66,12 +74,12 @@
 
 // ===== FONT FALLBACK HANDLING =====
 // Define font stacks with proper fallbacks
-.font-primary {
+.font-modern {
   font-family:
-    'Inter',
+    "Inter",
     -apple-system,
     BlinkMacSystemFont,
-    'Segoe UI',
+    "Segoe UI",
     Roboto,
     Oxygen,
     Ubuntu,
@@ -79,22 +87,12 @@
     sans-serif;
 }
 
-.font-mono {
+.font-retro {
   font-family:
-    'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
-}
-
-.font-display {
-  font-family:
-    'Inter',
+    "IBM Plex Sans",
+    "MS Sans Serif",
+    "Tahoma",
     -apple-system,
     BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
     sans-serif;
-  font-weight: 700;
-  letter-spacing: -0.025em;
 }

@@ -1,0 +1,52 @@
+@use "../../../shared/styles/design-tokens/media-breakpoints" as breakpoints;
+@use "../../../shared/styles/design-tokens/visibility" as visibility;
+@use "../../../shared/styles/design-tokens/sizes" as sizes;
+
+.initialLoader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  // background: var(--color-window-body-bg);
+  background: transparent;
+  transition: opacity 0.3s ease-out;
+  opacity: 1;
+  z-index: visibility.index("xl");
+}
+
+.loadingWindow {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  width: 100%;
+  @include sizes.max-size-semantic("window");
+}
+
+.fadeOut {
+  animation: fadeOut 300ms ease-out forwards;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  background: var(--loader-overlay-bg);
+  backdrop-filter: grayscale(var(--loader-overlay-grayscale))
+    brightness(var(--loader-overlay-brightness))
+    contrast(var(--loader-overlay-contrast));
+  -webkit-backdrop-filter: grayscale(var(--loader-overlay-grayscale))
+    brightness(var(--loader-overlay-brightness))
+    contrast(var(--loader-overlay-contrast));
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

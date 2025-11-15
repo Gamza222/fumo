@@ -1,0 +1,57 @@
+@use "../../styles/design-tokens/typography" as typography;
+@use "../../styles/design-tokens/visibility" as visibility;
+@use "../../styles/design-tokens/media-breakpoints" as breakpoints;
+
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: auto; // Allow mouse interaction
+  z-index: visibility.index("md");
+}
+
+.ascii {
+  margin: 0;
+  padding: 0;
+
+  font-family: typography.font-family("retro");
+  white-space: pre;
+  user-select: none;
+  -webkit-user-select: none;
+  color: var(--color-white);
+
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  //   text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+
+  // Responsive font sizing
+  @include typography.text-props("sm");
+  line-height: 1.05;
+  font-weight: 100;
+  letter-spacing: 0.01em;
+
+  // @media (min-width: breakpoints.breakpoint("tablet")) {
+  //   font-size: 0.65vw;
+  //   line-height: 1.04;
+  // }
+
+  // @media (min-width: breakpoints.breakpoint("desktop")) {
+  //   font-size: 0.6vw;
+  //   line-height: 1.03;
+  // }
+
+  // @media (min-width: breakpoints.breakpoint("xl")) {
+  //   font-size: 0.55vw;
+  //   line-height: 1.02;
+  // }
+
+  // // Mobile: larger characters
+  // @media (max-width: breakpoints.breakpoint("mobile")) {
+  //   font-size: 2vw;
+  //   line-height: 1.1;
+  // }
+}

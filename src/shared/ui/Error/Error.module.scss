@@ -1,0 +1,9 @@
+@use "../../styles/design-tokens/spacing" as spacing;
+
+.Error {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  @include spacing.responsive-gap("md");
+}

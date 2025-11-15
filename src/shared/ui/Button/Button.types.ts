@@ -1,15 +1,14 @@
-import { ButtonHTMLAttributes, ReactNode } from 'react';
+import { ButtonHTMLAttributes, ReactNode } from "react";
 
 export enum ButtonVariant {
-  PRIMARY = 'primary',
-  SECONDARY = 'secondary',
-  DANGER = 'danger',
+  PRIMARY = "primary",
+  SECONDARY = "secondary",
 }
 
 export enum ButtonSize {
-  SM = 'sm',
-  MD = 'md',
-  LG = 'lg',
+  SM = "sm",
+  MD = "md",
+  LG = "lg",
 }
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

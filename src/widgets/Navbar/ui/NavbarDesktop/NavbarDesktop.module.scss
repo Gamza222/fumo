@@ -1,0 +1,155 @@
+@use "../../../../shared/styles/design-tokens/media-breakpoints" as breakpoints;
+@use "../../../../shared/styles/design-tokens/visibility" as visibility;
+@use "../../../../shared/styles/design-tokens/spacing" as spacing;
+@use "../../../../shared/styles/design-tokens/sizes" as sizes;
+@use "../../../../shared/styles/design-tokens/borders" as borders;
+@use "../../../../shared/styles/design-tokens/transitions" as transitions;
+@use "../../../../shared/styles/design-tokens/layout" as layout;
+
+.navbarDesktop {
+  // Position and layout
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  overflow: hidden;
+
+  // Windows 95 style background (same as Window component)
+  background: var(--color-window-body-bg);
+
+  // Windows 95 3D border effect (same as Window component)
+  @include borders.navbar-border();
+
+  z-index: visibility.index("lg");
+
+  // Initial state for visibility animation
+  opacity: 0;
+  transform: translateY(-100%);
+
+  // Transition using semantic token
+  @include transitions.transition("navbar-visibility");
+
+  // Responsive height using semantic token
+  @include sizes.navbar-desktop-height();
+
+  // CRT scan line effect
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.05) 0px,
+      rgba(0, 0, 0, 0.05) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+    pointer-events: none;
+    opacity: 0.3;
+    animation: scanlines 8s linear infinite;
+  }
+
+  // Animated gradient overlay
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0, 200, 255, 0.05) 50%,
+      transparent 100%
+    );
+    pointer-events: none;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  // Active state
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  // Show only on desktop (>= 1024px)
+  @media (min-width: breakpoints.breakpoint("desktop")) {
+    display: block;
+  }
+}
+
+.content {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+  position: relative;
+  z-index: 1;
+
+  // Responsive horizontal padding
+  @include layout.layout-horizontal-padding();
+}
+
+.navLinks {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+
+  // Responsive gap between nav items
+  @include spacing.responsive-gap("md");
+}
+
+.navItem {
+  display: flex;
+  position: relative;
+
+  // Subtle holographic effect on hover
+  &::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(
+      45deg,
+      transparent,
+      rgba(0, 200, 255, 0.1),
+      transparent
+    );
+    opacity: 0;
+    border-radius: borders.border-radius("xs");
+
+    @include transitions.custom-transition((opacity), "fast", "ease-out");
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
+// Keyframe animations
+@keyframes scanlines {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(4px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
